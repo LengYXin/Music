@@ -1,0 +1,41 @@
+.root {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.root-header {
+  height: 3.75rem;
+  background: url(/assets/img/topbar.png) no-repeat 0 9999px;
+}
+
+.root-body {
+  position: absolute;
+  top: 3.75rem;
+  bottom: 6.25rem;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.root-body .nav {
+  width: 200px;
+}
+
+.root-body .container {
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.root-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6.25rem;
+}
+/*# sourceMappingURL=styles-two.css.map*/

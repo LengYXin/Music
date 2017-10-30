@@ -1,0 +1,11 @@
+.custom-image img {
+    display: block;
+    height: 11.0625rem;
+  }
+  .custom-card {
+    padding: 10px 16px;
+    height: 3.875rem;
+  }
+  .custom-card p {
+    color: #999;
+  }
