@@ -112,7 +112,9 @@ export class AudioPlay extends React.Component<Props, any> {
         // 当在音频/视频加载期间发生错误时
         this.audio.addEventListener("error", e => {
             // console.log("error", e);
-            on.ended && on.error(e, this.audio);
+            on.error && on.error(e, this.audio);
+            on.ended && on.ended(e, this.audio);
+            
         });
 
 

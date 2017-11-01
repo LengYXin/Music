@@ -4,7 +4,7 @@ import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { renderRoutes, RouteConfig, RouteConfigComponentProps } from 'react-router-config'
 // import { Spin } from 'antd';
 import { observer, inject } from 'mobx-react';
-// import CSSTransition from 'react-transition-group/CSSTransition';
+import CSSTransition from 'react-transition-group/CSSTransition';
 import QueueAnim from 'rc-queue-anim';
 
 import * as containers from "./containers"
@@ -64,7 +64,7 @@ export default class RootRoutes extends React.Component<any, any> {
                             component: this.createCSSTransition(containers.SongSheetComponent),
                         },
                         {//个性推荐
-                            path: "/find/",
+                            // path: "/find/",
                             component: this.createCSSTransition(containers.PersonalityComponent),
                         },
                     ]

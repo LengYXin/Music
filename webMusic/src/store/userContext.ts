@@ -15,7 +15,7 @@ class ObservableStore {
     constructor() {
         // 模拟一下网速慢
         // setTimeout(() => {
-        // this.onLogin({ phone: "18611752863", password: "leng5201314" });
+        this.onLogin({ phone: "18611752863", password: "leng5201314" });
         // }, 1000);
         // autorun(() => console.log("-----autorun------", this.State));
     }

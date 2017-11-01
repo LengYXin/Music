@@ -21,7 +21,7 @@ const onlyStatus200 = (req, res) => res.statusCode === 200
 
 app.use(cache('2 minutes', onlyStatus200))
 
-app.use(express.static('public'))
+app.use(express.static('build'))
 
 // 获取专辑内容
 app.use('/album', require('./router/album'))

@@ -42,13 +42,13 @@ module.exports = (evn = {}) => {
     ];
     // 生产环境添加压缩插件
     evn.Generative ? plugins.push(new UglifyJSPlugin({
-        warning: false,
-        mangle: true,
-        compress: {
-            warnings: false,
-            drop_debugger: true,
-            drop_console: true
-        }
+        // warning: false,
+        // mangle: true,
+        // compress: {
+        //     warnings: false,
+        //     drop_debugger: true,
+        //     drop_console: true
+        // }
     })) : undefined;
     return {
         entry: {
