@@ -9,6 +9,9 @@ const gridStyle = {
     width: '25%',
     textAlign: 'center',
 };
+/**
+ * 歌单
+ */
 @inject('songSheetStore')
 @observer
 export class SongSheetComponent extends React.Component<any, any> {
@@ -56,7 +59,7 @@ export class SongSheetComponent extends React.Component<any, any> {
                         </Card.Grid>
                         {this.props.songSheetStore.playlist.playlists.map(x => {
                             return <Card.Grid style={gridStyle} key={x.id}>
-                                <Link to={`ssd/${x.id}`}>
+                                <Link to={`/ssd/${x.id}`}>
                                     <div className="custom-image">
                                         <img alt="example" width="100%" src={x.coverImgUrl + "?param=180y180"} />
                                     </div>

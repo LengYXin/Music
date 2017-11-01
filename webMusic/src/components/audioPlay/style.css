@@ -1,0 +1,84 @@
+.play-progress {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    padding: 0 2.1875rem
+}
+
+.play-progress-time {
+    position: absolute;
+    
+}
+.play-progress-time.current{
+    left: 0;
+}
+.play-progress-time.duration{
+    right: 0
+}
+.play-progress-inner {
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 100px;
+    vertical-align: middle;
+    position: relative;
+}
+
+.play-progress-inner .play-progress-bg {
+    height: 8px;
+    border-radius: 100px;
+    background-color: #ec0505;
+    -webkit-transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+    transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+    position: relative;
+}
+
+.play-progress-inner .play-progress-bg.cache {
+    background-color: #ccc;
+    position: absolute;
+    top: 0;
+}
+
+.play-progress-bg.cache:before {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border-radius: 10px;
+    -webkit-animation: progress-cache 2.4s cubic-bezier(.23, 1, .32, 1) infinite;
+    animation: progress-cache 2.4s cubic-bezier(.23, 1, .32, 1) infinite;
+}
+
+@-webkit-keyframes progress-cache {
+    0% {
+        opacity: 0.1;
+        width: 0;
+    }
+    20% {
+        opacity: 0.5;
+        width: 0;
+    }
+    100% {
+        opacity: 0;
+        width: 100%;
+    }
+}
+
+@keyframes progress-cache {
+    0% {
+        opacity: 0.1;
+        width: 0;
+    }
+    20% {
+        opacity: 0.5;
+        width: 0;
+    }
+    100% {
+        opacity: 0;
+        width: 100%;
+    }
+}

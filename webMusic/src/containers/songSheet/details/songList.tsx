@@ -8,7 +8,9 @@ import { Table, Button } from 'antd';
 import Help from "../../../utils/help"
 
 import './style.css'
-// 
+/**
+ * 歌曲列表
+ */
 @inject('musictStore')
 @observer
 export default class extends React.Component<any, any> {
@@ -79,14 +81,22 @@ export default class extends React.Component<any, any> {
         },
         width: '10%',
     }];
-    onRowClick(t) { 
+    onRowClick(t) {
         // console.log(t);
         this.props.musictStore.addPlayList([t]);
     }
     render() {
         const data = this.props.tracks && this.props.tracks.map(x => x);
         return (
-            <Table rowKey="id" rowClassName={() => "s-s-songlist"} pagination={false} columns={this.columns} dataSource={data} onRowClick={this.onRowClick.bind(this)} />
+            <div>
+                {/* <style>
+                    {`.ant-table-row.s-s-songlist:nth-child(${this.props.musictStore.currentIndex+1}) {
+                            background:#ecf6fd;
+                       }
+                    `}
+                </style> */}
+                <Table rowKey="id" rowClassName={() => "s-s-songlist"} pagination={false} columns={this.columns} dataSource={data} onRowClick={this.onRowClick.bind(this)} />
+            </div>
         )
     }
 }

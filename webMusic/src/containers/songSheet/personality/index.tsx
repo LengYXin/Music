@@ -9,6 +9,9 @@ const gridStyle = {
     height: "287px",
     textAlign: 'center',
 };
+/**
+ * 个性推荐
+ */
 @inject('recommendStore')
 @observer
 export class PersonalityComponent extends React.Component<any, any> {

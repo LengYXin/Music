@@ -52,7 +52,22 @@ export default class RootRoutes extends React.Component<any, any> {
                 {
                     path: "/",
                     exact: true,
+                    component: this.createCSSTransition(containers.HomeComponent),
+                },
+                {
+                    path: "/find",
                     component: this.createCSSTransition(containers.DiscoverMusicComponent),
+                    routes: [
+
+                        {//歌单
+                            path: "/find/ss",
+                            component: this.createCSSTransition(containers.SongSheetComponent),
+                        },
+                        {//个性推荐
+                            path: "/find/",
+                            component: this.createCSSTransition(containers.PersonalityComponent),
+                        },
+                    ]
                 },
                 {
                     path: "/ssd/:id",

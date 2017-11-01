@@ -13,10 +13,10 @@ export default class extends React.Component<any, any>{
                 <Menu>
                     <ItemGroup key="g1" title="推荐">
                         <Item key="1">
-                            <Link to="/">     <Icon type="mail" />发现音乐</Link>
+                            <Link to="/find">     <Icon type="mail" />发现音乐</Link>
                         </Item>
                         <Item key="2">
-                            <Link to="/FM">  <Icon type="mail" />私人FM</Link>
+                            <Link to="/fm">  <Icon type="mail" />私人FM</Link>
                         </Item>
                         <Item key="3">
                             <Icon type="mail" />MV

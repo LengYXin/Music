@@ -50,9 +50,10 @@
   min-width: 51.25rem;
   max-width: 56.25rem;
   margin: auto;
-  display: -webkit-flex;
+  min-height: 100%;
+  /* display: -webkit-flex;
   display: flex;
-  flex: 1
+  flex: 1 */
 }
 
 .root-body .nav {
@@ -61,8 +62,9 @@
 }
 
 .root-body .container {
-  -webkit-flex: 1;
-  flex: 1;
+  /* -webkit-flex: 1;
+  flex: 1; */
+  min-height: 100%;
 }
 
 .root-footer {
@@ -73,7 +75,8 @@
   flex: 0 0 auto;
   height: 3.75rem;
   box-sizing: border-box;
-  background-color: #C20C0C;
-  /* border-bottom: 1px solid #a40011; */
-  /* color: #cccccc */
+  background-color: rgb(49, 49, 49);
+
+  /* border-top: 1px solid #a40011; */
+  color: #cccccc
 }

@@ -7,6 +7,9 @@ const { TabPane } = Tabs;
 import './style.css'
 import Help from "../../../utils/help"
 import SongList from "./songList"
+/**
+ * 歌曲详情
+ */
 @inject('songSheetStore')
 @observer
 export class songSheetDetailsComponent extends React.Component<any, any> {

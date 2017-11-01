@@ -4,7 +4,7 @@
 import { observable, computed, autorun } from "mobx"
 import Http from "../utils/http"
 class ObservableStore {
-    @observable Store = {};
+    // @observable Store = {};
     // 播放列表 没有播放地址
     @observable playList = [];
     // 歌曲列表 有播放地址
@@ -87,9 +87,12 @@ class ObservableStore {
                 ids.push(cachePlay.id);
             }
             await this.getMusic(ids.join(","));
+            // 存储当前播放歌曲信息
             this.current = {
+                // 音乐地址信息
                 music: this.musicList[play.id],
-                
+                // 歌曲信息
+                play: this.playList[this.currentIndex],
             }
         }
 
