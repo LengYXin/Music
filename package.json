@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently -k -p \"[{name}]\" -n \"Api,Music\"  \"cd NeteaseCloudMusicApi && node app\" \"cd webMusic && npm start\"",
-    "init-dev": "npm run init-dev-g && npm run init-api && npm run init-music",
+    "init-dev": "npm run init-dev-i && npm run init-dev-g",
+    "init-dev-i": "npm run init-music && npm run init-api ",
     "init-dev-g": "npm i -g -d webpack webpack-dev-server concurrently typescript nodemon",
-    "init-api": "cd NeteaseCloudMusicApi && npm i -d",
-    "init-music": "cd webMusic && npm i -d"
+    "init-api": "cd NeteaseCloudMusicApi && npm update -d",
+    "init-music": "cd webMusic && npm update -d"
   },
   "repository": {
     "type": "git",
