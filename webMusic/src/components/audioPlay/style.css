@@ -94,8 +94,8 @@
     background: red;
     border-radius: 100%;
     cursor: pointer;
-    transform: translateX(-0.1875rem);
-    -webkit-transform: translateX(-0.1875rem);
+    transform: translateX(-0.185rem);
+    -webkit-transform: translateX(-0.185rem);
 }
 
 .play-progress-inner .play-btn>i {
@@ -106,7 +106,7 @@
     width: 0.375rem;
     height: 0.375rem;
     border-radius: 100%;
-    transform: translateX(-0.04rem);
-    -webkit-transform: translateX(-0.04rem);
+    transform: translateX(-0.03rem);
+    -webkit-transform: translateX(-0.03rem);
     /* border: 0.1875rem solid #fff */
 }
