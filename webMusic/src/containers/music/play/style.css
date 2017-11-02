@@ -77,3 +77,10 @@
 .AudioPlay-menu {
   width: 18.75rem
 }
+
+.AudioPlay-operation{
+  position: absolute;
+  width: 100%;
+  bottom: 3.75rem;
+  text-align: center;
+}

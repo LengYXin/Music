@@ -3,6 +3,7 @@
  */
 import { observable, computed, autorun } from "mobx"
 import Http from "../utils/http"
+import playStore from "./play";
 class ObservableStore {
     // @observable Store = {};
     // 播放列表 没有播放地址
@@ -11,9 +12,9 @@ class ObservableStore {
     @observable musicList = {};
     // 当前播放的音乐索引
     @observable currentIndex = 0;
-    // 当前播放的音乐
+    // 当前播放的音乐 源数据  地址  歌词 详情
     @observable current: any = {};
-    // 模式  
+    // 播放器样式
     @observable pattern = "footer";
     constructor() { }
 
@@ -54,9 +55,16 @@ class ObservableStore {
                     this.playList = [...this.playList, ...playList];
                 }
             }
-            console.log("addPlayList", this);
+            // console.log("addPlayList", this);
             return this.playList;
         }
+    }
+    /**
+     * 计算索引
+     * @param index 
+     */
+    computationalIndex(index = 0) {
+
     }
     /**
      * 上
@@ -94,6 +102,7 @@ class ObservableStore {
                 // 歌曲信息
                 play: this.playList[this.currentIndex],
             }
+            playStore.setUrl(this.current.music.url);
         }
 
     }
@@ -129,7 +138,7 @@ class ObservableStore {
     }
 }
 const Store = new ObservableStore();
-console.log("Store----Music", Store);
+// console.log("Store----Music", Store);
 export default Store;
 
 

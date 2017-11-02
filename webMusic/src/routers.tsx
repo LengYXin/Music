@@ -8,8 +8,8 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import QueueAnim from 'rc-queue-anim';
 
 import * as containers from "./containers"
-@inject('UserContextStore')
-@observer
+// @inject('UserContextStore')
+// @observer
 export default class RootRoutes extends React.Component<any, any> {
     NoMatch = ({ location }) => (
         <div>

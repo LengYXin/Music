@@ -24,7 +24,7 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
             <Row>
                 <Col span={6} >
                     <Card style={{ width: "100%", minHeight: "220px" }} bodyStyle={{ padding: 0 }}>
-                        <img width="223" height="223" src={detalis.coverImgUrl + "?param=180y180"} />
+                        <img width="223" height="223" src={detalis.coverImgUrl ? detalis.coverImgUrl + "?param=180y180" : "/assets/img/default_album.jpg"} />
                     </Card>
                 </Col>
                 <Col span={18}>
@@ -56,7 +56,7 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
 @observer
 class Introduce extends React.Component<any, any> {
     playAll() {
-        console.log( this.props.musictStore);
+        console.log(this.props.musictStore);
         this.props.musictStore.addPlayList(this.props.songSheetStore.details.playlist.tracks, true);
     }
     render() {

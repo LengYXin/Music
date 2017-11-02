@@ -54,7 +54,7 @@ class ObservableStore {
     // }
 }
 const Store = new ObservableStore();
-console.log("Store----UserContext", Store);
+// console.log("Store----UserContext", Store);
 export default Store;
 
 

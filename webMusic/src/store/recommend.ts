@@ -27,7 +27,7 @@ class ObservableStore {
     }
 }
 const Store = new ObservableStore();
-console.log("Store----recommend", Store);
+// console.log("Store----recommend", Store);
 export default Store;
 
 

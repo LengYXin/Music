@@ -54,13 +54,13 @@ export class AudioPlay extends React.Component<Props, any> {
         const on = this.props.on || {};
         // 当浏览器开始查找音频/视频时
         this.audio.addEventListener("loadstart", e => {
-            console.log("loadstart", e);
+            // console.log("loadstart", e);
             on.loadstart && on.loadstart(e, this.audio);
 
         });
         // 当音频/视频的时长已更改时
         this.audio.addEventListener("durationchange", e => {
-            console.log("durationchange", e);
+            // console.log("durationchange", e);
             on.durationchange && on.durationchange(e, this.audio);
 
         });
@@ -72,7 +72,7 @@ export class AudioPlay extends React.Component<Props, any> {
         });
         // 当浏览器已加载音频/视频的当前帧时
         this.audio.addEventListener("loadeddata", e => {
-            console.log("loadeddata", e);
+            // console.log("loadeddata", e);
             on.loadeddata && on.loadeddata(e, this.audio);
 
         });
@@ -83,25 +83,25 @@ export class AudioPlay extends React.Component<Props, any> {
         });
         // 当浏览器可以播放音频/视频时
         this.audio.addEventListener("canplay", e => {
-            console.log("canplay", e);
+            // console.log("canplay", e);
             on.canplay && on.canplay(e, this.audio);
 
         });
         // 当浏览器可在不因缓冲而停顿的情况下进行播放时
         this.audio.addEventListener("canplaythrough", e => {
-            console.log("canplaythrough", e);
+            // console.log("canplaythrough", e);
             on.canplaythrough && on.canplaythrough(e, this.audio);
 
         });
         // 当音频/视频在已因缓冲而暂停或停止后已就绪时
         this.audio.addEventListener("playing", e => {
-            console.log("playing", e);
+            // console.log("playing", e);
             on.playing && on.playing(e, this.audio);
 
         });
         // 当音频/视频的播放速度已更改时
         this.audio.addEventListener("ratechange", e => {
-            console.log("ratechange", e);
+            // console.log("ratechange", e);
             on.ratechange && on.ratechange(e, this.audio);
 
         });
@@ -112,17 +112,17 @@ export class AudioPlay extends React.Component<Props, any> {
         });
         // 当目前的播放列表已结束时
         this.audio.addEventListener("ended", e => {
-            console.log("ended", e);
+            // console.log("ended", e);
             on.ended && on.ended(e, this.audio);
         });
         //当浏览器尝试获取媒体数据，但数据不可用时
         this.audio.addEventListener("stalled", e => {
-            console.log("stalled");
+            // console.log("stalled");
             on.ended && on.ended(e, this.audio);
         });
         // 当在音频/视频加载期间发生错误时
         this.audio.addEventListener("error", e => {
-            console.log("error", e);
+            // console.log("error", e);
             on.error && on.error(e, this.audio);
             on.ended && on.ended(e, this.audio);
         });
@@ -146,6 +146,9 @@ export class AudioPlay extends React.Component<Props, any> {
             return
         }
         let currentTimeProportion = (this.audio.currentTime / this.duration) * 100;
+        if (currentTimeProportion > 99.4) {
+            currentTimeProportion = 99.4;
+        }
         let currentTime = this.DateFormat(new Date(this.audio.currentTime * 1000), "mm:ss");
         this.setState({ currentTimeProportion: currentTimeProportion, currentTime: currentTime });
     }
@@ -196,8 +199,11 @@ export class AudioPlay extends React.Component<Props, any> {
                 return
             }
             // console.log(this.audio.readyState);
-            this.audio.currentTime = this.duration * (e.offsetX / pro.offsetWidth * 100);
+            this.audio.currentTime = this.duration * (e.offsetX / pro.offsetWidth);
             let currentTimeProportion = (this.audio.currentTime / this.duration) * 100;
+            if (currentTimeProportion > 99.4) {
+                currentTimeProportion = 99.4;
+            }
             console.log(currentTimeProportion, this.audio.currentTime, this.duration);
             // this.setState({ currentTimeProportion: currentTimeProportion });
             // console.log(e.offsetX / pro.offsetWidth * 100);
