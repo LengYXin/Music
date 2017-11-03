@@ -5,7 +5,7 @@ import { AudioPlay } from "../../audioPlay"
 
 export default class extends React.Component<any, any> {
     render() {
-        console.log("play", this);
+        // console.log("play", this);
         return (
             <div className="AudioPlay-play">
                 <MusicName />

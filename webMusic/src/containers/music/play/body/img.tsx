@@ -7,9 +7,9 @@ export default class extends React.Component<any, any> {
     render() {
         const play = this.props.musictStore.current.play || {};
         return (
-            <div className="AudioPlay-img">
+            <div className="AudioPlay-details">
                 <div className={this.props.playStore.playState ? "AudioPlay-img-pic play" : "AudioPlay-img-pic "}>
-                    <img src={(play.al && play.al.picUrl + "?param=40y40") || "/assets/img/default_album.jpg"} width="40" height="40" />
+                    <img src={(play.al && play.al.picUrl + "?param=400y400") || "/assets/img/default_album.jpg"}/>
                 </div>
             </div>
         )

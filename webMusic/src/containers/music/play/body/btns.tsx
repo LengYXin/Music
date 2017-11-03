@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
+import { Icon } from 'antd';
 
 @inject('musictStore', 'playStore')
 @observer
@@ -26,9 +27,9 @@ export default class extends React.Component<any, any> {
         const playState = this.props.playStore.playState && music.url;
         return (
             <div className="AudioPlay-btns">
-                <a onClick={this.last.bind(this)}>上一首</a>
-                <a onClick={this.play.bind(this)}>{playState ? "暂停" : "播放"}</a>
-                <a onClick={this.next.bind(this)}>下一首</a>
+                <a onClick={this.last.bind(this)} title="上一首"><Icon type="backward" /></a>
+                <a onClick={this.play.bind(this)} title={playState ? "暂停" : "播放"}>{playState ? <Icon type="pause-circle-o" /> : <Icon type="play-circle-o" />}</a>
+                <a onClick={this.next.bind(this)} title="下一首"><Icon type="forward" /></a>
             </div>
         )
     }

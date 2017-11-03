@@ -1,19 +1,22 @@
 import * as React from 'react'
 import { observer, inject } from 'mobx-react';
-
+import './style.css'
 import Btns from "./btns";
-import Img from "./img";
+import Details from "./details";
 import Play from "./play";
 import Menu from "./menu";
 
 export default class extends React.Component<any, any> {
     render() {
         return (
-            <div className="AudioPlay-body">
-                <Btns/>
-                <Img/>
-                <Play/>
-                <Menu/>
+            <div className={"AudioPlay-body " + this.props.className}>
+                <div className="AudioPlay-content">
+                    {this.props.className == "footer" ? <Btns /> : null}
+                    <Details />
+                    <Play />
+                    {this.props.className == "screen" ? <Btns /> : null}
+                    <Menu />
+                </div>
             </div>
         )
     }

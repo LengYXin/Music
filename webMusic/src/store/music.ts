@@ -10,12 +10,13 @@ class ObservableStore {
     @observable playList = [];
     // 歌曲列表 有播放地址
     @observable musicList = {};
+    // 歌词列表 
+    @observable lyricList = {};
     // 当前播放的音乐索引
     @observable currentIndex = 0;
     // 当前播放的音乐 源数据  地址  歌词 详情
     @observable current: any = {};
-    // 播放器样式
-    @observable pattern = "footer";
+
     constructor() { }
 
     /**
@@ -59,6 +60,7 @@ class ObservableStore {
             return this.playList;
         }
     }
+
     /**
      * 计算索引
      * @param index 
@@ -83,7 +85,10 @@ class ObservableStore {
     /**
      * 播放
      */
-    async play() {
+    async play(currentIndex?) {
+        if (currentIndex) {
+            this.currentIndex = currentIndex;
+        }
         let ids = [];
         // 当前歌曲
         const play = this.playList[this.currentIndex];
@@ -95,8 +100,11 @@ class ObservableStore {
                 ids.push(cachePlay.id);
             }
             await this.getMusic(ids.join(","));
+            await this.getLyric(play.id);
             // 存储当前播放歌曲信息
             this.current = {
+                //歌词
+                lyric: this.lyricList[play.id],
                 // 音乐地址信息
                 music: this.musicList[play.id],
                 // 歌曲信息
@@ -133,12 +141,27 @@ class ObservableStore {
         res.data.map(x => {
             musicList[x.id] = x;
         });
-        this.musicList = { ...musicList, ...this.musicList };
+        this.musicList = { ...this.musicList, ...musicList };
         return res.data;
+    }
+    /**
+     * 获取 歌曲地址
+     * @param id /lyric?id=347230
+     */
+    async getLyric(id: string) {
+        // 已经获取过的歌曲略过
+        let res = {};
+        if (!this.lyricList.hasOwnProperty(id)) {
+            res = await Http.get(`lyric?id=` + id);
+        }
+        let lyric = {};
+        lyric[id] = res;
+        this.lyricList = { ...this.lyricList, ...lyric };
+        return res;
     }
 }
 const Store = new ObservableStore();
-// console.log("Store----Music", Store);
+console.log("Store----Music", Store);
 export default Store;
 
 

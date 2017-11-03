@@ -1,18 +1,23 @@
 import * as React from 'react'
-import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import QueueAnim from 'rc-queue-anim';
-import './style.css'
 
+import './style.css'
 import { AudioPlay } from "../../../components"
-@inject('musictStore')
+import { Icon } from 'antd';
+@inject('playStore')
 @observer
 export default class extends React.Component<any, any> {
+    onClick() {
+        let style = this.props.playStore.patternStyle == "footer" ? 'screen' : 'footer';
+        this.props.playStore.updatePatternStyle(style);
+    }
     render() {
-        console.log("PlayOperation", this);
+        // console.log("PlayOperation", this);
         return (
-            <div className="AudioPlay-operation">
-                <span>点我放大</span>
+            <div className={"AudioPlay-operation " + this.props.className}>
+                <span onClick={this.onClick.bind(this)}>
+                    <Icon type={this.props.className=="footer"?"arrows-alt":"shrink"} />
+                </span>
             </div>
         )
     }

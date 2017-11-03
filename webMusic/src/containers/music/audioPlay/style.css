@@ -27,7 +27,7 @@
 }
 
 .play-progress-inner .play-progress-bg {
-    height: 0.5rem;
+    height: .375rem;
     border-radius: 6.25rem;
     background-color: #ec0505;
     -webkit-transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
@@ -87,26 +87,33 @@
 
 .play-progress-inner .play-btn {
     position: absolute;
-    width: 1rem;
-    height: 1rem;
+    width: .875rem;
+    height: .875rem;
     left: 0;
-    top: -0.25rem;
-    background: red;
+    top: -.25rem;
+    background: #fff;
     border-radius: 100%;
     cursor: pointer;
-    transform: translateX(-0.25rem);
-    -webkit-transform: translateX(-0.25rem);
+    transform: translateX(-.25rem);
+    -webkit-transform: translateX(-.25rem);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
 }
 
 .play-progress-inner .play-btn>i {
-    position: absolute;
-    left: 0.3125rem;
-    top: 0.3125rem;
-    background: #fff;
+    display: inline-block;
+    /* position: absolute; */
+    /* left: .25rem; */
+    /* top: .25rem; */
+    background: red;
     width: 0.375rem;
     height: 0.375rem;
     border-radius: 100%;
-    transform: translateX(-0.03rem);
-    -webkit-transform: translateX(-0.03rem);
+    /* transform: translateX(-0.03rem); */
+    /* -webkit-transform: translateX(-0.03rem); */
     /* border: 0.1875rem solid #fff */
 }

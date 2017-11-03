@@ -17,10 +17,19 @@ class ObservableStore {
     @observable durationTime = "00:00";
     // 歌曲缓存长度
     @observable cacheTime = 0;
+    // 播放模式  循环 loop 随机 random  单曲 single 
+    @observable pattern = "loop";
+    // 播放器样式 footer  screen
+    @observable patternStyle = "footer";
+    // 显示播放列表
+    @observable showList = false;
+    // 显示歌词
+    @observable showLyric = false;
     constructor() {
         this.audio.autoplay = true;
         this.addEventListener();
     }
+
     /**
      * 设置播放地址
      * @param url 
@@ -32,10 +41,25 @@ class ObservableStore {
         }
     }
     /**
+     * 显示播放列表
+     */
+    updateShowList() {
+        this.showList = !this.showList;
+    }
+    /**
+   * 显示歌词
+   */
+    updateShowLyric() {
+        this.showLyric = !this.showLyric;
+    }
+    /**
      * 设置播放状态
      * @param state 
      */
     updatePlayState(state = true) {
+        if (!this.duration) {
+            return
+        }
         this.playState = state;
         if (this.playState) {
             if (this.audio.paused) {
@@ -56,6 +80,35 @@ class ObservableStore {
             return
         }
         this.audio.currentTime = this.duration * proportion;
+    }
+    /**
+     * 修改播放模式
+     * @param pattern 
+     */
+    updatePattern(pattern) {
+        if (this.pattern == pattern) {
+            return;
+        }
+        if (pattern == "loop" || pattern == "random" || pattern == "single") {
+            this.pattern = pattern;
+        } else {
+            throw "pattern = loop || random || single";
+        }
+    }
+    /**
+     * 修改播放器样式
+     * @param style 
+     */
+    updatePatternStyle(style) {
+        if (this.patternStyle == style) {
+            return;
+        }
+        if (style == "footer" || style == "screen") {
+            this.showList = false;
+            this.patternStyle = style;
+        } else {
+            throw "patternStyle = footer || screen";
+        }
     }
     /**
      * 添加播放事件
