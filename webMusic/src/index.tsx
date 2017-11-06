@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'mobx-react';
-import '../node_modules/antd/dist/antd.css'
+import './assets/css/antd.css'
 // import { RootApp } from './containers';
 import UserContextStore from './store/userContext';
 import recommendStore from './store/recommend';
