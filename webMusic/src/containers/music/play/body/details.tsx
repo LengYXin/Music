@@ -40,7 +40,7 @@ class ImgDtl extends React.Component<any, any> {
 @observer
 class Lyric extends React.Component<any, any> {
     render() {
-        // console.log(this);
+        console.log(this);
         let lyric = this.props.musictStore.current.lyric || [];
         // console.log(lyric, this.props.playStore.currentTimeS);
         let currentTimeS = this.props.playStore.currentTimeS;
@@ -79,12 +79,14 @@ class Lyric extends React.Component<any, any> {
         </div>
     }
     time;
+    offsetParent;
+    height;
     refLyric(e: HTMLDivElement, time, current) {
         if (!current || this.time == time) {
             return
         }
         this.time = time;
-        let offsetParent = e.offsetParent;
+        let offsetParent = this.offsetParent = e.offsetParent;
         let offsetTop = e.offsetTop;
         let scrollHeight = offsetParent.scrollHeight;
         let scrollTop = offsetParent.scrollTop;
@@ -94,23 +96,26 @@ class Lyric extends React.Component<any, any> {
         if (offsetTop >= scrollTop && offsetTop < soHeight && soHeight - offsetTop > 28) {
             // console.log("在", offsetTop, scrollTop, soHeight);
         } else {
-            let height = offsetTop - clientHeight + clientHeight / 2;
-            offsetParent.scrollTop = height;
+            let height = this.height = offsetTop - clientHeight + clientHeight / 2;
+            this.scrolltop(offsetParent, height);
+            // offsetParent.scrollTop = height;
             // console.log("不在", offsetTop, scrollTop, soHeight);
-            // let scrollStep = height / 15;
-            // let count = 0;
-            // let scrollInterval = setInterval(function () {
-            //     console.log("scrollStep", scrollStep);
-            //     if (Math.abs(offsetParent.scrollTop - height) > scrollStep) {
-            //         offsetParent.scrollBy(0, scrollStep);
-            //     }
-            //     else {
-            //         clearInterval(scrollInterval)
-            //     };
-            // }, 15);
         }
-
-
-        console.dir(e, time, current);
+    }
+    scrolltop(offsetParent, height) {
+        let sun = 10;
+        let scrollStep = -Math.ceil((offsetParent.scrollTop - height) / sun);
+        let count = 1;
+        let scrollInterval = setInterval(() => {
+            console.log("scrollStep", scrollStep);
+            if (count <= sun) {
+                offsetParent.scrollBy(0, scrollStep);
+                count++;
+            }
+            else {
+                console.log(offsetParent.scrollTop);
+                clearInterval(scrollInterval)
+            };
+        }, sun);
     }
 }
