@@ -2,6 +2,11 @@
     padding: 0 .9375rem
 }
 
+.song-list-name>i {
+    color: rgb(218, 2, 2);
+}
+
+
 /* .ant-table-row.s-s-songlist:nth-child(2) {
     background: red;
 } */

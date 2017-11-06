@@ -55,6 +55,7 @@ export default class RootRoutes extends React.Component<any, any> {
                     component: this.createCSSTransition(containers.HomeComponent),
                 },
                 {
+                    //发现音乐
                     path: "/find",
                     component: this.createCSSTransition(containers.DiscoverMusicComponent),
                     routes: [
@@ -70,8 +71,20 @@ export default class RootRoutes extends React.Component<any, any> {
                     ]
                 },
                 {
+                    //歌单详情
                     path: "/ssd/:id",
                     component: this.createCSSTransition(containers.songSheetDetailsComponent),
+                },
+                {
+                    // MV
+                    path: "/mv",
+                    exact: true,
+                    component: this.createCSSTransition(containers.MVComponent),
+                },
+                {
+                    //MV详情
+                    path: "/mv/:id",
+                    component: this.createCSSTransition(containers.MVDetailsComponent),
                 },
                 // {
                 //     path: "/music/:id",

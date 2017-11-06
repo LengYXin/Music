@@ -13,9 +13,11 @@
   transition: all 0.4s cubic-bezier(0.35, 0.26, 0.58, 1) 0s;
   -webkit-transition: all 0.4s cubic-bezier(0.35, 0.26, 0.58, 1) 0s;
 }
-.AudioPlay-body a{
+
+.AudioPlay-body a {
   color: #fff;
 }
+
 .AudioPlay-content {
   height: 100%;
   max-width: 85.375rem;
@@ -129,11 +131,44 @@
   transform: scale(1.2);
 }
 
-.play-lyric{
-  height: 500px;
+
+/* 歌词 */
+
+.play-lyric {
+  height: 28.125rem;
   overflow: auto;
   width: 400px;
   text-align: center;
+  padding: .625rem 0;
+  position: relative;
+}
+
+.play-lyric-item {
+  padding: .125rem 0;
+  height: 1.75rem;
+}
+
+.play-lyric-item {
+  color: rgb(190, 190, 190);
+  font-size: .875rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  line-height: 1.5rem;
+}
+
+.play-lyric-item.activity {
+  color: #fff;
+  font-size: 1.125rem;
+}
+.play-lyric-not{
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  font-size: 24px;
 }
 
 /* 大屏样式 */
@@ -183,12 +218,14 @@
   border-radius: 100%;
   /* border: 2px solid red; */
 }
+
 @media screen and (max-width: 450px) {
   .screen .AudioPlay-details .AudioPlay-img-pic {
     height: 18.75rem;
     width: 18.75rem;
   }
 }
+
 .screen .AudioPlay-details .AudioPlay-img-pic.play {
   -webkit-animation: spin 15s linear infinite;
   animation: spin 15s linear infinite;
@@ -205,4 +242,3 @@
   font-size: 24px;
   text-align: center;
 }
-

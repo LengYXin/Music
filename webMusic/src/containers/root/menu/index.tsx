@@ -19,7 +19,7 @@ export default class extends React.Component<any, any>{
                             <Link to="/fm">  <Icon type="mail" />私人FM</Link>
                         </Item>
                         <Item key="3">
-                            <Icon type="mail" />MV
+                            <Link to="/mv">  <Icon type="mail" />MV</Link>
                         </Item>
                         <Item key="4">
                             <Icon type="mail" />朋友

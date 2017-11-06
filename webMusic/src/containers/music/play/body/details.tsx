@@ -2,6 +2,7 @@ import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
+import { DiscoverMusicComponent } from '../../../discoverMusic/index';
 
 @inject('playStore')
 @observer
@@ -12,7 +13,7 @@ export default class extends React.Component<any, any> {
     render() {
         return (
             <div className="AudioPlay-details" onClick={this.updateShowLyric.bind(this)}>
-                {this.props.playStore.showLyric&&this.props.playStore.patternStyle=="screen" ? <Lyric /> : <ImgDtl />}
+                {this.props.playStore.showLyric && this.props.playStore.patternStyle == "screen" ? <Lyric /> : <ImgDtl />}
             </div>
         )
     }
@@ -39,34 +40,77 @@ class ImgDtl extends React.Component<any, any> {
 @observer
 class Lyric extends React.Component<any, any> {
     render() {
-        let lyric = "--没有歌词--";
-        let lyricList = [];
-        try {
-            lyric = this.props.musictStore.current.lyric.lrc.lyric;
-            lyricList = lyric.split('\n').map(x => {
-                let str = x.split("]");
-                let time = str[0].substr(1);
-                let lyricStr = str[1];
-                return { time, lyricStr }
-            });
-            console.log(lyricList);
-        } catch (error) {
-        }
+        // console.log(this);
+        let lyric = this.props.musictStore.current.lyric || [];
+        // console.log(lyric, this.props.playStore.currentTimeS);
+        let currentTimeS = this.props.playStore.currentTimeS;
         return (
             <QueueAnim type="scale" delay={100} animConfig={[
                 { opacity: [1, 0], },
                 { opacity: [1, 0], }
             ]} >
-                <div key="1" className="play-lyric" >
-
+                <div key="1" className="play-lyric"  >
                     {
-                        lyricList.map((x, i) => {
-                            return <div key={i}>{x.lyricStr}</div>
-                        })
+                        lyric.length ? lyric.map((x, i, arr) => {
+                            return this.renderItem(currentTimeS, x, i, arr);
+                        }) : <div className="play-lyric-not">
+                                <span>纯音乐，请您欣赏</span>
+                            </div>
                     }
                 </div>
             </QueueAnim >
 
         )
+    }
+    renderItem(currentTimeS, lyricTime, index, arr) {
+        // 计算当前时间段是否是歌词时间段
+        let current = false;
+        try {
+            if (lyricTime.time) {
+                // let difference = this.props.playStore.currentTimeS - x.time;
+                let next = arr[index + 1];
+                current = currentTimeS >= lyricTime.time && currentTimeS <= next.time;
+            }
+        } catch (error) {
+            current = true;
+        }
+        return <div key={index} className={current ? "play-lyric-item activity" : "play-lyric-item"} ref={e => { this.refLyric(e, lyricTime.time, current) }} >
+            <span >{lyricTime.lyric}</span>
+        </div>
+    }
+    time;
+    refLyric(e: HTMLDivElement, time, current) {
+        if (!current || this.time == time) {
+            return
+        }
+        this.time = time;
+        let offsetParent = e.offsetParent;
+        let offsetTop = e.offsetTop;
+        let scrollHeight = offsetParent.scrollHeight;
+        let scrollTop = offsetParent.scrollTop;
+        let clientHeight = offsetParent.clientHeight;
+        // 可见区域
+        let soHeight = scrollTop + clientHeight;
+        if (offsetTop >= scrollTop && offsetTop < soHeight && soHeight - offsetTop > 28) {
+            // console.log("在", offsetTop, scrollTop, soHeight);
+        } else {
+            let height = offsetTop - clientHeight + clientHeight / 2;
+            offsetParent.scrollTop = height;
+            // console.log("不在", offsetTop, scrollTop, soHeight);
+            // let scrollStep = height / 15;
+            // let count = 0;
+            // let scrollInterval = setInterval(function () {
+            //     console.log("scrollStep", scrollStep);
+            //     if (Math.abs(offsetParent.scrollTop - height) > scrollStep) {
+            //         offsetParent.scrollBy(0, scrollStep);
+            //     }
+            //     else {
+            //         clearInterval(scrollInterval)
+            //     };
+            // }, 15);
+        }
+
+
+        console.dir(e, time, current);
     }
 }

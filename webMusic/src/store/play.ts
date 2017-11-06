@@ -12,6 +12,7 @@ class ObservableStore {
     // 当前播放位置
     @observable currentProportion = 0;
     @observable currentTime = "00:00";
+    @observable currentTimeS = 0;//毫秒位置
     // 歌曲长度
     @observable duration = 0;
     @observable durationTime = "00:00";
@@ -169,12 +170,13 @@ class ObservableStore {
             if (currentProportion > 99.4) {
                 currentProportion = 99.4;
             }
-            this.currentTime = Help.DateFormat(new Date(this.audio.currentTime * 1000), "mm:ss");
+            this.currentTimeS = this.audio.currentTime * 1000;
+            this.currentTime = Help.DateFormat(new Date(this.currentTimeS), "mm:ss");
             this.currentProportion = currentProportion;
         });
         // 当目前的播放列表已结束时
         this.audio.addEventListener("ended", e => {
-            musicStore.next();
+            musicStore.next(this.pattern);
         });
         //当浏览器尝试获取媒体数据，但数据不可用时
         this.audio.addEventListener("stalled", e => {

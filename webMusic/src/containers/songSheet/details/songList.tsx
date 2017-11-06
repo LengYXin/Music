@@ -2,7 +2,7 @@ import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
-import { Table, Button } from 'antd';
+import { Table, Button, Icon } from 'antd';
 
 
 import Help from "../../../utils/help"
@@ -45,8 +45,13 @@ export default class extends React.Component<any, any> {
 
     }, {
         title: '音乐标题',
-        dataIndex: 'name',
+        dataIndex: '',
         width: '30%',
+        render: (text, record) => {
+            return (
+                <span className="song-list-name">{text.name} {text.mv ? <Icon type="play-circle" /> : null}</span>
+            );
+        },
 
     }, {
         title: '歌手',
