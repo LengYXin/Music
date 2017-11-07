@@ -9,8 +9,8 @@ import songSheet from './store/songSheet';
 import music from './store/music';
 import play from './store/play';
 import mv from './store/mv';
-
-
+import video from "video.js"
+console.log(video);
 import Routers from "./routers";
 import "./style.css";
 render(

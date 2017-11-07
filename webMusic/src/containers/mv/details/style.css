@@ -1,23 +1,3 @@
-section.cover.show {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-}
-section.cover {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    display: none;
-}
-section.cover .cover-main {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    /* margin: -20px 16px 0; */
-    text-align: center;
-    z-index: 1;
+.mv-video{
+    width: 100%;
 }

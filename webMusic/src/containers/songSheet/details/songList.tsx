@@ -2,9 +2,9 @@ import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
-import { Table, Button, Icon } from 'antd';
+import { Table, Button, Icon, Modal } from 'antd';
 
-
+import { MVDetailsComponent } from "../../mv"
 import Help from "../../../utils/help"
 
 import './style.css'
@@ -49,7 +49,13 @@ export default class extends React.Component<any, any> {
         width: '30%',
         render: (text, record) => {
             return (
-                <span className="song-list-name">{text.name} {text.mv ? <Icon type="play-circle" /> : null}</span>
+                <span className="song-list-name" onClick={e => {
+                    this.setState({ modal2Visible: !this.state.modal2Visible, MVid: text.mv });
+                }}>{text.name} {
+                        text.mv ?
+                            <Link to={`/mv/${text.mv}`} > <Icon type="play-circle" /></Link>
+                            : null
+                    }</span>
             );
         },
 
@@ -86,9 +92,25 @@ export default class extends React.Component<any, any> {
         },
         width: '10%',
     }];
+    state = {
+        modal2Visible: false,
+        MVid: 0,
+    };
+    setModal2Visible(modal2Visible) {
+        this.setState({ modal2Visible });
+    };
+    onRowClickCount = 0;
+    onRowClicksetTimeout;
     onRowClick(t) {
-        // console.log(t);
-        this.props.musictStore.addPlayList([t]);
+        this.onRowClickCount++;
+        if (this.onRowClickCount == 2) {
+            this.props.musictStore.addPlayList([t]);
+            this.onRowClickCount = 0;
+            clearTimeout(this.onRowClicksetTimeout);
+        }
+        this.onRowClicksetTimeout = setTimeout(() => {
+            this.onRowClickCount = 0;
+        }, 500);
     }
     render() {
         const data = this.props.tracks && this.props.tracks.map(x => x);
@@ -100,6 +122,15 @@ export default class extends React.Component<any, any> {
                        }
                     `}
                 </style> */}
+                <Modal
+                    title="Vertically centered modal dialog"
+                    wrapClassName="vertical-center-modal"
+                    visible={this.state.modal2Visible}
+                    onOk={() => this.setModal2Visible(false)}
+                    onCancel={() => this.setModal2Visible(false)}
+                >
+                    {this.state.modal2Visible ? <MVDetailsComponent MVid={this.state.MVid} /> : null}
+                </Modal>
                 <Table rowKey="id" rowClassName={() => "s-s-songlist"} pagination={false} columns={this.columns} dataSource={data} onRowClick={this.onRowClick.bind(this)} />
             </div>
         )

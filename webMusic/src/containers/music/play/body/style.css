@@ -137,7 +137,7 @@
 .play-lyric {
   height: 28.125rem;
   overflow: auto;
-  width: 400px;
+  min-width: 400px;
   text-align: center;
   padding: .625rem 0;
   position: relative;

@@ -13,5 +13,7 @@ import "create-react-class"
 //react-router
 import "react-router-dom"
 import "react-router-config"
+
+import "video.js"
 //react-transition-group
 // import 'react-transition-group'

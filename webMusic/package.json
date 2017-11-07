@@ -22,7 +22,8 @@
     "react-dom": "^16.0.0",
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
-    "react-transition-group": "^2.2.1"
+    "react-transition-group": "^2.2.1",
+    "video.js": "^6.2.8"
   },
   "devDependencies": {
     "@types/node": "^8.0.34",

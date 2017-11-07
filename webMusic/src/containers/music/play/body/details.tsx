@@ -40,7 +40,7 @@ class ImgDtl extends React.Component<any, any> {
 @observer
 class Lyric extends React.Component<any, any> {
     render() {
-        console.log(this);
+        // console.log(this);
         let lyric = this.props.musictStore.current.lyric || [];
         // console.log(lyric, this.props.playStore.currentTimeS);
         let currentTimeS = this.props.playStore.currentTimeS;
@@ -70,6 +70,7 @@ class Lyric extends React.Component<any, any> {
                 // let difference = this.props.playStore.currentTimeS - x.time;
                 let next = arr[index + 1];
                 current = currentTimeS >= lyricTime.time && currentTimeS <= next.time;
+                // console.log(index);
             }
         } catch (error) {
             current = true;
@@ -103,17 +104,17 @@ class Lyric extends React.Component<any, any> {
         }
     }
     scrolltop(offsetParent, height) {
-        let sun = 10;
+        let sun = 15;
         let scrollStep = -Math.ceil((offsetParent.scrollTop - height) / sun);
         let count = 1;
         let scrollInterval = setInterval(() => {
-            console.log("scrollStep", scrollStep);
+            // console.log("scrollStep", scrollStep);
             if (count <= sun) {
                 offsetParent.scrollBy(0, scrollStep);
                 count++;
             }
             else {
-                console.log(offsetParent.scrollTop);
+                // console.log(offsetParent.scrollTop);
                 clearInterval(scrollInterval)
             };
         }, sun);
