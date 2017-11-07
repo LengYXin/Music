@@ -50,7 +50,7 @@ export default class extends React.Component<any, any> {
         render: (text, record) => {
             return (
                 <span className="song-list-name" onClick={e => {
-                    this.setState({ modal2Visible: !this.state.modal2Visible, MVid: text.mv });
+                    this.setState({ modal2Visible: !this.state.modal2Visible, MVid: text.mv,Name:text.name });
                 }}>{text.name} {
                         text.mv ?
                             <Link to={`/mv/${text.mv}`} > <Icon type="play-circle" /></Link>
@@ -95,6 +95,7 @@ export default class extends React.Component<any, any> {
     state = {
         modal2Visible: false,
         MVid: 0,
+        Name:""
     };
     setModal2Visible(modal2Visible) {
         this.setState({ modal2Visible });
@@ -123,7 +124,7 @@ export default class extends React.Component<any, any> {
                     `}
                 </style> */}
                 <Modal
-                    title="Vertically centered modal dialog"
+                    title={this.state.Name}
                     wrapClassName="vertical-center-modal"
                     visible={this.state.modal2Visible}
                     onOk={() => this.setModal2Visible(false)}

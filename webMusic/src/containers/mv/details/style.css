@@ -1,3 +1,15 @@
-.mv-video{
+.mv-video.video-js {
     width: 100%;
+    height: auto;
+}
+
+.mv-video.video-js .vjs-tech {
+    position: relative;
+}
+
+.video-js .vjs-control:focus:before,
+.video-js .vjs-control:hover:before,
+.video-js .vjs-control:focus {
+    text-shadow: 0em 0em 1em white;
+    outline: none;
 }
