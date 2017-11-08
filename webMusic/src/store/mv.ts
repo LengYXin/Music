@@ -6,7 +6,7 @@ import Http from "../utils/http"
 class ObservableStore {
     constructor() { }
     // MV列表
-    @observable MVList = JSON.parse(window.sessionStorage.getItem("MVList")) || {};
+    @observable MVList = JSON.parse(window.localStorage.getItem("MVList")) || {};
     // 播放
     @observable current = {};
     /**
@@ -41,7 +41,7 @@ class ObservableStore {
             res = this.MVList[id];
         }
         this.MVList = { ...this.MVList, ...data };
-        window.sessionStorage.setItem("MVList", JSON.stringify(this.MVList));
+        window.localStorage.setItem("MVList", JSON.stringify(this.MVList));
         return res;
     }
 

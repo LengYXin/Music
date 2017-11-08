@@ -1,11 +1,30 @@
-::-webkit-scrollbar-track-piece{width:6px;background-color:#4e4e5a ;  }
+::-webkit-scrollbar-track-piece {
+    width: 6px;
+    background-color: #4e4e5a;
+}
 
-::-webkit-scrollbar{width:6px;height:6px ; }
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
 
-::-webkit-scrollbar-thumb{height:50px;background:rgb(211, 209, 209);   cursor:pointer;}
+::-webkit-scrollbar-thumb {
+    height: 50px;
+    background: rgb(211, 209, 209);
+    cursor: pointer;
+}
 
-::-webkit-scrollbar-thumb:hover{background:rgb(211, 211, 211) ; cursor:pointer}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(211, 211, 211);
+    cursor: pointer
+}
 
-.text-align-center{
+.text-align-center {
     text-align: center
+}
+
+img {
+    background-image: url(/assets/img/default_album.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }

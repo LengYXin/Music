@@ -51,7 +51,7 @@ export class SongSheetComponent extends React.Component<any, any> {
                     <Card>
                         <Card.Grid style={gridStyle} key={111}>
                             <div className="custom-image">
-                                <img alt="example" width="100%" src={"/assets/img/jpgd.png?param=180y180"} />
+                                <img alt="" width="100%" src={"/assets/img/jpgd.png?param=180y180"} />
                             </div>
                             <div className="custom-card">
                                 <h3>精品歌单倾心推荐，给最懂音乐的你</h3>
@@ -61,7 +61,7 @@ export class SongSheetComponent extends React.Component<any, any> {
                             return <Card.Grid style={gridStyle} key={x.id}>
                                 <Link to={`/ssd/${x.id}`}>
                                     <div className="custom-image">
-                                        <img alt="example" width="100%" src={x.coverImgUrl + "?param=180y180"} />
+                                        <img alt="" width="100%" src={x.coverImgUrl + "?param=180y180"} />
                                     </div>
                                     <div className="custom-card">
                                         <h3> {x.name}</h3>
