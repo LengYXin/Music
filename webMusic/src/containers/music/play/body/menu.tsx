@@ -6,7 +6,9 @@ import { Icon } from 'antd';
 @inject('musictStore','playStore')
 @observer
 export default class extends React.Component<any, any> {
-    showPlayList() {
+    showPlayList(e) {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
         this.props.playStore.updateShowList();
     }
     render() {

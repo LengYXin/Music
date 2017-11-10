@@ -7,6 +7,13 @@ import Help from "../../../../utils/help"
 @inject('musictStore', 'playStore')
 @observer
 export default class extends React.Component<any, any> {
+    componentDidMount() {
+        document.addEventListener("click", e => {
+            if (this.props.playStore.showList) {
+                this.props.playStore.updateShowList();
+            }
+        });
+    }
     singer(text) {
         let names = text.ar && text.ar.map(x => {
             return x.name
@@ -18,7 +25,7 @@ export default class extends React.Component<any, any> {
     }
     render() {
         return (
-            <div className={(this.props.playStore.showList ? "play-list-body play-list-show " : "play-list-body play-list-hide ") + this.props.className}>
+            <div onClick={e => { e.stopPropagation(); e.nativeEvent.stopImmediatePropagation(); }} className={(this.props.playStore.showList ? "play-list-body play-list-show " : "play-list-body play-list-hide ") + this.props.className}>
                 <h3>播放列表 ({this.props.musictStore.playList.length})</h3>
                 <Row className="play-list-title">
                     <Col span={1}>
@@ -37,7 +44,7 @@ export default class extends React.Component<any, any> {
                     {
                         this.props.musictStore.playList.map((x, i) => {
                             let play = this.props.musictStore.currentIndex == i;
-                            return (<Row title={"播放 ："+x.name} className={"play-list-item " + (play ? "play" : "")} key={x.id} onClick={e => {
+                            return (<Row title={"播放 ：" + x.name} className={"play-list-item " + (play ? "play" : "")} key={x.id} onClick={e => {
                                 this.selectPlay(i);
                             }}  >
                                 <Col span={1}>
