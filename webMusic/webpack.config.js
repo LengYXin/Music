@@ -57,7 +57,7 @@ module.exports = (evn = {}) => {
         },
         output: {
             path: __dirname + '/build',
-            publicPath: '/',
+            publicPath: evn.Generative ? '' : '/',
             filename: '[name].js',
             chunkFilename: '[id].chunk.js'
         },

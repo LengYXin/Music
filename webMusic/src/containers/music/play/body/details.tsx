@@ -109,7 +109,7 @@ class Lyric extends React.Component<any, any> {
         let count = 1;
         let scrollInterval = setInterval(() => {
             // console.log("scrollStep", scrollStep);
-            if (count <= sun) {
+            if (count <= sun && offsetParent.scrollBy) {
                 offsetParent.scrollBy(0, scrollStep);
                 count++;
             }

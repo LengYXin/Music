@@ -2,9 +2,12 @@ import axios, { AxiosRequestConfig } from "axios"
 // const address = "/api/"
 class Http {
     constructor() {
+        if (window.location.port == "3002") {
+            this.address = "/api/"
+        }
     }
     axios = axios;
-    address = "/api/"
+    address = "/"
     post(url: string, data?: any, config?: AxiosRequestConfig) {
         return new Promise<any>((resolve, reject) => {
             axios.post(`${this.address}${url}`, data, config).then(x => {
