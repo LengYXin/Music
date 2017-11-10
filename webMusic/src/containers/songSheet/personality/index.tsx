@@ -40,6 +40,6 @@ export class PersonalityComponent extends React.Component<any, any> {
 
             )
         }
-        return <div></div>;
+        return <div className="text-center">没有歌单</div>
     }
 }

@@ -30,7 +30,7 @@ export class SongSheetComponent extends React.Component<any, any> {
     }
     render() {
         console.log(this.props);
-        if (this.props.songSheetStore.playlist.playlists.length) {
+        if (this.props.songSheetStore.playlist && this.props.songSheetStore.playlist.playlists.length) {
             const { selectedTags } = this.state;
             return (
                 <QueueAnim key="queue"
@@ -74,5 +74,6 @@ export class SongSheetComponent extends React.Component<any, any> {
 
             )
         }
+        return <div className="text-center">没有歌单</div>
     }
 }
