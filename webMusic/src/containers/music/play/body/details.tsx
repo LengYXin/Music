@@ -98,25 +98,30 @@ class Lyric extends React.Component<any, any> {
             // console.log("在", offsetTop, scrollTop, soHeight);
         } else {
             let height = this.height = offsetTop - clientHeight + clientHeight / 2;
-            this.scrolltop(offsetParent, height);
+            this.scrolltop(offsetParent as any, height);
             // offsetParent.scrollTop = height;
             // console.log("不在", offsetTop, scrollTop, soHeight);
         }
     }
-    scrolltop(offsetParent, height) {
+    scrolltop(offsetParent: HTMLDivElement, height) {
         let sun = 15;
         let scrollStep = -Math.ceil((offsetParent.scrollTop - height) / sun);
         let count = 1;
         let scrollInterval = setInterval(() => {
             // console.log("scrollStep", scrollStep);
-            if (count <= sun && offsetParent.scrollBy) {
-                offsetParent.scrollBy(0, scrollStep);
-                count++;
-            }
-            else {
-                // console.log(offsetParent.scrollTop);
+            try {
+                if (count <= sun ) {
+                    // offsetParent.scrollBy(0, scrollStep);
+                    offsetParent.scrollTop = offsetParent.scrollTop + scrollStep;
+                    count++;
+                }
+                else {
+                    // console.log(offsetParent.scrollTop);
+                    clearInterval(scrollInterval)
+                };
+            } catch (error) {
                 clearInterval(scrollInterval)
-            };
+            }
         }, sun);
     }
 }

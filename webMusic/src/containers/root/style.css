@@ -16,30 +16,14 @@
   flex-direction: column
 }
 
-.root-header {
+.root-header.ant-layout-header {
+   padding: 0;
+}
+.root-header-body{
+  width: 100%;
   height: 100%;
-  box-sizing: border-box;
-  background: #242424;
-  /* border-bottom: 1px solid #000; */
-  color: #cccccc
 }
 
-.root-header .logo {
-  margin: 0;
-  float: left;
-  width: 176px;
-  height: 69px;
-  /* background: url(/assets/img/topbar.png) no-repeat 0 9999px; */
-  background-position: 0 0;
-}
-
-.root-header .logo a {
-  float: left;
-  width: 157px;
-  height: 100%;
-  padding-right: 20px;
-  text-indent: -9999px;
-}
 
 .root-body {
   /* position: absolute;

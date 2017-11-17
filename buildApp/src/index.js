@@ -1,7 +1,7 @@
 const electron = require('electron')
 const path = require('path')
 const url = require('url')
-const server = require('../../NeteaseCloudMusicApi/app')
+const server = require('./server')
 const net = require('net')
 // Module to control application life.
 const app = electron.app
@@ -29,16 +29,20 @@ function portIsOccupied(callback) {
 function createWindow() {
   // Create the browser window.
   portIsOccupied(function () {
-    server(port, path.join(__dirname, "www"));
+    server(port);
     mainWindow = new BrowserWindow({
-      width: 800,
-      height: 600
+      width: 1150,
+      height: 670,
+      minWidth: 1150,
+      minHeight: 670,
+      // frame:false,
     })
     mainWindow.loadURL("http://127.0.0.1:" + port);
     mainWindow.on('closed', function () {
       console.log("closed");
       mainWindow = null
     })
+   
   })
   // and load the index.html of the app.
   // mainWindow.loadURL(url.format({
@@ -69,6 +73,5 @@ app.on('activate', function () {
     createWindow()
   }
 })
-
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

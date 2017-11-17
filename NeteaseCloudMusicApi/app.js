@@ -247,7 +247,11 @@ app.use('/user/record', require('./router/user_playrecord'))
 // const port = process.env.PORT || 4001
 module.exports = function (port, url) {
   port = port || 4001
-  app.use(express.static(url || path.join(path.dirname(__dirname), "webMusic", "build")))
+  if (typeof url == "function") {
+    app.use(url)
+  } else {
+    app.use(express.static(url || path.join(path.dirname(__dirname), "webMusic", "build")))
+  }
   app.listen(port, () => {
     console.log(`server running @${port}`)
   })

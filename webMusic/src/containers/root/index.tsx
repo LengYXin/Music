@@ -28,7 +28,7 @@ export class RootApp extends React.Component<any, any>{
             //     <Footer />
             // </div>
             <Layout style={{ height: '100vh' }}>
-                <Header>
+                <Header className="root-header">
                     <HeaderR />
                 </Header>
                 <Layout style={{ position: "relative" }}>

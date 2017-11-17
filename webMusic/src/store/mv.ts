@@ -20,7 +20,7 @@ class ObservableStore {
         await this.getMV(id);
         let MV = { ...this.MVList[id] };
         MV.brs = Object.keys(MV.brs).map(x => {
-            return { brs: x, url: "/api/mv/url?url=" + MV.brs[x] }
+            return { brs: x, url: Http.address + "mv/url?url=" + MV.brs[x] }
         })
         // 存储当前播放歌曲信息
         this.current = MV;

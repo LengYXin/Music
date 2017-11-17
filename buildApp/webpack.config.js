@@ -5,13 +5,13 @@ module.exports = function () {
     const path = __dirname;
     return {
         entry: {
-            app: './src/index.js',
+            app: './src/server-webpack.js',
         },
         target: 'node',
         output: {
-            path: path + '/',
-            filename: 'index.js',
-            // libraryTarget: "umd"
+            path: path + '/src',
+            filename: 'server.js',
+            libraryTarget: "umd"
         },
         resolve: {
             extensions: ['.ts', '.js']

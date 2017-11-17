@@ -2,7 +2,7 @@
   "name": "electron",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "packager": "electron-packager . index --win --out build",
     "build": "webpack  --progress",
