@@ -21,7 +21,7 @@ const onlyStatus200 = (req, res) => res.statusCode === 200
 
 app.use(cache('2 minutes', onlyStatus200))
 
-app.use(express.static(path.join(path.dirname(__dirname),"webMusic","build")))
+// app.use(express.static(path.join(path.dirname(__dirname), "webMusic", "build")))
 
 // 获取专辑内容
 app.use('/album', require('./router/album'))
@@ -244,8 +244,10 @@ app.use('/user/subcount', require('./router/user_subcount'))
 
 app.use('/user/record', require('./router/user_playrecord'))
 
-const port = process.env.PORT || 4001
-module.exports = function () {
+// const port = process.env.PORT || 4001
+module.exports = function (port, url) {
+  port = port || 4001
+  app.use(express.static(url || path.join(path.dirname(__dirname), "webMusic", "build")))
   app.listen(port, () => {
     console.log(`server running @${port}`)
   })
