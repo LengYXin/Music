@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build":"webpack  --progress",
+    "packager": "electron-packager . index --win --out build",
+    "build": "webpack  --progress",
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,9 +18,10 @@
     "request": "^2.83.0"
   },
   "devDependencies": {
-    "electron": "^1.7.9",
     "awesome-typescript-loader": "^3.2.3",
     "copy-webpack-plugin": "^4.1.1",
+    "electron": "^1.7.9",
+    "electron-packager": "^9.1.0",
     "typescript": "^2.5.3",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "webpack": "^3.6.0"
