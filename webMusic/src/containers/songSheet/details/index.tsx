@@ -24,7 +24,7 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
             <Row>
                 <Col span={6} >
                     <Card style={{ width: "100%", minHeight: "220px" }} bodyStyle={{ padding: 0 }}>
-                        <img alt="" width="223" height="223" src={detalis.coverImgUrl ? detalis.coverImgUrl + "?param=223y223" : "assets/img/default_album.jpg"} style={{ display: "block" }} />
+                        <img alt="" width="223" height="223" src={detalis.coverImgUrl ? detalis.coverImgUrl + "?param=223y223" : "/assets/img/default_album.jpg"} style={{ display: "block" }} />
                     </Card>
                 </Col>
                 <Col span={18}>
