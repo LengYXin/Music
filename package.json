@@ -1,30 +1,33 @@
 {
-    "name": "music",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "concurrently -k -p \"[{name}]\" -n \"Api,Music\"  \"npm run start-api\" \"npm run start-music\"",
-        "start-api":"cd NeteaseCloudMusicApi && node server",
-        "start-music":"cd webMusic && npm start",
-        "init-dev": "npm run init-dev-i && npm run init-dev-g",
-        "init-dev-i": "npm run init-app && npm run init-music && npm run init-api ",
-        "init-dev-g": "npm i -g -d webpack webpack-dev-server concurrently typescript nodemon",
-        "init-app": "cd buildApp && npm i -d",
-        "init-api": "cd NeteaseCloudMusicApi && npm i -d",
-        "init-music": "cd webMusic && npm i -d",
-        "build-music": "cd webMusic && npm run build",
-        "build-app": "cd buildApp && npm run packager",
-        "build": "npm run build-music && npm run build-app"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/LengYXin/Music.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/LengYXin/Music/issues"
-    },
-    "homepage": "https://github.com/LengYXin/Music#readme"
+  "name": "music",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently -k -p \"[{name}]\" -n \"Api,Music\"  \"npm run start-api\" \"npm run start-music\"",
+    "start-api": "cd NeteaseCloudMusicApi && node server",
+    "start-music": "cd webMusic && npm start",
+    "init-dev": "npm run init-dev-i && npm run init-dev-g",
+    "init-dev-i": "npm run init-app && npm run init-music && npm run init-api ",
+    "init-dev-g": "npm i -g -d webpack webpack-dev-server concurrently typescript nodemon",
+    "init-app": "cd buildApp && npm i -d",
+    "init-api": "cd NeteaseCloudMusicApi && npm i -d",
+    "init-music": "cd webMusic && npm i -d",
+    "build-music": "cd webMusic && npm run build",
+    "build-app": "cd buildApp && npm run packager",
+    "build": "npm run build-music && npm run build-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LengYXin/Music.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LengYXin/Music/issues"
+  },
+  "homepage": "https://github.com/LengYXin/Music#readme",
+  "directories": {
+    "doc": "doc"
+  }
 }
