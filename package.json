@@ -9,7 +9,10 @@
         "init-dev-i": "npm run init-music && npm run init-api ",
         "init-dev-g": "npm i -g -d webpack webpack-dev-server concurrently typescript nodemon",
         "init-api": "cd NeteaseCloudMusicApi && npm i -d",
-        "init-music": "cd webMusic && npm i -d"
+        "init-music": "cd webMusic && npm i -d",
+        "build-music": "cd webMusic && npm run build",
+        "build-app": "cd buildApp && npm run packager",
+        "build": "npm run build-music && npm run build-app"
     },
     "repository": {
         "type": "git",
