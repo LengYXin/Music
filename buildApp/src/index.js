@@ -35,7 +35,7 @@ function createWindow() {
       height: 670,
       minWidth: 1150,
       minHeight: 670,
-      // frame:false,
+      frame:false,
     })
     mainWindow.loadURL("http://127.0.0.1:" + port);
     mainWindow.on('closed', function () {
