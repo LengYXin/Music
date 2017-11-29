@@ -3,6 +3,7 @@ const http = require('http')
 const apicache = require('apicache')
 const path = require('path')
 const app = express()
+const history =  require('connect-history-api-fallback')
 let cache = apicache.middleware
 
 // 跨域设置
@@ -18,7 +19,7 @@ let cache = apicache.middleware
 //   next()
 // })
 const onlyStatus200 = (req, res) => res.statusCode === 200
-
+app.use(history());
 app.use(cache('2 minutes', onlyStatus200))
 
 // app.use(express.static(path.join(path.dirname(__dirname), "webMusic", "build")))
@@ -252,6 +253,9 @@ module.exports = function (port, url) {
   } else {
     app.use(express.static(url || path.join(path.dirname(__dirname), "webMusic", "build")))
   }
+  // app.use(function(req, res, next) {
+  //   res.status(404).render("./");
+  // });
   app.listen(port, () => {
     console.log(`server running @${port}`)
   })

@@ -112,6 +112,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 /**
  * 用户
  */
@@ -134,35 +169,18 @@ var ObservableStore = /** @class */ (function () {
         // autorun(() => console.log("-----autorun------", this.State));
     }
     ObservableStore.prototype.onLogin = function (params) {
-        var _this = this;
-        return __WEBPACK_IMPORTED_MODULE_1__utils_http__["a" /* default */].get("login/cellphone?phone=" + params.phone + "&password=" + params.password).then(function (x) {
-            // 模拟一下网速慢
-            // setTimeout(() => {
-            console.log("login", x);
-            _this.UserContext = x;
-            // this.State = x.state;
-            // }, 1000);
-        }).catch(function (e) {
-        });
-    };
-    ObservableStore.prototype.loginOut = function () {
-        return __WEBPACK_IMPORTED_MODULE_1__utils_http__["a" /* default */].post("loginOut").then(function (x) {
-            // 重新加载清除所有状态
-            location.reload();
-            // console.log("login", x);
-            // this.State = x.state;
-        }).catch(function (e) {
-        });
-    };
-    ObservableStore.prototype.getUserContext = function () {
-        var _this = this;
-        return __WEBPACK_IMPORTED_MODULE_1__utils_http__["a" /* default */].get("user").then(function (x) {
-            // console.log(x);
-            _this.UserContext = x;
-            _this.State = x.state;
-            _this.Loading = false;
-        }).catch(function (e) {
-            _this.Loading = false;
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, __WEBPACK_IMPORTED_MODULE_1__utils_http__["a" /* default */].get("login/cellphone?phone=" + params.phone + "&password=" + params.password)];
+                    case 1:
+                        _a.UserContext = _b.sent();
+                        return [2 /*return*/];
+                }
+            });
         });
     };
     __decorate([
@@ -237,7 +255,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 var ObservableStore = /** @class */ (function () {
     function ObservableStore() {
-        this.Store = {};
+        // @observable Store = {};
         this.resource = JSON.parse(window.sessionStorage.getItem("getResource"));
         this.getResource();
     }
@@ -266,9 +284,6 @@ var ObservableStore = /** @class */ (function () {
         }).catch(function (e) {
         });
     };
-    __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_mobx__["g" /* observable */]
-    ], ObservableStore.prototype, "Store", void 0);
     __decorate([
         __WEBPACK_IMPORTED_MODULE_0_mobx__["g" /* observable */]
     ], ObservableStore.prototype, "resource", void 0);
@@ -335,7 +350,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 var ObservableStore = /** @class */ (function () {
     function ObservableStore() {
-        this.Store = {};
+        // @observable Store = {};
         // 歌单
         this.playlist = JSON.parse(window.localStorage.getItem("getPlaylist"));
         // 详情
@@ -392,9 +407,6 @@ var ObservableStore = /** @class */ (function () {
             });
         });
     };
-    __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_mobx__["g" /* observable */]
-    ], ObservableStore.prototype, "Store", void 0);
     __decorate([
         __WEBPACK_IMPORTED_MODULE_0_mobx__["g" /* observable */]
     ], ObservableStore.prototype, "playlist", void 0);
@@ -777,22 +789,15 @@ var HomeComponent = /** @class */ (function (_super) {
     }
     HomeComponent.prototype.render = function () {
         console.log(this.props);
-        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "home" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("section", { className: "cover show" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "cover-main" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { id: "网易云音乐-api" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { className: "anchor" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { className: "anchor", href: "https://github.com/Binaryify/NeteaseCloudMusicApi", target: "_blank" },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "\u7F51\u6613\u4E91\u97F3\u4E50 API"))),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("blockquote", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null, "\u7F51\u6613\u4E91\u97F3\u4E50 NodeJS \u7248 API")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("ul", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null, "\u5168\u90E8\u63A5\u53E3\u5DF2\u5347\u7EA7\u5230\u6700\u65B0"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null, "\u5177\u5907\u767B\u5F55\u63A5\u53E3"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null, "\u66F4\u5B8C\u5584\u7684\u6587\u6863")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: "https://github.com/Binaryify/NeteaseCloudMusicApi", target: "_blank" }, "GitHub"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: "https://binaryify.github.io/NeteaseCloudMusicApi" }, "Get Started"))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "mask" })));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { className: "anchor", href: "https://github.com/LengYXin/Music", target: "_blank" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "\u6E90\u7801\u5730\u5740"))))));
     };
     HomeComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["b" /* inject */])('UserContextStore', 'recommendStore'),
@@ -903,24 +908,12 @@ var DiscoverMusicComponent = /** @class */ (function (_super) {
         // console.log(this.props.location.pathname);
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_antd__["k" /* Tabs */], { style: { textAlign: "center" }, onTabClick: this.onTabClick.bind(this), activeKey: this.props.location.pathname },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_antd__["e" /* Icon */], { type: "apple" }),
-                        "\u4E2A\u6027\u63A8\u8350"), key: "/find" }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_antd__["e" /* Icon */], { type: "android" }),
-                        "\u6B4C\u5355"), key: "/find/ss" }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_antd__["e" /* Icon */], { type: "android" }),
-                        "\u4E3B\u64AD\u7535\u53F0"), key: "/find/dt" }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_antd__["e" /* Icon */], { type: "android" }),
-                        "\u6392\u884C\u699C"), key: "/find/ph" }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_antd__["e" /* Icon */], { type: "android" }),
-                        "\u6B4C\u624B"), key: "/find/gs" }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_antd__["e" /* Icon */], { type: "android" }),
-                        "\u6700\u65B0\u97F3\u4E50"), key: "/find/new" })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "\u4E2A\u6027\u63A8\u8350"), key: "/find" }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "\u6B4C\u5355"), key: "/find/ss" }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "\u4E3B\u64AD\u7535\u53F0"), key: "/find/dt" }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "\u6392\u884C\u699C"), key: "/find/ph" }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "\u6B4C\u624B"), key: "/find/gs" }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](TabPane, { tab: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "\u6700\u65B0\u97F3\u4E50"), key: "/find/new" })),
             Object(__WEBPACK_IMPORTED_MODULE_1_react_router_config__["a" /* renderRoutes */])(this.props.route.routes)));
     };
     return DiscoverMusicComponent;
@@ -1960,8 +1953,7 @@ var default_1 = /** @class */ (function (_super) {
     default_1.prototype.componentDidMount = function () {
     };
     default_1.prototype.render = function () {
-        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "root-body" },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "container" }, Object(__WEBPACK_IMPORTED_MODULE_1_react_router_config__["a" /* renderRoutes */])(this.props.route.routes)));
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "root-body" }, Object(__WEBPACK_IMPORTED_MODULE_1_react_router_config__["a" /* renderRoutes */])(this.props.route.routes));
     };
     return default_1;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -2001,7 +1993,7 @@ var default_1 = /** @class */ (function (_super) {
     };
     default_1.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("nav", { className: "nav" },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_antd__["g" /* Menu */], null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_antd__["g" /* Menu */], { theme: "dark" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](ItemGroup, { key: "g1", title: "推荐" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](Item, { key: "1" },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */], { to: "/find" },

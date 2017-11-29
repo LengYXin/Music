@@ -43,15 +43,15 @@ module.exports = function () {
             }]
         },
         plugins: [
-            new UglifyJSPlugin({
-                // warning: false,
-                // mangle: true,
-                // compress: {
-                //     warnings: false,
-                //     drop_debugger: true,
-                //     drop_console: true
-                // }
-            }),
+            // new UglifyJSPlugin({
+            //     // warning: false,
+            //     // mangle: true,
+            //     // compress: {
+            //     //     warnings: false,
+            //     //     drop_debugger: true,
+            //     //     drop_console: true
+            //     // }
+            // }),
             new CopyWebpackPlugin([
                 {
                     from: '../webMusic/build',
