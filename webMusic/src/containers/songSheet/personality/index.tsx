@@ -16,7 +16,7 @@ const gridStyle = {
 @observer
 export class PersonalityComponent extends React.Component<any, any> {
     render() {
-        if (this.props.recommendStore.resource.length) {
+        if (this.props.recommendStore.resource && this.props.recommendStore.resource.length) {
             return (
                 <QueueAnim key="queue"
                     leaveReverse
