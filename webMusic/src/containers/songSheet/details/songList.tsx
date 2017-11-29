@@ -5,7 +5,7 @@ import QueueAnim from 'rc-queue-anim';
 import { Table, Button, Icon, Modal } from 'antd';
 
 import { MVDetailsComponent } from "../../mv"
-import Help from "../../../utils/help"
+import {Help} from "../../../utils"
 
 import './style.css'
 /**

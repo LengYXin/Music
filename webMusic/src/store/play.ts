@@ -1,6 +1,6 @@
 import { observable, computed, autorun, useStrict } from "mobx"
 // useStrict(true);
-import Help from "../utils/help";
+import { Http,Help } from "../utils"
 import musicStore from "./music";
 class ObservableStore {
     // 音乐播放标签

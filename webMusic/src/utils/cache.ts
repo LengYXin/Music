@@ -1,4 +1,4 @@
-class Cache {
+export default class Cache {
     constructor() {
     }
     // 定义私有 缓存属性，复杂对象自行设计
@@ -40,4 +40,3 @@ class Cache {
         }
     }
 }
-export default new Cache();

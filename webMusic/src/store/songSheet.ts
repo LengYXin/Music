@@ -2,9 +2,7 @@
  * 精品歌单
  */
 import { observable, computed, autorun } from "mobx"
-import Http from "../utils/http"
-import Help from "../utils/help"
-import Cache from "../utils/cache"
+import { Http,Cache } from "../utils"
 class ObservableStore {
     // @observable Store = {};
     // 歌单

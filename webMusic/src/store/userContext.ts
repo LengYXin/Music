@@ -2,8 +2,7 @@
  * 用户
  */
 import { observable, computed, autorun } from "mobx"
-// import axios from "axios"
-import Http from "../utils/http"
+import { Http,Cache } from "../utils"
 class ObservableStore {
     //当前用户
     @observable UserContext = {};

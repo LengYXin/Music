@@ -2,8 +2,7 @@
  * Music
  */
 import { observable, computed, autorun } from "mobx"
-import Http from "../utils/http"
-import Cache from "../utils/cache"
+import { Http,Cache } from "../utils"
 import playStore from "./play";
 class ObservableStore {
     // @observable Store = {};

@@ -2,8 +2,7 @@
  * 推荐
  */
 import { observable, computed, autorun } from "mobx"
-import Http from "../utils/http"
-import Cache from "../utils/cache"
+import { Http,Cache } from "../utils"
 class ObservableStore {
     // @observable Store = {};
     @observable resource = Cache.storageGet("getResource");

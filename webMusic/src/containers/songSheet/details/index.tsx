@@ -5,7 +5,7 @@ import QueueAnim from 'rc-queue-anim';
 import { Card, Tag, Row, Col, Tabs, Icon, Avatar, Button } from 'antd';
 const { TabPane } = Tabs;
 import './style.css'
-import Help from "../../../utils/help"
+import {Help} from "../../../utils"
 import SongList from "./songList"
 /**
  * 歌单详情

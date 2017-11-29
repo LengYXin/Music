@@ -1,4 +1,4 @@
-class Help {
+export default class Help {
     constructor() {
     }
     // 日期格式化
@@ -29,4 +29,3 @@ class Help {
         }
     }
 }
-export default new Help();

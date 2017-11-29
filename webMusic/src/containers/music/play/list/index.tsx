@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { Row as row, Col, Icon } from 'antd';
 const Row: any = row;
 import './style.css'
-import Help from "../../../../utils/help"
+import {Help} from "../../../../utils"
 @inject('musictStore', 'playStore')
 @observer
 export default class extends React.Component<any, any> {

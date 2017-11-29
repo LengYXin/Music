@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Help from "../../../utils/help"
+// import Help from "../../../utils/help"
 import { observer, inject } from 'mobx-react';
 interface Props {
     autoPlay?: boolean;

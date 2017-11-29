@@ -1,8 +1,8 @@
 import * as React from 'react'
-import Help from "../../../utils/help"
+// import Help from "../../../utils/help"
 import './style.css'
 
-import Audio from "./audio"
+// import Audio from "./audio"
 import CurrentTime from "./currentTime"
 import DurationTime from "./durationTime"
 import Progress from "./progress"

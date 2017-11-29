@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios"
 // const address = "/api/"
-class Http {
+export default class Http {
     constructor() {
         if (window.location.port == "3002") {
             this.address = "/api/"
@@ -37,4 +37,3 @@ class Http {
         })
     }
 }
-export default new Http();
