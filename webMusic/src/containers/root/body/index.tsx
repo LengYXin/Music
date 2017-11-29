@@ -8,9 +8,9 @@ export default class extends React.Component<any, any>{
     }
     render() {
         return <div className="root-body">
-            <div className="container">
+            {/* <div className="container"> */}
                 {renderRoutes(this.props.route.routes)}
-            </div>
+            {/* </div> */}
         </div>;
     }
 }

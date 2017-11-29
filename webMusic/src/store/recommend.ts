@@ -4,7 +4,7 @@
 import { observable, computed, autorun } from "mobx"
 import  Http from "../utils/http"
 class ObservableStore {
-    @observable Store = {};
+    // @observable Store = {};
     @observable resource = JSON.parse(window.sessionStorage.getItem("getResource"));
     personalized
     constructor() {

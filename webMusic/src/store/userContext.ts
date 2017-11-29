@@ -3,7 +3,7 @@
  */
 import { observable, computed, autorun } from "mobx"
 // import axios from "axios"
-import  Http from "../utils/http"
+import Http from "../utils/http"
 class ObservableStore {
     //当前用户
     @observable UserContext = {};
@@ -19,35 +19,8 @@ class ObservableStore {
         // }, 1000);
         // autorun(() => console.log("-----autorun------", this.State));
     }
-    onLogin(params: { phone: string, password: string }) {
-        return Http.get(`login/cellphone?phone=${params.phone}&password=${params.password}`).then(x => {
-            // 模拟一下网速慢
-            // setTimeout(() => {
-            console.log("login", x);
-            this.UserContext = x;
-            // this.State = x.state;
-            // }, 1000);
-        }).catch(e => {
-        })
-    }
-    loginOut() {
-        return Http.post("loginOut").then(x => {
-            // 重新加载清除所有状态
-            location.reload()
-            // console.log("login", x);
-            // this.State = x.state;
-        }).catch(e => {
-        })
-    }
-    getUserContext() {
-        return Http.get("user").then(x => {
-            // console.log(x);
-            this.UserContext = x;
-            this.State = x.state;
-            this.Loading = false;
-        }).catch(e => {
-            this.Loading = false;
-        })
+    async onLogin(params: { phone: string, password: string }) {
+        this.UserContext = await Http.get(`login/cellphone?phone=${params.phone}&password=${params.password}`);
     }
     // @computed get complete() {
 

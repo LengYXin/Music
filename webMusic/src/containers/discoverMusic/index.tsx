@@ -23,12 +23,12 @@ export class DiscoverMusicComponent extends React.Component<any, any> {
         return (
             <div>
                 <Tabs style={{ textAlign: "center" }} onTabClick={this.onTabClick.bind(this)} activeKey={this.props.location.pathname}>
-                    <TabPane tab={<span><Icon type="apple" />个性推荐</span>} key="/find" />
-                    <TabPane tab={<span><Icon type="android" />歌单</span>} key="/find/ss" />
-                    <TabPane tab={<span><Icon type="android" />主播电台</span>} key="/find/dt" />
-                    <TabPane tab={<span><Icon type="android" />排行榜</span>} key="/find/ph" />
-                    <TabPane tab={<span><Icon type="android" />歌手</span>} key="/find/gs" />
-                    <TabPane tab={<span><Icon type="android" />最新音乐</span>} key="/find/new" />
+                    <TabPane tab={<span>个性推荐</span>} key="/find" />
+                    <TabPane tab={<span>歌单</span>} key="/find/ss" />
+                    <TabPane tab={<span>主播电台</span>} key="/find/dt" />
+                    <TabPane tab={<span>排行榜</span>} key="/find/ph" />
+                    <TabPane tab={<span>歌手</span>} key="/find/gs" />
+                    <TabPane tab={<span>最新音乐</span>} key="/find/new" />
                 </Tabs>
                 {renderRoutes(this.props.route.routes)}
             </div>

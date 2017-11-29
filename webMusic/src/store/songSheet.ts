@@ -5,7 +5,7 @@ import { observable, computed, autorun } from "mobx"
 import Http from "../utils/http"
 import Help from "../utils/help"
 class ObservableStore {
-    @observable Store = {};
+    // @observable Store = {};
     // 歌单
     @observable playlist = JSON.parse(window.localStorage.getItem("getPlaylist"));
     // 详情

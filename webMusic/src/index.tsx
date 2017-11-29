@@ -11,6 +11,7 @@ import songSheet from './store/songSheet';
 import music from './store/music';
 import play from './store/play';
 import mv from './store/mv';
+import windows from './store/windows';
 import Routers from "./routers";
 import "./style.css";
 
@@ -22,7 +23,7 @@ render(
     musictStore={music}                 //音乐列表
     playStore={play}                    //音频播放器
     mvStore={mv}                        //mv
-
+    windowsStore={windows}              //窗口
   >
     <Routers />
   </Provider>,

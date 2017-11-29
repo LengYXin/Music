@@ -10,7 +10,7 @@ export default class extends React.Component<any, any>{
         return (
             <nav className="nav">
 
-                <Menu>
+                <Menu theme="dark">
                     <ItemGroup key="g1" title="推荐">
                         <Item key="1">
                             <Link to="/find">     <Icon type="mail" />发现音乐</Link>
