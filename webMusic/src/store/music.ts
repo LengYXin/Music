@@ -3,6 +3,7 @@
  */
 import { observable, computed, autorun } from "mobx"
 import Http from "../utils/http"
+import Cache from "../utils/cache"
 import playStore from "./play";
 class ObservableStore {
     // @observable Store = {};

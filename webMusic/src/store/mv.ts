@@ -3,10 +3,12 @@
  */
 import { observable, computed, autorun } from "mobx"
 import Http from "../utils/http"
+import Cache from "../utils/cache"
+
 class ObservableStore {
     constructor() { }
     // MV列表
-    @observable MVList = JSON.parse(window.localStorage.getItem("MVList")) || {};
+    @observable MVList = Cache.storageGet("MVList", {});
     // 播放
     @observable current = {};
     /**
@@ -41,7 +43,7 @@ class ObservableStore {
             res = this.MVList[id];
         }
         this.MVList = { ...this.MVList, ...data };
-        window.localStorage.setItem("MVList", JSON.stringify(this.MVList));
+        Cache.storageSet("MVList",this.MVList);
         return res;
     }
 

@@ -1087,7 +1087,7 @@ var default_1 = /** @class */ (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "root-header-body" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "root-header-logo" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["b" /* Link */], { to: "/" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { alt: "", src: "assets/img/default_album.jpg" }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { alt: "", src: "/assets/img/default_album.jpg" }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("strong", null, "\u5C0F\u97F3\u4E50\u76D2\u5B50"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "root-header-btns" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { onClick: this.onBack.bind(this), title: "后退" },
@@ -1402,7 +1402,7 @@ var ImgDtl = /** @class */ (function (_super) {
                 { opacity: [1, 0], }
             ] },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: "1", className: this.props.playStore.playState ? "AudioPlay-img-pic play" : "AudioPlay-img-pic " },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { alt: "", src: (play.al ? play.al.picUrl + "?param=400y400" : "assets/img/default_album.jpg") }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { alt: "", src: (play.al ? play.al.picUrl + "?param=400y400" : "/assets/img/default_album.jpg") }))));
     };
     ImgDtl = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["b" /* inject */])('musictStore', 'playStore'),
