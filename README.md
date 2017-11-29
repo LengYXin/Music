@@ -6,6 +6,7 @@
         npm run init-dev             安装全局&本地依赖
         npm run init-dev-g           安装全局依赖
         npm start                    启动 全部服务
+        npm run build                打包成桌面程序
 ```
 ## 没有美化的样子。
 <img src="https://github.com/LengYXin/Music/blob/master/doc/img/1.png" width="600px" />
