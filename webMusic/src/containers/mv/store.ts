@@ -1,5 +1,5 @@
 import { observable, computed, autorun } from "mobx"
-import * as Http from "../../utils/http"
+// import * as Http from "../../utils/http"
 class ObservableStore {
     @observable Store = {};
     constructor() {

@@ -1,6 +1,6 @@
-import http from "./http"
-import cache from "./cache"
-import help from "./help"
+import http from "./help/http"
+import cache from "./help/cache"
+import help from "./help/help"
 
 export const Http = new http();
 export const Cache = new cache();
