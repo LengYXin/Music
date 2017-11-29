@@ -1,0 +1,78 @@
+.root-header.ant-layout-header {
+    padding: 0;
+    -webkit-app-region: drag;
+    border-bottom: 1px solid red;
+}
+
+.root-header-body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+.root-header-logo>a {
+    width: 200px;
+    display: flex;
+    padding: 0 10px;
+}
+.root-header-logo>a:focus {
+    text-decoration: none;
+}
+.root-header-logo img {
+    height: 63px;
+    width: 63px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.root-header-logo strong {
+    height: 63px;
+    flex: 1;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+    text-align: center;
+    display: block;
+}
+
+.root-header-btns {
+    width: 100px;
+    display: flex;
+    -webkit-app-region: no-drag;
+}
+
+.root-header-btns a {
+    flex: 1;
+    font-size: 1.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    /* -webkit-transition: all .3s;
+    transition: all .3s; */
+    -webkit-app-region: no-drag;
+}
+
+/* .root-header-btns a:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+} */
+
+.root-header-search {
+    flex: 1
+}
+
+.root-header-user {
+    flex: 1
+}
+
+.root-header-operation {
+    display: flex;
+    -webkit-app-region: no-drag;
+}
+.root-header-operation a{
+    flex: 1;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0 10px;
+    -webkit-app-region: no-drag;
+}
+

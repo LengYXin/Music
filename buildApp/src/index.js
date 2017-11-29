@@ -28,21 +28,21 @@ function portIsOccupied(callback) {
 // portIsOccupied(80)
 function createWindow() {
   // Create the browser window.
+  mainWindow = new BrowserWindow({
+    width: 1150,
+    height: 670,
+    minWidth: 1150,
+    minHeight: 670,
+    frame: false,
+  })
+  app.win = mainWindow;
   portIsOccupied(function () {
     server(port);
-    mainWindow = new BrowserWindow({
-      width: 1150,
-      height: 670,
-      minWidth: 1150,
-      minHeight: 670,
-      frame:false,
-    })
     mainWindow.loadURL("http://127.0.0.1:" + port);
     mainWindow.on('closed', function () {
       console.log("closed");
       mainWindow = null
     })
-   
   })
   // and load the index.html of the app.
   // mainWindow.loadURL(url.format({
