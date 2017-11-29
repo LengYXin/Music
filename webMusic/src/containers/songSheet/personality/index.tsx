@@ -16,18 +16,18 @@ const gridStyle = {
 @observer
 export class PersonalityComponent extends React.Component<any, any> {
     render() {
-        if (this.props.recommendStore.resource && this.props.recommendStore.resource.recommend.length) {
+        if (this.props.recommendStore.resource.length) {
             return (
                 <QueueAnim key="queue"
                     leaveReverse
                 >
                     <h3 style={{ textAlign: "left", padding: "2px" }}>推荐歌单</h3>
                     <Card>
-                        {this.props.recommendStore.resource.recommend.map(x => {
+                        {this.props.recommendStore.resource.map(x => {
                             return <Card.Grid style={gridStyle} key={x.id}>
-                                <Link to={`ssd/${x.id}`}>
+                                <Link to={x.to}>
                                     <div className="custom-image">
-                                        <img alt="" width="100%" src={x.picUrl + "?param=180y180"} />
+                                        <img alt="" width="100%" src={x.img} />
                                     </div>
                                     <div className="custom-card">
                                         <h3> {x.name}</h3>

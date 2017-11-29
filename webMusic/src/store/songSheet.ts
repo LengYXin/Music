@@ -2,7 +2,8 @@
  * 精品歌单
  */
 import { observable, computed, autorun } from "mobx"
-import { Http,Cache } from "../utils"
+import { Http, Cache } from "../utils"
+import formatTool from './formatTool';
 class ObservableStore {
     // @observable Store = {};
     // 歌单
@@ -20,7 +21,13 @@ class ObservableStore {
     // 获取歌单
     async getPlaylist() {
         if (!this.playlist) {
-            this.playlist = await Http.get(`top/playlist`);
+            let data = await Http.get(`top/playlist`);
+            // console.log(this.playlist);
+            this.playlist = formatTool.formatSongSheet(data.playlists, {
+                id: "id",
+                img: "coverImgUrl",
+                name: "name"
+            });
             Cache.storageSet("getPlaylist", this.playlist);
         }
         return this.playlist;

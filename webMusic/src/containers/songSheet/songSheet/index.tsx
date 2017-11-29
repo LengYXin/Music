@@ -30,7 +30,7 @@ export class SongSheetComponent extends React.Component<any, any> {
     }
     render() {
         console.log(this.props);
-        if (this.props.songSheetStore.playlist && this.props.songSheetStore.playlist.playlists.length) {
+        if (this.props.songSheetStore.playlist.length) {
             const { selectedTags } = this.state;
             return (
                 <QueueAnim key="queue"
@@ -51,17 +51,17 @@ export class SongSheetComponent extends React.Component<any, any> {
                     <Card>
                         <Card.Grid style={gridStyle} key={111}>
                             <div className="custom-image">
-                                <img alt="" width="100%" src={"/assets/img/jpgd.png?param=180y180"} />
+                                <img alt="" width="100%" src={"/assets/img/jpgd.png"} />
                             </div>
                             <div className="custom-card">
                                 <h3>精品歌单倾心推荐，给最懂音乐的你</h3>
                             </div>
                         </Card.Grid>
-                        {this.props.songSheetStore.playlist.playlists.map(x => {
+                        {this.props.songSheetStore.playlist.map(x => {
                             return <Card.Grid style={gridStyle} key={x.id}>
-                                <Link to={`/ssd/${x.id}`}>
+                                <Link to={x.to}>
                                     <div className="custom-image">
-                                        <img alt="" width="100%" src={x.coverImgUrl + "?param=180y180"} />
+                                        <img alt="" width="100%" src={x.img} />
                                     </div>
                                     <div className="custom-card">
                                         <h3> {x.name}</h3>

@@ -1,3 +1,5 @@
+/// <reference path="../typings/index.d.ts" />
+
 import * as React from 'react';
 import './assets/css/antd.css';
 import './assets/css/video-js.css';
@@ -15,6 +17,10 @@ import windows from './store/windows';
 import Routers from "./routers";
 import "./style.css";
 
+
+window["globalMusic"] = {
+  defaultImg: "/assets/img/default_album.jpg"
+}
 render(
   <Provider
     UserContextStore={UserContextStore} //用户

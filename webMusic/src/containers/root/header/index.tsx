@@ -30,7 +30,7 @@ export default class extends React.Component<any, any>{
             <div className="root-header-body" >
                 <div className="root-header-logo">
                     <Link to="/">
-                        <img alt="" src="/assets/img/default_album.jpg" />
+                        <img alt="" src={globalMusic.defaultImg} />
                         <strong>小音乐盒子</strong>
                     </Link>
                 </div>
