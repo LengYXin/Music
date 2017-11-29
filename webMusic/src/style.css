@@ -24,7 +24,7 @@
 }
 
 img {
-    background-image: url(assets/img/default_album.jpg);
+    background-image: url(/assets/img/default_album.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
 }

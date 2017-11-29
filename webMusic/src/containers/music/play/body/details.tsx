@@ -29,7 +29,7 @@ class ImgDtl extends React.Component<any, any> {
                 { opacity: [1, 0], }
             ]} >
                 <div key="1" className={this.props.playStore.playState ? "AudioPlay-img-pic play" : "AudioPlay-img-pic "}>
-                    <img alt="" src={(play.al ? play.al.picUrl + "?param=400y400" : "assets/img/default_album.jpg")} />
+                    <img alt="" src={(play.al ? play.al.picUrl + "?param=400y400" : "/assets/img/default_album.jpg")} />
                 </div>
             </QueueAnim >
 

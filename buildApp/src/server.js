@@ -274,7 +274,6 @@ let cache = apicache.middleware
 //   next()
 // })
 const onlyStatus200 = (req, res) => res.statusCode === 200
-app.use(history());
 app.use(cache('2 minutes', onlyStatus200))
 
 // app.use(express.static(path.join(path.dirname(__dirname), "webMusic", "build")))
@@ -499,7 +498,7 @@ app.use('/user/follows', __webpack_require__(91))
 app.use('/user/subcount', __webpack_require__(92))
 
 app.use('/user/record', __webpack_require__(93))
-
+app.use(history());
 // const port = process.env.PORT || 4001
 module.exports = function (port, url) {
   port = port || 4001
