@@ -3,6 +3,7 @@ import './style.css'
 import { Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
+import Search from "./search"
 @inject('windowsStore')
 @observer
 export default class extends React.Component<any, any>{
@@ -38,7 +39,9 @@ export default class extends React.Component<any, any>{
                     <a onClick={this.onBack.bind(this)} title="后退"><Icon type="left" /></a>
                     <a onClick={this.onForward.bind(this)} title="前进" ><Icon type="right" /></a>
                 </div>
-                <div className="root-header-search"></div>
+                <div className="root-header-search">
+                    <Search />
+                </div>
                 <div className="root-header-user"></div>
                 <div className="root-header-operation">
                     <a onClick={this.onMinus.bind(this)} title="最小化"><Icon type="minus" /></a>
