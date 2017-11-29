@@ -1,10 +1,12 @@
 {
     "name": "music",
     "version": "1.0.0",
-    "description": "```\r     /package.json\r         npm run init-dev             安装全局&本地依赖\r         npm run init-dev-g           安装全局依赖\r         npm start                    启动 全部服务\r ```",
+    "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "concurrently -k -p \"[{name}]\" -n \"Api,Music\"  \"cd NeteaseCloudMusicApi && node server\" \"cd webMusic && npm start\"",
+        "start": "concurrently -k -p \"[{name}]\" -n \"Api,Music\"  \"npm run start-api\" \"npm run start-music\"",
+        "start-api":"cd NeteaseCloudMusicApi && node server",
+        "start-music":"cd webMusic && npm start",
         "init-dev": "npm run init-dev-i && npm run init-dev-g",
         "init-dev-i": "npm run init-app && npm run init-music && npm run init-api ",
         "init-dev-g": "npm i -g -d webpack webpack-dev-server concurrently typescript nodemon",
