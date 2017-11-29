@@ -7,7 +7,7 @@ import { Http,Cache } from "../utils"
 class ObservableStore {
     constructor() { }
     // MV列表
-    @observable MVList = Cache.storageGet("MVList", {});
+    @observable MVList = Cache.localGet("MVList", {});
     // 播放
     @observable current = {};
     /**
@@ -42,7 +42,7 @@ class ObservableStore {
             res = this.MVList[id];
         }
         this.MVList = { ...this.MVList, ...data };
-        Cache.storageSet("MVList",this.MVList);
+        Cache.localSet("MVList",this.MVList);
         return res;
     }
 

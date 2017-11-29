@@ -17,6 +17,19 @@ import windows from './store/windows';
 import Routers from "./routers";
 import "./style.css";
 
+let time = new Date().getTime();
+try {
+  let cacheTime = + window.localStorage.getItem("cacheTime");
+  if (time - cacheTime > 7200000) {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+    window.localStorage.setItem("cacheTime", time.toString());
+  }
+} catch (error) {
+  window.localStorage.clear();
+  window.sessionStorage.clear();
+  window.localStorage.setItem("cacheTime", time.toString());
+}
 
 window["globalMusic"] = {
   defaultImg: "/assets/img/default_album.jpg"

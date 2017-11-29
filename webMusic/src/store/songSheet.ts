@@ -7,7 +7,7 @@ import formatTool from './formatTool';
 class ObservableStore {
     // @observable Store = {};
     // 歌单
-    @observable playlist = Cache.storageGet("getPlaylist");
+    @observable playlist = Cache.localGet("getPlaylist");
     // 详情
     @observable details = {};
     // 详情集合
@@ -28,20 +28,20 @@ class ObservableStore {
                 img: "coverImgUrl",
                 name: "name"
             });
-            Cache.storageSet("getPlaylist", this.playlist);
+            Cache.localSet("getPlaylist", this.playlist);
         }
         return this.playlist;
     }
     async getDetails(id) {
         // playlist/detail?id=20320734
         this.details = {};
-        const details = Cache.storageGet(`detail?id=${id}`);
+        const details = Cache.localGet(`detail?id=${id}`);
         if (!this.detailsList[id]) {
             if (details) {
                 this.detailsList[id] = details;
             } else {
                 this.detailsList[id] = await Http.get(`playlist/detail?id=${id}`);
-                Cache.storageSet(`detail?id=${id}`, this.detailsList[id]);
+                Cache.localSet(`detail?id=${id}`, this.detailsList[id]);
             }
         }
         this.details = this.detailsList[id];

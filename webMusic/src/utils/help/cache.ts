@@ -12,12 +12,13 @@ export default class Cache {
     //     return this.__dataCache;
     // }
     private localStorage = window.localStorage;
+    private sessionStorage = window.sessionStorage;
     /**
      * 获取
      * @param key 缓存对应的key
      * @param value 没有值的情况下返回的默认值
      */
-    storageGet(key, value = null) {
+    localGet(key, value = null) {
         try {
             const v = this.localStorage.getItem(key);
             // 存在值返回  不存在 返回默认
@@ -31,10 +32,37 @@ export default class Cache {
      * @param key 缓存的唯一key 
      * @param value 
      */
-    storageSet(key, value) {
+    localSet(key, value) {
         // 这里怎么处理，用什么处理 外界不用担心
         try {
             this.localStorage.setItem(key, JSON.stringify(value));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    /**
+     * 获取
+     * @param key 缓存对应的key
+     * @param value 没有值的情况下返回的默认值
+     */
+    sessionGet(key, value = null) {
+        try {
+            const v = this.sessionStorage.getItem(key);
+            // 存在值返回  不存在 返回默认
+            return v && JSON.parse(v) || value;
+        } catch (error) {
+            return value;
+        }
+    }
+    /**
+     * 设置
+     * @param key 缓存的唯一key 
+     * @param value 
+     */
+    sessionSet(key, value) {
+        // 这里怎么处理，用什么处理 外界不用担心
+        try {
+            this.sessionStorage.setItem(key, JSON.stringify(value));
         } catch (error) {
             console.error(error);
         }

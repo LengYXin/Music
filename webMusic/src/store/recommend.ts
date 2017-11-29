@@ -6,7 +6,7 @@ import { Http, Cache } from "../utils"
 import formatTool from './formatTool';
 class ObservableStore {
     // @observable Store = {};
-    @observable resource = Cache.storageGet("getResource");
+    @observable resource = Cache.localGet("getResource");
     personalized
     constructor() {
         this.getResource();
@@ -20,7 +20,7 @@ class ObservableStore {
                 img: "picUrl",
                 name: "name"
             });
-            Cache.storageSet("getResource", this.resource);
+            Cache.localSet("getResource", this.resource);
         }
         return this.resource;
     }
