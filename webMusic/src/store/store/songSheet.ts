@@ -12,11 +12,24 @@ export default class ObservableStore {
     @observable details = {};
     // 详情集合
     @observable detailsList = {};
-
+    // 每日推荐歌单
+    @observable resource = Cache.localGet("getResource");
 
     constructor() {
         // console.log(Help);
         this.getPlaylist();
+    }
+    // 获取每日推荐歌单
+    async getResource() {
+        if (!this.resource) {
+            this.resource = await Http.get(`recommend/resource`).map(x => formatTool.formatSongSheet(x.recommend, {
+                id: "id",
+                img: "picUrl",
+                name: "name"
+            })).toPromise();
+            Cache.localSet("getResource", this.resource);
+        }
+        return this.resource;
     }
     // 获取歌单
     async getPlaylist() {
