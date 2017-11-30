@@ -11,7 +11,7 @@ class store {
     constructor() {
         this.ready();
     }
-    model = new model();
+    // model = new model();
     // 窗口
     windowsStore = new windowsStore();
     // 歌曲播放
