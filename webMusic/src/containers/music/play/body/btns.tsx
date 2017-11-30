@@ -3,16 +3,16 @@ import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import { Icon } from 'antd';
 
-@inject('musictStore', 'playStore')
+@inject('musicStore', 'playStore')
 @observer
 export default class extends React.Component<any, any> {
     // 上一首
     last() {
-        this.props.musictStore.last();
+        this.props.musicStore.last();
     };
     // 下一首
     next() {
-        this.props.musictStore.next();
+        this.props.musicStore.next();
     };
     play() {
         // this.AudioPlay.play(e => {
@@ -22,8 +22,8 @@ export default class extends React.Component<any, any> {
     };
     render() {
         // console.log("btns", this);
-        const music = this.props.musictStore.current.music || {};
-        // const play = this.props.musictStore.current.play || {};
+        const music = this.props.musicStore.current.music || {};
+        // const play = this.props.musicStore.current.play || {};
         const playState = this.props.playStore.playState && music.url;
         return (
             <div className="AudioPlay-btns">

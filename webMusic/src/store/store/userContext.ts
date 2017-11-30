@@ -2,8 +2,8 @@
  * 用户
  */
 import { observable, computed, autorun } from "mobx"
-import { Http, Cache } from "../utils"
-class ObservableStore {
+import { Http, Cache } from "../../utils"
+export default class ObservableStore {
     //当前用户
     @observable UserContext = {};
     // 登录状态
@@ -34,9 +34,7 @@ class ObservableStore {
 
     // }
 }
-const Store = new ObservableStore();
-// console.log("Store----UserContext", Store);
-export default Store;
+
 
 
 

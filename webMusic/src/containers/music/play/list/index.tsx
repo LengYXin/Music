@@ -4,7 +4,7 @@ import { Row as row, Col, Icon } from 'antd';
 const Row: any = row;
 import './style.css'
 import {Help} from "../../../../utils"
-@inject('musictStore', 'playStore')
+@inject('musicStore', 'playStore')
 @observer
 export default class extends React.Component<any, any> {
     componentDidMount() {
@@ -21,12 +21,12 @@ export default class extends React.Component<any, any> {
         return names.join(" / ");
     }
     selectPlay(index) {
-        this.props.musictStore.play(index);
+        this.props.musicStore.play(index);
     }
     render() {
         return (
             <div onClick={e => { e.stopPropagation(); e.nativeEvent.stopImmediatePropagation(); }} className={(this.props.playStore.showList ? "play-list-body play-list-show " : "play-list-body play-list-hide ") + this.props.className}>
-                <h3>播放列表 ({this.props.musictStore.playList.length})</h3>
+                <h3>播放列表 ({this.props.musicStore.playList.length})</h3>
                 <Row className="play-list-title">
                     <Col span={1}>
                     </Col>
@@ -42,8 +42,8 @@ export default class extends React.Component<any, any> {
                 </Row>
                 <div className="play-list" >
                     {
-                        this.props.musictStore.playList.map((x, i) => {
-                            let play = this.props.musictStore.currentIndex == i;
+                        this.props.musicStore.playList.map((x, i) => {
+                            let play = this.props.musicStore.currentIndex == i;
                             return (<Row title={"播放 ：" + x.name} className={"play-list-item " + (play ? "play" : "")} key={x.id} onClick={e => {
                                 this.selectPlay(i);
                             }}  >

@@ -11,7 +11,7 @@ import './style.css'
 /**
  * 歌曲列表
  */
-@inject('musictStore')
+@inject('musicStore')
 @observer
 export default class extends React.Component<any, any> {
     columns = [{
@@ -105,7 +105,7 @@ export default class extends React.Component<any, any> {
     onRowClick(t) {
         this.onRowClickCount++;
         if (this.onRowClickCount == 2) {
-            this.props.musictStore.addPlayList([t]);
+            this.props.musicStore.addPlayList([t]);
             this.onRowClickCount = 0;
             clearTimeout(this.onRowClicksetTimeout);
         }
@@ -118,7 +118,7 @@ export default class extends React.Component<any, any> {
         return (
             <div>
                 {/* <style>
-                    {`.ant-table-row.s-s-songlist:nth-child(${this.props.musictStore.currentIndex+1}) {
+                    {`.ant-table-row.s-s-songlist:nth-child(${this.props.musicStore.currentIndex+1}) {
                             background:#ecf6fd;
                        }
                     `}

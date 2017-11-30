@@ -2,10 +2,10 @@
  * Music
  */
 import { observable, computed, autorun } from "mobx"
-import { Http,Cache } from "../utils";
-import playStore from "./play";
+import { Http,Cache } from "../../utils";
+// import playStore from "./play";
 import formatTool from './formatTool';
-class ObservableStore {
+export default class ObservableStore {
     // @observable Store = {};
     // 播放列表 没有播放地址
     @observable playList = [];
@@ -116,7 +116,7 @@ class ObservableStore {
                 // 歌曲信息
                 play: this.playList[this.currentIndex],
             }
-            playStore.setUrl(this.current.music.url);
+            // playStore.setUrl(this.current.music.url);
         }
 
     }
@@ -211,8 +211,5 @@ class ObservableStore {
         return res;
     }
 }
-const Store = new ObservableStore();
-console.log("Store----Music", Store);
-export default Store;
 
 

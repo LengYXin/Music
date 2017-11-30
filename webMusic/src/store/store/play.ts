@@ -1,8 +1,8 @@
 import { observable, computed, autorun, useStrict } from "mobx"
 // useStrict(true);
-import { Http,Help } from "../utils"
-import musicStore from "./music";
-class ObservableStore {
+import { Http,Help } from "../../utils"
+// import musicStore from "./music";
+export default class ObservableStore {
     // 音乐播放标签
     audio = document.createElement("audio");
     // 歌曲地址
@@ -176,7 +176,7 @@ class ObservableStore {
         });
         // 当目前的播放列表已结束时
         this.audio.addEventListener("ended", e => {
-            musicStore.next(this.pattern);
+            // musicStore.next(this.pattern);
         });
         //当浏览器尝试获取媒体数据，但数据不可用时
         this.audio.addEventListener("stalled", e => {
@@ -197,10 +197,6 @@ class ObservableStore {
 
     }
 }
-
-const Store = new ObservableStore();
-console.log("Play", Store);
-export default Store;
 
 
 

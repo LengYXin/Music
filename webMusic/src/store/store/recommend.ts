@@ -2,9 +2,9 @@
  * 推荐
  */
 import { observable, computed, autorun } from "mobx"
-import { Http, Cache } from "../utils"
+import { Http, Cache } from "../../utils"
 import formatTool from './formatTool';
-class ObservableStore {
+export default  class ObservableStore {
     // @observable Store = {};
     @observable resource = Cache.localGet("getResource");
     personalized
@@ -29,8 +29,6 @@ class ObservableStore {
         return Http.get(`recommend/songs`).toPromise()
     }
 }
-const Store = new ObservableStore();
-// console.log("Store----recommend", Store);
-export default Store;
+
 
 

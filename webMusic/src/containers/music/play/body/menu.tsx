@@ -3,7 +3,7 @@ import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import { AudioPlay } from "../../audioPlay"
 import { Icon } from 'antd';
-@inject('musictStore','playStore')
+@inject('musicStore','playStore')
 @observer
 export default class extends React.Component<any, any> {
     showPlayList(e) {
@@ -15,7 +15,7 @@ export default class extends React.Component<any, any> {
         return (
             <div className="AudioPlay-menu">
                 <a onClick={this.showPlayList.bind(this)}>
-                    <Icon type="bars" />  {this.props.musictStore.playList.length}
+                    <Icon type="bars" />  {this.props.musicStore.playList.length}
                 </a>
             </div>
         )

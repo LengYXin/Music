@@ -52,12 +52,12 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
 /**
  * 介绍部分
  */
-@inject('songSheetStore', 'musictStore')
+@inject('songSheetStore', 'musicStore')
 @observer
 class Introduce extends React.Component<any, any> {
     playAll() {
-        console.log(this.props.musictStore);
-        this.props.musictStore.addPlayList(this.props.songSheetStore.details.playlist.tracks, true);
+        console.log(this.props.musicStore);
+        this.props.musicStore.addPlayList(this.props.songSheetStore.details.playlist.tracks, true);
     }
     render() {
         const detalis = this.props.songSheetStore.details.playlist || {};

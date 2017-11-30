@@ -9,7 +9,7 @@ import Progress from "./progress"
 
 export class AudioPlay extends React.Component<any, any> {
     render() {
-        console.log("AudioPlay", this);
+        // console.log("AudioPlay", this);
         return (
             <div className="play-progress">
                 {/* <Audio /> */}

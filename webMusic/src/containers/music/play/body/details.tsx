@@ -18,11 +18,11 @@ export default class extends React.Component<any, any> {
         )
     }
 }
-@inject('musictStore', 'playStore')
+@inject('musicStore', 'playStore')
 @observer
 class ImgDtl extends React.Component<any, any> {
     render() {
-        const play = this.props.musictStore.current.play || {};
+        const play = this.props.musicStore.current.play || {};
         return (
             <QueueAnim type="scale" delay={100} animConfig={[
                 { opacity: [1, 0], },
@@ -36,12 +36,12 @@ class ImgDtl extends React.Component<any, any> {
         )
     }
 }
-@inject('musictStore', 'playStore')
+@inject('musicStore', 'playStore')
 @observer
 class Lyric extends React.Component<any, any> {
     render() {
         // console.log(this);
-        let lyric = this.props.musictStore.current.lyric || [];
+        let lyric = this.props.musicStore.current.lyric || [];
         // console.log(lyric, this.props.playStore.currentTimeS);
         let currentTimeS = this.props.playStore.currentTimeS;
         return (

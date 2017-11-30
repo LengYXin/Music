@@ -2,9 +2,9 @@
  * 精品歌单
  */
 import { observable, computed, autorun } from "mobx"
-import { Http, Cache } from "../utils"
+import { Http, Cache } from "../../utils"
 import formatTool from './formatTool';
-class ObservableStore {
+export default  class ObservableStore {
     // @observable Store = {};
     // 歌单
     @observable playlist = Cache.localGet("getPlaylist");
@@ -48,8 +48,6 @@ class ObservableStore {
         return this.details;
     }
 }
-const Store = new ObservableStore();
-// console.log("Store----songSheet", Store);
-export default Store;
+
 
 

@@ -14,11 +14,11 @@ export default class extends React.Component<any, any> {
         )
     }
 };
-@inject('musictStore')
+@inject('musicStore')
 @observer
 class MusicName extends React.Component<any, any> {
     render() {
-        const play = this.props.musictStore.current.play || {};
+        const play = this.props.musicStore.current.play || {};
         return (
             <span className="AudioPlay-play-name">{play.name}</span>
         )

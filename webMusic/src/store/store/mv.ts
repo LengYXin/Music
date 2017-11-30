@@ -2,9 +2,9 @@
  * Music
  */
 import { observable, computed, autorun } from "mobx"
-import { Http,Cache } from "../utils"
+import { Http,Cache } from "../../utils"
 
-class ObservableStore {
+export default class ObservableStore {
     constructor() { }
     // MV列表
     @observable MVList = Cache.localGet("MVList", {});
@@ -47,8 +47,5 @@ class ObservableStore {
     }
 
 }
-const Store = new ObservableStore();
-console.log("Store----MV", Store);
-export default Store;
 
 
