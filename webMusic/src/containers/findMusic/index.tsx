@@ -8,14 +8,11 @@ import './style.css'
 
 import { PersonalityComponent, SongSheetComponent } from "../songSheet"
 
-// @inject('UserContextStore', 'recommendStore')
-// @observer
-export class DiscoverMusicComponent extends React.Component<any, any> {
-    async getA() {
-        console.log(await this.props.recommendStore.getResource());
-    }
+/**
+ * 发现音乐
+ */
+export class FindMusicComponent extends React.Component<any, any> {
     onTabClick(tab) {
-        // console.log(tab);
         this.props.history.push(tab);
     }
     render() {

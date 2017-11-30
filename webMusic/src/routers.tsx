@@ -57,7 +57,7 @@ export default class RootRoutes extends React.Component<any, any> {
                 {
                     //发现音乐
                     path: "/find",
-                    component: this.createCSSTransition(containers.DiscoverMusicComponent),
+                    component: this.createCSSTransition(containers.FindMusicComponent),
                     routes: [
 
                         {//歌单
