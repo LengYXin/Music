@@ -2,7 +2,7 @@
  * 用户
  */
 import { observable, computed, autorun } from "mobx"
-import { Http,Cache } from "../utils"
+import { Http, Cache } from "../utils"
 class ObservableStore {
     //当前用户
     @observable UserContext = {};
@@ -14,12 +14,21 @@ class ObservableStore {
     constructor() {
         // 模拟一下网速慢
         // setTimeout(() => {
-        // this.onLogin({ phone: "18611752863", password: "leng5201314" });
+        this.onLogin({ phone: "18611752863", password: "leng5201314" });
         // }, 1000);
         // autorun(() => console.log("-----autorun------", this.State));
     }
     async onLogin(params: { phone: string, password: string }) {
-        this.UserContext = await Http.get(`login/cellphone?phone=${params.phone}&password=${params.password}`);
+        // this.UserContext = await Http.get(`login/cellphone?phone=${params.phone}&password=${params.password}`);
+        //    console.log("onLogin",); 
+        // Http.postTest(`top/playlist`).filter(e => {
+        //     console.log(e);
+        //     return true;
+        // }).subscribe({
+        //     next: e => console.log("next", e),
+        //     error: e => console.log("error", e),
+        //     complete: () => console.log("complete"),
+        // })
     }
     // @computed get complete() {
 

@@ -7,33 +7,16 @@ import './assets/css/video-js.css';
 import { render } from 'react-dom';
 import { Provider, observer } from 'mobx-react';
 // import { RootApp } from './containers';
+import windows from './store/windows';
 import UserContextStore from './store/userContext';
 import recommendStore from './store/recommend';
 import songSheet from './store/songSheet';
 import music from './store/music';
 import play from './store/play';
 import mv from './store/mv';
-import windows from './store/windows';
 import Routers from "./routers";
 import "./style.css";
 
-let time = new Date().getTime();
-try {
-  let cacheTime = + window.localStorage.getItem("cacheTime");
-  if (time - cacheTime > 7200000) {
-    window.localStorage.clear();
-    window.sessionStorage.clear();
-    window.localStorage.setItem("cacheTime", time.toString());
-  }
-} catch (error) {
-  window.localStorage.clear();
-  window.sessionStorage.clear();
-  window.localStorage.setItem("cacheTime", time.toString());
-}
-
-window["globalMusic"] = {
-  defaultImg: "/assets/img/default_album.jpg"
-}
 render(
   <Provider
     UserContextStore={UserContextStore} //用户

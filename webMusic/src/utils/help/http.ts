@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig } from "axios"
+// import axios, { AxiosRequestConfig } from "axios";
+import Rx from "rxjs"
 // const address = "/api/"
 export default class Http {
     constructor() {
@@ -6,34 +7,17 @@ export default class Http {
             this.address = "/api/"
         }
     }
-    axios = axios;
     address = "/"
-    post(url: string, data?: any, config?: AxiosRequestConfig) {
-        return new Promise<any>((resolve, reject) => {
-            axios.post(`${this.address}${url}`, data, config).then(x => {
-                // console.log(x);
-                if (x.status == 200) {
-                    resolve(x.data.data)
-                } else {
-                    reject(x.data);
-                }
-            }).catch(e => {
-                reject(e);
-            })
-        })
+    post(url: string) {
+        return Rx.Observable.ajax.post(`${this.address}${url}`).map(this.map);
     }
-    get(url: string, config?: AxiosRequestConfig) {
-        return new Promise<any>((resolve, reject) => {
-            axios.get(`${this.address}${url}`, config).then(x => {
-                // console.log(x);
-                if (x.status == 200 && x.data.code == 200) {
-                    resolve(x.data)
-                } else {
-                    reject(x.data);
-                }
-            }).catch(e => {
-                reject(e);
-            })
-        })
+    get(url: string) {
+        return Rx.Observable.ajax.get(`${this.address}${url}`).map(this.map);
+    }
+    map(x) {
+        if (x.status == 200) {
+            return x.response;
+        }
+        throw x;
     }
 }

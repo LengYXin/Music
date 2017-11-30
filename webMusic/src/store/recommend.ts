@@ -14,7 +14,7 @@ class ObservableStore {
     // 获取每日推荐歌单
     async getResource() {
         if (!this.resource) {
-            let data = await Http.get(`recommend/resource`);
+            let data = await Http.get(`recommend/resource`).toPromise();
             this.resource = formatTool.formatSongSheet(data.recommend, {
                 id: "id",
                 img: "picUrl",
@@ -26,10 +26,7 @@ class ObservableStore {
     }
     //获取每日推荐歌曲
     getSongs() {
-        return Http.get(`recommend/songs`).then(x => {
-
-        }).catch(e => {
-        })
+        return Http.get(`recommend/songs`).toPromise()
     }
 }
 const Store = new ObservableStore();

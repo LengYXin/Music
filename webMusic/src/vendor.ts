@@ -2,7 +2,9 @@
 import "antd"
 import "rc-queue-anim"
 //http
-import "axios"
+// import "axios"
+
+import "rxjs"
 //mobx
 import "mobx"
 import "mobx-react"

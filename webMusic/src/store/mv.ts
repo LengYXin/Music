@@ -36,7 +36,7 @@ class ObservableStore {
         let res: any = {};
         let data = {};
         if (!this.MVList.hasOwnProperty(id)) {
-            res = await Http.get(`mv?mvid=` + id);
+            res = await Http.get(`mv?mvid=` + id).toPromise();
             data[id] = res.data;
         } else {
             res = this.MVList[id];

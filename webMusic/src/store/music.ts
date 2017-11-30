@@ -185,7 +185,7 @@ class ObservableStore {
         const id = keys.filter(key => !this.musicList.hasOwnProperty(key));
         let res = { data: [] };
         if (id.length) {
-            res = await Http.get(`music/url?id=` + id.join(","));
+            res = await Http.get(`music/url?id=` + id.join(",")).toPromise();
         }
         let musicList = {};
         res.data.map(x => {
@@ -204,7 +204,7 @@ class ObservableStore {
         let res = {};
         let lyric = {};
         if (!this.lyricList.hasOwnProperty(id)) {
-            res = await Http.get(`lyric?id=` + id);
+            res = await Http.get(`lyric?id=` + id).toPromise();
             lyric[id] = res;
         }
         this.lyricList = { ...this.lyricList, ...lyric };

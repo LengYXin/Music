@@ -21,7 +21,7 @@ class ObservableStore {
     // 获取歌单
     async getPlaylist() {
         if (!this.playlist) {
-            let data = await Http.get(`top/playlist`);
+            let data = await Http.get(`top/playlist`).toPromise();
             // console.log(this.playlist);
             this.playlist = formatTool.formatSongSheet(data.playlists, {
                 id: "id",
@@ -40,7 +40,7 @@ class ObservableStore {
             if (details) {
                 this.detailsList[id] = details;
             } else {
-                this.detailsList[id] = await Http.get(`playlist/detail?id=${id}`);
+                this.detailsList[id] = await Http.get(`playlist/detail?id=${id}`).toPromise();
                 Cache.localSet(`detail?id=${id}`, this.detailsList[id]);
             }
         }
