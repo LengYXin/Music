@@ -4,7 +4,7 @@
 import { observable, computed, autorun } from "mobx"
 import { Http, Cache } from "../../utils"
 import formatTool from './formatTool';
-export default  class ObservableStore {
+export default class ObservableStore {
     // @observable Store = {};
     // 歌单
     @observable playlist = Cache.localGet("getPlaylist");
@@ -21,13 +21,11 @@ export default  class ObservableStore {
     // 获取歌单
     async getPlaylist() {
         if (!this.playlist) {
-            let data = await Http.get(`top/playlist`).toPromise();
-            // console.log(this.playlist);
-            this.playlist = formatTool.formatSongSheet(data.playlists, {
+            this.playlist = await Http.get(`top/playlist`).map(x => formatTool.formatSongSheet(x.playlists, {
                 id: "id",
                 img: "coverImgUrl",
                 name: "name"
-            });
+            })).toPromise();
             Cache.localSet("getPlaylist", this.playlist);
         }
         return this.playlist;

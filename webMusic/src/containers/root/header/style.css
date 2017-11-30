@@ -75,4 +75,6 @@
     padding: 0 10px;
     -webkit-app-region: no-drag;
 }
-
+.certain-category-search-wrapper{
+    -webkit-app-region: no-drag;
+}
