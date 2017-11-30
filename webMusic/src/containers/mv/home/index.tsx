@@ -3,7 +3,7 @@ import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 // import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { observer, inject } from 'mobx-react';
 import './style.css'
-@inject('UserContextStore', 'recommendStore')
+@inject('UserContextStore', 'songSheetStore')
 @observer
 export class MVComponent extends React.Component<any, any> {
     render() {

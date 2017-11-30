@@ -14,7 +14,7 @@ import "./style.css";
 render(
   <Provider
     UserContextStore={store.UserContextStore}        //用户
-    recommendStore={store.recommendStore}            //推荐列表
+    // recommendStore={store.recommendStore}            //推荐列表
     songSheetStore={store.songSheetStore}            //歌单列表
     musicStore={store.musicStore}                    //音乐列表
     playStore={store.playStore}                      //音频播放器

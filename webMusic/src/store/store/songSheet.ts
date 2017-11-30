@@ -18,6 +18,7 @@ export default class ObservableStore {
     constructor() {
         // console.log(Help);
         this.getPlaylist();
+        this.getResource();
     }
     // 获取每日推荐歌单
     async getResource() {

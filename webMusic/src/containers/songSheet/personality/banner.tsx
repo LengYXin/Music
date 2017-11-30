@@ -8,7 +8,7 @@ import './style.css'
 /**
  * 个性推荐
  */
-@inject('recommendStore')
+@inject('songSheetStore')
 @observer
 export default class extends React.Component<any, any> {
     render() {

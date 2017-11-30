@@ -12,18 +12,18 @@ const gridStyle = {
 /**
  * 个性推荐
  */
-@inject('recommendStore')
+@inject('songSheetStore')
 @observer
 export default class  extends React.Component<any, any> {
     render() {
-        if (this.props.recommendStore.resource && this.props.recommendStore.resource.length) {
+        if (this.props.songSheetStore.resource && this.props.songSheetStore.resource.length) {
             return (
                 <QueueAnim key="queue"
                     leaveReverse
                 >
                     <h3 style={{ textAlign: "left", padding: "2px" }}>推荐歌单</h3>
                     <Card>
-                        {this.props.recommendStore.resource.map(x => {
+                        {this.props.songSheetStore.resource.map(x => {
                             return <Card.Grid style={gridStyle} key={x.id}>
                                 <Link to={x.to}>
                                     <div className="custom-image">

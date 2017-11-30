@@ -4,7 +4,7 @@ import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import './style.css'
 import { Icon } from 'antd';
-@inject('UserContextStore', 'recommendStore')
+@inject('UserContextStore', 'songSheetStore')
 @observer
 export class HomeComponent extends React.Component<any, any> {
     render() {
