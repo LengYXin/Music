@@ -2,8 +2,9 @@ import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
-import { Card, Carousel } from 'antd';
+// import { Card, Carousel } from 'antd';
 import './style.css'
+import Carousel from 'antd/lib/carousel';
 
 /**
  * 个性推荐

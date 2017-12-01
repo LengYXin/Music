@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import { Icon } from 'antd';
+// import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
 
 @inject('playStore')
 @observer

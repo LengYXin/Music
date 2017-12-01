@@ -1,6 +1,8 @@
 import * as React from 'react'
 import './style.css'
-import { Icon } from 'antd';
+// import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
+
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import Search from "./search"

@@ -2,9 +2,11 @@ import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
-import { Card, Tag } from 'antd';
+// import { Card, Tag } from 'antd';
 import './style.css'
-const { CheckableTag } = Tag;
+import Card from 'antd/lib/card';
+import CheckableTag from 'antd/lib/tag/CheckableTag';
+// const { CheckableTag } = Tag;
 const gridStyle = {
     width: '25%',
     textAlign: 'center',

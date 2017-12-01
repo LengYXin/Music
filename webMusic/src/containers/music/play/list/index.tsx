@@ -1,6 +1,10 @@
 import * as React from 'react'
 import { observer, inject } from 'mobx-react';
-import { Row as row, Col, Icon } from 'antd';
+// import { Row as row, Col, Icon } from 'antd';
+import Col from 'antd/lib/grid/col';
+import row  from 'antd/lib/grid/row';
+import Icon from 'antd/lib/icon';
+
 const Row: any = row;
 import './style.css'
 import {Help} from "../../../../utils"

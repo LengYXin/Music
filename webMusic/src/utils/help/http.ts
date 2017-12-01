@@ -1,5 +1,7 @@
+import Rx from "rxjs";
+
 // import axios, { AxiosRequestConfig } from "axios";
-import Rx from "rxjs"
+// import Rx from "rxjs"
 // const address = "/api/"
 export default class Http {
     constructor() {

@@ -2,7 +2,9 @@ import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import { AudioPlay } from "../../audioPlay"
-import { Icon } from 'antd';
+// import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
+
 @inject('playStore')
 @observer
 export default class extends React.Component<any, any> {

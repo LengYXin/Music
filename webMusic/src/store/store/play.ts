@@ -2,7 +2,8 @@ import { observable, computed, autorun, useStrict } from "mobx"
 // useStrict(true);
 import { Http, Help } from "../../utils"
 import Store from "../index";
-import { notification } from "antd";
+import notification from "antd/lib/notification";
+// import { notification } from "antd";
 export default class ObservableStore {
     // 音乐播放标签
     audio = document.createElement("audio");

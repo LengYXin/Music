@@ -2,12 +2,17 @@ import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
-import { Table, Button, Icon, Modal } from 'antd';
+// import { Table, Button, Icon, Modal } from 'antd';
 
 import { MVDetailsComponent } from "../../mv"
 import {Help} from "../../../utils"
 
 import './style.css'
+import Button from 'antd/lib/button/button';
+import Icon from 'antd/lib/icon';
+import Modal from 'antd/lib/modal/Modal';
+import Table from 'antd/lib/table/Table';
+
 /**
  * 歌曲列表
  */

@@ -5,7 +5,7 @@ import { observable, computed, autorun } from "mobx"
 import { Http, Cache } from "../../utils";
 import Store from "../index";
 import formatTool from './formatTool';
-import { notification } from "antd";
+// import { notification } from "antd";
 class cacheData {
     constructor() {
     }

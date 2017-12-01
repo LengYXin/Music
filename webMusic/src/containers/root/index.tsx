@@ -9,7 +9,7 @@ import FooterR from "./footer";
 import Body from "./body";
 import Menu from "./menu";
 
-import { Layout } from 'antd';
+import Layout from 'antd/lib/layout';
 const { Header, Footer, Sider, Content } = Layout;
 import './style.css'
 /**

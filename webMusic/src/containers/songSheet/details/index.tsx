@@ -2,11 +2,20 @@ import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
-import { Card, Tag, Row, Col, Tabs, Icon, Avatar, Button } from 'antd';
-const { TabPane } = Tabs;
+// import { Card, Tag, Row, Col, Tabs, Icon, Avatar, Button } from 'antd';
 import './style.css'
 import {Help} from "../../../utils"
 import SongList from "./songList"
+import Row from 'antd/lib/grid/row';
+import Col from 'antd/lib/grid/col';
+import Card from 'antd/lib/card';
+import Tabs from 'antd/lib/tabs';
+import Avatar from 'antd/lib/avatar';
+import Button from 'antd/lib/button/button';
+import Icon from 'antd/lib/icon';
+
+const { TabPane } = Tabs;
+
 /**
  * 歌单详情
  */

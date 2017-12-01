@@ -1,6 +1,8 @@
 import * as React from 'react'
-import { Menu, Icon } from 'antd';
+// import { Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
+import Menu from 'antd/lib/menu';
+import Icon from 'antd/lib/icon';
 const { Item, ItemGroup } = Menu;
 
 export default class extends React.Component<any, any>{

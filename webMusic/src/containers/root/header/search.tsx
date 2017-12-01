@@ -1,12 +1,16 @@
 import * as React from 'react'
 import './style.css'
-import { Icon, Input, AutoComplete as ac } from 'antd';
-const AutoComplete:any= ac;
-const Option = AutoComplete.Option;
-const OptGroup = AutoComplete.OptGroup;
+// import { Icon, Input, AutoComplete as ac } from 'antd';
+
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
+import Input from 'antd/lib/input/Input';
+import AutoC from 'antd/lib/auto-complete';
+import Icon from 'antd/lib/icon';
 
+const AutoComplete:any= AutoC;
+const Option = AutoComplete.Option;
+const OptGroup = AutoComplete.OptGroup;
 const dataSource = [{
     title: '话题',
     children: [{

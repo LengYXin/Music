@@ -3,7 +3,9 @@ import { observer, inject } from 'mobx-react';
 
 import './style.css'
 import { AudioPlay } from "../../../components"
-import { Icon } from 'antd';
+// import { Icon } from 'antd';
+import Icon from 'antd/lib/icon';
+
 @inject('playStore')
 @observer
 export default class extends React.Component<any, any> {

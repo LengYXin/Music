@@ -1,12 +1,14 @@
 import * as React from 'react'
 import { renderRoutes } from 'react-router-config';
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
-import { Tabs, Icon } from 'antd';
+// import { Tabs, Icon } from 'antd';
+import Tabs from 'antd/lib/tabs';
 const TabPane = Tabs.TabPane;
 import { observer, inject } from 'mobx-react';
 import './style.css'
 
 import { PersonalityComponent, SongSheetComponent } from "../songSheet"
+
 
 /**
  * 发现音乐
