@@ -22,8 +22,20 @@ module.exports = (evn = {}) => {
         extractSASS,
         extractCSS,
         // 注明共享 层次关系 app- > vendor- > polyfills
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: ['app', 'vendor']
+        // }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor']
+            name: "vendor",
+            minChunks: function (module) {
+                // This prevents stylesheet resources with the .css or .scss extension
+                // from being moved from their original chunk to the vendor chunk
+                // console.log("module.context----------------------",module.context);
+                if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                    return false;
+                }
+                return module.context && module.context.indexOf("node_modules") !== -1;
+            }
         }),
         // 把生成的文件插入到 启动页中
         new HtmlWebpackPlugin({
@@ -52,7 +64,7 @@ module.exports = (evn = {}) => {
     })) : undefined;
     return {
         entry: {
-            'vendor': './src/vendor.ts', //第三方依赖
+            // 'vendor': './src/vendor.ts', //第三方依赖
             'app': './src/index.tsx' //应用程序
         },
         output: {

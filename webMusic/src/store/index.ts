@@ -1,4 +1,5 @@
 import windowsStore from './store/windows';
+import basicDataStore from "./store/basicData";
 import UserContextStore from './store/userContext';
 import recommendStore from './store/recommend';
 import songSheetStore from './store/songSheet';
@@ -18,6 +19,8 @@ class store {
     playStore = new playStore();
     // mv
     mvStore = new mvStore();
+    // 基础数据
+    basicDataStore = new basicDataStore();
     // 用户
     UserContextStore = new UserContextStore();
     // 个性推荐
@@ -27,20 +30,7 @@ class store {
     // 音乐
     musicStore = new musicStore();
     ready() {
-        //清理缓存 2小时一次
-        let time = new Date().getTime();
-        try {
-            let cacheTime = + window.localStorage.getItem("cacheTime");
-            if (time - cacheTime > 7200000) {
-                window.localStorage.clear();
-                window.sessionStorage.clear();
-                window.localStorage.setItem("cacheTime", time.toString());
-            }
-        } catch (error) {
-            window.localStorage.clear();
-            window.sessionStorage.clear();
-            window.localStorage.setItem("cacheTime", time.toString());
-        }
+
         //设置全局 变量
         window["globalMusic"] = {
             defaultImg: "/assets/img/default_album.jpg"

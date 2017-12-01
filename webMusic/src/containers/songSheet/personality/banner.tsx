@@ -8,17 +8,36 @@ import './style.css'
 /**
  * 个性推荐
  */
-@inject('songSheetStore')
+@inject('basicDataStore')
 @observer
 export default class extends React.Component<any, any> {
     render() {
-        return (
-            <Carousel >
-                <div><h3>1</h3></div>
-                <div><h3>2</h3></div>
-                <div><h3>3</h3></div>
-                <div><h3>4</h3></div>
-            </Carousel>
-        )
+        if (this.props.basicDataStore.banner && this.props.basicDataStore.banner.length) {
+            const settings = {
+                className: 'banner-center',
+                centerMode: true,
+                // fade: true,
+                // infinite: true,
+                centerPadding: '100px',
+                // slidesToShow: 3,
+                // speed: 500
+                beforeChange: (e, i) => {
+                    console.log(e, i);
+                }
+            };
+            return (
+                <Carousel {...settings} >
+                    {this.props.basicDataStore.banner.map((x, i) =>
+                        <div className="banner-img" key={i}>
+                            <img src={x.pic} alt="" />
+                        </div>
+                    )}
+                </Carousel>
+            )
+        }
+        return <Carousel >
+            <div><img src={globalMusic.defaultImg} alt="" /></div>
+        </Carousel>
+
     }
 }
