@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "packager": "npm run build && electron-packager . index --win --out build",
-    "build": "webpack  --progress",
-    "start": "npm run build && electron .",
+    "build": "npm run compile && electron-packager . index --win --out build",
+    "compile": "webpack  --progress",
+    "start": "npm run compile && electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
