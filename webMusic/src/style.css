@@ -27,4 +27,6 @@ img {
     background-image: url(/assets/img/default_album.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+    user-select: none;
+    -webkit-user-drag: none;
 }

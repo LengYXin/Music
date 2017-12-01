@@ -35,7 +35,9 @@ export default class ObservableStore {
     @observable showList = false;
     // 显示歌词
     @observable showLyric = false;
-    constructor() {
+    controller;
+    constructor(controller) {
+        this.controller = controller;
         this.audio.autoplay = true;
         this.addEventListener();
     }
@@ -300,7 +302,8 @@ export default class ObservableStore {
                     message: '购买专辑',
                     description: '版权方要求，当前专辑需单独付费，购买数字专辑即可无限畅享',
                 });
-                return;
+                // 下一首
+                return this.next();
             }
             // await this.getMusic(ids.join(","));
             // await this.getLyric(play.id);

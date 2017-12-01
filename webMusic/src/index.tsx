@@ -3,7 +3,7 @@
 import * as React from 'react';
 import './assets/css/antd.css';
 import './assets/css/video-js.css';
-
+import './assets/css/swiper.css';
 import { render } from 'react-dom';
 import { Provider, observer } from 'mobx-react';
 // import { RootApp } from './containers';

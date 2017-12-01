@@ -2,10 +2,13 @@
  * Music
  */
 import { observable, computed, autorun } from "mobx"
-import { Http,Cache } from "../../utils"
+import { Http, Cache } from "../../utils"
 
 export default class ObservableStore {
-    constructor() { }
+    constructor(controller) {
+        this.controller = controller;
+    }
+    controller;
     // MV列表
     @observable MVList = Cache.localGet("MVList", {});
     // 播放
@@ -42,7 +45,7 @@ export default class ObservableStore {
             res = this.MVList[id];
         }
         this.MVList = { ...this.MVList, ...data };
-        Cache.localSet("MVList",this.MVList);
+        Cache.localSet("MVList", this.MVList);
         return res;
     }
 

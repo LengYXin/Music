@@ -17,10 +17,12 @@ export default class ObservableStore {
 
     constructor() {
         // console.log(Help);
-        this.getPlaylist();
-        this.getResource();
+        // this.getPlaylist();
+        // this.getResource();
     }
-    // 获取每日推荐歌单
+    /**
+     * 获取每日推荐歌单
+     */ 
     async getResource() {
         if (!this.resource) {
             this.resource = await Http.get(`recommend/resource`).map(x => formatTool.formatSongSheet(x.recommend, {
@@ -32,7 +34,9 @@ export default class ObservableStore {
         }
         return this.resource;
     }
-    // 获取歌单
+    /**
+     * 获取歌单
+     */ 
     async getPlaylist() {
         if (!this.playlist) {
             this.playlist = await Http.get(`top/playlist`).map(x => formatTool.formatSongSheet(x.playlists, {
@@ -44,6 +48,10 @@ export default class ObservableStore {
         }
         return this.playlist;
     }
+    /**
+     * 获取歌单详情
+     * @param id 
+     */
     async getDetails(id) {
         // playlist/detail?id=20320734
         this.details = {};

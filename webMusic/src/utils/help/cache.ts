@@ -63,6 +63,14 @@ export default class Cache {
     localSet(key, value) {
         // 这里怎么处理，用什么处理 外界不用担心
         try {
+            // 数组为空跳过 
+            if (Array.isArray(value) && value.length < 1) {
+                return;
+            }
+            // ObservableArray Array.isArray 没用所以。。。
+            if (value.length == 0) {
+                return;
+            }
             this.localStorage.setItem(key, JSON.stringify(value));
         } catch (error) {
             console.error(error);

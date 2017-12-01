@@ -21,8 +21,21 @@ export class MVDetailsComponent extends React.Component<any, any> {
                 autoplay: true,
                 preload: 'auto'
             });
-            console.log(this.video);
+            this.addEventListener();
+            // console.log(this.video);
         }
+    }
+    addEventListener() {
+        // 开始播放
+        this.video.on("play", e => {
+            // 通知 mv 播放
+            this.props.mvStore.controller.subject.next({ type: EnumNotice.MVPlay, data: true });
+        });
+        //暂停
+        this.video.on("pause", e => {
+            // 通知 mv 播放
+            this.props.mvStore.controller.subject.next({ type: EnumNotice.MVPlay, data: false });
+        });
     }
     render() {
         // console.log(this.props.mvStore.current.id);
