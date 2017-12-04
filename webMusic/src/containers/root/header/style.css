@@ -16,9 +16,11 @@
     display: flex;
     padding: 0 10px;
 }
+
 .root-header-logo>a:focus {
     text-decoration: none;
 }
+
 .root-header-logo img {
     height: 63px;
     width: 63px;
@@ -50,6 +52,7 @@
     -webkit-app-region: no-drag;
 }
 
+
 /* .root-header-btns a:hover {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
@@ -61,20 +64,25 @@
 }
 
 .root-header-user {
-    flex: 1
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .root-header-operation {
     display: flex;
     -webkit-app-region: no-drag;
 }
-.root-header-operation a{
+
+.root-header-operation a {
     flex: 1;
     font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.8);
     padding: 0 10px;
     -webkit-app-region: no-drag;
 }
-.certain-category-search-wrapper{
+
+.certain-category-search-wrapper {
     -webkit-app-region: no-drag;
 }

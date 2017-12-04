@@ -1,0 +1,24 @@
+
+.header-user-body{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+.header-user-context{
+    width: 300px;
+}
+.header-user-nickname{
+    margin-left: 5px;
+}
+
+/* 登录容器样式 */
+.login-modal{
+
+}
+.login-modal .ant-modal-body{
+    height: 500px;
+}

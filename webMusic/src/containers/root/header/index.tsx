@@ -6,6 +6,7 @@ import Icon from 'antd/lib/icon';
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import Search from "./search"
+import {HeaderUserComponent} from "../../user"
 @inject('windowsStore')
 @observer
 export default class extends React.Component<any, any>{
@@ -44,7 +45,9 @@ export default class extends React.Component<any, any>{
                 <div className="root-header-search">
                     <Search />
                 </div>
-                <div className="root-header-user"></div>
+                <div className="root-header-user">
+                    <HeaderUserComponent />
+                </div>
                 <div className="root-header-operation">
                     <a onClick={this.onMinus.bind(this)} title="最小化"><Icon type="minus" /></a>
                     <a onClick={this.onAlt.bind(this)} title="最大化" ><Icon type="arrows-alt" /></a>

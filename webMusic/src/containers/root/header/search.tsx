@@ -1,7 +1,4 @@
 import * as React from 'react'
-import './style.css'
-// import { Icon, Input, AutoComplete as ac } from 'antd';
-
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import Input from 'antd/lib/input/Input';
