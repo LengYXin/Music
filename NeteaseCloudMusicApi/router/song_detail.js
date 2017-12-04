@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     ids: '[' + id + ']',
     csrf_token: ''
   }
-  // console.log(data)
+  console.log(data)
   createWebAPIRequest(
     'music.163.com',
     '/weapi/v3/song/detail',

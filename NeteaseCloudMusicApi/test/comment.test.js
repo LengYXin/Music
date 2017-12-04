@@ -19,9 +19,9 @@ describe('测试获取评论是否正常', () => {
       data,
       cookie,
       music_req => {
-        // console.log({
-        //   code: JSON.parse(music_req).code
-        // })
+        console.log({
+          code: JSON.parse(music_req).code
+        })
         assert(JSON.parse(music_req).code === 200)
         done()
       },

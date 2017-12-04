@@ -20,7 +20,7 @@ describe('测试获取歌曲是否正常', () => {
       data,
       cookie,
       music_req => {
-        // console.log(JSON.parse(music_req).data[0].url)
+        console.log(JSON.parse(music_req).data[0].url)
         assert(!!JSON.parse(music_req).data[0].url)
         done()
       },

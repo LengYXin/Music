@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     userId: req.query.uid,
     csrf_token: ''
   }
-  // console.log(data)
+  console.log(data)
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
 
   createWebAPIRequest(
