@@ -253,13 +253,13 @@ module.exports = function (port, url) {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const express = __webpack_require__(0)
-const http = __webpack_require__(2)
-const apicache = __webpack_require__(8)
-const path = __webpack_require__(4)
-const app = express()
+const express = __webpack_require__(0);
+const http = __webpack_require__(2);
+const apicache = __webpack_require__(8);
+const path = __webpack_require__(4);
 const history =  __webpack_require__(9)
-let cache = apicache.middleware
+const app = express();
+let cache = apicache.middleware;
 
 // 跨域设置
 // app.all('*', function (req, res, next) {
@@ -273,231 +273,233 @@ let cache = apicache.middleware
 //   }
 //   next()
 // })
-const onlyStatus200 = (req, res) => res.statusCode === 200
-app.use(cache('2 minutes', onlyStatus200))
+const onlyStatus200 = (req, res) => res.statusCode === 200;
 
-// app.use(express.static(path.join(path.dirname(__dirname), "webMusic", "build")))
+app.use(cache("2 minutes", onlyStatus200));
+
+app.use(express.static(path.resolve(__dirname, "public")));
 
 // 获取专辑内容
-app.use('/album', __webpack_require__(10))
+app.use("/album", __webpack_require__(10));
 
 // 获取歌手单曲
-app.use('/artists', __webpack_require__(14))
+app.use("/artists", __webpack_require__(14));
 
 // 获取歌手专辑列表
-app.use('/artist/album', __webpack_require__(15))
+app.use("/artist/album", __webpack_require__(15));
 
 //艺术家-信息
-app.use('/artist/desc', __webpack_require__(16))
+app.use("/artist/desc", __webpack_require__(16));
 
 //艺术家-mv
-app.use('/artist/mv', __webpack_require__(17))
+app.use("/artist/mv", __webpack_require__(17));
 
 // 获取 banner
-app.use('/banner', __webpack_require__(18))
+app.use("/banner", __webpack_require__(18));
 
-app.use('/check/music', __webpack_require__(19))
+app.use("/check/music", __webpack_require__(19));
 
-app.use('/comment/music', __webpack_require__(20))
+app.use("/comment/music", __webpack_require__(20));
 
-app.use('/comment/mv', __webpack_require__(21))
+app.use("/comment/mv", __webpack_require__(21));
 
-app.use('/comment/album', __webpack_require__(22))
+app.use("/comment/album", __webpack_require__(22));
 
-app.use('/comment/playlist', __webpack_require__(23))
+app.use("/comment/playlist", __webpack_require__(23));
 
 //未知 api
-app.use('/comment/like', __webpack_require__(24))
+app.use("/comment/like", __webpack_require__(24));
 
-app.use('/comment/dj', __webpack_require__(25))
+app.use("/comment/dj", __webpack_require__(25));
 
 //签到
-app.use('/daily_signin', __webpack_require__(26))
+app.use("/daily_signin", __webpack_require__(26));
 
 //djradio detail
-app.use('/dj/detail', __webpack_require__(27))
+app.use("/dj/detail", __webpack_require__(27));
 
 //dj主播 radio
-app.use('/dj/program', __webpack_require__(28))
+app.use("/dj/program", __webpack_require__(28));
 
-app.use('/dj/program/detail', __webpack_require__(29))
+app.use("/dj/program/detail", __webpack_require__(29));
 
-app.use('/dj/sub', __webpack_require__(30))
+app.use("/dj/sub", __webpack_require__(30));
 
-app.use('/dj/catelist', __webpack_require__(31))
+app.use("/dj/catelist", __webpack_require__(31));
 
-app.use('/dj/hot', __webpack_require__(32))
+app.use("/dj/hot", __webpack_require__(32));
 
 // 精选电台
-app.use('/dj/recommend', __webpack_require__(33))
+app.use("/dj/recommend", __webpack_require__(33));
 
 //精选电台-分类电台
-app.use('/dj/recommend/type', __webpack_require__(34))
+app.use("/dj/recommend/type", __webpack_require__(34));
 
 //获取动态
-app.use('/event', __webpack_require__(35))
+app.use("/event", __webpack_require__(35));
 
 //垃圾桶
-app.use('/fm_trash', __webpack_require__(36))
+app.use("/fm_trash", __webpack_require__(36));
 
-app.use('/follow', __webpack_require__(37))
+app.use("/follow", __webpack_require__(37));
 
 // 喜欢歌曲
-app.use('/like', __webpack_require__(38))
+app.use("/like", __webpack_require__(38));
 
-app.use('/likelist', __webpack_require__(39))
+app.use("/likelist", __webpack_require__(39));
 
 //手机登录
-app.use('/login/cellphone', __webpack_require__(40))
+app.use("/login/cellphone", __webpack_require__(40));
 
 //邮箱登录
-app.use('/login', __webpack_require__(41))
+app.use("/login", __webpack_require__(41));
 
 //登录刷新
-app.use('/login/refresh', __webpack_require__(42))
+app.use("/login/refresh", __webpack_require__(42));
 
 // 不明 api
-app.use('/log/web', __webpack_require__(43))
+app.use("/log/web", __webpack_require__(43));
 
 // 获取歌词
-app.use('/lyric', __webpack_require__(44))
+app.use("/lyric", __webpack_require__(44));
 
 // 获取音乐 url
-app.use('/music/url', __webpack_require__(45))
+app.use("/music/url", __webpack_require__(45));
 
 //最新 mv
-app.use('/mv/first', __webpack_require__(46))
+app.use("/mv/first", __webpack_require__(46));
 
 //播放 mv
-app.use('/mv/url', __webpack_require__(47))
+app.use("/mv/url", __webpack_require__(47));
 
 //mv
-app.use('/mv', __webpack_require__(48))
+app.use("/mv", __webpack_require__(48));
 
 // 私人 FM
-app.use('/personal_fm', __webpack_require__(49))
+app.use("/personal_fm", __webpack_require__(49));
 
 //推荐歌单
-app.use('/personalized', __webpack_require__(50))
+app.use("/personalized", __webpack_require__(50));
 
 //推荐dj
-app.use('/personalized/djprogram', __webpack_require__(51))
+app.use("/personalized/djprogram", __webpack_require__(51));
 
 //推荐新音乐
-app.use('/personalized/newsong', __webpack_require__(52))
+app.use("/personalized/newsong", __webpack_require__(52));
 
 //独家放送
 app.use(
-  '/personalized/privatecontent',
+  "/personalized/privatecontent",
   __webpack_require__(53)
-)
+);
 
 //推荐mv
-app.use('/personalized/mv', __webpack_require__(54))
+app.use("/personalized/mv", __webpack_require__(54));
 
 // 获取歌单内列表
-app.use('/playlist/detail', __webpack_require__(55))
+app.use("/playlist/detail", __webpack_require__(55));
 
 //收藏单曲到歌单,从歌单删除歌曲 op=del,add;pid=歌单id,tracks=歌曲id
-app.use('/playlist/tracks', __webpack_require__(56))
+app.use("/playlist/tracks", __webpack_require__(56));
 
-app.use('/playlist/hot', __webpack_require__(57))
+app.use("/playlist/hot", __webpack_require__(57));
 
-app.use('/playlist/catlist', __webpack_require__(58))
+app.use("/playlist/catlist", __webpack_require__(58));
 
 //推荐节目
-app.use('/program/recommend', __webpack_require__(59))
+app.use("/program/recommend", __webpack_require__(59));
 
 // 获取每日推荐歌曲
-app.use('/recommend/songs', __webpack_require__(60))
+app.use("/recommend/songs", __webpack_require__(60));
 
 // 获取每日推荐歌单
-app.use('/recommend/resource', __webpack_require__(61))
+app.use("/recommend/resource", __webpack_require__(61));
 
 //取消推荐
-app.use('/recommend/dislike', __webpack_require__(62))
+app.use("/recommend/dislike", __webpack_require__(62));
 
-app.use('/resource/like', __webpack_require__(63))
+app.use("/resource/like", __webpack_require__(63));
 
 // 搜索
-app.use('/search', __webpack_require__(64))
+app.use("/search", __webpack_require__(64));
 
 //搜索 multimatch
-app.use('/search/multimatch', __webpack_require__(65))
+app.use("/search/multimatch", __webpack_require__(65));
 
 // 搜索 suggest,搜索结果包含单曲,歌手,歌单,mv信息
-app.use('/search/suggest', __webpack_require__(66))
+app.use("/search/suggest", __webpack_require__(66));
 
 //simi ,相似歌单
-app.use('/simi/playlist', __webpack_require__(67))
+app.use("/simi/playlist", __webpack_require__(67));
 
 //simi ,相似歌曲
-app.use('/simi/song', __webpack_require__(68))
+app.use("/simi/song", __webpack_require__(68));
 
 //相似 mv
-app.use('/simi/mv', __webpack_require__(69))
+app.use("/simi/mv", __webpack_require__(69));
 
 //simi ,相似关注的用户
-app.use('/simi/user', __webpack_require__(70))
+app.use("/simi/user", __webpack_require__(70));
 
 //相似歌手
-app.use('/simi/artist', __webpack_require__(71))
+app.use("/simi/artist", __webpack_require__(71));
 
 // 获取音乐详情
-app.use('/song/detail', __webpack_require__(72))
+app.use("/song/detail", __webpack_require__(72));
 
 // 新碟上架 http://music.163.com/#/discover/album/
-app.use('/top/album', __webpack_require__(73))
+app.use("/top/album", __webpack_require__(73));
 
 // 热门歌手 http://music.163.com/#/discover/artist/
-app.use('/top/artists', __webpack_require__(74))
+app.use("/top/artists", __webpack_require__(74));
 
-app.use('/top/list', __webpack_require__(75))
+app.use("/top/list", __webpack_require__(75));
 
-app.use('/top/mv', __webpack_require__(76))
+app.use("/top/mv", __webpack_require__(76));
 
 //分类歌单
-app.use('/top/playlist', __webpack_require__(77))
+app.use("/top/playlist", __webpack_require__(77));
 
 //精品歌单
 app.use(
-  '/top/playlist/highquality',
+  "/top/playlist/highquality",
   __webpack_require__(78)
-)
+);
 
-app.use('/top/song', __webpack_require__(79))
+app.use("/top/song", __webpack_require__(79));
 
-app.use('/toplist', __webpack_require__(80))
+app.use("/toplist", __webpack_require__(80));
 
-app.use('/toplist/artist', __webpack_require__(81))
+app.use("/toplist/artist", __webpack_require__(81));
 
-app.use('/toplist/detail', __webpack_require__(82))
+app.use("/toplist/detail", __webpack_require__(82));
 
 // 获取用户歌单
-app.use('/user/playlist', __webpack_require__(83))
+app.use("/user/playlist", __webpack_require__(83));
 
 // 获取用户电台
-app.use('/user/audio', __webpack_require__(84))
+app.use("/user/audio", __webpack_require__(84));
 
 //云盘数据
-app.use('/user/cloud', __webpack_require__(85))
+app.use("/user/cloud", __webpack_require__(85));
 
 //云盘数据详情? 暂时不要使用
-app.use('/user/cloud/search', __webpack_require__(86))
+app.use("/user/cloud/search", __webpack_require__(86));
 //用户动态
-app.use('/user/event', __webpack_require__(87))
+app.use("/user/event", __webpack_require__(87));
 
-app.use('/user/detail', __webpack_require__(88))
+app.use("/user/detail", __webpack_require__(88));
 
-app.use('/user/dj', __webpack_require__(89))
+app.use("/user/dj", __webpack_require__(89));
 
-app.use('/user/followeds', __webpack_require__(90))
+app.use("/user/followeds", __webpack_require__(90));
 
-app.use('/user/follows', __webpack_require__(91))
+app.use("/user/follows", __webpack_require__(91));
 
-app.use('/user/subcount', __webpack_require__(92))
+app.use("/user/subcount", __webpack_require__(92));
 
-app.use('/user/record', __webpack_require__(93))
+app.use("/user/record", __webpack_require__(93));
+
 app.use(history());
 // const port = process.env.PORT || 4001
 module.exports = function (port, url) {
@@ -1809,27 +1811,33 @@ module.exports = router
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const express = __webpack_require__(0)
-const router = express()
-const { createWebAPIRequest } = __webpack_require__(1)
+const express = __webpack_require__(0);
+const router = express();
+const { createWebAPIRequest } = __webpack_require__(1);
 
-router.get('/', (req, res) => {
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  const data = {}
+router.get("/", (req, res) => {
+  const cookie = req.get("Cookie") ? req.get("Cookie") : "";
+  const data = {
+    limit: req.query.limit || 30,
+    offset: req.query.limit || 0,
+    total: true,
+    n: 1000,
+    csrf_token: ""
+  };
   createWebAPIRequest(
-    'music.163.com',
-    '/weapi/personalized/playlist',
-    'POST',
+    "music.163.com",
+    "/weapi/personalized/playlist",
+    "POST",
     data,
     cookie,
     music_req => {
-      res.send(music_req)
+      res.send(music_req);
     },
-    err => res.status(502).send('fetch error')
-  )
-})
+    err => res.status(502).send("fetch error")
+  );
+});
 
-module.exports = router
+module.exports = router;
 
 
 /***/ }),
@@ -2520,7 +2528,7 @@ router.get('/', (req, res) => {
     ids: '[' + id + ']',
     csrf_token: ''
   }
-  // console.log(data)
+  console.log(data)
   createWebAPIRequest(
     'music.163.com',
     '/weapi/v3/song/detail',
@@ -2609,47 +2617,61 @@ module.exports = router
 /***/ (function(module, exports, __webpack_require__) {
 
 const top_list_all = {
-  '0': ['云音乐新歌榜', '/api/playlist/detail?id=3779629'],
-  '1': ['云音乐热歌榜', '/api/playlist/detail?id=3778678'],
-  '2': ['网易原创歌曲榜', '/api/playlist/detail?id=2884035'],
-  '3': ['云音乐飙升榜', '/api/playlist/detail?id=19723756'],
-  '4': ['云音乐电音榜', '/api/playlist/detail?id=10520166'],
-  '5': ['UK排行榜周榜', '/api/playlist/detail?id=180106'],
-  '6': ['美国Billboard周榜', '/api/playlist/detail?id=60198'],
-  '7': ['KTV嗨榜', '/api/playlist/detail?id=21845217'],
-  '8': ['iTunes榜', '/api/playlist/detail?id=11641012'],
-  '9': ['Hit FM Top榜', '/api/playlist/detail?id=120001'],
-  '10': ['日本Oricon周榜', '/api/playlist/detail?id=60131'],
-  '11': ['韩国Melon排行榜周榜', '/api/playlist/detail?id=3733003'],
-  '12': ['韩国Mnet排行榜周榜', '/api/playlist/detail?id=60255'],
-  '13': ['韩国Melon原声周榜', '/api/playlist/detail?id=46772709'],
-  '14': ['中国TOP排行榜(港台榜)', '/api/playlist/detail?id=112504'],
-  '15': ['中国TOP排行榜(内地榜)', '/api/playlist/detail?id=64016'],
-  '16': ['香港电台中文歌曲龙虎榜', '/api/playlist/detail?id=10169002'],
-  '17': ['华语金曲榜', '/api/playlist/detail?id=4395559'],
-  '18': ['中国嘻哈榜', '/api/playlist/detail?id=1899724'],
-  '19': ['法国 NRJ EuroHot 30周榜', '/api/playlist/detail?id=27135204'],
-  '20': ['台湾Hito排行榜', '/api/playlist/detail?id=112463'],
-  '21': ['Beatport全球电子舞曲榜', '/api/playlist/detail?id=3812895']
-}
-const express = __webpack_require__(0)
-const router = express()
-const { createRequest } = __webpack_require__(1)
+  "0": ["云音乐新歌榜", "3779629"],
+  "1": ["云音乐热歌榜", "3778678"],
+  "2": ["网易原创歌曲榜", "2884035"],
+  "3": ["云音乐飙升榜", "19723756"],
+  "4": ["云音乐电音榜", "10520166"],
+  "5": ["UK排行榜周榜", "180106"],
+  "6": ["美国Billboard周榜", "60198"],
+  "7": ["KTV嗨榜", "21845217"],
+  "8": ["iTunes榜", "11641012"],
+  "9": ["Hit FM Top榜", "120001"],
+  "10": ["日本Oricon周榜", "60131"],
+  "11": ["韩国Melon排行榜周榜", "3733003"],
+  "12": ["韩国Mnet排行榜周榜", "60255"],
+  "13": ["韩国Melon原声周榜", "46772709"],
+  "14": ["中国TOP排行榜(港台榜)", "112504"],
+  "15": ["中国TOP排行榜(内地榜)", "64016"],
+  "16": ["香港电台中文歌曲龙虎榜", "10169002"],
+  "17": ["华语金曲榜", "4395559"],
+  "18": ["中国嘻哈榜", "1899724"],
+  "19": ["法国 NRJ EuroHot 30周榜", "27135204"],
+  "20": ["台湾Hito排行榜", "112463"],
+  "21": ["Beatport全球电子舞曲榜", "3812895"]
+};
+const express = __webpack_require__(0);
+const router = express();
+const { createWebAPIRequest } = __webpack_require__(1);
 
-router.get('/', (req, res) => {
-  const idx = req.query.idx
-  const action = 'http://music.163.com' + top_list_all[idx][1]
-  createRequest(`${action}`, 'GET', null)
-    .then(result => {
-      res.setHeader('Content-Type', 'application/json')
-      res.send(result)
-    })
-    .catch(err => {
-      res.status(502).send('fetch error')
-    })
-})
+router.get("/", (req, res) => {
+  const idx = req.query.idx;
+  const id = top_list_all[idx][1];
+  const cookie = req.get("Cookie") ? req.get("Cookie") : "";
+  const action = "/weapi/v3/playlist/detail";
+  const data = {
+    id,
+    limit: req.query.limit || 30,
+    offset: req.query.limit || 0,
+    total: true,
+    n: 1000,
+    csrf_token: ""
+  };
+  createWebAPIRequest(
+    "music.163.com",
+    action,
+    "POST",
+    data,
+    cookie,
+    music_req => {
+      res.setHeader("Content-Type", "application/json");
+      res.send(music_req);
+    },
+    err => res.status(502).send("fetch error")
+  );
+});
 
-module.exports = router
+module.exports = router;
 
 
 /***/ }),
@@ -2822,7 +2844,7 @@ module.exports = router
 /* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-//艺术家分类
+//歌手榜
 const express = __webpack_require__(0)
 const router = express()
 const { createWebAPIRequest } = __webpack_require__(1)
@@ -2835,7 +2857,7 @@ router.get('/', (req, res) => {
   }
   createWebAPIRequest(
     'music.163.com',
-    '/weapi/toplist/artist',
+    '/eapi/toplist/artist?params=B5CAE4715306477C2EFA74D383640F01BF227BF8E889F80E2E2A442958463A7E589CC99878CFCE88D165B64712332AF39EC61B7E68903B2F9F079E8D1AB99FC61049A6D5B97AF8E6FFE8DA16ED540D2CFA80205B889ACA39F8B05AE593FDF5A094F118FF4600C2025094ECF6EB58F6D424B7A97B21A8C1D7CF0609AF2FBE9FDD88826E1667C889757BA920684C5C425FF01B5514AF1EB08AB7D298DB4D65187829E315F9FFBBEB43C2AE3DC21222B31CEC6FF337957AC122FBCB3E793FC1960151B0BDEBB1565BFD835E7A7D6A2D034A5591070D42C32DA4B69E0061C46D61239221A1C64EF676D891B44D7B855E27C82A7EB376F0B0C27952F2006E302B47DA1DE86C3488D53FD98ED9FDC6AA341DF0ECF92BA2E8F77E41811BF9447973C5C34FFED13E28AC544347F9E6ADF4B0008C371FC41C4490D3C9E1A225791D2170326231C40662633AA93D5CEF9AABC777AF268A4B13C560157339478DFAD5D910C966B43E1F017410DBF06D189E2BD6D0CD2682F343A83994E66CA73B5E2A67A122842BF945F2B434CBDE4C5A589A3A90F70DF1A8B63E7BAFBEB624956C62CFB1114AB841379541E5BB4625F2C28CAEA6A67E77A7EEAA1149D9D0F7E190D3A3408DF88B62FBF27996ABC925A93E5A67B4B0D1D931214BB07064F2BA4DCBA2E548E5A110E9B992C21E3930EB488172929C02C06D76BB193EF923D1906E0A0C4D75F5EB909AE77B0A2E55539A182D0B2533C654F2C90A038406B8850BFC022639F2B3FB7EDF40FD74AEA0B9119E9987D2909C01C587794F53459DB8EE83AA8D15FBEAC71EB3A00D8E40E78FE9A9A4068495D9257B39D8F825086F391FD5E7A48AACA96BC261E334A1929C81633234A0B22C573AEAD05BC8B4216283ACFD9E022950AEC812F554B913B4457FDF68AA2CC5E476922C2670D49154BC1DEB6D464F60DBFAD2BB4144762CD3721F52D42FDAE56DB9C529EDB6FB946CD725B3E2EA2AFDCF3F759D384B4F7F75AAA6F01F8093C8A140B3B388FF57272A6A7E10274290A79CDCA69E37BC066CE8CCD5B4BB4E12DA841B',
     'POST',
     data,
     cookie,
@@ -2924,7 +2946,7 @@ router.get('/', (req, res) => {
     userId: req.query.uid,
     csrf_token: ''
   }
-  // console.log(data)
+  console.log(data)
   const cookie = req.get('Cookie') ? req.get('Cookie') : ''
 
   createWebAPIRequest(

@@ -2,6 +2,10 @@ declare var globalMusic: {
     defaultImg: string
 }
 declare enum EnumNotice {
+    /**
+     * 退出登录
+     */ 
+    LoginOut = 0,
     /**登录成功 */
     LoginSuccess = 1,
     /**音乐播放 */

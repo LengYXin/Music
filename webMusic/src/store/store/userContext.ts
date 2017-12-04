@@ -23,7 +23,7 @@ export default class ObservableStore {
     controller: controller;
     /**登录 只支持手机*/
     async onLogin(phone = "18611752863", password = "leng5201314") {
-        let UserContext = await Http.get(`login/cellphone?phone=${phone}&password=${password}`).toPromise();
+        let UserContext = await Http.get(`login/cellphone?phone=${phone}&password=${password}&timestamp=${new Date().getTime()}`).toPromise();
         if (UserContext.code == 200) {
             this.UserContext = UserContext;
             this.login = true;
@@ -43,7 +43,7 @@ export default class ObservableStore {
         this.login = false;
         this.UserContext = {};
         this.userPlaylist = [];
-       
+        this.controller.subject.next({ type: EnumNotice.LoginOut });
         console.log("退出登录");
     }
     /**刷新登录 */

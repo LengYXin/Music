@@ -51,6 +51,7 @@ class store {
         }
         // 通知枚举
         window["EnumNotice"] = {
+            LoginOut: 0,
             LoginSuccess: 1,
             MusicPlay: 2,
             MVPlay: 3
@@ -68,6 +69,11 @@ class store {
     subscribe(x: controllerObserver) {
         console.log("subscribe", x);
         switch (x.type) {
+            // 退出登录
+            case EnumNotice.LoginOut:
+                // 删除 cookie
+                this.windowsStore.emptyCookie();
+                break;
             // 登录成功
             case EnumNotice.LoginSuccess:
                 if (x.data) {
