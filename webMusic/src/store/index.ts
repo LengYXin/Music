@@ -72,6 +72,7 @@ class store {
             case EnumNotice.LoginSuccess:
                 if (x.data) {
                     this.songSheetStore.getResource();
+                    this.UserContextStore.getUserPlaylist();
                 } else {
                     console.log("没有登陆");
                 }

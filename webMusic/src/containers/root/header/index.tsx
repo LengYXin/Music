@@ -8,7 +8,7 @@ import { observer, inject } from 'mobx-react';
 import Search from "./search"
 import {HeaderUserComponent} from "../../user"
 @inject('windowsStore')
-@observer
+// @observer
 export default class extends React.Component<any, any>{
     componentDidMount() {
     }

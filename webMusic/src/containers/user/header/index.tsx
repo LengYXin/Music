@@ -16,7 +16,6 @@ export class HeaderUserComponent extends React.Component<any, any>{
     render() {
         const { UserContext = {}, login } = this.props.UserContextStore;
         const { profile = {} } = UserContext;
-        console.log("profile", profile);
         return login ? (
             <Popover content={this.content()} placement="bottom" trigger="click"><div className="header-user-body">
                 <Avatar size="large" src={profile.avatarUrl} />
@@ -44,7 +43,7 @@ class LoginModal extends React.Component<any, any>{
         this.setState({ modal: !this.state.modal });
     }
     onLogin() {
-        this.props.UserContextStore.onLogin({ phone: "18611752863", password: "leng5201314" });
+        this.props.UserContextStore.onLogin();
     }
     render() {
         // 登录框配置

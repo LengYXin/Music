@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
 // import { Card, Tag, Row, Col, Tabs, Icon, Avatar, Button } from 'antd';
 import './style.css'
-import {Help} from "../../../utils"
+import { Help } from "../../../utils"
 import SongList from "./songList"
 import Row from 'antd/lib/grid/row';
 import Col from 'antd/lib/grid/col';
@@ -24,9 +24,15 @@ const { TabPane } = Tabs;
 export class songSheetDetailsComponent extends React.Component<any, any> {
     componentDidMount() {
         this.props.songSheetStore.getDetails(this.props.match.params.id);
+        console.log("songSheetDetailsComponent");
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.match.params.id != this.props.match.params.id) {
+            this.props.songSheetStore.getDetails(this.props.match.params.id);
+            console.log("songSheetDetailsComponent", prevProps.match.params.id, this.props.match.params.id);
+        }
     }
     render() {
-        // console.log(this.props.songSheetStore.details);
         const detalis = this.props.songSheetStore.details.playlist || {};
         const creator = detalis.creator || {};
         return <div style={{ padding: "15px 0" }}>

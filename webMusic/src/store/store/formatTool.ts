@@ -1,3 +1,13 @@
+declare interface formatSongSheet {
+    id?: string
+    img?: string
+    name?: string
+    userId?: string
+    [key: string]: string
+}
+const formatSongSheet = {
+    id: "id", img: "img", name: "name", userId: "userId"
+}
 // 数据格式化
 class formatTool {
     constructor() {
@@ -48,26 +58,36 @@ class formatTool {
     }
     /**
      *  格式化 歌单
-     * @param list 数据 
+     * @param list 数据 数组 或者对象
      * @param param 需要字段所对应的 数据中的字段
      */
-    formatSongSheet(list: any[], param: { id: string, img: string, name: string } = { id: "id", img: "img", name: "name" }) {
-        let data = [];
+    formatSongSheet(list: any[], param: formatSongSheet = formatSongSheet): any {
         try {
             if (Array.isArray(list)) {
-                data = list.map(x => {
-                    return {
-                        to: `/ssd/${x.id}`,
-                        id: x[param.id],
-                        img: x[param.img] + "?param=180y180",
-                        name: x[param.name]
-                    }
-                });
+                let data = list.map(x => toSS(x));
+                return data;
+            }
+            if (typeof list === "object") {
+                return toSS(list);
             }
         } catch (error) {
             return [];
         }
-        return data;
+        function toSS(x) {
+            let d = {
+                to: `/ssd/${x.id}`,
+                id: x[param.id || formatSongSheet.id],
+                img: x[param.img || formatSongSheet.img] + "?param=180y180",
+                name: x[param.name || formatSongSheet.name],
+                userId: x[param.userId || formatSongSheet.userId]
+            }
+            for (const key in param) {
+                if (param.hasOwnProperty(key)) {
+                    d[key] = x[param[key]];
+                }
+            }
+            return d;
+        }
     }
 }
 export default new formatTool();

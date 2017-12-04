@@ -22,7 +22,11 @@
 .text-align-center,.text-center {
     text-align: center
 }
-
+.text-ellipsis{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
 img {
     background-image: url(/assets/img/default_album.jpg);
     background-size: 100%;

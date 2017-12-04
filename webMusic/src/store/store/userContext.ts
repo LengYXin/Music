@@ -5,10 +5,14 @@ import { observable, computed, autorun } from "mobx"
 import notification from "antd/lib/notification";
 import { Http, Cache } from "../../utils";
 import controller from "../controller";
+import formatTool from './formatTool';
+
 export default class ObservableStore {
     UserID = Cache.localGet("__UserID");
     //当前用户
     @observable UserContext = {};
+    // 用户歌单
+    @observable userPlaylist = [];
     // 登录状态
     @observable login = false;
     // 首次加载用户数据中
@@ -17,12 +21,14 @@ export default class ObservableStore {
         this.controller = controller;
     }
     controller: controller;
-    async onLogin(params: { phone: string, password: string }) {
+    /**登录 只支持手机*/
+    async onLogin(params: { phone: string, password: string } = { phone: "18611752863", password: "leng5201314" }) {
         let UserContext = await Http.get(`login/cellphone?phone=${params.phone}&password=${params.password}`).toPromise();
         if (UserContext.code == 200) {
             this.UserContext = UserContext;
             this.login = true;
-            Cache.localSet("__UserID", UserContext.profile.userId);
+            this.UserID = UserContext.profile.userId;
+            Cache.localSet("__UserID", this.UserID);
             this.controller.subject.next({ type: EnumNotice.LoginSuccess, data: true });
         } else {
             notification["error"]({
@@ -52,6 +58,17 @@ export default class ObservableStore {
     /** 获取用户信息,歌单，收藏，mv, dj 数量*/
     async getSubcount() {
         await Http.get(`user/subcount`).toPromise();
+    }
+    async getUserPlaylist(uid = this.UserID) {
+        this.userPlaylist = await Http.get(`user/playlist?uid=${uid}`).map(x =>
+            x.playlist.map(x => {
+                x.createYourself = x.userId == this.UserID;
+                return formatTool.formatSongSheet(x, {
+                    img: "coverImgUrl",
+                    createYourself: "createYourself"
+                });
+            })
+        ).toPromise();
     }
     // @computed get complete() {
 
