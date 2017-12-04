@@ -76,12 +76,18 @@ export default class Cache {
             console.error(error);
         }
     }
+    // 删除对应的 信息 删除全部的时候 保留用户登录id
     localRemove(key = null, clear = false) {
         if (key) {
             this.localStorage.removeItem(key);
         } else {
             if (clear) {
+                // 循环调用。。。跟个zz一样。哈哈。
+                // let __UserID = this.localGet("__UserID");
+                let __UserID = JSON.parse(this.localStorage.getItem("__UserID"));
                 this.localStorage.clear();
+                // this.localSet("__UserID", __UserID);
+                __UserID && this.localStorage.setItem("__UserID", JSON.stringify(__UserID));
             }
         }
     }

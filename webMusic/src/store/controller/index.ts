@@ -1,10 +1,10 @@
 import Rx from "rxjs";
 
 // 中控
-class Observer {
+export default class Observer {
     constructor() {
        
     }
     subject = new Rx.Subject<controllerObserver>();
 }
-export const controller = new Observer();
+// export const controller = new Observer();

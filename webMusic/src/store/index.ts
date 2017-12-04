@@ -7,7 +7,7 @@ import playStore from './store/play';
 import mvStore from './store/mv';
 
 //中控
-import { controller } from "./controller";
+import controller from "./controller";
 class store {
     constructor() {
         this.ready();
@@ -26,7 +26,7 @@ class store {
     // 窗口
     windowsStore = new windowsStore();
     // 中控
-    controller = controller;
+    controller = new controller();
     // 歌曲播放
     playStore = new playStore(this.controller);
     // mv
@@ -34,7 +34,7 @@ class store {
     // 基础数据
     basicDataStore = new basicDataStore();
     // 用户
-    UserContextStore = new UserContextStore();
+    UserContextStore = new UserContextStore(this.controller);
     // 个性推荐
     // recommendStore = new recommendStore();
     // 歌单
@@ -63,18 +63,25 @@ class store {
     init() {
         this.basicDataStore.getBanner();
         this.songSheetStore.getPlaylist();
+        this.UserContextStore.onRefresh();
     }
     subscribe(x: controllerObserver) {
-        console.log("subscribe",x);
+        console.log("subscribe", x);
         switch (x.type) {
             // 登录成功
             case EnumNotice.LoginSuccess:
+                if (x.data) {
+                    this.songSheetStore.getResource();
+                } else {
+                    console.log("没有登陆");
+                }
                 break;
             // 音乐播放
             case EnumNotice.MusicPlay:
                 break;
             //mv 播放
             case EnumNotice.MVPlay:
+                // 停止播放音乐
                 this.playStore.updatePlayState(!x.data);
                 break;
             default:
