@@ -1,5 +1,5 @@
-
-.header-user-body{
+.header-user-body,
+.user-context {
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -8,17 +8,93 @@
     cursor: pointer;
     -webkit-app-region: no-drag;
 }
-.header-user-context{
-    width: 300px;
+
+.user-row {
+    height: 30px;
 }
-.header-user-nickname{
+.user-row:hover{
+    background: #686868;
+}
+.user-row span {
+   margin-left: 5px;
+}
+
+.user-row .user-context:nth-child(2) {
+    justify-content: flex-end;
+}
+
+.column-reverse {
+    flex-direction: column-reverse;
+}
+
+.header-user-Popover {}
+
+.header-user-Popover .ant-popover-arrow:after {
+    border-bottom-color: #404040 !important;
+}
+
+.header-user-Popover .ant-popover-inner,
+.header-user-context,
+.user-context button,
+.user-context button:focus,
+.user-context button:active,
+.user-context button:hover {
+    background: #404040;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.header-user-context {
+    width: 270px;
+    padding: 10px 0;
+}
+
+.user-context button:focus,
+.user-context button:active,
+.user-context button:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: #686868;
+}
+
+.header-user-nickname {
     margin-left: 5px;
 }
 
-/* 登录容器样式 */
-.login-modal{
 
+/* 登录容器样式 */
+
+.login-modal {}
+
+.login-modal .ant-modal-body {
+    padding-top: 50px;
+    background: rgb(250, 250, 250)
 }
-.login-modal .ant-modal-body{
-    height: 500px;
+
+.login-modal .ant-alert-description {
+    white-space: initial;
+}
+
+.login-modal .ant-form-item:first-child {
+    margin: 0;
+}
+
+.login-modal .ant-form-item:first-child .ant-input {
+    border-bottom: none;
+}
+
+.login-form-button {
+    width: 100%;
+    background: rgb(234, 72, 72);
+    color: #fff;
+}
+
+.login-back {
+    transform: translateX(-16px);
+}
+
+.login-form-button:hover,
+.login-form-button:focus,
+.login-form-button:active {
+    background: rgb(199, 46, 46);
+    color: #fff;
+    border-color: rgb(199, 46, 46);
 }
