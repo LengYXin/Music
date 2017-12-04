@@ -1,3 +1,7 @@
+/* @import '~antd/dist/antd.css';
+@import '~video.js/dist/video-js.css';
+@import '~swiper/dist/css/swiper.css'; */
+
 ::-webkit-scrollbar-track-piece {
     width: 6px;
     background-color: #4e4e5a;

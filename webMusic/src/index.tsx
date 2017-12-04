@@ -1,16 +1,17 @@
 /// <reference path="../typings/index.d.ts" />
 
+import "antd/dist/antd.css";
+import "video.js/dist/video-js.css";
+import "swiper/dist/css/swiper.css";
+
 import * as React from 'react';
-import './assets/css/antd.css';
-import './assets/css/video-js.css';
-import './assets/css/swiper.css';
 import { render } from 'react-dom';
 import { Provider, observer } from 'mobx-react';
-// import { RootApp } from './containers';
 import store from './store';
 import Routers from "./routers";
-import "./style.css";
 
+
+import "./style.css";
 render(
   <Provider
     UserContextStore={store.UserContextStore}        //用户

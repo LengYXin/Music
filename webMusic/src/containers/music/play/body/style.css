@@ -34,7 +34,7 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  padding: 0 1.25rem;
+  padding-right:1.25rem;
 }
 
 .AudioPlay-btns>a {
@@ -111,7 +111,9 @@
   /* width: 18.75rem */
   font-size: 1.25rem;
 }
-
+.AudioPlay-menu .menu-playList{
+  margin-left: 5px
+}
 .AudioPlay-operation {
   position: absolute;
   /* width: 100%; */
