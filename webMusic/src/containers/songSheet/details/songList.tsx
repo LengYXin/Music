@@ -5,20 +5,34 @@ import QueueAnim from 'rc-queue-anim';
 // import { Table, Button, Icon, Modal } from 'antd';
 
 import { MVDetailsComponent } from "../../mv"
-import {Help} from "../../../utils"
+import { Help } from "../../../utils"
 
 import './style.css'
 import Button from 'antd/lib/button/button';
 import Icon from 'antd/lib/icon';
 import Modal from 'antd/lib/modal/Modal';
 import Table from 'antd/lib/table/Table';
-
 /**
  * 歌曲列表
  */
 @inject('playStore')
 @observer
-export default class extends React.Component<any, any> {
+export class SongListComponent extends React.Component<{ songList: any[] }, any> {
+
+    render() {
+        return (
+            <div>
+
+            </div>
+        )
+    }
+}
+/**
+ * 歌曲列表
+ */
+@inject('playStore')
+@observer
+export class SongList extends React.Component<any, any> {
     columns = [{
         title: '',
         dataIndex: '',
@@ -55,7 +69,7 @@ export default class extends React.Component<any, any> {
         render: (text, record) => {
             return (
                 <span className="song-list-name" onClick={e => {
-                    this.setState({ modal2Visible: !this.state.modal2Visible, MVid: text.mv,Name:text.name });
+                    this.setState({ modal2Visible: !this.state.modal2Visible, MVid: text.mv, Name: text.name });
                 }}>{text.name} {
                         text.mv ?
                             <Link to={`/mv/${text.mv}`} > <Icon type="play-circle" /></Link>
@@ -100,7 +114,7 @@ export default class extends React.Component<any, any> {
     state = {
         modal2Visible: false,
         MVid: 0,
-        Name:""
+        Name: ""
     };
     setModal2Visible(modal2Visible) {
         this.setState({ modal2Visible });

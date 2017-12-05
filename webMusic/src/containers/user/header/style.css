@@ -29,8 +29,8 @@
 
 .header-user-Popover {}
 
-.header-user-Popover .ant-popover-arrow:after {
-    border-bottom-color: #404040 !important;
+.header-user-Popover .ant-popover-arrow:after,.header-user-Popover  .ant-popover-arrow {
+    border-color: #404040 !important;
 }
 
 .header-user-Popover .ant-popover-inner,

@@ -23,26 +23,51 @@ class formatTool {
         let regTime = /(\[\d{2}:\d{2}.\d*\])/g;       //匹配 单个[01:50.24]
         let regStr = /(\[.*])/g;                      //匹配 整个[01:50.24]...替换使用
         let regD = /\d{2}/g;                          //匹配 [01:50.24] 中的 数字转换成功毫秒时间点
-        let lyrics = [];
-        if (param && param.lrc && param.lrc.lyric) {
-            //根据换行符 分解歌词
-            param.lrc.lyric.split('\n').map((x: string) => {
+        let lyrics = [];                              //歌词
+        let tlyric = [];                              //翻译
+        //计算 函数   保存数组   歌词||翻译
+        let format = (list, isLyric = false) => {
+            return (x) => {
                 let times = x.match(regTime);//时间段
                 let lyr = x.replace(regStr, "");//歌词
+
                 if (times) {
                     //同一条歌词存在 多个时间点   :[03:27.02][03:11.50][02:33.15][02:16.63][01:07.23][00:50.82]我感动天 感动地 怎么感动不了你
                     times.map(t => {
-                        let time: any[] = t.match(regD).map(tt => parseInt(tt));
-                        lyrics.push({
-                            time: time[0] * 60000 + time[1] * 1000 + time[2],
+                        // 计算时间点
+                        let times: any[] = t.match(regD).map(tt => parseInt(tt));
+                        let time = times[0] * 60000 + times[1] * 1000 + times[2];
+                        // 歌词数据
+                        let data = {
+                            time: time,
                             lyric: lyr
-                        });
+                        };
+                        // 获取翻译
+                        if (isLyric) {
+                            let tlyrs = tlyric.filter(tly => tly.time == time);
+                            if (tlyrs.length) {
+                                data["tlyric"]=tlyrs[0].lyric;
+                            }
+                        }
+                        list.push(data);
                     });
                 }
-            });
+            }
+        }
+        // 歌词 跟 翻译 个数不一致，歌词中带有空行 站位 所以分别计算出歌词跟翻译在进行组合
+        // 先计算翻译 少一次 循环。
+        // 翻译
+        if (param && param.tlyric && param.tlyric.lyric) {
+            param.tlyric.lyric.split('\n').map(format(tlyric));
+        }
+        // 歌词
+        if (param && param.lrc && param.lrc.lyric) {
+            //根据换行符 分解歌词
+            param.lrc.lyric.split('\n').map(format(lyrics, true));
         }
         // 返回  根据 时间点 排序 后的数组
         lyrics = lyrics.sort((a, b) => a.time - b.time);
+        // tlyric = tlyric.sort((a, b) => a.time - b.time);
         // .map((x, i, arr) => {
         //     let length = 0;
         //     try {
@@ -53,7 +78,7 @@ class formatTool {
         //     }
         //     return { ...x, length: length };
         // })
-        // console.log(lyrics);
+        // console.log(lyrics, tlyric);
         return lyrics;
     }
     /**
@@ -77,7 +102,7 @@ class formatTool {
             let d = {
                 to: `/ssd/${x.id}`,
                 id: x[param.id || formatSongSheet.id],
-                img: x[param.img || formatSongSheet.img] + "?param=180y180",
+                img: x[param.img || formatSongSheet.img] + "?param=250y250",
                 name: x[param.name || formatSongSheet.name],
                 userId: x[param.userId || formatSongSheet.userId]
             }

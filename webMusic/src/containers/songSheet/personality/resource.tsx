@@ -5,6 +5,7 @@ import QueueAnim from 'rc-queue-anim';
 // import { Card } from 'antd';
 import './style.css';
 import Card from 'antd/lib/card';
+import { SSCardComponent } from '../public/card';
 const gridStyle = {
     width: '25%',
     height: "287px",
@@ -15,28 +16,33 @@ const gridStyle = {
  */
 @inject('songSheetStore')
 @observer
-export default class  extends React.Component<any, any> {
+export default class extends React.Component<any, any> {
     render() {
         if (this.props.songSheetStore.resource && this.props.songSheetStore.resource.length) {
+
+            let playlist = this.props.songSheetStore.resource.slice();
+            playlist && playlist.unshift(
+                {
+                    to: `/ssd/day`,
+                    img: () => {
+                        const date = new Date();
+                        const days = ["日", "一", "二", "三", "四", "五", "六"];
+                        const day = days[date.getDay()];
+                        const dat = date.getDate();
+                        return <div className="recommend-day">
+                            <div className="recommend-day-1">星期{day}</div>
+                            <div className="recommend-day-2">{dat}</div>
+                        </div>
+                    },
+                    name: "每日歌曲推荐"
+                }
+            );
             return (
                 <QueueAnim key="queue"
                     leaveReverse
                 >
                     <h3 style={{ textAlign: "left", padding: "2px" }}>推荐歌单</h3>
-                    <Card>
-                        {this.props.songSheetStore.resource.map(x => {
-                            return <Card.Grid style={gridStyle} key={x.id}>
-                                <Link to={x.to}>
-                                    <div className="custom-image">
-                                        <img alt="" width="100%" src={x.img} />
-                                    </div>
-                                    <div className="custom-card">
-                                        <h3> {x.name}</h3>
-                                    </div>
-                                </Link>
-                            </Card.Grid>
-                        })}
-                    </Card>
+                    <SSCardComponent songSheet={playlist} />
                 </QueueAnim>
 
             )

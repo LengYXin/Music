@@ -4,7 +4,7 @@
 
 ::-webkit-scrollbar-track-piece {
     width: 6px;
-    background-color:  rgb(34, 34, 37);
+    background-color: rgb(34, 34, 37);
 }
 
 ::-webkit-scrollbar {
@@ -23,18 +23,86 @@
     cursor: pointer
 }
 
-.text-align-center,.text-center {
+.text-align-center,
+.text-center {
     text-align: center
 }
-.text-ellipsis{
+
+.text-ellipsis {
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 img {
     background-image: url(/assets/img/default_album.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     user-select: none;
     -webkit-user-drag: none;
+}
+
+
+/*皮肤*/
+
+.skin-default .ant-layout-sider,
+.skin-default .ant-layout-header,
+.skin-default .ant-menu-dark,
+.skin-default .ant-menu-dark .ant-menu-sub,
+.skin-default .root-footer {
+    background-color: rgb(34, 34, 37);
+}
+
+.skin-default .ant-layout-content {
+    background: rgb(22, 24, 28);
+    color: rgba(255, 255, 255, 0.67);
+}
+
+.skin-default h1,
+.skin-default h2,
+.skin-default h3,
+.skin-default h4,
+.skin-default h5,
+.skin-default h6,
+.skin-default .ant-tag,
+.skin-default .ant-tag a,
+.skin-default .ant-tag a:hover,
+.skin-default .ant-tabs {
+    color: rgba(255, 255, 255, 0.67);
+}
+
+
+/* tabs */
+
+.skin-default .ant-tabs-bar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.67);
+}
+
+.skin-default .ant-tabs-ink-bar {
+    background-color: rgba(255, 255, 255, 0.67);
+}
+
+.skin-default .ant-tabs-nav .ant-tabs-tab-active,
+.skin-default .ant-tabs-nav .ant-tabs-tab:hover,
+.skin-default .ant-tag-checkable:not(.ant-tag-checkable-checked):hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.skin-default .ant-tag-checkable-checked {
+    background-color: rgb(57, 60, 65);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.skin-default .ant-card {
+    background: none;
+    color: rgba(255, 255, 255, 0.67);
+    border: none;
+}
+
+.skin-default .ant-card-grid {
+    box-shadow: none;
+}
+
+.skin-default .ant-card-grid:hover {
+    box-shadow: 0 0px 7px #e8e8e8;
 }

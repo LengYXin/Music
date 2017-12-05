@@ -1,0 +1,29 @@
+.s-s-card {
+  width: 100%;
+  padding: 12px 0;
+}
+
+.s-s-body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 15rem;
+}
+
+.s-s-image {
+  display: block;
+  width: 12.5rem;
+  height: 12.5rem;
+}
+
+.s-s-txt {
+  color: #999;
+  font-size: .9375rem;
+  text-align: left;
+  padding: 0 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

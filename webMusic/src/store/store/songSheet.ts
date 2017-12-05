@@ -14,21 +14,26 @@ export default class ObservableStore {
     @observable detailsList = {};
     // 每日推荐歌单
     @observable resource = Cache.localGet("getResource");
-   
+
     constructor() {
         // console.log(Help);
         // this.getPlaylist();
         // this.getResource();
     }
-   
+
     /**
      * 获取每日推荐歌单
      */
     async getResource() {
         if (!this.resource) {
-            this.resource = await Http.get(`recommend/resource`).map(x => formatTool.formatSongSheet(x.recommend, {
+            let resource = await Http.get(`recommend/resource`).map(x => formatTool.formatSongSheet(x.recommend, {
                 img: "picUrl",
             })).toPromise();
+            // 凑个数
+            let highquality = await Http.get(`top/playlist/highquality?limit=3`).map(x => formatTool.formatSongSheet(x.playlists, {
+                img: "coverImgUrl",
+            })).toPromise();
+            this.resource = [...resource, ...highquality];
             Cache.localSet("getResource", this.resource);
         }
         return this.resource;
@@ -38,7 +43,7 @@ export default class ObservableStore {
      */
     async getPlaylist() {
         if (!this.playlist) {
-            this.playlist = await Http.get(`top/playlist`).map(x => formatTool.formatSongSheet(x.playlists, {
+            this.playlist = await Http.get(`top/playlist?limit=51`).map(x => formatTool.formatSongSheet(x.playlists, {
                 img: "coverImgUrl",
             })).toPromise();
             Cache.localSet("getPlaylist", this.playlist);

@@ -4,7 +4,6 @@
   height: 100%;
 }
 
-
 .ant-menu.ant-menu-dark .ant-menu-item-selected {
   background-color: rgb(57, 60, 65);
 }
@@ -41,6 +40,7 @@
   margin: auto;
   min-height: 100%;
   display: flex;
+  padding-bottom: 20px;
 }
 
 .root-body>div {
@@ -61,12 +61,4 @@
   height: 3.75rem;
   box-sizing: border-box;
   color: #fff
-}
-
-.skin-default .ant-layout-sider,
-.skin-default .ant-layout-header,
-.skin-default .ant-menu-dark,
-.skin-default .ant-menu-dark .ant-menu-sub,
-.skin-default .root-footer {
-  background-color: rgb(34, 34, 37);
 }

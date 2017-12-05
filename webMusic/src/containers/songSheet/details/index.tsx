@@ -5,7 +5,7 @@ import QueueAnim from 'rc-queue-anim';
 // import { Card, Tag, Row, Col, Tabs, Icon, Avatar, Button } from 'antd';
 import './style.css'
 import { Help } from "../../../utils"
-import SongList from "./songList"
+import {SongList} from "./songList"
 import Row from 'antd/lib/grid/row';
 import Col from 'antd/lib/grid/col';
 import Card from 'antd/lib/card';
@@ -24,19 +24,17 @@ const { TabPane } = Tabs;
 export class songSheetDetailsComponent extends React.Component<any, any> {
     componentDidMount() {
         this.props.songSheetStore.getDetails(this.props.match.params.id);
-        console.log("songSheetDetailsComponent");
     }
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.id != this.props.match.params.id) {
             this.props.songSheetStore.getDetails(this.props.match.params.id);
-            console.log("songSheetDetailsComponent", prevProps.match.params.id, this.props.match.params.id);
         }
     }
     render() {
         const detalis = this.props.songSheetStore.details.playlist || {};
         const creator = detalis.creator || {};
         return <div style={{ padding: "15px 0" }}>
-            <Row>
+            <Row type="flex">
                 <Col span={6} >
                     <Card style={{ width: "100%", minHeight: "220px" }} bodyStyle={{ padding: 0 }}>
                         <img alt="" width="223" height="223" src={detalis.coverImgUrl ? detalis.coverImgUrl + "?param=223y223" : globalMusic.defaultImg} style={{ display: "block" }} />
@@ -71,7 +69,6 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
 @observer
 class Introduce extends React.Component<any, any> {
     playAll() {
-        console.log(this.props.playStore);
         this.props.playStore.addPlayList(this.props.songSheetStore.details.playlist.tracks, true);
     }
     render() {

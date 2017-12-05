@@ -12,7 +12,30 @@
   color: #fff;
 }
 
+.recommend-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
 
+.recommend-day-1 {
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  font-size: 20px;
+  color: rgb(34, 34, 37);
+}
+
+.recommend-day-2 {
+  font-size: 130px;
+  line-height: 100px;
+  flex: 1;
+  width: 100%;
+  color: rgb(168, 37, 37);
+}
 
 .banner-img>img {
   width: 100%;
@@ -31,7 +54,7 @@
   width: 542px;
   height: 202px;
   background: #fff;
-  box-shadow: 0 8px 30px #ddd;
+  box-shadow: 0 0px 10px #ddd;
 }
 
 .banner-center .swiper-pagination {
@@ -39,21 +62,25 @@
   bottom: 0;
   position: absolute;
 }
+
 .banner-center .swiper-pagination {
   width: 100%;
   bottom: 0;
   position: absolute;
 }
+
 .banner-center .swiper-pagination .swiper-pagination-bullet {
   width: 20px;
   height: 4px;
   border-radius: 5px;
   margin: 0 5px;
 }
+
 .banner-center .swiper-pagination .swiper-pagination-bullet-active {
   opacity: 1;
   background: #fff;
 }
+
 .banner-center .swiper-button-prev,
 .banner-center .swiper-button-next {
   height: 22px;

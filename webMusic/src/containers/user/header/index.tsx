@@ -13,6 +13,7 @@ import Input from 'antd/lib/input/Input';
 import Alert from 'antd/lib/alert';
 import Row from 'antd/lib/grid/row';
 import Col from 'antd/lib/grid/col';
+import message from 'antd/lib/message';
 @inject('UserContextStore')
 @observer
 export class HeaderUserComponent extends React.Component<any, any>{
@@ -40,41 +41,45 @@ export class HeaderUserComponent extends React.Component<any, any>{
     onLoginOut() {
         this.props.UserContextStore.onLoginOut();
     }
+    onclick() {
+        message.destroy()
+        message.warning('别点了，没写~~~');
+    }
     content() {
         const { UserContext = {} } = this.props.UserContextStore;
         const { profile = {} } = UserContext;
 
         return <div className="header-user-context">
-            <Row style={{ height: 40 }}>
+            <Row style={{ height: 40 }} {...{ onClick: this.onclick.bind(this) }}>
                 <Col span={18} className="user-context">{this.avatar()}</Col>
                 <Col span={6} className="user-context">   <Button>签到</Button></Col>
             </Row>
-            <Row style={{ padding: "5px 0" }}>
+            <Row style={{ padding: "5px 0" }} {...{ onClick: this.onclick.bind(this) }}>
                 <Col span={8} className="user-context column-reverse"><div>{profile.eventCount}</div> <div>动态</div> </Col>
                 <Col span={8} className="user-context column-reverse"><div>{profile.follows}</div><div>关注</div></Col>
                 <Col span={8} className="user-context column-reverse"><div>{profile.followeds}</div><div>粉丝</div></Col>
             </Row>
-            <Row className="user-row" >
+            <Row className="user-row" {...{ onClick: this.onclick.bind(this) }}>
                 <Col span={12} className="user-context"> <Icon type="github" /> <span>我的会员</span></Col>
                 <Col span={12} className="user-context"> <Icon type="right" /></Col>
             </Row>
-            <Row className="user-row" >
+            <Row className="user-row" {...{ onClick: this.onclick.bind(this) }}>
                 <Col span={12} className="user-context"> <Icon type="github" /> <span>等级</span></Col>
                 <Col span={12} className="user-context"> <Icon type="right" /></Col>
             </Row>
-            <Row className="user-row" >
+            <Row className="user-row" {...{ onClick: this.onclick.bind(this) }}>
                 <Col span={12} className="user-context"> <Icon type="github" /> <span>积分商城</span></Col>
                 <Col span={12} className="user-context"> <Icon type="right" /></Col>
             </Row>
-            <Row className="user-row" >
+            <Row className="user-row" {...{ onClick: this.onclick.bind(this) }}>
                 <Col span={12} className="user-context"> <Icon type="github" /> <span>个人信息设置</span></Col>
                 <Col span={12} className="user-context"> <Icon type="right" /></Col>
             </Row>
-            <Row className="user-row" >
+            <Row className="user-row" {...{ onClick: this.onclick.bind(this) }}>
                 <Col span={12} className="user-context"> <Icon type="github" /> <span>绑定社交账号</span></Col>
                 <Col span={12} className="user-context"> <Icon type="right" /></Col>
             </Row>
-            <Row className="user-row" >
+            <Row className="user-row" {...{ onClick: this.onclick.bind(this) }}>
                 <Col span={12} className="user-context"> <Icon type="github" /> <span>导入歌单</span></Col>
                 <Col span={12} className="user-context"> <Icon type="right" /></Col>
             </Row>
@@ -150,7 +155,10 @@ class LoginModal extends React.Component<any, any>{
             footer: null,
             onCancel: this.onShowLogin.bind(this),
         };
-        return <div className="header-user-body" onClick={this.onShowLogin.bind(this)}>
+        return <div className="header-user-body" onClick={e => {
+            if (this.state.modal) return;
+            this.onShowLogin();
+        }}>
             <Avatar size="large" icon="user" />
             <span className="header-user-nickname">未登录  <Icon type="down" /></span>
             <Modal {...modal} >
