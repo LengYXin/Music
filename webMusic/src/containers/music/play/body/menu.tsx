@@ -14,13 +14,18 @@ export default class extends React.Component<any, any> {
         e.nativeEvent.stopImmediatePropagation();
         this.props.playStore.updateShowList();
     }
-    onChange() { }
-    onAfterChange() { }
+    onChange(value) {
+        this.props.playStore.setVolume(value);
+        // console.log("onChange",value);
+    }
+    // onAfterChange(value) {  console.log("onAfterChange",value);}
     render() {
         return (
             <div className="AudioPlay-menu">
-                <Icon type="sound" />
-                <Slider {...{ style: { width: 100 } }} defaultValue={30} onChange={this.onChange.bind(this)} onAfterChange={this.onAfterChange.bind(this)} />
+                <div className="menu-volume">
+                    <Icon type="sound" />
+                    <Slider defaultValue={ this.props.playStore.volume} onChange={this.onChange.bind(this)}  />
+                </div>
                 <a className="menu-playList" onClick={this.showPlayList.bind(this)}>
                     <Icon type="bars" />  {this.props.playStore.playList.length}
                 </a>

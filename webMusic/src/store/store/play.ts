@@ -1,12 +1,14 @@
 import { observable, computed, autorun, useStrict } from "mobx"
 // useStrict(true);
-import { Http, Help } from "../../utils"
+import { Http, Help, Cache } from "../../utils"
 import Store from "../index";
 import notification from "antd/lib/notification";
 // import { notification } from "antd";
 export default class ObservableStore {
     // 音乐播放标签
     audio = document.createElement("audio");
+    // 音量
+    volume = Cache.localGet("__audio_volume", 100);
     // @observable Store = {};
     // 播放列表 没有播放地址
     @observable playList = [];
@@ -40,8 +42,15 @@ export default class ObservableStore {
         this.controller = controller;
         this.audio.autoplay = true;
         this.addEventListener();
+        this.setVolume(this.volume);
     }
-
+    /**
+     * 设置音量
+     */
+    setVolume(volume) {
+        this.audio.volume = volume / 100;
+        Cache.localSet("__audio_volume", volume);
+    }
     /**
      * 设置播放地址
      * @param url 

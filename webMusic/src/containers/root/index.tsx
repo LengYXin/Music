@@ -27,11 +27,11 @@ export class RootApp extends React.Component<any, any>{
             //     <Body  {...this.props} />
             //     <Footer />
             // </div>
-            <Layout style={{ height: '100vh' }}>
+            <Layout className="skin-default" style={{ height: '100vh' }}>
                 <Header className="root-header">
                     <HeaderR  {...this.props} />
                 </Header>
-                <Layout style={{ position: "relative" }}>
+                <Layout  style={{ position: "relative" }}>
                     <Sider style={{ overflow: 'auto', }}>
                         <Menu />
                     </Sider>

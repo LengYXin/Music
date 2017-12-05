@@ -4,19 +4,9 @@
   height: 100%;
 }
 
-.root {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column
-}
+
 .ant-menu.ant-menu-dark .ant-menu-item-selected {
-  background-color: rgb(38, 40, 44);
+  background-color: rgb(57, 60, 65);
 }
 
 .vertical-center-modal {
@@ -42,23 +32,14 @@
 .ant-layout-content {
   /* background: #404040; */
   /* color: rgba(255, 255, 255, 0.67); */
+  overflow-y: scroll;
 }
+
 .root-body {
-  /* position: absolute;
-  top: 3.75rem;
-  bottom: 6.25rem;
-  left: 0;
-  right: 0; */
   min-width: 51.25rem;
   max-width: 56.25rem;
   margin: auto;
   min-height: 100%;
-  /* display: -webkit-flex;
-  display: flex;
-  flex: 1 */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
 }
 
@@ -72,20 +53,20 @@
 }
 
 .root-body .container {
-  /* -webkit-flex: 1;
-  flex: 1; */
   min-height: 100%;
 }
 
 .root-footer {
-  /* position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0; */
   flex: 0 0 auto;
   height: 3.75rem;
   box-sizing: border-box;
-  background-color: rgb(49, 49, 49);
-  /* border-top: 1px solid #a40011; */
   color: #fff
+}
+
+.skin-default .ant-layout-sider,
+.skin-default .ant-layout-header,
+.skin-default .ant-menu-dark,
+.skin-default .ant-menu-dark .ant-menu-sub,
+.skin-default .root-footer {
+  background-color: rgb(34, 34, 37);
 }

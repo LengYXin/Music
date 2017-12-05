@@ -34,7 +34,7 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  padding-right:1.25rem;
+  padding-right: 1.25rem;
 }
 
 .AudioPlay-btns>a {
@@ -111,9 +111,11 @@
   /* width: 18.75rem */
   font-size: 1.25rem;
 }
-.AudioPlay-menu .menu-playList{
+
+.AudioPlay-menu .menu-playList {
   margin-left: 5px
 }
+
 .AudioPlay-operation {
   position: absolute;
   /* width: 100%; */
@@ -162,7 +164,8 @@
   color: #fff;
   font-size: 1.125rem;
 }
-.play-lyric-not{
+
+.play-lyric-not {
   height: 100%;
   display: -webkit-flex;
   display: flex;
@@ -172,6 +175,7 @@
   justify-content: center;
   font-size: 24px;
 }
+
 
 /* 大屏样式 */
 
@@ -243,4 +247,50 @@
   right: 0;
   font-size: 24px;
   text-align: center;
+}
+
+
+/* 音量 */
+
+.menu-volume {
+  display: flex;
+  align-items: center;
+  width: 20px;
+  transition: all .6s;
+}
+
+.menu-volume:hover {
+  width: 140px;
+  padding-right: 8px;
+}
+
+.menu-volume .ant-slider {
+  width: 100px;
+  display: none;
+}
+
+.menu-volume:hover .ant-slider {
+  display: block;
+}
+
+.menu-volume .ant-slider-track,
+.menu-volume .ant-slider:hover .ant-slider-track {
+  background-color: #ec0505;
+}
+
+.menu-volume .ant-slider-handle,
+.menu-volume .ant-slider-handle:focus,
+.menu-volume .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+  border-color: #ec0505;
+}
+
+@keyframes volume {
+  0% {
+    width: 0;
+    display: block;
+  }
+  100% {
+    width: 100px;
+    display: block;
+  }
 }

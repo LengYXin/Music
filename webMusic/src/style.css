@@ -4,7 +4,7 @@
 
 ::-webkit-scrollbar-track-piece {
     width: 6px;
-    background-color: #4e4e5a;
+    background-color:  rgb(34, 34, 37);
 }
 
 ::-webkit-scrollbar {
@@ -14,12 +14,12 @@
 
 ::-webkit-scrollbar-thumb {
     height: 50px;
-    background: rgb(211, 209, 209);
+    background: rgb(123, 123, 123);
     cursor: pointer;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgb(211, 211, 211);
+    background: rgb(123, 123, 123);
     cursor: pointer
 }
 
