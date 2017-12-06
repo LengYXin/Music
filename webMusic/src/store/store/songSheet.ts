@@ -28,18 +28,21 @@ export default class ObservableStore {
     /**
      * 获取每日推荐歌单
      */
-    async getResource() {
-        if (!this.resource) {
-            let resource = await Http.get(`recommend/resource`).map(x => formatTool.formatSongSheet(x.recommend, {
+    async getResource(login = false) {
+        // if (!this.resource) {
+        let resource = [];
+        if (login) {
+            resource = await Http.get(`recommend/resource`).map(x => formatTool.formatSongSheet(x.recommend, {
                 img: "picUrl",
             })).toPromise();
-            // 凑个数
-            let highquality = await Http.get(`top/playlist?limit=5`).map(x => formatTool.formatSongSheet(x.playlists, {
-                img: "coverImgUrl",
-            })).toPromise();
-            this.resource = [...resource, ...highquality];
-            Cache.localSet("getResource", this.resource);
         }
+        // 凑个数
+        let highquality = await Http.get(`top/playlist?limit=${login ? 5 : 9}`).map(x => formatTool.formatSongSheet(x.playlists, {
+            img: "coverImgUrl",
+        })).toPromise();
+        this.resource = [...resource, ...highquality];
+        // Cache.localSet("getResource", this.resource);
+        // }
         return this.resource;
     }
     /**

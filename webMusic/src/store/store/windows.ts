@@ -20,7 +20,7 @@ export default class ObservableStore {
         err && console.error(err);
         cks && cks.map(x => {
           cookies.remove(origin, x.name, r => {
-            console.log("remove cookies " + r.name);
+            console.log("remove cookies ");
           })
         })
       });

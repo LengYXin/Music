@@ -73,15 +73,16 @@ class store {
             case EnumNotice.LoginOut:
                 // 删除 cookie
                 this.windowsStore.emptyCookie();
+                this.songSheetStore.getResource();
                 break;
             // 登录成功
             case EnumNotice.LoginSuccess:
                 if (x.data) {
-                    this.songSheetStore.getResource();
                     this.UserContextStore.getUserPlaylist();
                 } else {
                     console.log("没有登陆");
                 }
+                this.songSheetStore.getResource(x.data);
                 break;
             // 音乐播放
             case EnumNotice.MusicPlay:
