@@ -30,7 +30,7 @@ export default class ObservableStore {
                 img: "picUrl",
             })).toPromise();
             // 凑个数
-            let highquality = await Http.get(`top/playlist/highquality?limit=3`).map(x => formatTool.formatSongSheet(x.playlists, {
+            let highquality = await Http.get(`top/playlist?limit=5`).map(x => formatTool.formatSongSheet(x.playlists, {
                 img: "coverImgUrl",
             })).toPromise();
             this.resource = [...resource, ...highquality];
@@ -43,7 +43,7 @@ export default class ObservableStore {
      */
     async getPlaylist() {
         if (!this.playlist) {
-            this.playlist = await Http.get(`top/playlist?limit=51`).map(x => formatTool.formatSongSheet(x.playlists, {
+            this.playlist = await Http.get(`top/playlist?limit=54`).map(x => formatTool.formatSongSheet(x.playlists, {
                 img: "coverImgUrl",
             })).toPromise();
             Cache.localSet("getPlaylist", this.playlist);

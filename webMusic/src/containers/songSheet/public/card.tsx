@@ -21,9 +21,9 @@ export class SSCardComponent extends React.Component<songSheet, any> {
     render() {
         const { songSheet } = this.props;
         if (Array.isArray(songSheet)) {
-            return <Row type="flex" justify="start">
+            return <Row type="flex" justify="start" className="s-s-item">
                 {songSheet.map((x, i) => {
-                    return <Col span={6} key={i}>
+                    return <Col span={5} key={i}>
                         <Card className="ant-card-contain-grid">
                             <SSCard songSheet={x} />
                         </Card>

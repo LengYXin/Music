@@ -7,13 +7,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 15rem;
+  height: 12.8125rem;
 }
 
 .s-s-image {
   display: block;
-  width: 12.5rem;
-  height: 12.5rem;
+  width: 10rem;
+  height: 10rem;
 }
 
 .s-s-txt {
@@ -26,4 +26,8 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.s-s-item .ant-col-5 {
+  width: 20%;
 }
