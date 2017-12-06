@@ -14,43 +14,48 @@ export default class extends React.Component<any, any>{
         const { userPlaylist = [] } = this.props.UserContextStore;
         const create = userPlaylist.filter(x => x.createYourself)
         const nocreate = userPlaylist.filter(x => !x.createYourself)
+        // 选中的 列表项
+        let pathname = this.props.location.pathname;
+        if (pathname.indexOf("find/") > 0) {
+            pathname = "/find";
+        }
         return (
             <nav className="nav">
 
-                <Menu theme="dark">
+                <Menu theme="dark" selectedKeys={[pathname]}>
                     <ItemGroup key="g1" title="推荐">
-                        <Item key="1">
+                        <Item key="/find">
                             <Link to="/find"><i className="musicicon musicicon-10"></i> 发现音乐</Link>
                         </Item>
-                        <Item key="2">
+                        <Item key="/fm">
                             <Link to="/fm"><i className="musicicon musicicon-10"></i> 私人FM</Link>
                         </Item>
-                        <Item key="3">
+                        <Item key="/mv">
                             <Link to="/mv"> <i className="musicicon musicicon-10"></i> MV</Link>
                         </Item>
-                        <Item key="4">
-                            <i className="musicicon musicicon-10"></i> 朋友
+                        <Item key="/rriend">
+                            <Link to="/rriend">  <i className="musicicon musicicon-10"></i> 朋友</Link>
                         </Item>
                     </ItemGroup>
                     <ItemGroup key="g2" title="我的音乐">
-                        <Item key="5">
-                            <i className="musicicon musicicon-10"></i> 音乐云盘
+                        <Item key="/yun">
+                            <Link to="/yun">   <i className="musicicon musicicon-10"></i> 音乐云盘</Link>
                         </Item>
-                        <Item key="6">
-                            <i className="musicicon musicicon-10"></i> 我的歌手
-                         </Item>
-                        <Item key="7">
-                            <i className="musicicon musicicon-10"></i> 我的电台
+                        <Item key="/singer">
+                            <Link to="/singer">       <i className="musicicon musicicon-10"></i> 我的歌手</Link>
+                        </Item>
+                        <Item key="/radio">
+                            <Link to="/radio">   <i className="musicicon musicicon-10"></i> 我的电台</Link>
                         </Item>
                     </ItemGroup>
                     {create.length ? <ItemGroup key="user1" title="创建的歌单">
-                        {create.map(x => <Item key={x.id} title={x.name}>
+                        {create.map(x => <Item key={x.to} title={x.name}>
                             <Link to={x.to} className="text-ellipsis"> <i className="musicicon musicicon-10"></i> {x.name}</Link>
                         </Item>)}
 
                     </ItemGroup> : null}
                     {nocreate.length ? <ItemGroup key="user2" title="收藏的歌单">
-                        {nocreate.map(x => <Item key={x.id} title={x.name}>
+                        {nocreate.map(x => <Item key={x.to} title={x.name}>
                             <Link to={x.to} className="text-ellipsis"><i className="musicicon musicicon-10"></i> {x.name}</Link>
                         </Item>)}
                     </ItemGroup> : null}

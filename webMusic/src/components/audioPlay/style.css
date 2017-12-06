@@ -55,35 +55,6 @@
     animation: progress-cache 2.4s cubic-bezier(.23, 1, .32, 1) infinite;
 }
 
-@-webkit-keyframes progress-cache {
-    0% {
-        opacity: 0.1;
-        width: 0;
-    }
-    20% {
-        opacity: 0.5;
-        width: 0;
-    }
-    100% {
-        opacity: 0;
-        width: 100%;
-    }
-}
-
-@keyframes progress-cache {
-    0% {
-        opacity: 0.1;
-        width: 0;
-    }
-    20% {
-        opacity: 0.5;
-        width: 0;
-    }
-    100% {
-        opacity: 0;
-        width: 100%;
-    }
-}
 
 .play-progress-inner .play-btn {
     position: absolute;

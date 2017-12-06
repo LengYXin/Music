@@ -20,20 +20,21 @@ export default class RootRoutes extends React.Component<any, any> {
     createCSSTransition = (Component: any, classNames = "fade") => {
         // return Component;  
         return createReactClass({
-            getInitialState: function () {
-                return {
-                    CSSTransitionShow: false
-                };
-            },
-            componentDidMount: function () {
-                this.setState({ CSSTransitionShow: true });
-            },
+            // getInitialState: function () {
+            //     return {
+            //         CSSTransitionShow: false
+            //     };
+            // },
+            // componentDidMount: function () {
+            //     this.setState({ CSSTransitionShow: true });
+            // },
             render: function () {
                 // return (
                 //     <CSSTransition in={this.state.CSSTransitionShow} timeout={500} classNames={classNames}>
                 //         <Component {...this.props} />
                 //     </CSSTransition>
                 // );
+                // console.log(this.props);
                 return (
                     <QueueAnim type="scale" delay={100} animConfig={[
                         { opacity: [0.95, 0], },

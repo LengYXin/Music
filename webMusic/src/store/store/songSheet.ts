@@ -8,6 +8,10 @@ export default class ObservableStore {
     // @observable Store = {};
     // 歌单
     @observable playlist = Cache.localGet("getPlaylist");
+    // 详情加载中
+    @observable detailsLoading = false;
+    // 当前详情id
+    detailsId = "";
     // 详情
     @observable details = {};
     // 详情集合
@@ -56,18 +60,17 @@ export default class ObservableStore {
      */
     async getDetails(id) {
         // playlist/detail?id=20320734
-        this.details = {};
-        // const details = Cache.localGet(`detail?id=${id}`);
+        this.detailsLoading = false;
+        this.detailsId = id;
         if (!this.detailsList[id]) {
-            // if (details) {
-            //     this.detailsList[id] = details;
-            // } else {
             this.detailsList[id] = await Http.get(`playlist/detail?id=${id}`).map(x => formatTool.formatSongSheetDetails(x)).toPromise();
-            // Cache.localSet(`detail?id=${id}`, this.detailsList[id]);
-            // }
         }
-        this.details = this.detailsList[id];
-        console.log("object", this.detailsList);
+        // 防止网速响应慢的情况覆盖当前歌单详情。
+        if (this.detailsId == id) {
+            this.details = this.detailsList[id];
+            this.detailsLoading = true;
+        }
+        console.log("object", id, this.detailsList);
         return this.details;
     }
 }

@@ -33,7 +33,7 @@ export class RootApp extends React.Component<any, any>{
                 </Header>
                 <Layout  style={{ position: "relative" }}>
                     <Sider style={{ overflow: 'auto', }}>
-                        <Menu />
+                        <Menu  {...this.props}/>
                     </Sider>
                     <Content>
                         <Body  {...this.props} />
