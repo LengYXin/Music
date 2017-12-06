@@ -85,9 +85,11 @@ export default class Cache {
                 // 循环调用。。。跟个zz一样。哈哈。
                 // let __UserID = this.localGet("__UserID");
                 let __UserID = JSON.parse(this.localStorage.getItem("__UserID"));
+                let __audio_volume = JSON.parse(this.localStorage.getItem("__audio_volume"));
                 this.localStorage.clear();
                 // this.localSet("__UserID", __UserID);
                 __UserID && this.localStorage.setItem("__UserID", JSON.stringify(__UserID));
+                __audio_volume && this.localStorage.setItem("__audio_volume", JSON.stringify(__audio_volume));
             }
         }
     }
