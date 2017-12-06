@@ -49,14 +49,16 @@ export default class ObservableStore {
     /**刷新登录 */
     async onRefresh() {
         let data = await Http.get(`login/refresh?timestamp=${new Date().getTime()}`).toPromise();
-        if (data.code == 301) {
-            // 发送登陆通知
-            this.controller.subject.next({ type: EnumNotice.LoginSuccess, data: false });
+        if (data.code == 200 || data.code == 400) {
+            if (this.UserID) {
+                // 发送登陆通知
+                this.login = true;
+                this.UserContext = await this.getDetail(this.UserID);
+                this.controller.subject.next({ type: EnumNotice.LoginSuccess, data: true });
+            }
         } else {
             // 发送登陆通知
-            this.login = true;
-            this.UserContext = await this.getDetail(this.UserID);
-            this.controller.subject.next({ type: EnumNotice.LoginSuccess, data: true });
+            this.controller.subject.next({ type: EnumNotice.LoginSuccess, data: false });
         }
     }
     /**获取用户详情 */
@@ -67,6 +69,7 @@ export default class ObservableStore {
     async getSubcount() {
         await Http.get(`user/subcount`).toPromise();
     }
+    /**获取用户歌单 */
     async getUserPlaylist(uid = this.UserID) {
         this.userPlaylist = await Http.get(`user/playlist?uid=${uid}`).map(x =>
             x.playlist.map(x => {

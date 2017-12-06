@@ -20,38 +20,38 @@ export default class extends React.Component<any, any>{
                 <Menu theme="dark">
                     <ItemGroup key="g1" title="推荐">
                         <Item key="1">
-                            <Link to="/find">     <Icon type="github" />发现音乐</Link>
+                            <Link to="/find"><i className="musicicon musicicon-10"></i> 发现音乐</Link>
                         </Item>
                         <Item key="2">
-                            <Link to="/fm">  <Icon type="github" />私人FM</Link>
+                            <Link to="/fm"><i className="musicicon musicicon-10"></i> 私人FM</Link>
                         </Item>
                         <Item key="3">
-                            <Link to="/mv">  <Icon type="github" />MV</Link>
+                            <Link to="/mv"> <i className="musicicon musicicon-10"></i> MV</Link>
                         </Item>
                         <Item key="4">
-                            <Icon type="github" />朋友
+                            <i className="musicicon musicicon-10"></i> 朋友
                         </Item>
                     </ItemGroup>
                     <ItemGroup key="g2" title="我的音乐">
                         <Item key="5">
-                            <Icon type="github" />音乐云盘
+                            <i className="musicicon musicicon-10"></i> 音乐云盘
                         </Item>
                         <Item key="6">
-                            <Icon type="github" />我的歌手
+                            <i className="musicicon musicicon-10"></i> 我的歌手
                          </Item>
                         <Item key="7">
-                            <Icon type="github" />我的电台
+                            <i className="musicicon musicicon-10"></i> 我的电台
                         </Item>
                     </ItemGroup>
                     {create.length ? <ItemGroup key="user1" title="创建的歌单">
                         {create.map(x => <Item key={x.id} title={x.name}>
-                            <Link to={x.to} className="text-ellipsis">     <Icon type="github" />{x.name}</Link>
+                            <Link to={x.to} className="text-ellipsis"> <i className="musicicon musicicon-10"></i> {x.name}</Link>
                         </Item>)}
 
                     </ItemGroup> : null}
                     {nocreate.length ? <ItemGroup key="user2" title="收藏的歌单">
                         {nocreate.map(x => <Item key={x.id} title={x.name}>
-                            <Link to={x.to} className="text-ellipsis">     <Icon type="github" />{x.name}</Link>
+                            <Link to={x.to} className="text-ellipsis"><i className="musicicon musicicon-10"></i> {x.name}</Link>
                         </Item>)}
                     </ItemGroup> : null}
                 </Menu>
@@ -71,13 +71,13 @@ export default class extends React.Component<any, any>{
 //         return [
 //             <ItemGroup key="user1" title="创建的歌单">
 //                 {create.map(x => <Item key={x.id}>
-//                     <Link to={x.to}>     <Icon type="github" />{x.name}</Link>
+//                     <Link to={x.to}>                         <i className="musicicon musicicon-10"></i>{x.name}</Link>
 //                 </Item>)}
 
 //             </ItemGroup>,
 //             <ItemGroup key="user2" title="收藏的歌单">
 //                 {nocreate.map(x => <Item key={x.id}>
-//                     <Link to={x.to}>     <Icon type="github" />{x.name}</Link>
+//                     <Link to={x.to}>                         <i className="musicicon musicicon-10"></i>{x.name}</Link>
 //                 </Item>)}
 //             </ItemGroup>
 //         ];

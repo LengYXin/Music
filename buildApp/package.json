@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run compile && electron-packager . index --win --out build",
     "compile": "webpack  --progress",
-    "start": "npm run compile && electron .",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

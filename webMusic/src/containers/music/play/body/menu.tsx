@@ -23,8 +23,8 @@ export default class extends React.Component<any, any> {
         return (
             <div className="AudioPlay-menu">
                 <div className="menu-volume">
-                    <Icon type="sound" />
-                    <Slider defaultValue={ this.props.playStore.volume} onChange={this.onChange.bind(this)}  />
+                    <i className="musicicon musicicon-12"></i>
+                    <Slider defaultValue={this.props.playStore.volume} onChange={this.onChange.bind(this)} />
                 </div>
                 <a className="menu-playList" onClick={this.showPlayList.bind(this)}>
                     <Icon type="bars" />  {this.props.playStore.playList.length}
