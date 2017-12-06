@@ -12,6 +12,8 @@ import Button from 'antd/lib/button/button';
 import Icon from 'antd/lib/icon';
 import Modal from 'antd/lib/modal/Modal';
 import Table from 'antd/lib/table/Table';
+import Row from 'antd/lib/grid/row';
+import Col from 'antd/lib/grid/col';
 /**
  * 歌曲列表
  */
@@ -21,7 +23,49 @@ export class SongListComponent extends React.Component<{ songList: any[] }, any>
 
     render() {
         return (
-            <div>
+            <div className="song-sheet-list">
+                <Row type="flex">
+                    <Col span={2} ></Col>
+                    <Col span={2} >操作</Col>
+                    <Col span={8} >标题</Col>
+                    <Col span={5} >歌手</Col>
+                    <Col span={5} >专辑</Col>
+                    <Col span={2} >时长</Col>
+                </Row>
+                <div className="song-sheet-item">
+                    {this.props.songList && this.props.songList.map((x, i) => (
+                        <Row type="flex" key={i}>
+                            <Col span={2} >{i + 1 < 10 ? `0${i + 1}` : i + 1}</Col>
+                            <Col span={2} >
+                                {
+                                    x.like ?
+                                        <Icon type="heart" />
+                                        :
+                                        <Icon type="heart-o" />
+                                }
+                            </Col>
+                            <Col span={8} >
+                                {
+                                    <span className="song-list-name">{x.name}
+                                        {
+                                            x.mv ?
+                                                <Link to={x.mvTo} > <Icon type="play-circle" /></Link>
+                                                :
+                                                null
+                                        }
+                                    </span>
+                                }
+                            </Col>
+                            <Col span={5} >
+                                {
+                                    <span title={x.singer}>{x.singer}</span>
+                                }
+                            </Col>
+                            <Col span={5} ><span title={x.al.name}>{x.al.name}</span></Col>
+                            <Col span={2} ><span>{x.dtStr}</span></Col>
+                        </Row>
+                    ))}
+                </div>
 
             </div>
         )

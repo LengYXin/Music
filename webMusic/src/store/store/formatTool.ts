@@ -1,3 +1,5 @@
+import { Help } from "../../utils/index";
+
 declare interface formatSongSheet {
     id?: string
     img?: string
@@ -46,7 +48,7 @@ class formatTool {
                         if (isLyric) {
                             let tlyrs = tlyric.filter(tly => tly.time == time);
                             if (tlyrs.length) {
-                                data["tlyric"]=tlyrs[0].lyric;
+                                data["tlyric"] = tlyrs[0].lyric;
                             }
                         }
                         list.push(data);
@@ -113,6 +115,36 @@ class formatTool {
             }
             return d;
         }
+    }
+    /**
+     *  格式化 歌单详情
+     * @param param 
+     */
+    formatSongSheetDetails(param) {
+        let data = {
+            details: {},//详情信息
+            tracks: [],//歌曲
+        };
+        try {
+            let playlist = param.playlist;
+            // 歌曲信息
+            data.tracks = playlist.tracks.map(x => {
+                let data = {
+                    ...x,
+                    like: false,//喜欢
+                    mvTo: `/mv/${x.mv}`,//mv 地址
+                    singer: (x.ar && x.ar.map(x => x.name) || []).join(" / "),//歌手
+                    dtStr:Help.DateFormat(x.dt, "mm:ss"),//时间
+                };
+                return data;
+            });
+            delete playlist.tracks;
+            delete playlist.trackIds;
+            data.details = playlist;
+        } catch (error) {
+            console.error(error);
+        }
+        return data;
     }
 }
 export default new formatTool();

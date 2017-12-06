@@ -11,7 +11,7 @@ export default class ObservableStore {
     // 详情
     @observable details = {};
     // 详情集合
-    @observable detailsList = {};
+    detailsList = {};
     // 每日推荐歌单
     @observable resource = Cache.localGet("getResource");
 
@@ -57,16 +57,17 @@ export default class ObservableStore {
     async getDetails(id) {
         // playlist/detail?id=20320734
         this.details = {};
-        const details = Cache.localGet(`detail?id=${id}`);
+        // const details = Cache.localGet(`detail?id=${id}`);
         if (!this.detailsList[id]) {
-            if (details) {
-                this.detailsList[id] = details;
-            } else {
-                this.detailsList[id] = await Http.get(`playlist/detail?id=${id}`).toPromise();
-                Cache.localSet(`detail?id=${id}`, this.detailsList[id]);
-            }
+            // if (details) {
+            //     this.detailsList[id] = details;
+            // } else {
+            this.detailsList[id] = await Http.get(`playlist/detail?id=${id}`).map(x => formatTool.formatSongSheetDetails(x)).toPromise();
+            // Cache.localSet(`detail?id=${id}`, this.detailsList[id]);
+            // }
         }
         this.details = this.detailsList[id];
+        console.log("object", this.detailsList);
         return this.details;
     }
 }

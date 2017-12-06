@@ -5,7 +5,7 @@ import QueueAnim from 'rc-queue-anim';
 // import { Card, Tag, Row, Col, Tabs, Icon, Avatar, Button } from 'antd';
 import './style.css'
 import { Help } from "../../../utils"
-import {SongList} from "./songList"
+import { SongList, SongListComponent } from "./songList"
 import Row from 'antd/lib/grid/row';
 import Col from 'antd/lib/grid/col';
 import Card from 'antd/lib/card';
@@ -31,26 +31,26 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
         }
     }
     render() {
-        const detalis = this.props.songSheetStore.details.playlist || {};
-        const creator = detalis.creator || {};
+        const { details={}, tracks } = this.props.songSheetStore.details;
         return <div style={{ padding: "15px 0" }}>
             <Row type="flex">
                 <Col span={6} >
                     <Card style={{ width: "100%", minHeight: "220px" }} bodyStyle={{ padding: 0 }}>
-                        <img alt="" width="223" height="223" src={detalis.coverImgUrl ? detalis.coverImgUrl + "?param=223y223" : globalMusic.defaultImg} style={{ display: "block" }} />
+                        <img alt="" width="223" height="223" src={details.coverImgUrl ? details.coverImgUrl + "?param=223y223" : globalMusic.defaultImg} style={{ display: "block" }} />
                     </Card>
                 </Col>
                 <Col span={18}>
-                    <Introduce detalis={{ ...detalis }} />
+                    <Introduce />
                 </Col>
             </Row>
             <Row>
                 <Col span={24} >
                     <Tabs >
                         <TabPane tab={<span>歌曲列表</span>} key="1">
-                            <SongList tracks={detalis.tracks} />
+                            {/* <SongList tracks={detalis.tracks} /> */}
+                            <SongListComponent songList={tracks} />
                         </TabPane>
-                        <TabPane tab={<span>评论({detalis.commentCount})</span>} key="2">
+                        <TabPane tab={<span>评论({details.commentCount})</span>} key="2">
                         </TabPane>
                         <TabPane tab={<span>收藏者</span>} key="3">
                             主播电台
@@ -69,10 +69,10 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
 @observer
 class Introduce extends React.Component<any, any> {
     playAll() {
-        this.props.playStore.addPlayList(this.props.songSheetStore.details.playlist.tracks, true);
+        this.props.playStore.addPlayList(this.props.songSheetStore.details.tracks, true);
     }
     render() {
-        const detalis = this.props.songSheetStore.details.playlist || {};
+        const detalis = this.props.songSheetStore.details.details || {};
         const creator = detalis.creator || {};
         return <div className="ss-d-introduce">
             <div>

@@ -1,12 +1,29 @@
-.ss-d-introduce {
+/* .ss-d-introduce {
     padding: 0 .9375rem
 }
 
 .song-list-name>i {
     color: rgb(218, 2, 2);
+} */
+
+.song-sheet-list {}
+
+.song-sheet-item {
+    border-top: 1px solid #4e4e4e
 }
 
+.song-sheet-item .ant-row-flex:nth-child(even) {
+    background-color: rgba(57, 60, 65, 0.5);
+}
 
-/* .ant-table-row.s-s-songlist:nth-child(2) {
-    background: red;
-} */
+.song-sheet-item .ant-row-flex:hover {
+    background-color: rgba(57, 60, 65, 0.9);
+}
+
+.song-sheet-list .ant-row-flex>div[class*="ant-col"] {
+    line-height: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding:0 5px;
+}
