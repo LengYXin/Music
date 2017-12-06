@@ -1,7 +1,7 @@
 /* @import '~antd/dist/antd.css';
 @import '~video.js/dist/video-js.css';
 @import '~swiper/dist/css/swiper.css'; */
-
+@import './assets/css/iconfont.css'; 
 ::-webkit-scrollbar-track-piece {
     width: 6px;
     background-color: rgb(34, 34, 37);

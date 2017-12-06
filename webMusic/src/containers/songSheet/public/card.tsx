@@ -4,11 +4,11 @@ import { observer, inject } from 'mobx-react';
 import QueueAnim from 'rc-queue-anim';
 // import { Card, Tag } from 'antd';
 import './style.css'
-import Grid from 'antd/lib/card/Grid';
+// import Grid from 'antd/lib/card/Grid';
 import Row from 'antd/lib/grid/row';
 import Col from 'antd/lib/grid/col';
 import Card from 'antd/lib/card';
-
+const Grid=Card.Grid;
 declare interface songSheet {
     songSheet: {
         to?: string,

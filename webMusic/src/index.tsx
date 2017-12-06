@@ -3,6 +3,7 @@
 import "antd/dist/antd.css";
 import "video.js/dist/video-js.css";
 import "swiper/dist/css/swiper.css";
+import "./style.css";
 
 import * as React from 'react';
 import { render } from 'react-dom';
@@ -10,7 +11,6 @@ import { Provider, observer } from 'mobx-react';
 import store from './store';
 import Routers from "./routers";
 
-import "./style.css";
 render(
   <Provider
     UserContextStore={store.UserContextStore}        //用户

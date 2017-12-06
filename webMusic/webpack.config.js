@@ -3,28 +3,20 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
-// const data = require('./data');
-const extractSASS = new ExtractTextPlugin('styles-one.css');
-const extractCSS = new ExtractTextPlugin('styles-two.css');
+const commonCss = new ExtractTextPlugin('common.css');
+const styleCss = new ExtractTextPlugin('styles.css');
 module.exports = (evn = {}) => {
     evn.Generative = evn.Generative == "true"
     console.log(`------------------- ${evn.Generative?'生产':'开发'}环境 -------------------`);
     let plugins = [
         //全局变量
-        new webpack.ProvidePlugin({
-            // $: 'jquery',
-            // jQuery: 'jquery',
-            // Tether: 'tether'
-            // plupload: "plupload"
-        }),
-        // new ExtractTextPlugin('styles.css'), //生成对应的css文件
-        extractSASS,
-        extractCSS,
-        // 注明共享 层次关系 app- > vendor- > polyfills
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: ['app', 'vendor']
+        // new webpack.ProvidePlugin({
         // }),
+        new CleanWebpackPlugin(['build']),
+        commonCss,
+        styleCss,
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendor",
             minChunks: function (module) {
@@ -41,16 +33,10 @@ module.exports = (evn = {}) => {
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
-        new CopyWebpackPlugin([
-            //     {
-            //     from: 'node_modules/babel-polyfill/dist/polyfill.min.js',
-            //     to: 'assets/js/polyfill.min.js'
-            // }
-            {
-                from: 'src/assets',
-                to: 'assets'
-            }
-        ]),
+        new CopyWebpackPlugin([{
+            from: 'src/assets',
+            to: 'assets'
+        }]),
     ];
     // 生产环境添加压缩插件
     evn.Generative ? plugins.push(new UglifyJSPlugin({
@@ -68,7 +54,7 @@ module.exports = (evn = {}) => {
             'app': './src/index.tsx' //应用程序
         },
         output: {
-            path: __dirname + '/build',
+            path: path.resolve(__dirname, "build"),
             // publicPath: evn.Generative ? '' : '/',
             publicPath: '/',
             filename: '[name].js',
@@ -103,25 +89,25 @@ module.exports = (evn = {}) => {
         module: {
             rules: [{
                     test: /\.tsx?$/,
+                    include: path.resolve(__dirname, "src"),
                     loader: 'awesome-typescript-loader',
                 }, {
                     test: /\.css$/,
-                    use: extractCSS.extract({
+                    include: path.resolve(__dirname, "src"),
+                    use: styleCss.extract({
+                        fallback: "style-loader",
+                        // 生产环境 不生成map 且压缩css
+                        use: `css-loader?sourceMap=${!evn.Generative}&minimize=${evn.Generative}`
+                    })
+                }, {
+                    test: /\.css$/,
+                    exclude: path.resolve(__dirname, "src"),
+                    use: commonCss.extract({
                         fallback: "style-loader",
                         // 生产环境 不生成map 且压缩css
                         use: `css-loader?sourceMap=${!evn.Generative}&minimize=${evn.Generative}`
                     })
                 },
-                // {
-                //     // 这个只处理 bootstrap 等源文件 如果需要项目中使用可以在配置一个
-                //     test: /\.scss$/,
-                //     include: path.resolve(__dirname, "assets"), //只包含 assets目录
-                //     use: extractSASS.extract({
-                //         fallback: 'style-loader',
-                //         // 生产环境 不生成map 且压缩css
-                //         use: [`css-loader?sourceMap=${evn.Development}&minimize=${!evn.Development}`, 'sass-loader']
-                //     })
-                // },
                 {
                     test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                     loader: 'url-loader?limit=50000&name=[path][name].[ext]'
