@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import QueueAnim from 'rc-queue-anim';
-// import { Card, Tag } from 'antd';
+
 import './style.css'
 // import Grid from 'antd/lib/card/Grid';
 import Row from 'antd/lib/grid/row';

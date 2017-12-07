@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import QueueAnim from 'rc-queue-anim';
-// import { Table, Button, Icon, Modal } from 'antd';
+
 
 import { MVDetailsComponent } from "../../mv"
 import { Help } from "../../../utils"
@@ -33,38 +32,38 @@ export class SongListComponent extends React.Component<{ songList: any[] }, any>
                     <Col span={2} >时长</Col>
                 </Row>
                 <div className="song-sheet-item">
-                    {this.props.songList && this.props.songList.map((x, i) => (
-                        <Row type="flex" key={i}>
-                            <Col span={2} >{i + 1 < 10 ? `0${i + 1}` : i + 1}</Col>
-                            <Col span={2} >
-                                {
-                                    x.like ?
-                                        <Icon type="heart" />
-                                        :
-                                        <Icon type="heart-o" />
-                                }
-                            </Col>
-                            <Col span={8} >
-                                {
-                                    <span className="song-list-name">{x.name}
-                                        {
-                                            x.mv ?
-                                                <Link to={x.mvTo} > <Icon type="play-circle" /></Link>
-                                                :
-                                                null
-                                        }
-                                    </span>
-                                }
-                            </Col>
-                            <Col span={5} >
-                                {
-                                    <span title={x.singer}>{x.singer}</span>
-                                }
-                            </Col>
-                            <Col span={5} ><span title={x.al.name}>{x.al.name}</span></Col>
-                            <Col span={2} ><span>{x.dtStr}</span></Col>
-                        </Row>
-                    ))}
+                        {this.props.songList && this.props.songList.map((x, i) => (
+                            <Row type="flex" key={i}>
+                                <Col span={2} >{i + 1 < 10 ? `0${i + 1}` : i + 1}</Col>
+                                <Col span={2} >
+                                    {
+                                        x.like ?
+                                            <Icon type="heart" />
+                                            :
+                                            <Icon type="heart-o" />
+                                    }
+                                </Col>
+                                <Col span={8} >
+                                    {
+                                        <span className="song-list-name">{x.name}
+                                            {
+                                                x.mv ?
+                                                    <Link to={x.mvTo} > <Icon type="play-circle" /></Link>
+                                                    :
+                                                    null
+                                            }
+                                        </span>
+                                    }
+                                </Col>
+                                <Col span={5} >
+                                    {
+                                        <span title={x.singer}>{x.singer}</span>
+                                    }
+                                </Col>
+                                <Col span={5} ><span title={x.al.name}>{x.al.name}</span></Col>
+                                <Col span={2} ><span>{x.dtStr}</span></Col>
+                            </Row>
+                        ))}
                 </div>
 
             </div>

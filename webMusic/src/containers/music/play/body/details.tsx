@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import QueueAnim from 'rc-queue-anim';
+import Animate from 'rc-animate';
+
 
 @inject('playStore')
 @observer
@@ -23,14 +24,13 @@ class ImgDtl extends React.Component<any, any> {
     render() {
         const play = this.props.playStore.current.play || {};
         return (
-            <QueueAnim type="scale" delay={100} animConfig={[
-                { opacity: [1, 0], },
-                { opacity: [1, 0], }
-            ]} >
-                <div key="1" className={this.props.playStore.playState ? "AudioPlay-img-pic play" : "AudioPlay-img-pic "}>
-                    <img alt="" src={(play.al ? play.al.picUrl + "?param=400y400" : globalMusic.defaultImg)} />
+            <Animate transitionName="fade" transitionAppear={true} component="">
+                <div key="1">
+                    <div  className={this.props.playStore.playState ? "AudioPlay-img-pic play" : "AudioPlay-img-pic "}>
+                        <img alt="" src={(play.al ? play.al.picUrl + "?param=400y400" : globalMusic.defaultImg)} />
+                    </div>
                 </div>
-            </QueueAnim >
+            </Animate >
 
         )
     }
@@ -54,10 +54,8 @@ class Lyric extends React.Component<any, any> {
             this.offsetParent ? this.offsetParent.scrollTop = 0 : null;
         }
         return (
-            <QueueAnim type="scale" delay={100} animConfig={[
-                { opacity: [1, 0], },
-                { opacity: [1, 0], }
-            ]} >
+            <Animate transitionName="fade" transitionAppear={true} component="">
+
                 <div key="1" className="play-lyric"  >
                     {
                         lyric.length ? lyric.map((x, i, arr) => {
@@ -67,7 +65,7 @@ class Lyric extends React.Component<any, any> {
                             </div>
                     }
                 </div>
-            </QueueAnim >
+            </Animate >
 
         )
     }

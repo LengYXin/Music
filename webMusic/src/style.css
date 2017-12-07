@@ -1,9 +1,10 @@
 /* @import '~antd/dist/antd.css';
 @import '~video.js/dist/video-js.css';
 @import '~swiper/dist/css/swiper.css'; */
-@import './assets/css/iconfont.css'; 
-@import './default.css'; 
-@import './animation.css'; 
+
+@import './assets/css/iconfont.css';
+@import './default.css';
+@import './animation.css';
 ::-webkit-scrollbar-track-piece {
     width: 6px;
     background-color: rgb(34, 34, 37);
@@ -36,6 +37,14 @@
     white-space: nowrap;
 }
 
+.text-ellipsis-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
 img {
     background-image: url(/assets/img/default_album.jpg);
     background-size: 100%;
@@ -43,4 +52,3 @@ img {
     user-select: none;
     -webkit-user-drag: none;
 }
-

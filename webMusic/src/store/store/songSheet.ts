@@ -71,7 +71,9 @@ export default class ObservableStore {
         // 防止网速响应慢的情况覆盖当前歌单详情。
         if (this.detailsId == id) {
             this.details = this.detailsList[id];
-            this.detailsLoading = true;
+            // setTimeout(() => {
+                this.detailsLoading = true;
+            // });
         }
         console.log("object", id, this.detailsList);
         return this.details;

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import QueueAnim from 'rc-queue-anim';
-// import { Card } from 'antd';
+import Animate from 'rc-animate';
+
 import './style.css';
 import Card from 'antd/lib/card';
 import { SSCardComponent } from '../public/card';
@@ -38,12 +38,12 @@ export default class extends React.Component<any, any> {
                 }
             );
             return (
-                <QueueAnim key="queue"
-                    leaveReverse
-                >
-                    <h3 style={{ textAlign: "left", padding: "2px" }}>推荐歌单</h3>
-                    <SSCardComponent songSheet={playlist} />
-                </QueueAnim>
+                <Animate transitionName="fade" transitionAppear={true} component="">
+                    <div key="1">
+                        <h3 style={{ textAlign: "left", padding: "2px" }}>推荐歌单</h3>
+                        <SSCardComponent songSheet={playlist} />
+                    </div>
+                </Animate>
 
             )
         }

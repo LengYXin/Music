@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import QueueAnim from 'rc-queue-anim';
+import Animate from 'rc-animate';
 // import { Card, Tag, Row, Col, Tabs, Icon, Avatar, Button } from 'antd';
 import './style.css'
 import { Help } from "../../../utils"
@@ -33,12 +33,10 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
     }
     render() {
         if (this.props.songSheetStore.detailsLoading) {
-            return <QueueAnim type="scale" delay={100} animConfig={[
-                { opacity: [0.95, 0], },
-                { opacity: [0.95, 0], }
-            ]} >
-                <SongSheetDetails key="1" />
-            </QueueAnim >
+            return  <Animate transitionName="fade"
+               transitionAppear={true} component="">
+               <SongSheetDetails key="1" />
+           </Animate  >
 
         }
         return <div className="music-loading ">

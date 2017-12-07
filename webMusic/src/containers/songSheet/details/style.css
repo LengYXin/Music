@@ -1,50 +1,71 @@
-/* .ss-d-introduce {
-    padding: 0 .9375rem
-}
-
+ .ss-d-introduce {
+     padding: 0 .9375rem;
+     display: flex;
+     flex-direction: column;
+ }
+ /*
 .song-list-name>i {
     color: rgb(218, 2, 2);
 } */
-
-.song-sheet-list {}
-
-.song-sheet-item {
-    border-top: 1px solid #4e4e4e
-}
-
-.song-sheet-item .ant-row-flex:nth-child(even) {
-    background-color: rgba(57, 60, 65, 0.5);
-}
-
-.song-sheet-item .ant-row-flex:hover {
-    background-color: rgba(57, 60, 65, 0.9);
-}
-
-.song-sheet-list .ant-row-flex>div[class*="ant-col"] {
-    line-height: 32px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 0 5px;
-}
-
-.music-loading {
+.ss-d-author{
     display: flex;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    padding: 10px 0;
 }
-.music-loading-icon{
-    height: 300px;
-    width: 300px;
-    line-height: 300px;
-    animation: spin 3s linear infinite;
+.ss-d-author>div{
+    margin-right: 10px;
 }
-.music-loading-icon>i{
-    font-size: 300px;
-}
+ .ss-d-bq {
+     padding: 15px 0;
+ }
+
+ .ss-d-jj {
+     /* line-height: 16px;
+     font-size: 16px;
+     height: 32px; */
+ }
+
+ .song-sheet-list {}
+
+ .song-sheet-item {
+     border-top: 1px solid #4e4e4e
+ }
+
+ .song-sheet-item .ant-row-flex:nth-child(even) {
+     background-color: rgba(57, 60, 65, 0.5);
+ }
+
+ .song-sheet-item .ant-row-flex:hover {
+     background-color: rgba(57, 60, 65, 0.9);
+ }
+
+ .song-sheet-list .ant-row-flex>div[class*="ant-col"] {
+     line-height: 32px;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     padding: 0 5px;
+ }
+
+ .music-loading {
+     display: flex;
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+ }
+
+ .music-loading-icon {
+     height: 300px;
+     width: 300px;
+     line-height: 300px;
+     animation: spin 3s linear infinite;
+ }
+
+ .music-loading-icon>i {
+     font-size: 300px;
+ }

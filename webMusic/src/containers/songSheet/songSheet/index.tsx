@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import QueueAnim from 'rc-queue-anim';
-// import { Card, Tag } from 'antd';
+import Animate from 'rc-animate';
+
 import './style.css'
 import Card from 'antd/lib/card';
 import CheckableTag from 'antd/lib/tag/CheckableTag';
@@ -45,29 +45,28 @@ export class SongSheetComponent extends React.Component<any, any> {
                 }
             );
             return (
-                <QueueAnim key="queue"
-                    leaveReverse
-                >
-                    <div style={{ textAlign: "left", padding: "2px" }}>
-                        <strong style={{ marginRight: 8 }}>热门标签：</strong>
-                        {this.tagsFromServer.map(tag => (
-                            <CheckableTag
-                                key={tag}
-                                checked={selectedTags.indexOf(tag) > -1}
-                                onChange={checked => this.handleChange(tag, checked)}
-                            >
-                                {tag}
-                            </CheckableTag>
-                        ))}
-                    </div>
-                    {/* <SSCardComponent songSheet={{
+                // <Animate transitionName="fade" transitionAppear={true} component="">
+                    <div key="1">
+                        <div style={{ textAlign: "left", padding: "2px" }}>
+                            <strong style={{ marginRight: 8 }}>热门标签：</strong>
+                            {this.tagsFromServer.map(tag => (
+                                <CheckableTag
+                                    key={tag}
+                                    checked={selectedTags.indexOf(tag) > -1}
+                                    onChange={checked => this.handleChange(tag, checked)}
+                                >
+                                    {tag}
+                                </CheckableTag>
+                            ))}
+                        </div>
+                        {/* <SSCardComponent songSheet={{
                         to: "",
                         img: "/assets/img/jpgd.png",
                         name: "精品歌单倾心推荐，给最懂音乐的你"
                     }} /> */}
-                    <SSCardComponent songSheet={playlist} />
-                </QueueAnim>
-
+                        <SSCardComponent songSheet={playlist} />
+                    </div>
+                // </Animate>
             )
         }
         return <div className="text-center">没有歌单</div>

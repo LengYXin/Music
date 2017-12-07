@@ -4,8 +4,9 @@ import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { renderRoutes, RouteConfig, RouteConfigComponentProps } from 'react-router-config'
 // import { Spin } from 'antd';
 import { observer, inject } from 'mobx-react';
-import CSSTransition from 'react-transition-group/CSSTransition';
-import QueueAnim from 'rc-queue-anim';
+// import CSSTransition from 'react-transition-group/CSSTransition';
+// import QueueAnim from 'rc-queue-anim';
+import Animate from 'rc-animate';
 
 import * as containers from "./containers"
 // @inject('UserContextStore')
@@ -36,12 +37,10 @@ export default class RootRoutes extends React.Component<any, any> {
                 // );
                 // console.log(this.props);
                 return (
-                    <QueueAnim type="scale" delay={100} animConfig={[
-                        { opacity: [0.95, 0], },
-                        { opacity: [0.95, 0], }
-                    ]} >
+                    <Animate transitionName="fade"
+                        transitionAppear={true} component="">
                         <Component key="1" {...this.props} />
-                    </QueueAnim >
+                    </Animate  >
                 );
             },
         });
