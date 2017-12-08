@@ -18,7 +18,7 @@ export default class RootRoutes extends React.Component<any, any> {
         </div>
     )
     // 创建过渡动画
-    createCSSTransition = (Component: any, classNames = "fade") => {
+    createCSSTransition = (Component: any, content = true, classNames = "fade") => {
         // return Component;  
         return createReactClass({
             // getInitialState: function () {
@@ -37,9 +37,15 @@ export default class RootRoutes extends React.Component<any, any> {
                 // );
                 // console.log(this.props);
                 return (
-                    <Animate transitionName="fade"
+                    <Animate transitionName={classNames}
                         transitionAppear={true} component="">
-                        <Component key="1" {...this.props} />
+                        {content ?
+                            <div className="root-content">
+                                <Component key="1" {...this.props} />
+                            </div>
+                            :
+                            <Component key="1" {...this.props} />
+                        }
                     </Animate  >
                 );
             },
@@ -47,12 +53,12 @@ export default class RootRoutes extends React.Component<any, any> {
     }
     routes: RouteConfig[] = [
         {
-            component: this.createCSSTransition(containers.RootApp),
+            component: this.createCSSTransition(containers.RootApp, false),
             routes: [
                 {
                     path: "/",
                     exact: true,
-                    component: this.createCSSTransition(containers.HomeComponent),
+                    component: this.createCSSTransition(containers.HomeComponent, false),
                 },
                 {
                     //发现音乐
@@ -62,11 +68,11 @@ export default class RootRoutes extends React.Component<any, any> {
 
                         {//歌单
                             path: "/find/ss",
-                            component: this.createCSSTransition(containers.SongSheetComponent),
+                            component: this.createCSSTransition(containers.SongSheetComponent, false),
                         },
                         {//个性推荐
                             // path: "/find/",
-                            component: this.createCSSTransition(containers.PersonalityComponent),
+                            component: this.createCSSTransition(containers.PersonalityComponent, false),
                         },
                     ]
                 },

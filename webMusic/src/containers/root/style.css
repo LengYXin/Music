@@ -41,11 +41,12 @@
   min-height: 100%;
   display: flex;
   padding-bottom: 20px;
-  position: relative;
+  /* position: relative; */
 }
 
-.root-body>div {
+.root-body>.root-content {
   width: 100%;
+  position: relative;
 }
 
 .root-body .nav {
