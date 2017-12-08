@@ -30,7 +30,7 @@
 /* tabs */
 
 .skin-default .ant-tabs-bar {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.67);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .skin-default .ant-tabs-ink-bar {
@@ -60,4 +60,12 @@
 
 .skin-default .ant-card-grid:hover {
     box-shadow: 0 0px 7px #e8e8e8;
+}
+.skin-default .banner-center .swiper-pagination .swiper-pagination-bullet{
+    background: rgba(255, 255, 255, 0.67);
+    opacity: 0.3;
+}
+.skin-default .banner-center .swiper-pagination .swiper-pagination-bullet-active{
+    opacity: 0.9;
+    background: #fff;
 }
