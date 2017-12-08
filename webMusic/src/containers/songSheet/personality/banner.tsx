@@ -17,51 +17,54 @@ export default class extends React.Component<any, any> {
     pagination;
     componentDidMount() {
         // console.log("banner", this.banner);
-        new Swiper(this.banner, {
-            watchSlidesProgress: true,
-            slidesPerView: 'auto',
-            centeredSlides: true,
-            loop: true,
-            loopedSlides: this.props.basicDataStore.banner.length,
-            autoplay: true,
-            navigation: {
-                nextEl: this.next,
-                prevEl: this.prev,
-            },
-            pagination: {
-                el: this.pagination,
-                //clickable :true,
-            },
-            on: {
-                progress: function (progress) {
-                    for (let i = 0; i < this.slides.length; i++) {
-                        let slide = this.slides.eq(i);
-                        let slideProgress = this.slides[i].progress;
-                        let modify = 1;
-                        if (Math.abs(slideProgress) > 1) {
-                            modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
-                        }
-                        let translate = slideProgress * modify * 260 + 'px';
-                        let scale = 1 - Math.abs(slideProgress) / 5;
-                        let zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
-                        slide.transform('translateX(' + translate + ') scale(' + scale + ')');
-                        slide.css('zIndex', zIndex);
-                        slide.css('opacity', 1);
-                        if (Math.abs(slideProgress) > 3) {
-                            slide.css('opacity', 0);
-                        }
-                    }
+        if (this.props.basicDataStore.banner && this.props.basicDataStore.banner.length) {
+            new Swiper(this.banner, {
+                watchSlidesProgress: true,
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                loop: true,
+                loopedSlides: this.props.basicDataStore.banner.length,
+                autoplay: true,
+                navigation: {
+                    nextEl: this.next,
+                    prevEl: this.prev,
                 },
-                setTransition: function (transition) {
-                    for (let i = 0; i < this.slides.length; i++) {
-                        let slide = this.slides.eq(i)
-                        slide.transition(transition);
+                pagination: {
+                    el: this.pagination,
+                    //clickable :true,
+                },
+                on: {
+                    progress: function (progress) {
+                        for (let i = 0; i < this.slides.length; i++) {
+                            let slide = this.slides.eq(i);
+                            let slideProgress = this.slides[i].progress;
+                            let modify = 1;
+                            if (Math.abs(slideProgress) > 1) {
+                                modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
+                            }
+                            let translate = slideProgress * modify * 260 + 'px';
+                            let scale = 1 - Math.abs(slideProgress) / 5;
+                            let zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
+                            slide.transform('translateX(' + translate + ') scale(' + scale + ')');
+                            slide.css('zIndex', zIndex);
+                            slide.css('opacity', 1);
+                            if (Math.abs(slideProgress) > 3) {
+                                slide.css('opacity', 0);
+                            }
+                        }
+                    },
+                    setTransition: function (transition) {
+                        for (let i = 0; i < this.slides.length; i++) {
+                            let slide = this.slides.eq(i)
+                            slide.transition(transition);
+                        }
+
                     }
-
                 }
-            }
 
-        })
+            })
+        }
+
     }
     render() {
         if (this.props.basicDataStore.banner && this.props.basicDataStore.banner.length) {

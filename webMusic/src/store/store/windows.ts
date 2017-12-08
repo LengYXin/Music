@@ -10,12 +10,19 @@ export default class ObservableStore {
       this.electron = window["require"]("electron");
     }
   }
+  openExternal(url) {
+    if (this.electron) {
+      this.electron.shell.openExternal(url);
+    } else {
+      window.open(url);
+    }
+  }
   // 删除 cookie
   emptyCookie() {
     if (this.electron) {
       const { cookies } = this.electron.remote.session.defaultSession;
       const { origin } = window.location;
-    
+
       cookies.get({ url: origin }, (err, cks) => {
         err && console.error(err);
         cks && cks.map(x => {
