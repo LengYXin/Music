@@ -67,7 +67,7 @@ class store {
         this.UserContextStore.onRefresh();
     }
     subscribe(x: controllerObserver) {
-        console.log("subscribe", x);
+        // console.log("subscribe", x);
         switch (x.type) {
             // 退出登录
             case EnumNotice.LoginOut:

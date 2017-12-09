@@ -7,14 +7,15 @@ import Button from 'antd/lib/button/button';
 import Icon from 'antd/lib/icon';
 import Row from 'antd/lib/grid/row';
 import Col from 'antd/lib/grid/col';
+import Tooltip from 'antd/lib/tooltip';
 /**
  * 介绍部分
  */
 @inject('songSheetStore', 'playStore')
 @observer
 export class Introduce extends React.Component<any, any> {
-    playAll() {
-        this.props.playStore.addPlayList(this.props.songSheetStore.details.tracks, true);
+    playAll(replace = false) {
+        this.props.playStore.addPlayList(this.props.songSheetStore.details.tracks, replace);
     }
     render() {
         const detalis = this.props.songSheetStore.details.details || {};
@@ -32,18 +33,21 @@ export class Introduce extends React.Component<any, any> {
                 <div>{Help.DateFormat(detalis.createTime, "yyyy-MM-dd")}创建</div>
             </div>
             <div className="ss-d-btns">
-                <Button type="dashed" onClick={this.playAll.bind(this)}><Icon type="play-circle-o" />播放全部</Button>
-                <Button type="dashed"><Icon type="plus" /></Button>
-                <Button type="dashed"><Icon type="folder-add" />收藏({detalis.subscribedCount})</Button>
-                <Button type="dashed"><Icon type="export" />分享({detalis.shareCount})</Button>
-                <Button type="dashed" disabled ><Icon type="download" />下载全部</Button>
+                <Button className="ss-d-btn-all" style={{ margin: 0 }} onClick={e => { this.playAll(true) }}><Icon type="play-circle-o" />播放全部</Button>
+                <Button className="ss-d-btn-add"  onClick={e => { this.playAll() }}><Icon type="plus" /></Button>
+                <Button ><Icon type="folder-add" />收藏({detalis.subscribedCount})</Button>
+                <Button ><Icon type="export" />分享({detalis.shareCount})</Button>
+                <Button ><Icon type="download" />下载全部</Button>
             </div>
             <div className="ss-d-bq">
                 <span>标签：{detalis.tags && detalis.tags.map(x => <span key={x}><Link to={x} >{x}</Link> / </span>)}</span>
             </div>
-            <div className="ss-d-jj text-ellipsis-2">
-                <span>简介：{detalis.description}</span>
-            </div>
+            <Tooltip overlayClassName="ss-d-jj" placement="bottom" title={detalis.description}>
+                <div className="ss-d-jj text-ellipsis-2">
+                    <span>简介：{detalis.description}</span>
+                </div>
+            </Tooltip>
+
         </div>
 
     }

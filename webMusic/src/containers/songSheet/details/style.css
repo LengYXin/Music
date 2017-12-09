@@ -7,22 +7,48 @@
 .song-list-name>i {
     color: rgb(218, 2, 2);
 } */
-.ss-d-author{
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-}
-.ss-d-author>div{
-    margin-right: 10px;
-}
+
+ .ss-d-author {
+     display: flex;
+     align-items: center;
+     padding: 10px 0;
+ }
+
+ .ss-d-author>div {
+     margin-right: 10px;
+ }
+
  .ss-d-bq {
      padding: 15px 0;
  }
 
- .ss-d-jj {
-     /* line-height: 16px;
-     font-size: 16px;
-     height: 32px; */
+ .ss-d-btns button {
+     background: none;
+     color: rgba(255, 255, 255, 0.9);
+     margin-right: 10px;
+ }
+
+ .ss-d-btns button:focus,
+ .ss-d-btns button:active,
+ .ss-d-btns button:hover {
+    color: rgba(255, 255, 255, 0.9);
+     border-color: rgba(255, 255, 255, 0.8);
+     background: #686868;
+ }
+.ss-d-btns .ss-d-btn-all{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+} 
+.ss-d-btns .ss-d-btn-add{
+    border-top-left-radius: 0;
+    border-left: none;
+    border-bottom-left-radius: 0;
+} 
+ .ss-d-jj {}
+
+ .ss-d-jj .ant-tooltip-inner {
+     max-width: 600px;
+     width: 600px;
  }
 
  .song-sheet-list {}

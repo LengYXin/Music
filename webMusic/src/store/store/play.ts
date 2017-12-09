@@ -13,11 +13,11 @@ export default class ObservableStore {
     // 播放列表 没有播放地址
     @observable playList = [];
     // 当前播放的音乐索引
-    @observable currentIndex = 0;
+    currentIndex = 0;
     // 当前播放的音乐 源数据  地址  歌词 详情
     @observable current: any = {};
     // 歌曲地址
-    @observable url = "";
+    url = "";
     // 播放状态
     @observable playState = false;
     // 当前播放位置
@@ -25,7 +25,7 @@ export default class ObservableStore {
     @observable currentTime = "00:00";
     @observable currentTimeS = 0;//毫秒位置
     // 歌曲长度
-    @observable duration = 0;
+    duration = 0;
     @observable durationTime = "00:00";
     // 歌曲缓存长度
     @observable cacheTime = 0;
@@ -37,11 +37,19 @@ export default class ObservableStore {
     @observable showList = false;
     // 显示歌词
     @observable showLyric = false;
+    //中控
     controller;
+    /**
+     * 
+     * @param controller 中控
+     */
     constructor(controller) {
         this.controller = controller;
+        // 就绪自动播放
         this.audio.autoplay = true;
+        //注册事件
         this.addEventListener();
+        // 设置音量
         this.setVolume(this.volume);
     }
     /**
@@ -233,6 +241,7 @@ export default class ObservableStore {
                 this.playList = [...playList];
                 this.play();
             } else {
+                // 处理单曲
                 if (playList.length == 1) {
                     const music = playList[0];
                     // 需要播放的索引
@@ -248,16 +257,24 @@ export default class ObservableStore {
                     if (existence) {
                         //歌曲存在列表中 不进行添加操作
                     } else {
+                        // 歌曲不在播放列表中，加入并且拿到歌曲索引
                         this.playList.push(music);
                         index = this.playList.length - 1;
                     }
+                    //播放歌曲
                     this.currentIndex = index;
                     this.play();
                 } else {
-                    this.playList = [...this.playList, ...playList];
+                    // 追加多歌曲进入列表 去重复
+                    const newList = playList.filter(x => {
+                        return !this.playList.some(xx => xx.id == x.id);
+                    });
+                    if (newList.length) {
+                        this.playList = [...this.playList, ...newList];
+                    }
                 }
             }
-            // console.log("addPlayList", this);
+            // console.log("addPlayList", this.playList);
             return this.playList;
         }
     }
@@ -314,8 +331,6 @@ export default class ObservableStore {
                 // 下一首
                 return this.next();
             }
-            // await this.getMusic(ids.join(","));
-            // await this.getLyric(play.id);
             // 存储当前播放歌曲信息
             this.current = {
                 //歌词
