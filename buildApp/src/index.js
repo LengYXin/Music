@@ -33,18 +33,24 @@ function createWindow() {
     height: 670,
     minWidth: 1150,
     minHeight: 670,
-    frame: false,
+    frame: false, //无边框
+    show: false //隐藏窗口
   })
-  app.win = mainWindow;
-  // portIsOccupied(function () {
-  //   server(port);
-  port = 3002
-  mainWindow.loadURL("http://127.0.0.1:" + port);
+  //退出
   mainWindow.on('closed', function () {
     console.log("closed");
     mainWindow = null
   })
-  // })
+  //加载完成后 显示窗口
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+  })
+  app.win = mainWindow;
+  portIsOccupied(function () {
+    server(port);
+    // port = 3002
+    mainWindow.loadURL("http://127.0.0.1:" + port);
+  })
   // and load the index.html of the app.
   // mainWindow.loadURL(url.format({
   //   pathname: path.join(path.dirname(__dirname),"webMusic","build",'index.html'),

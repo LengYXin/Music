@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = function () {
     const path = __dirname;
     return {
@@ -52,6 +53,7 @@ module.exports = function () {
             //     //     drop_console: true
             //     // }
             // }),
+            new CleanWebpackPlugin(['src/www']),
             new CopyWebpackPlugin([
                 {
                     from: '../webMusic/build',

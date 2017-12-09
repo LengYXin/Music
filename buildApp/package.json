@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.3",
+    "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.1.1",
     "electron": "^1.7.9",
     "electron-packager": "^9.1.0",
