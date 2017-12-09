@@ -3,8 +3,8 @@
 @import '~swiper/dist/css/swiper.css'; */
 
 @import './assets/css/iconfont.css';
-@import './default.css';
-@import './animation.css';
+@import './assets/css/default.css';
+@import './assets/css/animation.css';
 ::-webkit-scrollbar-track-piece {
     width: 6px;
     background-color: rgb(34, 34, 37);
