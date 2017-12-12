@@ -2,7 +2,7 @@
  * 精品歌单
  */
 import { observable, computed, autorun } from "mobx"
-import { Http, Cache } from "../../utils"
+import { Http, Cache, Help } from "../../utils"
 import formatTool from './formatTool';
 export default class ObservableStore {
     // @observable Store = {};
@@ -72,12 +72,32 @@ export default class ObservableStore {
         if (this.detailsId == id) {
             this.details = this.detailsList[id];
             // setTimeout(() => {
-                this.detailsLoading = true;
+            this.detailsLoading = true;
             // });
         }
         console.log("object", id, this.detailsList);
         return this.details;
     }
+
+    /**
+     * 获取歌单评论
+     * @param limit 每页个数
+     * @param offset  页码偏移
+     */
+    async getComment(limit = 20, offset = 0) {
+        return await Http.get(`comment/playlist?id=${this.detailsId}&limit=${limit}&offset=${offset}`).map(x => {
+            x.comments.map(x => {
+                x.timeStr = Help.DateFormat(x.time,"yyyy-MM-dd hh:mm");
+                return x;
+            });
+            x.hotComments.map(x => {
+                x.timeStr = Help.DateFormat(x.time,"yyyy-MM-dd hh:mm");
+                return x;
+            });
+            return x;
+        }).toPromise();
+    }
+
 }
 
 

@@ -14,6 +14,7 @@ import Button from 'antd/lib/button/button';
 import Icon from 'antd/lib/icon';
 import { Introduce } from './Introduce';
 import { SongList, SongListComponent } from "./songList"
+import { CommentComponent } from './comment';
 
 const { TabPane } = Tabs;
 
@@ -33,10 +34,10 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
     }
     render() {
         if (this.props.songSheetStore.detailsLoading) {
-            return  <Animate transitionName="fade"
-               transitionAppear={true} component="">
-               <SongSheetDetails key="1" />
-           </Animate  >
+            return <Animate transitionName="fade"
+                transitionAppear={true} component="">
+                <SongSheetDetails key="1" />
+            </Animate  >
 
         }
         return <div className="music-loading ">
@@ -71,6 +72,7 @@ class SongSheetDetails extends React.Component<any, any> {
                             <SongListComponent songList={tracks} />
                         </TabPane>
                         <TabPane tab={<span>评论({details.commentCount})</span>} key="2">
+                            <CommentComponent />
                         </TabPane>
                         <TabPane tab={<span>收藏者</span>} key="3">
                             主播电台

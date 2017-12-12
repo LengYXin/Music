@@ -95,3 +95,14 @@
  .music-loading-icon>i {
      font-size: 300px;
  }
+
+ .s-s-comment-list .ant-list-item-extra-wrap{
+     width: 100%;
+ }
+ .s-s-comment-list .ant-list-item-content{
+    justify-content: start;
+ }
+ .s-s-comment-list .ant-list-item-meta-content{
+     flex: none;
+     padding-right: 10px;
+ }

@@ -1,5 +1,5 @@
-
 /*皮肤*/
+
 .skin-default .ant-layout-sider,
 .skin-default .ant-layout-header,
 .skin-default .ant-menu-dark,
@@ -22,7 +22,8 @@
 .skin-default .ant-tag,
 .skin-default .ant-tag a,
 .skin-default .ant-tag a:hover,
-.skin-default .ant-tabs {
+.skin-default .ant-tabs,
+.skin-default .ant-list-item-meta-description {
     color: rgba(255, 255, 255, 0.67);
 }
 
@@ -61,11 +62,24 @@
 .skin-default .ant-card-grid:hover {
     box-shadow: 0 0px 7px #e8e8e8;
 }
-.skin-default .banner-center .swiper-pagination .swiper-pagination-bullet{
+
+.skin-default .banner-center .swiper-pagination .swiper-pagination-bullet {
     background: rgba(255, 255, 255, 0.67);
     opacity: 0.3;
 }
-.skin-default .banner-center .swiper-pagination .swiper-pagination-bullet-active{
+
+.skin-default .banner-center .swiper-pagination .swiper-pagination-bullet-active {
     opacity: 0.9;
     background: #fff;
+}
+
+.skin-default .ant-list-item-meta-title>a {
+    color: #1890ff;
+}
+
+.skin-default .ant-list {
+    color: rgba(255, 255, 255, 0.9);
+}
+.skin-default .ant-list-item-content{
+    flex-direction: column;
 }
