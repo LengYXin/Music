@@ -5,10 +5,12 @@ import { observable, computed, autorun } from "mobx"
 import { Http, Cache } from "../../utils"
 
 export default class ObservableStore {
-    constructor(controller) {
-        this.controller = controller;
+      /**
+     * 
+     * @param controller 中控
+     */
+    constructor(public controller) {
     }
-    controller;
     // MV列表
     @observable MVList = Cache.localGet("MVList", {});
     // 播放

@@ -54,33 +54,11 @@ export default class ObservableStore {
     };
     // 歌曲地址
     url = "";
-    // 播放状态
-    // @observable playState = false;
-    // 当前播放位置
-    // @observable currentProportion = 0;
-    // @observable currentTime = "00:00";
-    // @observable currentTimeS = 0;//毫秒位置
-    // 歌曲长度
-    // duration = 0;
-    // @observable durationTime = "00:00";
-    // 歌曲缓存长度
-    // @observable cacheTime = 0;
-    // 播放模式  循环 loop 随机 random  单曲 single 
-    // @observable pattern = "loop";
-    // // 播放器样式 footer  screen
-    // @observable patternStyle = "footer";
-    // // 显示播放列表
-    // @observable showList = false;
-    // // 显示歌词
-    // @observable showLyric = false;
-    //中控
-    controller;
     /**
      * 
      * @param controller 中控
      */
-    constructor(controller) {
-        this.controller = controller;
+    constructor(public controller) {
         // 就绪自动播放
         this.audio.autoplay = true;
         //注册事件

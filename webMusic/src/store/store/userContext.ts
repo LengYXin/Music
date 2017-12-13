@@ -17,10 +17,12 @@ export default class ObservableStore {
     @observable login = false;
     // 首次加载用户数据中
     @observable Loading = true;
-    constructor(controller) {
-        this.controller = controller;
+    /**
+   * 
+   * @param controller 中控
+   */
+    constructor(public controller: controller) {
     }
-    controller: controller;
     /**登录 只支持手机*/
     async onLogin(phone = "18611752863", password = "leng5201314") {
         let UserContext = await Http.get(`login/cellphone?phone=${phone}&password=${password}&timestamp=${new Date().getTime()}`).toPromise();
