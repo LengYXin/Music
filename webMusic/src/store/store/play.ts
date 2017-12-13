@@ -9,34 +9,70 @@ export default class ObservableStore {
     audio = document.createElement("audio");
     // 音量
     volume = Cache.localGet("__audio_volume", 100);
+    //歌曲参数
+    // @observable musicParam = {
+    //     index: 0,//播放的当前索引
+    //     url: "",//播放的当前url
+    // };
+    //播放参数
+    @observable playParam = {
+        playState: false,//播放状态
+        pattern: "loop",//播放模式  循环 loop 随机 random  单曲 single 
+        patternStyle: "footer",//播放器样式 footer  screen
+        showList: false,// 显示播放列表
+        showLyric: false,// 显示歌词
+    };
+    //时间
+    @observable timeParam = {
+        //当前播放
+        currentPlay: {
+            proportion: 0,//比例
+            timeStr: "00:00", //时间长度
+            time: 0//时间 毫秒
+        },
+        //歌曲长度
+        duration: {
+            time: 0,
+            timeStr: "00:00"
+        },
+        // 歌曲缓存长度
+        cacheTime: 0
+    };
     // @observable Store = {};
     // 播放列表 没有播放地址
     @observable playList = [];
     // 当前播放的音乐索引
-    currentIndex = 0;
+    @observable currentIndex = 0;
     // 当前播放的音乐 源数据  地址  歌词 详情
-    @observable current: any = {};
+    @observable current: any = {
+        //歌词
+        lyric: {},
+        // 音乐地址信息
+        music: {},
+        // 歌曲信息
+        play: {},
+    };
     // 歌曲地址
     url = "";
     // 播放状态
-    @observable playState = false;
+    // @observable playState = false;
     // 当前播放位置
-    @observable currentProportion = 0;
-    @observable currentTime = "00:00";
-    @observable currentTimeS = 0;//毫秒位置
+    // @observable currentProportion = 0;
+    // @observable currentTime = "00:00";
+    // @observable currentTimeS = 0;//毫秒位置
     // 歌曲长度
-    duration = 0;
-    @observable durationTime = "00:00";
+    // duration = 0;
+    // @observable durationTime = "00:00";
     // 歌曲缓存长度
-    @observable cacheTime = 0;
+    // @observable cacheTime = 0;
     // 播放模式  循环 loop 随机 random  单曲 single 
-    @observable pattern = "loop";
-    // 播放器样式 footer  screen
-    @observable patternStyle = "footer";
-    // 显示播放列表
-    @observable showList = false;
-    // 显示歌词
-    @observable showLyric = false;
+    // @observable pattern = "loop";
+    // // 播放器样式 footer  screen
+    // @observable patternStyle = "footer";
+    // // 显示播放列表
+    // @observable showList = false;
+    // // 显示歌词
+    // @observable showLyric = false;
     //中控
     controller;
     /**
@@ -73,24 +109,24 @@ export default class ObservableStore {
      * 显示播放列表
      */
     updateShowList() {
-        this.showList = !this.showList;
+        this.playParam.showList = !this.playParam.showList;
     }
     /**
    * 显示歌词
    */
     updateShowLyric() {
-        this.showLyric = !this.showLyric;
+        this.playParam.showLyric = !this.playParam.showLyric;
     }
     /**
      * 设置播放状态
      * @param state 
      */
     updatePlayState(state = true) {
-        if (!this.duration) {
+        if (!this.timeParam.duration.time) {
             return
         }
-        this.playState = state;
-        if (this.playState) {
+        this.playParam.playState = state;
+        if (this.playParam.playState) {
             if (this.audio.paused) {
                 this.audio.play();
             }
@@ -105,21 +141,21 @@ export default class ObservableStore {
      * @param proportion 比例 
      */
     updateCurrentTime(proportion) {
-        if (!this.duration) {
+        if (!this.timeParam.duration.time) {
             return
         }
-        this.audio.currentTime = this.duration * proportion;
+        this.audio.currentTime = this.timeParam.duration.time * proportion;
     }
     /**
      * 修改播放模式
      * @param pattern 
      */
     updatePattern(pattern) {
-        if (this.pattern == pattern) {
+        if (this.playParam.pattern == pattern) {
             return;
         }
         if (pattern == "loop" || pattern == "random" || pattern == "single") {
-            this.pattern = pattern;
+            this.playParam.pattern = pattern;
         } else {
             throw "pattern = loop || random || single";
         }
@@ -129,12 +165,12 @@ export default class ObservableStore {
      * @param style 
      */
     updatePatternStyle(style) {
-        if (this.patternStyle == style) {
+        if (this.playParam.patternStyle == style) {
             return;
         }
         if (style == "footer" || style == "screen") {
-            this.showList = false;
-            this.patternStyle = style;
+            this.playParam.showList = false;
+            this.playParam.patternStyle = style;
         } else {
             throw "patternStyle = footer || screen";
         }
@@ -155,8 +191,8 @@ export default class ObservableStore {
         });
         // 当浏览器已加载音频/视频的元数据时
         this.audio.addEventListener("loadedmetadata", e => {
-            this.duration = this.audio.duration;
-            this.durationTime = Help.DateFormat(this.duration * 1000, "mm:ss");
+            this.timeParam.duration.time = this.audio.duration;
+            this.timeParam.duration.timeStr = Help.DateFormat(this.timeParam.duration.time * 1000, "mm:ss");
         });
         // 当浏览器已加载音频/视频的当前帧时
         this.audio.addEventListener("loadeddata", e => {
@@ -166,7 +202,7 @@ export default class ObservableStore {
         // 当浏览器正在下载音频/视频时
         this.audio.addEventListener("progress", e => {
             try {
-                this.cacheTime = (this.audio.buffered.end(this.audio.buffered.length - 1) / this.duration) * 100;
+                this.timeParam.cacheTime = (this.audio.buffered.end(this.audio.buffered.length - 1) / this.timeParam.duration.time) * 100;
             } catch (error) {
             }
         });
@@ -191,20 +227,25 @@ export default class ObservableStore {
         });
         // 当目前的播放位置已更改时
         this.audio.addEventListener("timeupdate", e => {
-            if (!this.duration) {
+            if (!this.timeParam.duration.time) {
                 return
             }
-            let currentProportion = (this.audio.currentTime / this.duration) * 100;
+            let currentProportion = (this.audio.currentTime / this.timeParam.duration.time) * 100;
             if (currentProportion > 99.4) {
                 currentProportion = 99.4;
             }
-            this.currentTimeS = this.audio.currentTime * 1000;
-            this.currentTime = Help.DateFormat(new Date(this.currentTimeS), "mm:ss");
-            this.currentProportion = currentProportion;
+            let time = this.audio.currentTime * 1000;
+            let timeStr = Help.DateFormat(new Date(time), "mm:ss");
+            // this.currentProportion = currentProportion;
+            this.timeParam.currentPlay = {
+                proportion: currentProportion,
+                time: time,
+                timeStr: timeStr
+            };
         });
         // 当目前的播放列表已结束时
         this.audio.addEventListener("ended", e => {
-            this.next(this.pattern);
+            this.next(this.playParam.pattern);
         });
         //当浏览器尝试获取媒体数据，但数据不可用时
         this.audio.addEventListener("stalled", e => {
@@ -316,13 +357,17 @@ export default class ObservableStore {
         // 缓存下一首
         const cachePlay = this.playList[this.currentIndex + 1];
         if (play && play.id) {
+            // 设置当前播放歌曲
+            this.current.play = play;
+            // 还没有获取到歌曲地址暂停播放
+            this.updatePlayState(false);
+            this.updateCurrentTime(0);
             ids.push(play.id);
             if (cachePlay && cachePlay.id) {
                 ids.push(cachePlay.id);
             }
+            // 获取歌曲播放地址信息
             const music = await Store.musicStore.getMusic(ids.join(","));
-            const lyric = await Store.musicStore.getLyric(play.id);
-            // console.log(music, lyric);
             if (music.code == -110) {
                 notification["error"]({
                     message: '购买专辑',
@@ -331,16 +376,21 @@ export default class ObservableStore {
                 // 下一首
                 return this.next();
             }
-            // 存储当前播放歌曲信息
-            this.current = {
-                //歌词
-                lyric: lyric,
-                // 音乐地址信息
-                music: music,
-                // 歌曲信息
-                play: this.playList[this.currentIndex],
-            }
+            this.current.music = music;
             this.setUrl(this.current.music.url);
+            // 获取歌词信息
+            const lyric = await Store.musicStore.getLyric(play.id);
+            this.current.lyric = lyric;
+            // console.log(music, lyric);
+            // 存储当前播放歌曲信息
+            // this.current = {
+            //     //歌词
+            //     lyric: lyric,
+            //     // 音乐地址信息
+            //     music: music,
+            //     // 歌曲信息
+            //     play: this.playList[this.currentIndex],
+            // }
         }
 
     }

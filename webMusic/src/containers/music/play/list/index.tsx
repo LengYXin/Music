@@ -13,7 +13,7 @@ import {Help} from "../../../../utils"
 export default class extends React.Component<any, any> {
     componentDidMount() {
         document.addEventListener("click", e => {
-            if (this.props.playStore.showList) {
+            if (this.props.playStore.playParam.showList) {
                 this.props.playStore.updateShowList();
             }
         });
@@ -29,7 +29,7 @@ export default class extends React.Component<any, any> {
     }
     render() {
         return (
-            <div onClick={e => { e.stopPropagation(); e.nativeEvent.stopImmediatePropagation(); }} className={(this.props.playStore.showList ? "play-list-body play-list-show " : "play-list-body play-list-hide ") + this.props.className}>
+            <div onClick={e => { e.stopPropagation(); e.nativeEvent.stopImmediatePropagation(); }} className={(this.props.playStore.playParam.showList ? "play-list-body play-list-show " : "play-list-body play-list-hide ") + this.props.className}>
                 <h3>播放列表 ({this.props.playStore.playList.length})</h3>
                 <Row className="play-list-title">
                     <Col span={1}>

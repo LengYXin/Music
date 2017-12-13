@@ -11,9 +11,10 @@ export default class extends React.Component<any, any> {
         this.props.playStore.updateShowLyric();
     }
     render() {
+        console.log(this.props.playStore.playParam.showLyric);
         return (
             <div className="AudioPlay-details" onClick={this.updateShowLyric.bind(this)}>
-                {this.props.playStore.showLyric && this.props.playStore.patternStyle == "screen" ? <Lyric /> : <ImgDtl />}
+                {this.props.playStore.playParam.showLyric && this.props.playStore.playParam.patternStyle == "screen" ? <Lyric /> : <ImgDtl />}
             </div>
         )
     }
@@ -26,7 +27,7 @@ class ImgDtl extends React.Component<any, any> {
         return (
             <Animate transitionName="fade" transitionAppear={true} component="">
                 <div key="1">
-                    <div  className={this.props.playStore.playState ? "AudioPlay-img-pic play" : "AudioPlay-img-pic "}>
+                    <div  className={this.props.playStore.playParam.playState ? "AudioPlay-img-pic play" : "AudioPlay-img-pic "}>
                         <img alt="" src={(play.al ? play.al.picUrl + "?param=400y400" : globalMusic.defaultImg)} />
                     </div>
                 </div>
@@ -48,7 +49,7 @@ class Lyric extends React.Component<any, any> {
         // console.log(this);
         let lyric = this.props.playStore.current.lyric || [];
         // console.log(lyric, this.props.playStore.currentTimeS);
-        let currentTimeS = this.props.playStore.currentTimeS;
+        let currentTimeS = this.props.playStore.timeParam.currentPlay.time;
         if (currentTimeS == 0) {
             clearInterval(this.scrollInterval)
             this.offsetParent ? this.offsetParent.scrollTop = 0 : null;

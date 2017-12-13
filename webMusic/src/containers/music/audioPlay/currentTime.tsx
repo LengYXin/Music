@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react';
 export default class extends React.Component<any, any> {
     render() {
         return (
-            <span className="play-progress-time current">{this.props.playStore.currentTime}</span>
+            <span className="play-progress-time current">{this.props.playStore.timeParam.currentPlay.timeStr}</span>
         );
     }
 }

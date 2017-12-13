@@ -10,10 +10,10 @@ import PlayOperation from "./operation"
 export class MusicPlayComponent extends React.Component<any, any> {
     render() {
         return [
-            <PlayOperation key="operation" className={this.props.playStore.patternStyle} />
+            <PlayOperation key="operation" className={this.props.playStore.playParam.patternStyle} />
             ,
-            <PlayBody key="body" className={this.props.playStore.patternStyle}/>,
-            <PlayList key="list" className={this.props.playStore.patternStyle}/>
+            <PlayBody key="body" className={this.props.playStore.playParam.patternStyle}/>,
+            <PlayList key="list" className={this.props.playStore.playParam.patternStyle}/>
         ]
     }
 }

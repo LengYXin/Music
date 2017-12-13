@@ -19,13 +19,13 @@ export default class extends React.Component<any, any> {
         // this.AudioPlay.play(e => {
         //     this.setState({ playState: e });
         // });
-        this.props.playStore.updatePlayState(!this.props.playStore.playState);
+        this.props.playStore.updatePlayState(!this.props.playStore.playParam.playState);
     };
     render() {
         // console.log("btns", this);
         const music = this.props.playStore.current.music || {};
         // const play = this.props.playStore.current.play || {};
-        const playState = this.props.playStore.playState && music.url;
+        const playState = this.props.playStore.playParam.playState && music.url;
         return (
             <div className="AudioPlay-btns">
                 <a onClick={this.last.bind(this)} title="上一首"><Icon type="backward" /></a>

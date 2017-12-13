@@ -15,9 +15,9 @@ export default class extends React.Component<any, any> {
     render() {
         return (
             <div className="play-progress-inner" ref="progressInner">
-                <div className="play-progress-bg cache" style={{ width: this.props.playStore.cacheTime + "%" }} ></div>
-                <div className="play-progress-bg" style={{ width: this.props.playStore.currentProportion + "%" }} ></div>
-                <span className="play-btn" style={{ left: this.props.playStore.currentProportion + "%" }} >
+                <div className="play-progress-bg cache" style={{ width: this.props.playStore.timeParam.cacheTime + "%" }} ></div>
+                <div className="play-progress-bg" style={{ width: this.props.playStore.timeParam.currentPlay.proportion + "%" }} ></div>
+                <span className="play-btn" style={{ left: this.props.playStore.timeParam.currentPlay.proportion + "%" }} >
                     <i></i>
                 </span>
             </div>
