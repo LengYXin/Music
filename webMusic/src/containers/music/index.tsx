@@ -1,3 +1,3 @@
 
 export * from "./play";
-import './style.css'
+export * from "./mini/index";

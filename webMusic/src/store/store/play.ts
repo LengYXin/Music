@@ -19,8 +19,10 @@ export default class ObservableStore {
         playState: false,//播放状态
         pattern: "loop",//播放模式  循环 loop 随机 random  单曲 single 
         patternStyle: "footer",//播放器样式 footer  screen
+        patternMiniStyle: "normal",//迷你播放器样式 normal  mini
         showList: false,// 显示播放列表
         showLyric: false,// 显示歌词
+        showMini: true,//显示迷你版播放信息
     };
     //时间
     @observable timeParam = {
@@ -41,6 +43,12 @@ export default class ObservableStore {
     // @observable Store = {};
     // 播放列表 没有播放地址
     @observable playList = [];
+    // 随机播放索引
+    randomIndex = [];
+    // 当前播放歌曲索引
+    @computed get playIndex() {
+        return this.currentIndex;
+    }
     // 当前播放的音乐索引
     @observable currentIndex = 0;
     // 当前播放的音乐 源数据  地址  歌词 详情
@@ -333,7 +341,7 @@ export default class ObservableStore {
         // 当前歌曲
         const play = this.playList[this.currentIndex];
         // 缓存下一首
-        const cachePlay = this.playList[this.currentIndex + 1];
+        // const cachePlay = this.playList[this.currentIndex + 1];
         if (play && play.id) {
             // 设置当前播放歌曲
             this.current.play = play;
@@ -341,9 +349,9 @@ export default class ObservableStore {
             this.updatePlayState(false);
             this.updateCurrentTime(0);
             ids.push(play.id);
-            if (cachePlay && cachePlay.id) {
-                ids.push(cachePlay.id);
-            }
+            // if (cachePlay && cachePlay.id) {
+            //     ids.push(cachePlay.id);
+            // }
             // 获取歌曲播放地址信息
             const music = await Store.musicStore.getMusic(ids.join(","));
             if (music.code == -110) {

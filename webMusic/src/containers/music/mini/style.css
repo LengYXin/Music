@@ -1,0 +1,28 @@
+.music-mini-body {
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  height: 70px;
+  transition: all 0.5s;
+  background: red;
+  display: flex;
+}
+
+.music-mini-img {
+  width: 70px;
+  height: 70px;
+}
+
+.music-mini-img>img {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.music-mini-details {
+  flex: 1;
+}
+
+.music-mini-operation {
+  width: 40px;
+}

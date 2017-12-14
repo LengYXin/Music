@@ -8,7 +8,7 @@ import HeaderR from "./header";
 import FooterR from "./footer";
 import Body from "./body";
 import Menu from "./menu";
-
+import { MusicPlayMiniComponent } from "../music"
 import Layout from 'antd/lib/layout';
 const { Header, Footer, Sider, Content } = Layout;
 import './style.css'
@@ -31,13 +31,14 @@ export class RootApp extends React.Component<any, any>{
                 <Header className="root-header">
                     <HeaderR  {...this.props} />
                 </Header>
-                <Layout  style={{ position: "relative" }}>
+                <Layout style={{ position: "relative" }}>
                     <Sider style={{ overflow: 'auto', }}>
-                        <Menu  {...this.props}/>
+                        <Menu  {...this.props} />
                     </Sider>
                     <Content>
                         <Body  {...this.props} />
                     </Content>
+                    <MusicPlayMiniComponent />
                 </Layout>
                 <FooterR />
             </Layout>
