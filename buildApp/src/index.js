@@ -46,11 +46,11 @@ function createWindow() {
     mainWindow.show()
   })
   app.win = mainWindow;
-  portIsOccupied(function () {
-    server(port);
-    // port = 3002
+  // portIsOccupied(function () {
+  //   server(port);
+    port = 3002
     mainWindow.loadURL("http://127.0.0.1:" + port);
-  })
+  // })
   // and load the index.html of the app.
   // mainWindow.loadURL(url.format({
   //   pathname: path.join(path.dirname(__dirname),"webMusic","build",'index.html'),

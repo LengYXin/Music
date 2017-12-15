@@ -15,24 +15,22 @@ import './style.css'
 /**
  * RootApp
  */
-// @inject('UserContextStore')
-// @observer
+@inject('windowsStore')
+@observer
 export class RootApp extends React.Component<any, any>{
     componentDidMount() {
     }
     render() {
+        if (this.props.windowsStore.isMini) {
+            return <MusicPlayMiniComponent />
+        }
         return (
-            // <div className="root">
-            //     <Header  />
-            //     <Body  {...this.props} />
-            //     <Footer />
-            // </div>
             <Layout className="skin-default" style={{ height: '100vh' }}>
                 <Header className="root-header">
                     <HeaderR  {...this.props} />
                 </Header>
                 <Layout style={{ position: "relative" }}>
-                    <Sider style={{ overflow: 'auto', }}>
+                    <Sider style={{ overflow: 'auto', borderRight: " 1px solid #4e4e4e" }}>
                         <Menu  {...this.props} />
                     </Sider>
                     <Content>

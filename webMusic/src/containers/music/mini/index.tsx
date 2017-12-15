@@ -1,27 +1,29 @@
 import * as React from 'react'
 import { observer, inject } from 'mobx-react';
-import Icon from 'antd/lib/icon';
 
 import './style.css'
+import Normal from "./normal"
+import Mini from "./mini"
 
-@inject('playStore')
+@inject('playStore','windowsStore')
 @observer
 export class MusicPlayMiniComponent extends React.Component<any, any> {
+    onAlt() {
+        this.props.playStore.updatePatternMiniStyle();
+        this.props.windowsStore.onMini(false);
+    }
+    renderMini() {
+        if (this.props.playStore.playParam.patternMiniStyle == "normal") {
+            return <Normal />
+        }
+        if (this.props.playStore.playParam.patternMiniStyle == "mini") {
+            return <Mini />
+        }
+        return <div onClick={this.onAlt.bind(this)}>Null</div>
+    }
     render() {
-        const play = this.props.playStore.current.play || {};
-        return (
-            <div className={"music-mini-body " + this.props.playStore.playParam.patternMiniStyle}>
-                <div className="music-mini-img">
-                    <img  alt="" src={(play.al ? play.al.picUrl + "?param=100y100" : globalMusic.defaultImg)} />
-                </div>
-                <div className="music-mini-details">
-                    <span >{play.name}</span>
-                </div>
-                <div className="music-mini-operation">
-                    <Icon type="arrows-alt" />
-                    <Icon type="arrows-alt" />
-                </div>
-            </div>
-        )
+        return <div className={"music-mini-body " + this.props.playStore.playParam.patternMiniStyle}>
+            {this.renderMini()}
+        </div>
     }
 }

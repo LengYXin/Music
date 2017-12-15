@@ -4,10 +4,32 @@
 import { observable, computed, autorun } from "mobx"
 
 export default class ObservableStore {
+  // 是否是迷你窗口
+  @observable isMini = false;
   electron = null;
+  size = {
+    Content: null,
+    Minimum: null,
+    
+  };
   constructor() {
     if (window["require"]) {
       this.electron = window["require"]("electron");
+    }
+  }
+  onMini(mini?) {
+    if ("undefined" === typeof mini) {
+      this.isMini = !this.isMini;
+    } else {
+      if (this.isMini != mini) {
+        this.isMini = mini;
+      }
+    }
+  }
+  getSize() {
+    if (this.electron) {
+      this.size = this.electron.remote.app.win.getSize();
+      console.log(this.size);
     }
   }
   openExternal(url) {

@@ -10,8 +10,7 @@ import Icon from 'antd/lib/icon';
 @observer
 export default class extends React.Component<any, any> {
     onClick() {
-        let style = this.props.playStore.playParam.patternStyle == "footer" ? 'screen' : 'footer';
-        this.props.playStore.updatePatternStyle(style);
+        this.props.playStore.updatePatternStyle();
     }
     render() {
         // console.log("PlayOperation", this);

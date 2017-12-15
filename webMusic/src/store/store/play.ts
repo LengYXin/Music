@@ -19,7 +19,7 @@ export default class ObservableStore {
         playState: false,//播放状态
         pattern: "loop",//播放模式  循环 loop 随机 random  单曲 single 
         patternStyle: "footer",//播放器样式 footer  screen
-        patternMiniStyle: "normal",//迷你播放器样式 normal  mini
+        patternMiniStyle: "normal",//迷你播放器样式 normal screen  mini
         showList: false,// 显示播放列表
         showLyric: false,// 显示歌词
         showMini: true,//显示迷你版播放信息
@@ -147,10 +147,41 @@ export default class ObservableStore {
         }
     }
     /**
+     * 修改Mini播放器样式
+     * @param style
+     *  patternMiniStyle: "normal",//迷你播放器样式 normal screen  mini 
+     */
+    updatePatternMiniStyle(style?) {
+        if ("undefined" === typeof style) {
+            if (this.playParam.patternMiniStyle == "normal") {
+                this.playParam.patternMiniStyle = "screen";
+            } else {
+                this.playParam.patternMiniStyle = "normal"
+            }
+            return
+        }
+        if (this.playParam.patternMiniStyle == style) {
+            return;
+        }
+        if (style == "normal" || style == "screen" || style == "mini") {
+            this.playParam.patternMiniStyle = style;
+        } else {
+            throw "patternMiniStyle = normal || screen || mini";
+        }
+    }
+    /**
      * 修改播放器样式
      * @param style 
      */
-    updatePatternStyle(style) {
+    updatePatternStyle(style?) {
+        if ("undefined" === typeof style) {
+            if (this.playParam.patternStyle == "footer") {
+                this.playParam.patternStyle = "screen";
+            } else {
+                this.playParam.patternStyle = "footer"
+            }
+            return
+        }
         if (this.playParam.patternStyle == style) {
             return;
         }
