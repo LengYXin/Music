@@ -8,7 +8,7 @@
   display: flex;
   background: rgb(22, 24, 28);
   color: rgba(255, 255, 255, 0.67);
-  z-index: 9;
+  z-index: 11;
 }
 
 .music-mini-body.normal {
@@ -18,6 +18,9 @@
 .music-mini-body.screen{
   width: 100%;
   height: 100%;
+}
+.music-mini-screen{
+  width: 100%;
 }
 .music-mini-img {
   width: 60px;
@@ -38,11 +41,12 @@
   opacity: 0;
   transition: all .3s;
   cursor: pointer;
-  
+  color: #fff;
 }
 
 .music-mini-body:hover .music-mini-img .music-mini-o-btn {
   opacity: 1;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .music-mini-img .music-mini-o-btn>i {

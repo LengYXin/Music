@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import { AudioPlay } from "../../audioPlay"
+import { AudioPlay } from "../../audio"
 
 export default class extends React.Component<any, any> {
     render() {
         // console.log("play", this);
         return (
             <div className="AudioPlay-play">
-                <MusicName />
+                {/* <MusicName /> */}
                 <AudioPlay />
             </div>
         )

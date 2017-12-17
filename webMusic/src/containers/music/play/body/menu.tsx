@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react';
-import { AudioPlay } from "../../audioPlay"
+// import { AudioPlay } from "../../audioPlay"
 // import { Icon } from 'antd';
 import Icon from 'antd/lib/icon';
 import Slider from 'antd/lib/slider';

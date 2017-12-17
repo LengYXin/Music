@@ -12,7 +12,7 @@ export default class extends React.Component<any, any> {
             <div className={"AudioPlay-body " + this.props.className}>
                 <div className="AudioPlay-content">
                     {this.props.className == "footer" ? <Btns /> : null}
-                    <Details />
+                    {/* <Details /> */}
                     <Play />
                     {this.props.className == "screen" ? <Btns /> : null}
                     <Menu />

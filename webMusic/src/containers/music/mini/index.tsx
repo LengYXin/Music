@@ -1,17 +1,15 @@
 import * as React from 'react'
 import { observer, inject } from 'mobx-react';
-
+import Animate from 'rc-animate';
 import './style.css'
 import Normal from "./normal"
 import Mini from "./mini"
+import Screen from "./screen"
 
-@inject('playStore','windowsStore')
+@inject('playStore', 'windowsStore')
 @observer
 export class MusicPlayMiniComponent extends React.Component<any, any> {
-    onAlt() {
-        this.props.playStore.updatePatternMiniStyle();
-        this.props.windowsStore.onMini(false);
-    }
+ 
     renderMini() {
         if (this.props.playStore.playParam.patternMiniStyle == "normal") {
             return <Normal />
@@ -19,11 +17,14 @@ export class MusicPlayMiniComponent extends React.Component<any, any> {
         if (this.props.playStore.playParam.patternMiniStyle == "mini") {
             return <Mini />
         }
-        return <div onClick={this.onAlt.bind(this)}>Null</div>
+        return <Screen/>
     }
     render() {
-        return <div className={"music-mini-body " + this.props.playStore.playParam.patternMiniStyle}>
-            {this.renderMini()}
-        </div>
+        return <Animate transitionName="fade"
+            transitionAppear={true} component="">
+            <div className={"music-mini-body " + this.props.playStore.playParam.patternMiniStyle}>
+                {this.renderMini()}
+            </div>
+        </Animate>
     }
 }
