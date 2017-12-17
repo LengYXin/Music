@@ -27,7 +27,7 @@ export default class extends React.Component<any, any> {
         // const play = this.props.playStore.current.play || {};
         const playState = this.props.playStore.playParam.playState && music.url;
         return (
-            <div className="AudioPlay-btns">
+            <div className="audio-btns">
                 <a onClick={this.last.bind(this)} title="上一首"><Icon type="backward" /></a>
                 <a onClick={this.play.bind(this)} title={playState ? "暂停" : "播放"}>{playState ? <Icon type="pause-circle-o" /> : <Icon type="play-circle-o" />}</a>
                 <a onClick={this.next.bind(this)} title="下一首"><Icon type="forward" /></a>

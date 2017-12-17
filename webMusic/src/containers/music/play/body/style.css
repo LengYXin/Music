@@ -1,4 +1,4 @@
-.AudioPlay-body {
+.audio-body {
   height: 3.75rem;
   padding: 0 1.25rem;
   /* min-width: 31.25rem; */
@@ -14,11 +14,11 @@
   -webkit-transition: all 0.4s cubic-bezier(0.35, 0.26, 0.58, 1) 0s;
 }
 
-.AudioPlay-body a {
+.audio-body a {
   color: #fff;
 }
 
-.AudioPlay-content {
+.audio-content {
   height: 100%;
   max-width: 85.375rem;
   display: -webkit-flex;
@@ -27,7 +27,7 @@
   position: relative;
 }
 
-.AudioPlay-body .AudioPlay-content>div {
+.audio-body .audio-content>div {
   display: -webkit-flex;
   display: flex;
   -webkit-align-items: center;
@@ -37,60 +37,60 @@
   padding-right: 1.25rem;
 }
 
-.AudioPlay-btns>a {
+.audio-btns>a {
   padding: 0 .3125rem;
   font-size: 1.25rem;
   -webkit-transition: all .3s;
   transition: all .3s;
 }
 
-.AudioPlay-btns>a:hover {
+.audio-btns>a:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
 
-.AudioPlay-details .AudioPlay-img-pic {
+/* .audio-details .audio-img-pic {
   height: 2.5rem;
   width: 2.5rem;
   overflow: hidden;
   border-radius: 100%;
-  /* border: 2px solid red; */
+
 }
 
-.AudioPlay-details .AudioPlay-img-pic img {
+.audio-details .audio-img-pic img {
   height: 100%;
   width: 100%;
 }
 
-.AudioPlay-details .AudioPlay-img-pic.play {
+.audio-details .audio-img-pic.play {
   animation: spin 10s linear infinite;
-}
+} */
 
 
-.AudioPlay-play {
+.audio-play {
   flex: 1;
   /* min-width: 31.25rem; */
   position: relative;
 }
 
-.AudioPlay-play-name {
+.audio-play-name {
   position: absolute;
   left: 1.25rem;
   top: .3125rem;
   color: #fff
 }
 
-.AudioPlay-menu {
+.audio-menu {
   /* width: 18.75rem */
   font-size: 1.25rem;
 }
 
-.AudioPlay-menu .menu-playList {
+.audio-menu .menu-playList {
   margin-left: 5px
 }
 
-.AudioPlay-operation {
+.audio-operation {
   position: absolute;
   /* width: 100%; */
   /* bottom: 3.75rem; */
@@ -103,74 +103,28 @@
   transition: all .3s;
 }
 
-.AudioPlay-operation:hover {
+.audio-operation:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
 
 
-/* 歌词 */
-
-.play-lyric {
-  height: 28.125rem;
-  overflow: auto;
-  min-width: 400px;
-  text-align: center;
-  padding: .625rem 0;
-  position: relative;
-}
-
-.play-lyric-item {
-  padding: .125rem 0;
-}
-.play-lyric-item>p{
-  margin: 0;
-}
-.play-lyric-item {
-  color: rgb(190, 190, 190);
-  font-size: .875rem;
-  -webkit-transition: all .2s;
-  transition: all .2s;
-  line-height: 1.5rem;
-}
-
-.play-lyric-item.activity {
-  color: #fff;
-  font-size: 1.125rem;
-}
-.play-lyric-tlyric{
-  font-size: .75rem;
-}
-.play-lyric-item.activity .play-lyric-tlyric{
-  font-size: 1rem;
-}
-.play-lyric-not {
-  height: 100%;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  font-size: 24px;
-}
-
 
 /* 大屏样式 */
 
-.AudioPlay-operation.screen {
+.audio-operation.screen {
   /* bottom: initial; */
   /* text-align: right; */
   top: 0;
   z-index: 13;
 }
 
-.AudioPlay-body.screen {
+.audio-body.screen {
   height: 100%;
 }
 
-.AudioPlay-body.screen .AudioPlay-content {
+.audio-body.screen .audio-content {
   flex-direction: column;
 }
 
@@ -183,45 +137,44 @@
   }
 } */
 
-.screen .AudioPlay-content>.AudioPlay-btns {
+.screen .audio-content>.audio-btns {
   padding: 1.25rem
 }
 
-.screen .AudioPlay-menu {
+.screen .audio-menu {
   position: absolute;
   bottom: 1.25rem;
   right: 0;
 }
 
-.screen .AudioPlay-details {
+.screen .audio-details {
   flex: 1
 }
 
-.screen .AudioPlay-details .AudioPlay-img-pic {
+/* .screen .audio-details .audio-img-pic {
   height: 25rem;
   width: 25rem;
   overflow: hidden;
   border-radius: 100%;
-  /* border: 2px solid red; */
 }
 
 @media screen and (max-width: 450px) {
-  .screen .AudioPlay-details .AudioPlay-img-pic {
+  .screen .audio-details .audio-img-pic {
     height: 18.75rem;
     width: 18.75rem;
   }
 }
 
-.screen .AudioPlay-details .AudioPlay-img-pic.play {
+.screen .audio-details .audio-img-pic.play {
   animation: spin 25s linear infinite;
-}
+} */
 
-.screen .AudioPlay-play {
+.screen .audio-play {
   flex: initial;
   position: initial;
 }
 
-.screen .AudioPlay-play-name {
+.screen .audio-play-name {
   left: 0;
   right: 0;
   font-size: 24px;

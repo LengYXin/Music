@@ -14,7 +14,7 @@ export default class extends React.Component<any, any> {
     render() {
         // console.log(this.props.playStore.playParam.showLyric);
         return (
-            <div className="AudioPlay-details" onClick={this.updateShowLyric.bind(this)}>
+            <div className="audio-details" onClick={this.updateShowLyric.bind(this)}>
                 {this.props.playStore.playParam.showLyric && this.props.playStore.playParam.patternStyle == "screen" ? <Lyric /> : <MusicImg />}
             </div>
         )

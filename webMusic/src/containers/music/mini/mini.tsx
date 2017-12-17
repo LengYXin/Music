@@ -3,21 +3,26 @@ import { observer, inject } from 'mobx-react';
 import Icon from 'antd/lib/icon';
 import Animate from 'rc-animate';
 
-@inject('playStore','windowsStore')
+import Btns from "./../play/body/btns";
+
+@inject('playStore', 'windowsStore')
 @observer
 export default class extends React.Component<any, any> {
     onAlt() {
-        this.props.playStore.updatePatternMiniStyle();
+        this.props.playStore.updatePatternMiniStyle("normal");
         this.props.windowsStore.onMini();
     }
     render() {
         const play = this.props.playStore.current.play || {};
-        return <Animate transitionName="fade"
-            transitionAppear={true} component="">
-            <div key="1" className="mini-body" onClick={this.onAlt.bind(this)}>
-                我是迷你界面
+        return <div className="music-mini">
+            <img alt="" src={(play.al ? play.al.picUrl + "?param=100y100" : globalMusic.defaultImg)} />
+            <Btns />
+            <div className="mini-operation">
+                <span onClick={this.onAlt.bind(this)}>
+                    <Icon type="arrows-alt" />
+                </span>
             </div>
-        </Animate>
 
+        </div>
     }
 }

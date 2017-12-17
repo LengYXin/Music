@@ -15,15 +15,17 @@ import './style.css'
 /**
  * RootApp
  */
-@inject('windowsStore')
-@observer
+// @inject('windowsStore')
+// @observer
 export class RootApp extends React.Component<any, any>{
     componentDidMount() {
     }
     render() {
-        if (this.props.windowsStore.isMini) {
-            return <MusicPlayMiniComponent />
-        }
+        // console.log(this.props.windowsStore.isMini);
+        // if (this.props.windowsStore.isMini) {
+        //     return <MusicPlayMiniComponent />
+        // }
+        console.log("RootApp");
         return (
             <Layout className="skin-default" style={{ height: '100vh' }}>
                 <Header className="root-header">

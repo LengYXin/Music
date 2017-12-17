@@ -10,7 +10,7 @@ export default class ObservableStore {
   size = {
     Content: null,
     Minimum: null,
-    
+
   };
   constructor() {
     if (window["require"]) {
@@ -18,12 +18,27 @@ export default class ObservableStore {
     }
   }
   onMini(mini?) {
-    if ("undefined" === typeof mini) {
-      this.isMini = !this.isMini;
-    } else {
-      if (this.isMini != mini) {
-        this.isMini = mini;
+    if (this.electron) {
+      const win = this.electron.remote.app.win;
+      if ("undefined" === typeof mini) {
+        this.isMini = !this.isMini;
+      } else {
+        if (this.isMini != mini) {
+          this.isMini = mini;
+        }
       }
+      if (this.isMini) {
+        this.getSize();
+        win.setMinimumSize(600, 55);
+        win.setSize(600, 55, true);
+        // 禁止调整大小
+        win.setResizable(false);
+      } else {
+        win.setMinimumSize(1150, 670);
+        win.setSize(this.size[0], this.size[1], true);
+        win.setResizable(true);
+      }
+
     }
   }
   getSize() {

@@ -10,7 +10,7 @@ export class MusicImg extends React.Component<any, any> {
         return (
             <Animate transitionName="fade" transitionAppear={true} component="">
                 <div key="1">
-                    <div  className={this.props.playStore.playParam.playState ? "AudioPlay-img-pic play" : "AudioPlay-img-pic "}>
+                    <div  className={this.props.playStore.playParam.playState ? "audio-img-pic play" : "audio-img-pic "}>
                         <img alt="" src={(play.al ? play.al.picUrl + "?param=400y400" : globalMusic.defaultImg)} />
                     </div>
                 </div>

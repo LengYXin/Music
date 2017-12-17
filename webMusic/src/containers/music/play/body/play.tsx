@@ -7,7 +7,7 @@ export default class extends React.Component<any, any> {
     render() {
         // console.log("play", this);
         return (
-            <div className="AudioPlay-play">
+            <div className="audio-play">
                 {/* <MusicName /> */}
                 <AudioPlay />
             </div>
@@ -20,7 +20,7 @@ class MusicName extends React.Component<any, any> {
     render() {
         const play = this.props.playStore.current.play || {};
         return (
-            <span className="AudioPlay-play-name">{play.name}</span>
+            <span className="audio-play-name">{play.name}</span>
         )
     }
 }

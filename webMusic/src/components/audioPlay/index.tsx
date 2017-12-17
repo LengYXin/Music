@@ -223,17 +223,17 @@ export class AudioPlay extends React.Component<Props, any> {
         }
         // console.log(this.state.currentTime);
         return (
-            // <div className="AudioPlay-body">
-            //     <div className="AudioPlay-btns">
+            // <div className="audio-body">
+            //     <div className="audio-btns">
             //         <a onClick={this.last.bind(this)}>上一首</a>
             //         <a onClick={this.play.bind(this)}>播放/暂停</a>
             //         <a onClick={this.next.bind(this)}>下一首</a>
             //     </div>
-            //     <div className="AudioPlay-img">
+            //     <div className="audio-img">
             //         <img src="http://p1.music.126.net/Wty6mk2k3TS4IqwJy1qmFw==/18189220858862905.jpg?param=34y34" />
             //         {/* <a href="/song?id=28923460" hidefocus="true" class="mask"></a> */}
             //     </div>
-            //     <div className="AudioPlay-play">
+            //     <div className="audio-play">
             <div className="play-progress">
                 <span className="play-progress-time current">{this.state.currentTime}</span>
                 <div className="play-progress-inner" ref="progressInner">
@@ -246,7 +246,7 @@ export class AudioPlay extends React.Component<Props, any> {
                 <span className="play-progress-time duration">{this.durationTime}</span>
             </div >
             //     </div>
-            //     <div className="AudioPlay-menu">
+            //     <div className="audio-menu">
 
             //     </div>
             // </div>

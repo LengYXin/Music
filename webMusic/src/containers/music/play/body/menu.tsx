@@ -21,7 +21,7 @@ export default class extends React.Component<any, any> {
     // onAfterChange(value) {  console.log("onAfterChange",value);}
     render() {
         return (
-            <div className="AudioPlay-menu">
+            <div className="audio-menu">
                 <div className="menu-volume">
                     <i className="musicicon musicicon-12"></i>
                     <Slider defaultValue={this.props.playStore.volume} onChange={this.onChange.bind(this)} />

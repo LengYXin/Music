@@ -15,13 +15,16 @@
   border-top: 1px solid #4e4e4e;
   border-right: 1px solid rgb(78, 78, 78);
 }
-.music-mini-body.screen{
+
+.music-mini-body.screen {
   width: 100%;
   height: 100%;
 }
-.music-mini-screen{
+
+.music-mini-screen {
   width: 100%;
 }
+
 .music-mini-img {
   width: 60px;
   height: 60px;
@@ -89,4 +92,24 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.music-mini {
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  /* 可拖动 */
+  -webkit-app-region: drag;
+  display: flex;
+  height: 55px;
+  background: rgb(22, 24, 28);
+  color: rgba(255, 255, 255, 0.67);
+}
+
+.music-mini .audio-btns,
+.music-mini .mini-operation {
+  -webkit-app-region: no-drag;
 }

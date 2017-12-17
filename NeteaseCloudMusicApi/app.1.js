@@ -6,6 +6,10 @@ const app = express()
 const history =  require('connect-history-api-fallback')
 let cache = apicache.middleware
 
+// process.on('uncaughtException', function (err) {
+//   console.error("出错",err.stack)
+//   // process.exit(1)
+// })
 // 跨域设置
 // app.all('*', function (req, res, next) {
 //   if (req.path !== '/' && !req.path.includes('.')) {

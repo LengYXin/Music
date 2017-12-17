@@ -9,8 +9,8 @@ import Menu from "./menu";
 export default class extends React.Component<any, any> {
     render() {
         return (
-            <div className={"AudioPlay-body " + this.props.className}>
-                <div className="AudioPlay-content">
+            <div className={"audio-body " + this.props.className}>
+                <div className="audio-content">
                     {this.props.className == "footer" ? <Btns /> : null}
                     {/* <Details /> */}
                     <Play />
