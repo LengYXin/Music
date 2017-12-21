@@ -18,15 +18,15 @@ export default class ObservableStore {
     }
   }
   onMini(mini?) {
+    if ("undefined" === typeof mini) {
+      this.isMini = !this.isMini;
+    } else {
+      if (this.isMini != mini) {
+        this.isMini = mini;
+      }
+    }
     if (this.electron) {
       const win = this.electron.remote.app.win;
-      if ("undefined" === typeof mini) {
-        this.isMini = !this.isMini;
-      } else {
-        if (this.isMini != mini) {
-          this.isMini = mini;
-        }
-      }
       if (this.isMini) {
         this.getSize();
         win.setMinimumSize(600, 55);

@@ -57,10 +57,17 @@
 .root-body .container {
   min-height: 100%;
 }
-
+.root-Layout{
+  position: relative;
+}
 .root-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   flex: 0 0 auto;
   height: 3.75rem;
+  z-index: 999;
   box-sizing: border-box;
   color: #fff
 }

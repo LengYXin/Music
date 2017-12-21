@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import Icon from 'antd/lib/icon';
 import Animate from 'rc-animate';
 
-import Btns from "./../play/body/btns";
+import Btns from "./btns";
 
 @inject('playStore', 'windowsStore')
 @observer

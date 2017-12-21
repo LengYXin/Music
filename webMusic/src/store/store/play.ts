@@ -3,6 +3,10 @@ import { observable, computed, autorun, useStrict } from "mobx"
 import { Http, Help, Cache } from "../../utils"
 import Store from "../index";
 import notification from "antd/lib/notification";
+notification.config({
+    duration: 3,
+    top: 65
+});
 // import { notification } from "antd";
 export default class ObservableStore {
     // 音乐播放标签

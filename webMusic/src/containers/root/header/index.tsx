@@ -31,7 +31,7 @@ export default class extends React.Component<any, any>{
     }
     onMini(){
         this.props.windowsStore.onMini();
-        this.props.playStore.updatePatternMiniStyle("mini");
+        // this.props.playStore.updatePatternMiniStyle("mini");
     }
     render() {
         return (
