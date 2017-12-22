@@ -107,3 +107,11 @@
   z-index: 11;
   animation: antFadeIn 2s;
 }
+@keyframes antFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
