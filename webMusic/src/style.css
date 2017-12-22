@@ -5,6 +5,15 @@
 @import './assets/css/iconfont.css';
 @import './assets/css/default.css';
 @import './assets/css/animation.css';
+html,body {
+    overflow: hidden;
+    /* background-image: url(/assets/img/background.jpeg);
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: content-box;
+    background-size: 100% 100%; */
+}
 ::-webkit-scrollbar-track-piece {
     width: 6px;
     background-color: rgb(34, 34, 37);

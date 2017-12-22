@@ -17,6 +17,7 @@ module.exports = (evn = {}) => {
         new CleanWebpackPlugin(['build']),
         commonCss,
         styleCss,
+        //第三方依赖
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendor",
             minChunks: function (module) {
@@ -50,7 +51,6 @@ module.exports = (evn = {}) => {
     })) : undefined;
     return {
         entry: {
-            // 'vendor': './src/vendor.ts', //第三方依赖
             'app': './src/index.tsx' //应用程序
         },
         output: {
@@ -62,10 +62,8 @@ module.exports = (evn = {}) => {
         },
         // 启动 dev-server 的服务配置
         devServer: {
-            // contentBase: "www", //本地服务器所加载的页面所在的目录
             inline: true, //检测文件变化，实时构建并刷新浏览器
             port: "3002",
-            // https: true,
             proxy: {
                 '/api': {
                     target: 'http://localhost:4001',
@@ -77,9 +75,6 @@ module.exports = (evn = {}) => {
             },
             //404 页面返回 index.html 
             historyApiFallback: true,
-            // setup(app) { //模拟数据
-            //     // data(app);
-            // }
         },
         // 开发环境 生成 map 文件  
         devtool: evn.Generative ? 'nosources-source-map' : 'source-map',
