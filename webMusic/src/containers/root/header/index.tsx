@@ -7,14 +7,19 @@ import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import Search from "./search"
 import { HeaderUserComponent } from "../../user"
-@inject('windowsStore','playStore')
+@inject('windowsStore', 'playStore')
 // @observer
 export default class extends React.Component<any, any>{
     componentDidMount() {
     }
     onBack() {
         // console.log(this.props);
-        this.props.history.goBack();
+        // 简易界面全屏状态下关闭全屏，不回退
+        if (this.props.playStore.playParam.patternSimpleStyle == "normal") {
+            this.props.history.goBack();
+        } else {
+            this.props.playStore.updatePatternSimpleStyle();
+        }
     }
     onForward() {
         // console.log(this.props);
@@ -29,7 +34,7 @@ export default class extends React.Component<any, any>{
     onClose() {
         this.props.windowsStore.onClose();
     }
-    onMini(){
+    onMini() {
         this.props.windowsStore.onMini();
         // this.props.playStore.updatePatternMiniStyle("mini");
     }
