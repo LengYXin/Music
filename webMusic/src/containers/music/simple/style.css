@@ -21,9 +21,6 @@
   height: 100%;
 }
 
-.music-simple-screen {
-  width: 100%;
-}
 
 .music-simple-img {
   width: 60px;
@@ -94,3 +91,19 @@
   cursor: pointer;
 }
 
+
+.music-simple-screen {
+  width: 100%;
+  position: relative;
+  overflow-y: auto;
+}
+.music-simple-screen .music-simple-o-btn{
+  position: fixed;
+  right: .625rem;
+  text-align: center;
+  padding-top: .3125rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 11;
+  animation: antFadeIn 2s;
+}

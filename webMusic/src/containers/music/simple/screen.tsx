@@ -16,7 +16,17 @@ export default class extends React.Component<any, any> {
     }
     render() {
         return <div className="music-simple-screen">
-            <button onClick={this.onAlt.bind(this)}>按钮</button>
+            <div className="music-simple-o-btn" onClick={this.onAlt.bind(this)}>
+                <Icon type="shrink" />
+            </div>
+            <Row type="flex" justify="start">
+                <Col span={12}>
+                    <PlayImg />
+                </Col>
+                <Col span={12}>
+                    <Lyric />
+                </Col>
+            </Row>
             <Row type="flex" justify="start">
                 <Col span={12}>
                     <PlayImg />
