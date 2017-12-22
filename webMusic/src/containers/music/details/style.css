@@ -1,58 +1,64 @@
  /* 图片 */
+
  .audio-img-pic {
-     height: 25rem;
-     width: 25rem;
-     overflow: hidden;
-     border-radius: 100%;
+   height: 25rem;
+   width: 25rem;
+   overflow: hidden;
+   border-radius: 100%;
+   animation: spin 25s linear infinite;
+   animation-play-state: paused;
  }
+
  .audio-img-pic.play {
-     animation: spin 25s linear infinite;
+   animation-play-state: running;
+ }
+ /* 歌词 */
+
+ .play-lyric {
+   height: 28.125rem;
+   overflow: auto;
+   min-width: 400px;
+   text-align: center;
+   padding: .625rem 0;
+   position: relative;
  }
 
- 
-/* 歌词 */
+ .play-lyric-item {
+   padding: .125rem 0;
+ }
 
-.play-lyric {
-    height: 28.125rem;
-    overflow: auto;
-    min-width: 400px;
-    text-align: center;
-    padding: .625rem 0;
-    position: relative;
-  }
-  
-  .play-lyric-item {
-    padding: .125rem 0;
-  }
-  .play-lyric-item>p{
-    margin: 0;
-  }
-  .play-lyric-item {
-    color: rgb(190, 190, 190);
-    font-size: .875rem;
-    -webkit-transition: all .2s;
-    transition: all .2s;
-    line-height: 1.5rem;
-  }
-  
-  .play-lyric-item.activity {
-    color: #fff;
-    font-size: 1.125rem;
-  }
-  .play-lyric-tlyric{
-    font-size: .75rem;
-  }
-  .play-lyric-item.activity .play-lyric-tlyric{
-    font-size: 1rem;
-  }
-  .play-lyric-not {
-    height: 100%;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    font-size: 24px;
-  }
-  
+ .play-lyric-item>p {
+   margin: 0;
+ }
+
+ .play-lyric-item {
+   color: rgb(190, 190, 190);
+   font-size: .875rem;
+   -webkit-transition: all .2s;
+   transition: all .2s;
+   line-height: 1.5rem;
+ }
+
+ .play-lyric-item.activity {
+   color: #fff;
+   font-size: 1.125rem;
+ }
+
+ .play-lyric-tlyric {
+   font-size: .75rem;
+ }
+
+ .play-lyric-item.activity .play-lyric-tlyric {
+   font-size: 1rem;
+ }
+
+ .play-lyric-not {
+   height: 100%;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   font-size: 24px;
+ }
