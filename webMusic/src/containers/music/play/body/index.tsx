@@ -6,7 +6,11 @@ import Details from "./details";
 import Play from "./play";
 import Menu from "./menu";
 
-import Mini from "./mini";
+import Mini from "../mini";
+
+/**
+ * 播放器
+ */
 @inject('windowsStore')
 @observer
 export default class extends React.Component<any, any> {

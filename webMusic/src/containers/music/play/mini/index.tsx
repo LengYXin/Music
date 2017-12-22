@@ -2,9 +2,13 @@ import * as React from 'react'
 import { observer, inject } from 'mobx-react';
 import Icon from 'antd/lib/icon';
 import Animate from 'rc-animate';
+import "./mini.css"
+import Btns from "../body/btns";
+import { MusicImg } from '../../details/index';
 
-import Btns from "./btns";
-
+/**
+ * 迷你播放器
+ */
 @inject('playStore', 'windowsStore')
 @observer
 export default class extends React.Component<any, any> {
@@ -15,7 +19,7 @@ export default class extends React.Component<any, any> {
     render() {
         const play = this.props.playStore.current.play || {};
         return <div className="music-mini">
-            <img alt="" src={(play.al ? play.al.picUrl + "?param=100y100" : globalMusic.defaultImg)} />
+            <MusicImg />
             <Btns />
             <div className="mini-operation">
                 <span onClick={this.onAlt.bind(this)}>

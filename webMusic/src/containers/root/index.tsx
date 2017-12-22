@@ -8,7 +8,7 @@ import HeaderR from "./header";
 import FooterR from "./footer";
 import Body from "./body";
 import Menu from "./menu";
-import { MusicPlayMiniComponent } from "../music"
+import { MusicPlaySimpleComponent } from "../music"
 import Layout from 'antd/lib/layout';
 const { Header, Footer, Sider, Content } = Layout;
 import './style.css'
@@ -38,7 +38,7 @@ export class RootApp extends React.Component<any, any>{
                     <Content>
                         <Body  {...this.props} />
                     </Content>
-                    <MusicPlayMiniComponent />
+                    <MusicPlaySimpleComponent />
                 </Layout>
                 <div style={{ height: " 3.75rem",flex:" 0 0 auto" }}></div>
                 <FooterR />

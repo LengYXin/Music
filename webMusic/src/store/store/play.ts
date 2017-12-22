@@ -23,10 +23,10 @@ export default class ObservableStore {
         playState: false,//播放状态
         pattern: "loop",//播放模式  循环 loop 随机 random  单曲 single 
         patternStyle: "footer",//播放器样式 footer  screen
-        patternMiniStyle: "normal",//迷你播放器样式 normal screen  mini
+        patternSimpleStyle: "normal",//简易界面 normal screen 
         showList: false,// 显示播放列表
         showLyric: false,// 显示歌词
-        showMini: true,//显示迷你版播放信息
+        showSimple: true,//显示迷你版播放信息
     };
     //时间
     @observable timeParam = {
@@ -155,22 +155,22 @@ export default class ObservableStore {
      * @param style
      *  patternMiniStyle: "normal",//迷你播放器样式 normal screen  mini 
      */
-    updatePatternMiniStyle(style?) {
+    updatePatternSimpleStyle(style?) {
         if ("undefined" === typeof style) {
-            if (this.playParam.patternMiniStyle == "normal") {
-                this.playParam.patternMiniStyle = "screen";
+            if (this.playParam.patternSimpleStyle == "normal") {
+                this.playParam.patternSimpleStyle = "screen";
             } else {
-                this.playParam.patternMiniStyle = "normal"
+                this.playParam.patternSimpleStyle = "normal"
             }
             return
         }
-        if (this.playParam.patternMiniStyle == style) {
+        if (this.playParam.patternSimpleStyle == style) {
             return;
         }
-        if (style == "normal" || style == "screen" || style == "mini") {
-            this.playParam.patternMiniStyle = style;
+        if (style == "normal" || style == "screen" ) {
+            this.playParam.patternSimpleStyle = style;
         } else {
-            throw "patternMiniStyle = normal || screen || mini";
+            throw "patternSimpleStyle = normal || screen";
         }
     }
     /**

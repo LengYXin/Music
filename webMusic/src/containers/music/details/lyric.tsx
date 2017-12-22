@@ -2,7 +2,9 @@ import * as React from "react";
 import { inject, observer } from "mobx-react";
 import Animate from 'rc-animate';
 
-
+/**
+ * 歌词
+ */
 @inject('playStore')
 @observer
 export class Lyric extends React.Component<any, any> {

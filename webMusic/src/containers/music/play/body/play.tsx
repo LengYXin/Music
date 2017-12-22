@@ -14,13 +14,13 @@ export default class extends React.Component<any, any> {
         )
     }
 };
-@inject('playStore')
-@observer
-class MusicName extends React.Component<any, any> {
-    render() {
-        const play = this.props.playStore.current.play || {};
-        return (
-            <span className="audio-play-name">{play.name}</span>
-        )
-    }
-}
+// @inject('playStore')
+// @observer
+// class MusicName extends React.Component<any, any> {
+//     render() {
+//         const play = this.props.playStore.current.play || {};
+//         return (
+//             <span className="audio-play-name">{play.name}</span>
+//         )
+//     }
+// }

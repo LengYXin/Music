@@ -6,23 +6,24 @@ import Normal from "./normal"
 // import Mini from "./mini"
 import Screen from "./screen"
 
+/**
+ * 菜单左边 播放迷你界面
+ */
 @inject('playStore')
 @observer
-export class MusicPlayMiniComponent extends React.Component<any, any> {
+export class MusicPlaySimpleComponent extends React.Component<any, any> {
 
     renderMini() {
-        if (this.props.playStore.playParam.patternMiniStyle == "normal") {
+        if (this.props.playStore.playParam.patternSimpleStyle == "normal") {
             return <Normal />
         }
         return <Screen />
     }
     render() {
-        // if (this.props.playStore.playParam.patternMiniStyle == "mini") {
-        //     return <Mini />
-        // }
+     
         return <Animate transitionName="fade"
             transitionAppear={true} component=""> 
-            <div className={"music-mini-body " + this.props.playStore.playParam.patternMiniStyle}>
+            <div className={"music-simple-body " + this.props.playStore.playParam.patternSimpleStyle}>
                 {this.renderMini()}
             </div>
         </Animate>

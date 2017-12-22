@@ -1,3 +1,3 @@
 
 export * from "./play";
-export * from "./mini/index";
+export * from "./simple/index";

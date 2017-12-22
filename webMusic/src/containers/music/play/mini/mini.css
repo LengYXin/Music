@@ -1,0 +1,12 @@
+.music-mini {
+  -webkit-app-region: drag;
+  display: flex;
+  height: 55px;
+  background: rgb(22, 24, 28);
+  color: rgba(255, 255, 255, 0.67);
+}
+
+.music-mini .audio-btns,
+.music-mini .mini-operation {
+  -webkit-app-region: no-drag;
+}
