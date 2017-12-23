@@ -9,15 +9,13 @@ import { MusicImg } from '../../details/index';
 /**
  * 迷你播放器
  */
-@inject('playStore', 'windowsStore')
+@inject('windowsStore')
 @observer
 export default class extends React.Component<any, any> {
     onAlt() {
-        this.props.playStore.updatePatternMiniStyle("normal");
         this.props.windowsStore.onMini();
     }
     render() {
-        const play = this.props.playStore.current.play || {};
         return <div className="music-mini">
             <MusicImg />
             <Btns />

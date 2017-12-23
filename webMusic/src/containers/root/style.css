@@ -57,9 +57,19 @@
 .root-body .container {
   min-height: 100%;
 }
-.root-Layout{
+
+.root-Layout {
   position: relative;
 }
+
+.root-Layout-Sider {
+  overflow: auto;
+  border-right: 1px solid #4e4e4e;
+}
+.root-Layout-Sider.simple-show{
+  margin-bottom: 60px;
+}
+
 .root-footer {
   position: absolute;
   bottom: 0;

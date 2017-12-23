@@ -26,7 +26,7 @@ export default class ObservableStore {
         patternSimpleStyle: "normal",//简易界面 normal screen 
         showList: false,// 显示播放列表
         showLyric: false,// 显示歌词
-        showSimple: true,//显示迷你版播放信息
+        showSimple: false,//显示迷你版播放信息
     };
     //时间
     @observable timeParam = {
@@ -93,6 +93,8 @@ export default class ObservableStore {
         this.url = url;
         if (this.url && this.audio.src != this.url) {
             this.audio.src = this.url;
+            // 显示简易窗口
+            this.playParam.showSimple = true;
         }
     }
     /**
@@ -167,7 +169,7 @@ export default class ObservableStore {
         if (this.playParam.patternSimpleStyle == style) {
             return;
         }
-        if (style == "normal" || style == "screen" ) {
+        if (style == "normal" || style == "screen") {
             this.playParam.patternSimpleStyle = style;
         } else {
             throw "patternSimpleStyle = normal || screen";
@@ -282,6 +284,7 @@ export default class ObservableStore {
         });
         //暂停
         this.audio.addEventListener("pause", e => {
+            // console.log("pause", this.audio.src, this.url);
             this.updatePlayState(false);
         });
 

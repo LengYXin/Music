@@ -10,6 +10,6 @@ import Animate from 'rc-animate';
 export class MusicImg extends React.Component<any, any> {
     render() {
         const play = this.props.playStore.current.play || {};
-        return <img alt="" src={(play.al ? play.al.picUrl + "?param=400y400" : globalMusic.defaultImg)} />
+        return <img alt="" src={(play.al ? play.al.picUrl + "?param=300y300" : globalMusic.defaultImg)} />
     }
 }

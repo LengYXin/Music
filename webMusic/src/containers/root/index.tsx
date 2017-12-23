@@ -32,15 +32,14 @@ export class RootApp extends React.Component<any, any>{
                     <HeaderR  {...this.props} />
                 </Header>
                 <Layout className="root-Layout">
-                    <Sider style={{ overflow: 'auto', borderRight: " 1px solid #4e4e4e" }}>
-                        <Menu  {...this.props} />
-                    </Sider>
+                    <Menu  {...this.props} />
+                    {/* </Sider> */}
                     <Content>
                         <Body  {...this.props} />
                     </Content>
                     <MusicPlaySimpleComponent />
                 </Layout>
-                <div style={{ height: " 3.75rem",flex:" 0 0 auto" }}></div>
+                <div style={{ height: " 3.75rem", flex: " 0 0 auto" }}></div>
                 <FooterR />
             </Layout>
         );

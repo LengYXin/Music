@@ -20,12 +20,14 @@ export class MusicPlaySimpleComponent extends React.Component<any, any> {
         return <Screen />
     }
     render() {
-     
-        return <Animate transitionName="fade"
-            transitionAppear={true} component=""> 
-            <div className={"music-simple-body " + this.props.playStore.playParam.patternSimpleStyle}>
-                {this.renderMini()}
-            </div>
-        </Animate>
+        if (this.props.playStore.playParam.showSimple) {
+            return <Animate transitionName="fade"
+                transitionAppear={true} component="">
+                <div className={"music-simple-body " + this.props.playStore.playParam.patternSimpleStyle}>
+                    {this.renderMini()}
+                </div>
+            </Animate>
+        }
+        return <div></div>;
     }
 }

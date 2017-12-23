@@ -21,7 +21,6 @@
   height: 100%;
 }
 
-
 .music-simple-img {
   width: 60px;
   height: 60px;
@@ -91,13 +90,19 @@
   cursor: pointer;
 }
 
-
 .music-simple-screen {
   width: 100%;
   position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  padding: 10px 30px;
+  justify-content: center;
 }
-.music-simple-screen .music-simple-o-btn{
+.music-simple-s-content{
+  max-width: 56.25rem;
+}
+.music-simple-screen .music-simple-o-btn {
   position: fixed;
   right: .625rem;
   text-align: center;
@@ -105,13 +110,28 @@
   cursor: pointer;
   font-size: 1.5rem;
   z-index: 11;
-  animation: antFadeIn 2s;
+  animation: btnFadeIn .5s;
 }
-@keyframes antFadeIn {
+
+@keyframes btnFadeIn {
   0% {
+    opacity: 0;
+  }
+  80% {
     opacity: 0;
   }
   100% {
     opacity: 1;
   }
+}
+
+.music-simple-screen .music-simple-details {
+  display: block;
+}
+
+.music-simple-details .music-simple-d-img,
+.music-simple-details .music-simple-d-lyric {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,8 +1,8 @@
  /* 图片 */
 
  .audio-img-pic {
-   height: 25rem;
-   width: 25rem;
+   height: 18.75rem;
+   width: 18.75rem;
    overflow: hidden;
    border-radius: 100%;
    animation: spin 25s linear infinite;
@@ -15,10 +15,10 @@
  /* 歌词 */
 
  .play-lyric {
-   height: 28.125rem;
+   height: 18.75rem;
    overflow: auto;
-   min-width: 400px;
-   text-align: center;
+   width: 400px;
+   /* text-align: center; */
    padding: .625rem 0;
    position: relative;
  }
