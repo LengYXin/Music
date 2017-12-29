@@ -11,10 +11,14 @@ export default class Http {
     }
     address = "/"
     post(url: string) {
-        return Rx.Observable.ajax.post(`${this.address}${url}`).map(this.map);
+        return Rx.Observable.ajax.post(`${this.address}${url}`, {
+            credentials: 'include'
+        }).map(this.map);
     }
     get(url: string) {
-        return Rx.Observable.ajax.get(`${this.address}${url}`).map(this.map);
+        return Rx.Observable.ajax.get(`${this.address}${url}`, {
+            credentials: 'include'
+        }).map(this.map);
     }
     map(x) {
         if (x.status == 200) {

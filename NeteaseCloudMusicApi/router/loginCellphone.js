@@ -1,7 +1,9 @@
 const express = require('express')
 const crypto = require('crypto')
 const router = express()
-const { createWebAPIRequest } = require('../util/util')
+const {
+  createWebAPIRequest
+} = require('../util/util')
 
 router.get('/', (req, res) => {
   const phone = req.query.phone
@@ -20,7 +22,8 @@ router.get('/', (req, res) => {
     data,
     cookie,
     (music_req, cookie) => {
-      // console.log(music_req)
+      console.log(cookie)
+      cookie = cookie.map(x => x.replace("Domain=.music.163.com", ""))
       res.set({
         'Set-Cookie': cookie
       })

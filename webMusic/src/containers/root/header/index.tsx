@@ -44,7 +44,7 @@ export default class extends React.Component<any, any>{
                 <div className="root-header-logo">
                     <Link to="/">
                         <img alt="" src={globalMusic.defaultImg} />
-                        <strong>No Name</strong>
+                        <strong>Music</strong>
                     </Link>
                 </div>
                 <div className="root-header-btns">

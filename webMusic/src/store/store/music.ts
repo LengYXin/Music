@@ -44,7 +44,7 @@ class cacheData {
         Cache.localSet(name, this["_" + name]);
     }
 }
-export default class ObservableStore extends cacheData{
+export default class ObservableStore extends cacheData {
     constructor() { super(); }
     /**
      * 获取 歌曲地址
@@ -82,6 +82,15 @@ export default class ObservableStore extends cacheData{
         }
         return formatTool.formatLyric(this.Lyric[id]);
     }
+    async getComment(id: string, limit: number = 20, offset: number = 1) {
+        // 已经获取过的歌曲略过
+        let res = {};
+        res = await Http.get(`/comment/music?id=${id}&limit=${limit}&offset=${offset}`).toPromise();
+        return res;
+    }
+
+
+
 }
 
 

@@ -391,7 +391,10 @@ export default class ObservableStore {
             //     ids.push(cachePlay.id);
             // }
             // 获取歌曲播放地址信息
-            const music = await Store.musicStore.getMusic(ids.join(","));
+            const getMusic=Store.musicStore.getMusic(ids.join(","));
+            const getLyric=Store.musicStore.getLyric(play.id);
+            
+            const music = await getMusic;
             if (music.code == -110) {
                 notification["error"]({
                     message: '购买专辑',
@@ -403,7 +406,7 @@ export default class ObservableStore {
             this.current.music = music;
             this.setUrl(this.current.music.url);
             // 获取歌词信息
-            const lyric = await Store.musicStore.getLyric(play.id);
+            const lyric = await getLyric;
             this.current.lyric = lyric;
             // console.log(music, lyric);
             // 存储当前播放歌曲信息

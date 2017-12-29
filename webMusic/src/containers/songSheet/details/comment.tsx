@@ -41,7 +41,7 @@ export class CommentComponent extends React.Component<any, any> {
             state.comments = comment.comments;
             state.hotComments = comment.hotComments;
         } else {
-            state.comments = [...this.state.comments, comment.comments]
+            state.comments = [...this.state.comments, ...comment.comments]
         }
         this.setState(state);
     }
