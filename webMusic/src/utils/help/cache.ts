@@ -89,7 +89,7 @@ export default class Cache {
                 this.localStorage.clear();
                 // this.localSet("__UserID", __UserID);
                 __UserID && this.localStorage.setItem("__UserID", JSON.stringify(__UserID));
-                __audio_volume && this.localStorage.setItem("__audio_volume", JSON.stringify(__audio_volume));
+                __audio_volume != null && this.localStorage.setItem("__audio_volume", JSON.stringify(__audio_volume));
             }
         }
     }
