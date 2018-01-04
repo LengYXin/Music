@@ -44,11 +44,11 @@
   transition: all .3s;
 }
 
-.audio-btns>a:hover {
+/* .audio-btns>a:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
-}
+} */
 
 /* .audio-details .audio-img-pic {
   height: 2.5rem;

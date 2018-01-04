@@ -56,11 +56,20 @@ export default class ObservableStore {
     // 当前播放的音乐索引
     @observable currentIndex = 0;
     // 当前播放的音乐 源数据  地址  歌词 详情
-    @observable current: any = {
-        //歌词
-        lyric: {},
+    @observable current = {
+        // 歌词
+        lyric: {
+            // 歌词位置
+            lyricIndex: 0,
+            // 当前歌词
+            details: {},
+            //歌词数组
+            item: []
+        },
         // 音乐地址信息
-        music: {},
+        music: {
+            url: ""
+        },
         // 歌曲信息
         play: {},
     };
@@ -265,6 +274,7 @@ export default class ObservableStore {
                 time: time,
                 timeStr: timeStr
             };
+            this.lyricsLocation(time);
         });
         // 当目前的播放列表已结束时
         this.audio.addEventListener("ended", e => {
@@ -289,7 +299,43 @@ export default class ObservableStore {
         });
 
     }
-
+    /**
+     * 歌词定位
+     */
+    lyricsLocation(time) {
+        let current = false;
+        let item: any[] = this.current.lyric.item;
+        let lyricIndex = -1;
+        let details;
+        if (item.length) {
+            item = item.map((x, i) => {
+                try {
+                    if (x.time) {
+                        let next = item[i + 1];
+                        current = time >= x.time && time <= next.time;
+                    }
+                } catch (error) {
+                    current = true;
+                }
+                // 定位到当前歌词取出index 和 详情
+                if (current) {
+                    lyricIndex = i;
+                    details = x;
+                }
+                x.current = current;
+                return x;
+            })
+            // 歌词位置未改变
+            if (lyricIndex == this.current.lyric.lyricIndex) {
+                return;
+            }
+            this.current.lyric = {
+                lyricIndex,
+                details,
+                item
+            };
+        }
+    }
 
     /**
      * 加入播放列表
@@ -391,9 +437,9 @@ export default class ObservableStore {
             //     ids.push(cachePlay.id);
             // }
             // 获取歌曲播放地址信息
-            const getMusic=Store.musicStore.getMusic(ids.join(","));
-            const getLyric=Store.musicStore.getLyric(play.id);
-            
+            const getMusic = Store.musicStore.getMusic(ids.join(","));
+            const getLyric = Store.musicStore.getLyric(play.id);
+
             const music = await getMusic;
             if (music.code == -110) {
                 notification["error"]({
@@ -407,7 +453,7 @@ export default class ObservableStore {
             this.setUrl(this.current.music.url);
             // 获取歌词信息
             const lyric = await getLyric;
-            this.current.lyric = lyric;
+            this.current.lyric.item = lyric;
             // console.log(music, lyric);
             // 存储当前播放歌曲信息
             // this.current = {

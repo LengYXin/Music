@@ -49,8 +49,7 @@ export default class Cache {
         this.testing();
         try {
             const v = this.localStorage.getItem(key);
-            // 存在值返回  不存在 返回默认
-            return v && JSON.parse(v) || value;
+            return v == null ? value : JSON.parse(v);
         } catch (error) {
             return value;
         }
@@ -88,8 +87,8 @@ export default class Cache {
                 let __audio_volume = JSON.parse(this.localStorage.getItem("__audio_volume"));
                 this.localStorage.clear();
                 // this.localSet("__UserID", __UserID);
-                __UserID && this.localStorage.setItem("__UserID", JSON.stringify(__UserID));
-                __audio_volume != null && this.localStorage.setItem("__audio_volume", JSON.stringify(__audio_volume));
+                this.localStorage.setItem("__UserID", JSON.stringify(__UserID));
+                this.localStorage.setItem("__audio_volume", JSON.stringify(__audio_volume));
             }
         }
     }

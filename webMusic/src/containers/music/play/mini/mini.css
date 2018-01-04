@@ -1,12 +1,71 @@
 .music-mini {
   -webkit-app-region: drag;
   display: flex;
-  height: 55px;
+  height: 60px;
   background: rgb(22, 24, 28);
   color: rgba(255, 255, 255, 0.67);
 }
 
-.music-mini .audio-btns,
-.music-mini .mini-operation {
+.music-mini a {
+  color: #fff;
+}
+
+.music-mini .music-mini-img,
+.music-mini .music-mini-img>img {
+  width: 60px;
+}
+
+.music-mini .music-mini-control,
+.music-mini .music-mini-operation,
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-mini .music-mini-control {
+  flex: 1;
+  position: relative;
+}
+
+.music-mini-cont-1,
+.music-mini-cont-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(22, 24, 28);
+  opacity: 0;
+  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.08, 0.82, 0.17, 1);
+}
+
+.music-mini-cont-2 {
+  opacity: 1;
+}
+
+.music-mini-control:hover .music-mini-cont-1 {
+  z-index: 2;
+  opacity: 1;
+}
+.music-mini-cont-1 .music-mini-btns{
+  height: 100%;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.music-mini .music-mini-btns,
+.music-mini .music-mini-operation {
   -webkit-app-region: no-drag;
+}
+
+.music-mini-lyric>p {
+  margin: 0;
+  padding: 0 0 2px 0;
+  text-align: center;
 }

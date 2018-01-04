@@ -29,8 +29,8 @@ export default class ObservableStore {
       const win = this.electron.remote.app.win;
       if (this.isMini) {
         this.getSize();
-        win.setMinimumSize(600, 55);
-        win.setSize(600, 55, true);
+        win.setMinimumSize(400, 55);
+        win.setSize(400, 55, true);
         // 禁止调整大小
         win.setResizable(false);
       } else {

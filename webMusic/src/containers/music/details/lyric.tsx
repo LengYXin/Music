@@ -16,20 +16,14 @@ export class Lyric extends React.Component<any, any> {
     // }
     render() {
         // console.log(this);
-        let lyric = this.props.playStore.current.lyric || [];
-        // console.log(lyric, this.props.playStore.currentTimeS);
-        let currentTimeS = this.props.playStore.timeParam.currentPlay.time;
-        if (currentTimeS == 0) {
-            clearInterval(this.scrollInterval)
-            this.offsetParent ? this.offsetParent.scrollTop = 0 : null;
-        }
+        let lyric = this.props.playStore.current.lyric.item || [];
         return (
             <Animate transitionName="fade" transitionAppear={true} component="">
 
                 <div key="1" className="play-lyric"  >
                     {
                         lyric.length ? lyric.map((x, i, arr) => {
-                            return this.renderItem(currentTimeS, x, i, arr);
+                            return this.renderItem(x, i);
                         }) : <div className="play-lyric-not">
                                 <span>纯音乐，请您欣赏</span>
                             </div>
@@ -39,29 +33,17 @@ export class Lyric extends React.Component<any, any> {
 
         )
     }
-    renderItem(currentTimeS, lyricTime, index, arr) {
-        // 计算当前时间段是否是歌词时间段
-        let current = false;
-        try {
-            if (lyricTime.time) {
-                // let difference = this.props.playStore.currentTimeS - x.time;
-                let next = arr[index + 1];
-                current = currentTimeS >= lyricTime.time && currentTimeS <= next.time;
-                // console.log(index);
-            }
-        } catch (error) {
-            current = true;
-        }
-        return <div key={index} className={current ? "play-lyric-item activity" : "play-lyric-item"} ref={e => { this.refLyric(e, lyricTime.time, current) }} >
-            <p className="play-lyric-lyric">  <span >{lyricTime.lyric}</span></p>
-            <p className="play-lyric-tlyric"> <span >{lyricTime.tlyric}</span></p>
+    renderItem(lyric, index) {
+        return <div key={index} className={lyric.current ? "play-lyric-item activity" : "play-lyric-item"} ref={e => { this.refLyric(e, lyric.time, lyric.current) }} >
+            <p className="play-lyric-lyric">  <span >{lyric.lyric}</span></p>
+            <p className="play-lyric-tlyric"> <span >{lyric.tlyric}</span></p>
         </div>
     }
     time;
     offsetParent;
     height;
     refLyric(e: HTMLDivElement, time, current) {
-        if (!current || this.time == time) {
+        if (!e || !current || this.time == time) {
             return
         }
         this.time = time;
