@@ -25,7 +25,7 @@ export class RootApp extends React.Component<any, any>{
         // if (this.props.windowsStore.isMini) {
         //     return <MusicPlayMiniComponent />
         // }
-        console.log("RootApp");
+        // console.log("RootApp");
         return (
             <Layout className="skin-default" style={{ height: '100vh' }}>
                 <Header className="root-header">

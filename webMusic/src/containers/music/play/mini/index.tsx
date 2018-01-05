@@ -9,11 +9,21 @@ import { MusicImg } from '../../details/index';
 /**
  * 迷你播放器
  */
-@inject('windowsStore')
+@inject('windowsStore', 'playStore')
 @observer
 export default class extends React.Component<any, any> {
     onAlt() {
         this.props.windowsStore.onMini();
+    }
+    showPlayList(e) {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+        if (this.props.playStore.playParam.showList) {
+            this.props.windowsStore.setSize(400, 60);
+        } else {
+            this.props.windowsStore.setSize(400, 375);
+        }
+        this.props.playStore.updateShowList();
     }
     render() {
         return <div className="music-mini">
@@ -33,6 +43,9 @@ export default class extends React.Component<any, any> {
             <div className="music-mini-operation">
                 <a onClick={this.onAlt.bind(this)}>
                     <Icon type="arrows-alt" />
+                </a>
+                <a className="menu-playList" onClick={this.showPlayList.bind(this)}>
+                    <Icon type="bars" />
                 </a>
             </div>
 

@@ -22,10 +22,10 @@ export default class ObservableStore {
     @observable playParam = {
         playState: false,//播放状态
         pattern: "loop",//播放模式  循环 loop 随机 random  单曲 single 
-        patternStyle: "footer",//播放器样式 footer  screen
+        // patternStyle: "footer",//播放器样式 footer  screen
         patternSimpleStyle: "normal",//简易界面 normal screen 
         showList: false,// 显示播放列表
-        showLyric: false,// 显示歌词
+        // showLyric: false,// 显示歌词
         showSimple: false,//显示迷你版播放信息
     };
     //时间
@@ -50,9 +50,9 @@ export default class ObservableStore {
     // 随机播放索引
     randomIndex = [];
     // 当前播放歌曲索引
-    @computed get playIndex() {
-        return this.currentIndex;
-    }
+    // @computed get playIndex() {
+    //     return this.currentIndex;
+    // }
     // 当前播放的音乐索引
     @observable currentIndex = 0;
     // 当前播放的音乐 源数据  地址  歌词 详情
@@ -62,7 +62,7 @@ export default class ObservableStore {
             // 歌词位置
             lyricIndex: 0,
             // 当前歌词
-            details: {},
+            details: {lyric:"纯音乐，请您欣赏"},
             //歌词数组
             item: []
         },
@@ -112,12 +112,12 @@ export default class ObservableStore {
     updateShowList() {
         this.playParam.showList = !this.playParam.showList;
     }
-    /**
-   * 显示歌词
-   */
-    updateShowLyric() {
-        this.playParam.showLyric = !this.playParam.showLyric;
-    }
+//     /**
+//    * 显示歌词
+//    */
+//     updateShowLyric() {
+//         this.playParam.showLyric = !this.playParam.showLyric;
+//     }
     /**
      * 设置播放状态
      * @param state 
@@ -184,29 +184,29 @@ export default class ObservableStore {
             throw "patternSimpleStyle = normal || screen";
         }
     }
-    /**
-     * 修改播放器样式
-     * @param style 
-     */
-    updatePatternStyle(style?) {
-        if ("undefined" === typeof style) {
-            if (this.playParam.patternStyle == "footer") {
-                this.playParam.patternStyle = "screen";
-            } else {
-                this.playParam.patternStyle = "footer"
-            }
-            return
-        }
-        if (this.playParam.patternStyle == style) {
-            return;
-        }
-        if (style == "footer" || style == "screen") {
-            this.playParam.showList = false;
-            this.playParam.patternStyle = style;
-        } else {
-            throw "patternStyle = footer || screen";
-        }
-    }
+    // /**
+    //  * 修改播放器样式
+    //  * @param style 
+    //  */
+    // updatePatternStyle(style?) {
+    //     if ("undefined" === typeof style) {
+    //         if (this.playParam.patternStyle == "footer") {
+    //             this.playParam.patternStyle = "screen";
+    //         } else {
+    //             this.playParam.patternStyle = "footer"
+    //         }
+    //         return
+    //     }
+    //     if (this.playParam.patternStyle == style) {
+    //         return;
+    //     }
+    //     if (style == "footer" || style == "screen") {
+    //         this.playParam.showList = false;
+    //         this.playParam.patternStyle = style;
+    //     } else {
+    //         throw "patternStyle = footer || screen";
+    //     }
+    // }
     /**
      * 添加播放事件
      */

@@ -12,11 +12,19 @@ export default class ObservableStore {
     Minimum: null,
 
   };
+  isMaximized = false;
+  win = null;
   constructor() {
-    if (window["require"]) {
-      this.electron = window["require"]("electron");
+    try {
+      if (window["require"]) {
+        this.electron = window["require"]("electron");
+        this.win = this.electron.remote.app.win;
+      }
+    } catch (error) {
+      console.log("error", error);
     }
   }
+  // 切换mini模式
   onMini(mini?) {
     if ("undefined" === typeof mini) {
       this.isMini = !this.isMini;
@@ -26,27 +34,36 @@ export default class ObservableStore {
       }
     }
     if (this.electron) {
-      const win = this.electron.remote.app.win;
+      const win = this.win;
       if (this.isMini) {
         this.getSize();
-        win.setMinimumSize(400, 55);
-        win.setSize(400, 55, true);
+        // 设置最小宽高
+        win.setMinimumSize(1, 1);
+        this.setSize(400, 60);
         // 禁止调整大小
         win.setResizable(false);
       } else {
+        // 设置最小宽高
         win.setMinimumSize(1150, 670);
-        win.setSize(this.size[0], this.size[1], true);
+        this.setSize(this.size[0], this.size[1]);
+        // 可以调整大小
         win.setResizable(true);
       }
-
+      // 将窗口移动到屏幕中央。
+      win.center();
+    }
+  }
+  setSize(w, h, a = true) {
+    if (this.electron) {
+      this.win.setSize(w, h, a);
     }
   }
   getSize() {
     if (this.electron) {
-      this.size = this.electron.remote.app.win.getSize();
-      console.log(this.size);
+      this.size = this.win.getSize();
     }
   }
+  // 浏览器打开链接
   openExternal(url) {
     if (this.electron) {
       this.electron.shell.openExternal(url);
@@ -64,27 +81,33 @@ export default class ObservableStore {
         err && console.error(err);
         cks && cks.map(x => {
           cookies.remove(origin, x.name, r => {
-            console.log("remove cookies ");
+            console.log(`remove cookies  ${x.name}`);
           })
         })
       });
     }
   }
+  // 最小化
   onMinus() {
     if (this.electron) {
-      this.electron.remote.app.win.minimize();
+      this.win.minimize();
     }
   }
+  // 最大化
   onAlt() {
     if (this.electron) {
-      const win = this.electron.remote.app.win;
-      if (win.isMaximized()) {
+      const win = this.win;
+      // win.isMaximized() 有bug
+      if (this.isMaximized) {
         win.unmaximize();
+        this.isMaximized = false;
       } else {
         win.maximize();
+        this.isMaximized = true;
       }
     }
   }
+  //关闭
   onClose() {
     if (this.electron) {
       this.electron.remote.app.exit();

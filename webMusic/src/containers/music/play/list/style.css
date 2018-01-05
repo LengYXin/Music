@@ -19,19 +19,27 @@
     transition: all 0.4s cubic-bezier(0.35, 0.26, 0.58, 1) 0s;
     -webkit-transition: all 0.4s cubic-bezier(0.35, 0.26, 0.58, 1) 0s;
 }
-.play-list-body>h3{
+
+.music-play-mini .play-list-body {
+    top: 60px;
+    width: 400px;
+}
+
+.play-list-body>h3 {
     text-align: center;
     color: #fff;
 }
+
 .screen.play-list-body {
     bottom: 5rem;
 }
 
 .play-list-body.play-list-show {
-    height: 18.75rem;
+    height: 19.6875rem;
     padding: 5px;
 }
 
+.music-play-mini .play-list-body.play-list-show,
 .play-list-body.play-list-hide {
     border: none;
 }
@@ -42,13 +50,16 @@
     overflow-y: auto;
     background-color: rgb(50, 52, 56);
 }
-.play-list-title{
-    border-bottom: .03rem solid  rgb(146, 147, 148);
+
+.play-list-title {
+    border-bottom: .03rem solid rgb(146, 147, 148);
 }
-.play-list-item{
+
+.play-list-item {
     padding: .1875rem 0;
     cursor: pointer;
 }
-.play-list-item.play{
-    background:  rgb(146, 147, 148);
+
+.play-list-item.play {
+    background: rgb(146, 147, 148);
 }

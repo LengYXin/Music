@@ -15,7 +15,7 @@ export default class extends React.Component<any, any> {
     render() {
         // console.log("PlayOperation", this);
         return (
-            <div className={"audio-operation " + this.props.className}>
+            <div className={"audio-operation footer" + this.props.className}>
                 <span onClick={this.onClick.bind(this)}>
                     <Icon type={this.props.className=="footer"?"arrows-alt":"shrink"} />
                 </span>

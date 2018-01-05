@@ -29,7 +29,7 @@ export default class extends React.Component<any, any> {
     }
     render() {
         return (
-            <div onClick={e => { e.stopPropagation(); e.nativeEvent.stopImmediatePropagation(); }} className={(this.props.playStore.playParam.showList ? "play-list-body play-list-show " : "play-list-body play-list-hide ") + this.props.className}>
+            <div onClick={e => { e.stopPropagation(); e.nativeEvent.stopImmediatePropagation(); }} className={(this.props.playStore.playParam.showList ? "play-list-body play-list-show footer" : "play-list-body play-list-hide footer")}>
                 <h3>播放列表 ({this.props.playStore.playList.length})</h3>
                 <Row className="play-list-title">
                     <Col span={1}>

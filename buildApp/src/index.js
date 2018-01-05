@@ -34,8 +34,10 @@ function createWindow() {
     minWidth: 1150,
     minHeight: 670,
     frame: false, //无边框
-    show: false //隐藏窗口
-  })
+    show: false, //隐藏窗口
+    // transparent: true
+  });
+  // mainWindow.setIgnoreMouseEvents(true);
   //退出
   mainWindow.on('closed', function () {
     console.log("closed");

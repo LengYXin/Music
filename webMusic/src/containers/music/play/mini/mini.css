@@ -63,7 +63,13 @@
 .music-mini .music-mini-operation {
   -webkit-app-region: no-drag;
 }
-
+.music-mini .music-mini-operation{
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .music-mini-lyric>p {
   margin: 0;
   padding: 0 0 2px 0;

@@ -75,7 +75,7 @@ export default class ObservableStore {
             this.detailsLoading = true;
             // });
         }
-        console.log("object", id, this.detailsList);
+        // console.log("object", id, this.detailsList);
         return this.details;
     }
 
