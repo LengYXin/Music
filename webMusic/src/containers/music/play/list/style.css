@@ -22,7 +22,9 @@
 
 .music-play-mini .play-list-body {
     top: 60px;
+    height: 260px;
     width: 400px;
+    transition: none;
 }
 
 .play-list-body>h3 {

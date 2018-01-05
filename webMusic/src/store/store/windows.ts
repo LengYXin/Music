@@ -19,6 +19,7 @@ export default class ObservableStore {
       if (window["require"]) {
         this.electron = window["require"]("electron");
         this.win = this.electron.remote.app.win;
+
       }
     } catch (error) {
       console.log("error", error);
@@ -35,6 +36,7 @@ export default class ObservableStore {
     }
     if (this.electron) {
       const win = this.win;
+      win.hide();
       if (this.isMini) {
         this.getSize();
         // 设置最小宽高
@@ -42,15 +44,22 @@ export default class ObservableStore {
         this.setSize(400, 60);
         // 禁止调整大小
         win.setResizable(false);
+        // 设置窗口是否应始终显示在其他窗口的顶部
+        win.setAlwaysOnTop(true);
       } else {
         // 设置最小宽高
         win.setMinimumSize(1150, 670);
         this.setSize(this.size[0], this.size[1]);
         // 可以调整大小
         win.setResizable(true);
+        // 设置窗口是否应始终显示在其他窗口的顶部
+        win.setAlwaysOnTop(false);
       }
       // 将窗口移动到屏幕中央。
-      win.center();
+      setTimeout(() => {
+        win.center();
+        win.show();
+      },50);
     }
   }
   setSize(w, h, a = true) {

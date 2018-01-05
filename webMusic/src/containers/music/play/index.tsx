@@ -12,7 +12,7 @@ export class MusicPlayComponent extends React.Component<any, any> {
         if (this.props.windowsStore.isMini) {
             return <div className="music-play-mini">
                 <Mini />
-                <PlayList />
+                <PlayList type="mini"/>
             </div>;
         }
         return [

@@ -18,11 +18,11 @@ export default class extends React.Component<any, any> {
     showPlayList(e) {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
-        if (this.props.playStore.playParam.showList) {
-            this.props.windowsStore.setSize(400, 60);
-        } else {
-            this.props.windowsStore.setSize(400, 375);
-        }
+        // if (this.props.playStore.playParam.showList) {
+        //     this.props.windowsStore.setSize(400, 60);
+        // } else {
+        //     this.props.windowsStore.setSize(400, 375);
+        // }
         this.props.playStore.updateShowList();
     }
     render() {

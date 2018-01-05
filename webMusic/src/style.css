@@ -7,6 +7,7 @@
 @import './assets/css/animation.css';
 html,body {
     overflow: hidden;
+    background: #16181C;
     /* background-image: url(/assets/img/background.jpeg);
     background-origin: content-box;
     background-repeat: no-repeat;

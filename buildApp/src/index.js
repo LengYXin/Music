@@ -5,6 +5,8 @@ const server = require('./server')
 const net = require('net')
 // Module to control application life.
 const app = electron.app
+const Tray = electron.Tray;
+const Menu = electron.Menu;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 // Keep a global reference of the window object, if you don't, the window will
@@ -27,12 +29,23 @@ function portIsOccupied(callback) {
 // // 执行
 // portIsOccupied(80)
 function createWindow() {
+  const iocStr = path.join(path.dirname(__dirname), "src", 'format.ico');
+  const tray = new Tray(iocStr)
+  const contextMenu = Menu.buildFromTemplate([{
+    label: 'Item1',
+    type: 'normal'
+  }, ])
+  tray.setToolTip('Music')
+  tray.setContextMenu(contextMenu)
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    title: "Music",
+    icon: iocStr,
     width: 1150,
     height: 670,
     minWidth: 1150,
     minHeight: 670,
+    backgroundColor: '#16181C',
     frame: false, //无边框
     show: false, //隐藏窗口
     // transparent: true
@@ -50,8 +63,8 @@ function createWindow() {
   app.win = mainWindow;
   // portIsOccupied(function () {
   //   server(port);
-    port = 3002
-    mainWindow.loadURL("http://127.0.0.1:" + port);
+  port = 3002
+  mainWindow.loadURL("http://127.0.0.1:" + port);
   // })
   // and load the index.html of the app.
   // mainWindow.loadURL(url.format({

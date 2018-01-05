@@ -62,7 +62,7 @@ export default class ObservableStore {
             // 歌词位置
             lyricIndex: 0,
             // 当前歌词
-            details: {lyric:"纯音乐，请您欣赏"},
+            details: { lyric: "纯音乐，请您欣赏" },
             //歌词数组
             item: []
         },
@@ -71,7 +71,9 @@ export default class ObservableStore {
             url: ""
         },
         // 歌曲信息
-        play: {},
+        play: {
+            name: ""
+        },
     };
     // 歌曲地址
     url = "";
@@ -111,13 +113,21 @@ export default class ObservableStore {
      */
     updateShowList() {
         this.playParam.showList = !this.playParam.showList;
+        if (Store.windowsStore.isMini) {
+            if (this.playParam.showList) {
+                Store.windowsStore.setSize(400, 320);
+            } else {
+                Store.windowsStore.setSize(400, 60);
+            }
+        }
+
     }
-//     /**
-//    * 显示歌词
-//    */
-//     updateShowLyric() {
-//         this.playParam.showLyric = !this.playParam.showLyric;
-//     }
+    //     /**
+    //    * 显示歌词
+    //    */
+    //     updateShowLyric() {
+    //         this.playParam.showLyric = !this.playParam.showLyric;
+    //     }
     /**
      * 设置播放状态
      * @param state 
@@ -328,6 +338,9 @@ export default class ObservableStore {
             // 歌词位置未改变
             if (lyricIndex == this.current.lyric.lyricIndex) {
                 return;
+            }
+            if (lyricIndex == -1) {
+                details = this.current.play.name;
             }
             this.current.lyric = {
                 lyricIndex,
