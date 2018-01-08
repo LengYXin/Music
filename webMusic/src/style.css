@@ -5,7 +5,8 @@
 @import './assets/css/iconfont.css';
 @import './assets/css/default.css';
 @import './assets/css/animation.css';
-html,body {
+html,
+body {
     overflow: hidden;
     background: #16181C;
     /* background-image: url(/assets/img/background.jpeg);
@@ -15,6 +16,7 @@ html,body {
     background-clip: content-box;
     background-size: 100% 100%; */
 }
+
 ::-webkit-scrollbar-track-piece {
     width: 6px;
     background-color: rgb(34, 34, 37);
