@@ -5,14 +5,17 @@ import songSheetStore from './store/songSheet';
 import musicStore from './store/music';
 import playStore from './store/play';
 import mvStore from './store/mv';
-
+import { create, persist } from 'mobx-persist'
 //中控
 import controller from "./controller";
+
 class store {
     constructor() {
+
         this.ready();
         this.init();
     }
+    hydrate = create({})
     // model = new model();
     // 窗口
     windowsStore = new windowsStore();
@@ -53,10 +56,16 @@ class store {
      * 初始化数据
      */
     init() {
+        this.hydrate('playStore', this.playStore)
+            .then(() => {
+                this.playStore.playParam.playState = false;
+                this.playStore.playParam.showList = false;
+            })
+
         this.basicDataStore.getBanner();
         this.songSheetStore.getPlaylist();
         this.UserContextStore.onRefresh();
     }
-   
+
 };
 export default new store();

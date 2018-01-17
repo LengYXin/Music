@@ -1,4 +1,5 @@
 import { observable, computed, autorun, useStrict } from "mobx"
+import { persist } from 'mobx-persist'
 // useStrict(true);
 import { Http, Help, Cache } from "../../utils"
 import Store from "../index";
@@ -19,7 +20,7 @@ export default class ObservableStore {
     //     url: "",//播放的当前url
     // };
     //播放参数
-    @observable playParam = {
+    @persist('object') @observable playParam = {
         playState: false,//播放状态
         pattern: "loop",//播放模式  循环 loop 随机 random  单曲 single 
         // patternStyle: "footer",//播放器样式 footer  screen
@@ -46,7 +47,7 @@ export default class ObservableStore {
     };
     // @observable Store = {};
     // 播放列表 没有播放地址
-    @observable playList = [];
+    @persist('list') @observable playList = [];
     // 随机播放索引
     randomIndex = [];
     // 当前播放歌曲索引
@@ -54,9 +55,9 @@ export default class ObservableStore {
     //     return this.currentIndex;
     // }
     // 当前播放的音乐索引
-    @observable currentIndex = 0;
+    @persist('object') @observable currentIndex = 0;
     // 当前播放的音乐 源数据  地址  歌词 详情
-    @observable current = {
+    @persist('object') @observable current = {
         // 歌词
         lyric: {
             // 歌词位置
@@ -104,8 +105,10 @@ export default class ObservableStore {
         this.url = url;
         if (this.url && this.audio.src != this.url) {
             this.audio.src = this.url;
-            // 显示简易窗口
-            this.playParam.showSimple = true;
+            if (!this.playParam.showSimple) {
+                // 显示简易窗口
+                this.playParam.showSimple = true;
+            }
         }
     }
     /**
@@ -133,11 +136,12 @@ export default class ObservableStore {
      * @param state 
      */
     updatePlayState(state = true) {
-        if (!this.timeParam.duration.time) {
-            return
-        }
+        // if (!this.timeParam.duration.time) {
+        //     return
+        // }
         this.playParam.playState = state;
         if (this.playParam.playState) {
+            this.setUrl(this.current.music.url);
             if (this.audio.paused) {
                 this.audio.play();
             }
@@ -314,7 +318,7 @@ export default class ObservableStore {
      */
     lyricsLocation(time) {
         let current = false;
-        let item: any[] = this.current.lyric.item;
+        let item: any[] = this.current.lyric.item.slice();
         let lyricIndex = -1;
         let details;
         if (item.length) {
@@ -443,7 +447,7 @@ export default class ObservableStore {
             // 设置当前播放歌曲
             this.current.play = play;
             // 还没有获取到歌曲地址暂停播放
-            this.updatePlayState(false);
+            // this.updatePlayState(false);
             this.updateCurrentTime(0);
             ids.push(play.id);
             // if (cachePlay && cachePlay.id) {
@@ -463,7 +467,8 @@ export default class ObservableStore {
                 return this.next();
             }
             this.current.music = music;
-            this.setUrl(this.current.music.url);
+            this.updatePlayState(true);
+            // this.setUrl(this.current.music.url);
             // 获取歌词信息
             const lyric = await getLyric;
             this.current.lyric.item = lyric;
