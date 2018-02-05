@@ -15,7 +15,7 @@
     "init-api": "cd NeteaseCloudMusicApi && npm i -d",
     "init-music": "cd webMusic && npm i -d",
     "build-music": "cd webMusic && npm run build",
-    "build-app": "cd buildApp && npm run packager",
+    "build-app": "cd buildApp && npm run build",
     "build": "npm run build-music && npm run build-app"
   },
   "repository": {
