@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -83,35 +83,38 @@ module.exports = require("express");
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const Encrypt = __webpack_require__(11)
-const http = __webpack_require__(2)
-const querystring = __webpack_require__(13)
+const Encrypt = __webpack_require__(10);
+const request = __webpack_require__(3);
+const querystring = __webpack_require__(12);
+
+// request.debug = true;
 
 function randomUserAgent() {
   const userAgentList = [
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
-    'Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Mobile Safari/537.36',
-    'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Mobile Safari/537.36',
-    'Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Mobile Safari/537.36',
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Mobile/14F89;GameHelper',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4',
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:46.0) Gecko/20100101 Firefox/46.0',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:46.0) Gecko/20100101 Firefox/46.0',
-    'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)',
-    'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)',
-    'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)',
-    'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0)',
-    'Mozilla/5.0 (Windows NT 6.3; Win64, x64; Trident/7.0; rv:11.0) like Gecko',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/13.10586',
-    'Mozilla/5.0 (iPad; CPU OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1'
-  ]
-  const num = Math.floor(Math.random() * userAgentList.length)
-  return userAgentList[num]
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1",
+    "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Mobile Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Mobile Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Mobile Safari/537.36",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Mobile/14F89;GameHelper",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:46.0) Gecko/20100101 Firefox/46.0",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:46.0) Gecko/20100101 Firefox/46.0",
+    "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+    "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)",
+    "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)",
+    "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0)",
+    "Mozilla/5.0 (Windows NT 6.3; Win64, x64; Trident/7.0; rv:11.0) like Gecko",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/13.10586",
+    "Mozilla/5.0 (iPad; CPU OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1"
+  ];
+  const num = Math.floor(Math.random() * userAgentList.length);
+  return userAgentList[num];
 }
+
 function createWebAPIRequest(
   host,
   path,
@@ -121,110 +124,87 @@ function createWebAPIRequest(
   callback,
   errorcallback
 ) {
-  let music_req = ''
-  const cryptoreq = Encrypt(data)
-  const http_client = http.request(
-    {
-      hostname: host,
-      method: method,
-      path: path,
-      headers: {
-        Accept: '*/*',
-        'Accept-Language': 'zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4',
-        Connection: 'keep-alive',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Referer: 'http://music.163.com',
-        Host: 'music.163.com',
-        Cookie: cookie,
-        'User-Agent': randomUserAgent()
-      }
+  console.log(cookie);
+  const proxy = cookie.split("__proxy__")[1];
+  cookie = cookie.split("__proxy__")[0];
+  const cryptoreq = Encrypt(data);
+  const options = {
+    url: `http://${host}${path}`,
+    method: method,
+    headers: {
+      Accept: "*/*",
+      "Accept-Language": "zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4",
+      Connection: "keep-alive",
+      "Content-Type": "application/x-www-form-urlencoded",
+      Referer: "http://music.163.com",
+      Host: "music.163.com",
+      Cookie: cookie,
+      "User-Agent": randomUserAgent()
     },
-    function(res) {
-      res.on('error', function(err) {
-        errorcallback(err)
-      })
-      res.setEncoding('utf8')
-      if (res.statusCode != 200) {
-        createWebAPIRequest(host, path, method, data, cookie, callback)
-        return
-      } else {
-        res.on('data', function(chunk) {
-          music_req += chunk
-        })
-        res.on('end', function() {
-          if (music_req == '') {
-            createWebAPIRequest(host, path, method, data, cookie, callback)
-            return
-          }
-          if (res.headers['set-cookie']) {
-            callback(music_req, res.headers['set-cookie'])
-          } else {
-            callback(music_req)
-          }
-        })
-      }
-    }
-  )
-  http_client.write(
-    querystring.stringify({
+    body: querystring.stringify({
       params: cryptoreq.params,
       encSecKey: cryptoreq.encSecKey
-    })
-  )
-  http_client.end()
+    }),
+    proxy: proxy
+  };
+
+  request(options, function (error, res, body) {
+    if (error) {
+      errorcallback(error);
+    } else {
+      //解决 网易云有些 cookie 添加了 .music.163.com 域设置。
+      //如： Domain=.music.163.com
+      let cookie = res.headers["set-cookie"];
+      if (Array.isArray(cookie)) {
+        cookie = cookie.map(x => x.replace(/.music.163.com/g, "")).sort((a, b) => a.length - b.length)
+      }
+      callback(body, cookie);
+    }
+  });
 }
 
-function createRequest(path, method, data, callback, errorcallback) {
+function createRequest(path, method, data) {
   return new Promise((resolve, reject) => {
-    let ne_req = ''
-    const http_client = http.request(
-      {
-        hostname: 'music.163.com',
-        method: method,
-        path: path,
-        headers: {
-          Referer: 'http://music.163.com',
-          Cookie: 'appver=1.5.2',
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'User-Agent': randomUserAgent()
-        }
-      },
-      res => {
-        res.setEncoding('utf8')
-        res.on('error', err => {
-          reject(err)
-        })
-        res.on('data', chunk => {
-          ne_req += chunk
-        })
-        res.on('end', () => {
-          resolve(ne_req)
-        })
+    const options = {
+      url: `http://music.163.com${path}`,
+      method: method,
+      headers: {
+        Referer: "http://music.163.com",
+        Cookie: "appver=1.5.2",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent": randomUserAgent()
       }
-    )
-    if (method == 'POST') {
-      http_client.write(data)
+    };
+
+    if (method.toLowerCase() === "post") {
+      options.body = data;
     }
-    http_client.end()
-  })
+
+    request(options, function (error, res, body) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(body);
+      }
+    });
+  });
 }
 module.exports = {
   createWebAPIRequest,
   createRequest
-}
-
+};
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("http");
+module.exports = require("crypto");
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("crypto");
+module.exports = require("request");
 
 /***/ }),
 /* 4 */
@@ -234,15 +214,9 @@ module.exports = require("path");
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("request");
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const server = __webpack_require__(7);
+const server = __webpack_require__(6);
 const express = __webpack_require__(0);
 const path = __webpack_require__(4);
 module.exports = function (port, url) {
@@ -250,154 +224,163 @@ module.exports = function (port, url) {
 }
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0);
-const http = __webpack_require__(2);
-const apicache = __webpack_require__(8);
+const apicache = __webpack_require__(7);
 const path = __webpack_require__(4);
-const history =  __webpack_require__(9)
+const history =  __webpack_require__(8)
+
 const app = express();
 let cache = apicache.middleware;
 
 // 跨域设置
-// app.all('*', function (req, res, next) {
-//   if (req.path !== '/' && !req.path.includes('.')) {
-//     res.header('Access-Control-Allow-Credentials', true)
-//     // 这里获取 origin 请求头 而不是用 *
-//     res.header('Access-Control-Allow-Origin', req.headers['origin'] || '*')
-//     res.header('Access-Control-Allow-Headers', 'X-Requested-With')
-//     res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
-//     res.header('Content-Type', 'application/json;charset=utf-8')
-//   }
-//   next()
-// })
+app.all("*", function(req, res, next) {
+  if (req.path !== "/" && !req.path.includes(".")) {
+    res.header("Access-Control-Allow-Credentials", true);
+    // 这里获取 origin 请求头 而不是用 *
+    res.header("Access-Control-Allow-Origin", req.headers["origin"] || "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    res.header("Content-Type", "application/json;charset=utf-8");
+  }
+  next();
+});
+
 const onlyStatus200 = (req, res) => res.statusCode === 200;
 
 app.use(cache("2 minutes", onlyStatus200));
 
 app.use(express.static(path.resolve(__dirname, "public")));
 
+app.use(function(req, res, next) {
+  const proxy = req.query.proxy;
+  if (proxy) {
+    req.headers.cookie = req.headers.cookie + `__proxy__${proxy}`;
+  }
+  next();
+});
+
 // 获取专辑内容
-app.use("/album", __webpack_require__(10));
+app.use("/album", __webpack_require__(9));
 
 // 获取歌手单曲
-app.use("/artists", __webpack_require__(14));
+app.use("/artists", __webpack_require__(13));
 
 // 获取歌手专辑列表
-app.use("/artist/album", __webpack_require__(15));
+app.use("/artist/album", __webpack_require__(14));
 
 //艺术家-信息
-app.use("/artist/desc", __webpack_require__(16));
+app.use("/artist/desc", __webpack_require__(15));
 
 //艺术家-mv
-app.use("/artist/mv", __webpack_require__(17));
+app.use("/artist/mv", __webpack_require__(16));
 
 // 获取 banner
-app.use("/banner", __webpack_require__(18));
+app.use("/banner", __webpack_require__(17));
 
-app.use("/check/music", __webpack_require__(19));
+app.use("/check/music", __webpack_require__(18));
 
-app.use("/comment/music", __webpack_require__(20));
+app.use("/comment/music", __webpack_require__(19));
 
-app.use("/comment/mv", __webpack_require__(21));
+app.use("/comment/mv", __webpack_require__(20));
 
-app.use("/comment/album", __webpack_require__(22));
+app.use("/comment/album", __webpack_require__(21));
 
-app.use("/comment/playlist", __webpack_require__(23));
+app.use("/comment/playlist", __webpack_require__(22));
 
 //未知 api
-app.use("/comment/like", __webpack_require__(24));
+app.use("/comment/like", __webpack_require__(23));
 
-app.use("/comment/dj", __webpack_require__(25));
+app.use("/comment/dj", __webpack_require__(24));
 
 //签到
-app.use("/daily_signin", __webpack_require__(26));
+app.use("/daily_signin", __webpack_require__(25));
 
 //djradio detail
-app.use("/dj/detail", __webpack_require__(27));
+app.use("/dj/detail", __webpack_require__(26));
 
 //dj主播 radio
-app.use("/dj/program", __webpack_require__(28));
+app.use("/dj/program", __webpack_require__(27));
 
-app.use("/dj/program/detail", __webpack_require__(29));
+app.use("/dj/program/detail", __webpack_require__(28));
 
-app.use("/dj/sub", __webpack_require__(30));
+app.use("/dj/sub", __webpack_require__(29));
 
-app.use("/dj/catelist", __webpack_require__(31));
+app.use("/dj/catelist", __webpack_require__(30));
 
-app.use("/dj/hot", __webpack_require__(32));
+app.use("/dj/hot", __webpack_require__(31));
 
 // 精选电台
-app.use("/dj/recommend", __webpack_require__(33));
+app.use("/dj/recommend", __webpack_require__(32));
 
 //精选电台-分类电台
-app.use("/dj/recommend/type", __webpack_require__(34));
+app.use("/dj/recommend/type", __webpack_require__(33));
 
 //获取动态
-app.use("/event", __webpack_require__(35));
+app.use("/event", __webpack_require__(34));
 
 //垃圾桶
-app.use("/fm_trash", __webpack_require__(36));
+app.use("/fm_trash", __webpack_require__(35));
 
-app.use("/follow", __webpack_require__(37));
+app.use("/follow", __webpack_require__(36));
 
 // 喜欢歌曲
-app.use("/like", __webpack_require__(38));
+app.use("/like", __webpack_require__(37));
 
-app.use("/likelist", __webpack_require__(39));
+app.use("/likelist", __webpack_require__(38));
 
 //手机登录
-app.use("/login/cellphone", __webpack_require__(40));
+app.use("/login/cellphone", __webpack_require__(39));
 
 //邮箱登录
-app.use("/login", __webpack_require__(41));
+app.use("/login", __webpack_require__(40));
 
 //登录刷新
-app.use("/login/refresh", __webpack_require__(42));
+app.use("/login/refresh", __webpack_require__(41));
 
 // 不明 api
-app.use("/log/web", __webpack_require__(43));
+app.use("/log/web", __webpack_require__(42));
 
 // 获取歌词
-app.use("/lyric", __webpack_require__(44));
+app.use("/lyric", __webpack_require__(43));
 
 // 获取音乐 url
-app.use("/music/url", __webpack_require__(45));
+app.use("/music/url", __webpack_require__(44));
 
 //最新 mv
-app.use("/mv/first", __webpack_require__(46));
+app.use("/mv/first", __webpack_require__(45));
 
 //播放 mv
-app.use("/mv/url", __webpack_require__(47));
+app.use("/mv/url", __webpack_require__(46));
 
 //mv
-app.use("/mv", __webpack_require__(48));
+app.use("/mv", __webpack_require__(47));
 
 // 私人 FM
-app.use("/personal_fm", __webpack_require__(49));
+app.use("/personal_fm", __webpack_require__(48));
 
 //推荐歌单
-app.use("/personalized", __webpack_require__(50));
+app.use("/personalized", __webpack_require__(49));
 
 //推荐dj
-app.use("/personalized/djprogram", __webpack_require__(51));
+app.use("/personalized/djprogram", __webpack_require__(50));
 
 //推荐新音乐
-app.use("/personalized/newsong", __webpack_require__(52));
+app.use("/personalized/newsong", __webpack_require__(51));
 
 //独家放送
 app.use(
   "/personalized/privatecontent",
-  __webpack_require__(53)
+  __webpack_require__(52)
 );
 
 //推荐mv
-app.use("/personalized/mv", __webpack_require__(54));
+app.use("/personalized/mv", __webpack_require__(53));
 
 // 获取歌单内列表
-app.use("/playlist/detail", __webpack_require__(55));
+app.use("/playlist/detail", __webpack_require__(54));
 
 //收藏单曲到歌单,从歌单删除歌曲 op=del,add;pid=歌单id,tracks=歌曲id
 app.use("/playlist/tracks", __webpack_require__(56));
@@ -518,19 +501,19 @@ module.exports = function (port, url) {
 }
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("apicache");
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("connect-history-api-fallback");
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -560,14 +543,14 @@ module.exports = router
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // 参考 https://github.com/darknessomi/musicbox/wiki/
 
-const crypto = __webpack_require__(3)
-const bigInt = __webpack_require__(12)
+const crypto = __webpack_require__(2)
+const bigInt = __webpack_require__(11)
 const modulus =
   '00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7'
 const nonce = '0CoJUm6Qyw8W8jud'
@@ -634,19 +617,19 @@ module.exports = Encrypt
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("big-integer");
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = require("querystring");
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -676,7 +659,7 @@ module.exports = router
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -707,7 +690,7 @@ module.exports = router
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -736,7 +719,7 @@ module.exports = router
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -768,7 +751,7 @@ module.exports = router
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -795,12 +778,12 @@ module.exports = router
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
 const router = express()
-const request = __webpack_require__(5)
+const request = __webpack_require__(3)
 const { createWebAPIRequest } = __webpack_require__(1)
 router.get('/', (req, res) => {
   const id = parseInt(req.query.id)
@@ -834,40 +817,40 @@ module.exports = router
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const express = __webpack_require__(0)
-const router = express()
-const { createWebAPIRequest } = __webpack_require__(1)
+const express = __webpack_require__(0);
+const router = express();
+const { createWebAPIRequest } = __webpack_require__(1);
 
-router.get('/', (req, res) => {
-  const rid = req.query.id
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
+router.get("/", (req, res) => {
+  const rid = req.query.id;
+  const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
     offset: req.query.offset || 0,
     rid: rid,
     limit: req.query.limit || 20,
-    csrf_token: ''
-  }
+    csrf_token: ""
+  };
   createWebAPIRequest(
-    'music.163.com',
+    "music.163.com",
     `/weapi/v1/resource/comments/R_SO_4_${rid}/?csrf_token=`,
-    'POST',
+    "POST",
     data,
     cookie,
     music_req => {
-      res.send(music_req)
+      res.send(music_req);
     },
-    err => res.status(502).send('fetch error')
-  )
-})
+    err => res.status(502).send(err.message)
+  );
+});
 
-module.exports = router
+module.exports = router;
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -900,7 +883,7 @@ module.exports = router
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -933,7 +916,7 @@ module.exports = router
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -966,7 +949,7 @@ module.exports = router
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //comment like
@@ -1009,7 +992,7 @@ module.exports = router
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1042,7 +1025,7 @@ module.exports = router
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 签到
@@ -1076,7 +1059,7 @@ module.exports = router
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1107,7 +1090,7 @@ module.exports = router
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1141,7 +1124,7 @@ module.exports = router
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1171,7 +1154,7 @@ module.exports = router
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1202,7 +1185,7 @@ module.exports = router
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1231,7 +1214,7 @@ module.exports = router
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1267,7 +1250,7 @@ module.exports = router
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1296,7 +1279,7 @@ module.exports = router
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1326,7 +1309,7 @@ module.exports = router
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1353,7 +1336,7 @@ module.exports = router
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1385,7 +1368,7 @@ module.exports = router
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1416,7 +1399,7 @@ module.exports = router
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1449,7 +1432,7 @@ module.exports = router
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1479,50 +1462,50 @@ module.exports = router
 
 
 /***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const express = __webpack_require__(0);
+const crypto = __webpack_require__(2);
+const router = express();
+const {
+  createWebAPIRequest
+} = __webpack_require__(1);
+
+router.get("/", (req, res) => {
+  const phone = req.query.phone;
+  const cookie = req.get("Cookie") ? req.get("Cookie") : "";
+  const md5sum = crypto.createHash("md5");
+  md5sum.update(req.query.password);
+  const data = {
+    phone: phone,
+    password: md5sum.digest("hex"),
+    rememberLogin: "true"
+  };
+  createWebAPIRequest(
+    "music.163.com",
+    "/weapi/login/cellphone",
+    "POST",
+    data,
+    cookie,
+    (music_req, cookie) => {
+      res.set({
+        "Set-Cookie": cookie
+      });
+      res.send(music_req);
+    },
+    err => res.status(502).send("fetch error")
+  );
+});
+
+module.exports = router;
+
+/***/ }),
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
-const crypto = __webpack_require__(3)
-const router = express()
-const { createWebAPIRequest } = __webpack_require__(1)
-
-router.get('/', (req, res) => {
-  const phone = req.query.phone
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  const md5sum = crypto.createHash('md5')
-  md5sum.update(req.query.password)
-  const data = {
-    phone: phone,
-    password: md5sum.digest('hex'),
-    rememberLogin: 'true'
-  }
-  createWebAPIRequest(
-    'music.163.com',
-    '/weapi/login/cellphone',
-    'POST',
-    data,
-    cookie,
-    (music_req, cookie) => {
-      // console.log(music_req)
-      res.set({
-        'Set-Cookie': cookie
-      })
-      res.send(music_req)
-    },
-    err => res.status(502).send('fetch error')
-  )
-})
-
-module.exports = router
-
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const express = __webpack_require__(0)
-const crypto = __webpack_require__(3)
+const crypto = __webpack_require__(2)
 const router = express()
 const { createWebAPIRequest } = __webpack_require__(1)
 
@@ -1548,6 +1531,39 @@ router.get('/', (req, res) => {
     cookie,
     (music_req, cookie) => {
       // console.log(music_req)
+      cookie = cookie&&cookie.map(x => x.replace("Domain=.music.163.com", ""))
+      res.set({
+        'Set-Cookie': cookie
+      })
+      res.send(music_req)
+    },
+    err => res.status(502).send('fetch error')
+  )
+})
+
+module.exports = router
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const express = __webpack_require__(0)
+const router = express()
+const { createWebAPIRequest } = __webpack_require__(1)
+
+router.get('/', (req, res) => {
+  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
+  const data = {
+    csrf_token: ''
+  }
+  createWebAPIRequest(
+    'music.163.com',
+    `/weapi/login/token/refresh`,
+    'POST',
+    data,
+    cookie,
+    (music_req, cookie) => {
       res.set({
         'Set-Cookie': cookie
       })
@@ -1562,40 +1578,6 @@ module.exports = router
 
 /***/ }),
 /* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const express = __webpack_require__(0)
-const router = express()
-const { createWebAPIRequest } = __webpack_require__(1)
-
-router.get('/', (req, res) => {
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  const data = {
-    csrf_token: ''
-  }
-  console.log({ cookie })
-  createWebAPIRequest(
-    'music.163.com',
-    `/weapi/login/token/refresh`,
-    'POST',
-    data,
-    cookie,
-    (music_req, cookie) => {
-      console.log({ cookie })
-      res.set({
-        'Set-Cookie': cookie
-      })
-      res.send(music_req)
-    },
-    err => res.status(502).send('fetch error')
-  )
-})
-
-module.exports = router
-
-
-/***/ }),
-/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1623,7 +1605,7 @@ module.exports = router
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1651,7 +1633,7 @@ module.exports = router
 
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1688,7 +1670,7 @@ module.exports = router
 
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //最新mv
@@ -1720,12 +1702,12 @@ module.exports = router
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
 const router = express()
-const request = __webpack_require__(5)
+const request = __webpack_require__(3)
 
 router.get('/', (req, res) => {
   const url = req.query.url
@@ -1750,7 +1732,7 @@ module.exports = router
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1781,7 +1763,7 @@ module.exports = router
 
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1808,7 +1790,7 @@ module.exports = router
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0);
@@ -1841,7 +1823,7 @@ module.exports = router;
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1868,7 +1850,7 @@ module.exports = router
 
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1897,7 +1879,7 @@ module.exports = router
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1924,7 +1906,7 @@ module.exports = router
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(0)
@@ -1951,42 +1933,41 @@ module.exports = router
 
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const http = __webpack_require__(2)
-const express = __webpack_require__(0)
-const router = express()
-const { createWebAPIRequest } = __webpack_require__(1)
+const http = __webpack_require__(55);
+const express = __webpack_require__(0);
+const router = express();
+const {
+  createWebAPIRequest
+} = __webpack_require__(1);
 
-router.get('/', (req, res) => {
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
-  let detail, imgurl
+router.get("/", (req, res) => {
+  const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
     id: req.query.id,
     offset: 0,
     total: true,
     limit: 1000,
     n: 1000,
-    csrf_token: ''
-  }
+    csrf_token: ""
+  };
 
   createWebAPIRequest(
-    'music.163.com',
-    '/weapi/v3/playlist/detail',
-    'POST',
+    "music.163.com",
+    "/weapi/v3/playlist/detail",
+    "POST",
     data,
     cookie,
     music_req => {
       // console.log(music_req)
-      // detail = music_req
-      res.send(music_req)
-      // mergeRes()
+      res.send(music_req);
     },
     err => {
-      res.status(502).send('fetch error')
+      res.status(502).send("fetch error");
     }
-  )
+  );
 
   // FIXME:i dont know the api to get coverimgurl
   // so i get it by parsing html
@@ -2018,10 +1999,15 @@ router.get('/', (req, res) => {
   //     res.send(detail)
   //   }
   // }
-})
+});
 
-module.exports = router
+module.exports = router;
 
+/***/ }),
+/* 55 */
+/***/ (function(module, exports) {
+
+module.exports = require("http");
 
 /***/ }),
 /* 56 */
@@ -2638,7 +2624,9 @@ const top_list_all = {
   "18": ["中国嘻哈榜", "1899724"],
   "19": ["法国 NRJ EuroHot 30周榜", "27135204"],
   "20": ["台湾Hito排行榜", "112463"],
-  "21": ["Beatport全球电子舞曲榜", "3812895"]
+  "21": ["Beatport全球电子舞曲榜", "3812895"],
+  "22": ["云音乐ACG音乐榜", "71385702"],
+  "23": ["云音乐嘻哈榜", "991319590"]
 };
 const express = __webpack_require__(0);
 const router = express();
@@ -2907,30 +2895,33 @@ module.exports = router
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const express = __webpack_require__(0)
-const router = express()
-const { createWebAPIRequest } = __webpack_require__(1)
+const express = __webpack_require__(0);
+const router = express();
+const { createWebAPIRequest } = __webpack_require__(1);
 
-router.get('/', (req, res) => {
-  const cookie = req.get('Cookie') ? req.get('Cookie') : ''
+router.get("/", (req, res) => {
+  const cookie = req.get("Cookie") ? req.get("Cookie") : "";
   const data = {
-    offset: 0,
+    offset: req.query.offset || 0,
     uid: req.query.uid,
-    limit: 1000,
-    csrf_token: ''
-  }
+    limit: req.query.limit || 30, //貌似无效
+    csrf_token: ""
+  };
   createWebAPIRequest(
-    'music.163.com',
-    '/weapi/user/playlist',
-    'POST',
+    "music.163.com",
+    "/weapi/user/playlist",
+    "POST",
     data,
     cookie,
-    music_req => res.send(music_req),
-    err => res.status(502).send('fetch error')
-  )
-})
+    music_req => {
+      res.send(music_req);
+      // console.log(JSON.parse(music_req))
+    },
+    err => res.status(502).send("fetch error")
+  );
+});
 
-module.exports = router
+module.exports = router;
 
 
 /***/ }),

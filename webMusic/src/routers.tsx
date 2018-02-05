@@ -7,8 +7,16 @@ import { observer, inject } from 'mobx-react';
 // import CSSTransition from 'react-transition-group/CSSTransition';
 // import QueueAnim from 'rc-queue-anim';
 import Animate from 'rc-animate';
+import Loadable from 'react-loadable';
+// import * as containers from "./containers"
+const Loading = () => <div className="music-loading ">
+    <div className="music-loading-icon">
+        <i className="musicicon musicicon-8"></i>
+    </div>
+    加载中...
+</div>;
 
-import * as containers from "./containers"
+
 // @inject('UserContextStore')
 // @observer
 export default class RootRoutes extends React.Component<any, any> {
@@ -53,44 +61,45 @@ export default class RootRoutes extends React.Component<any, any> {
     }
     routes: RouteConfig[] = [
         {
-            component: this.createCSSTransition(containers.RootApp, false),
+            component: Loadable({ loader: () => import('./containers/root').then(x => x.RootApp), loading: Loading }),
             routes: [
                 {
                     path: "/",
                     exact: true,
-                    component: this.createCSSTransition(containers.HomeComponent, false),
+                    component: Loadable({ loader: () => import('./containers/home').then(x => x.HomeComponent), loading: Loading }),
                 },
                 {
                     //发现音乐
                     path: "/find",
-                    component: this.createCSSTransition(containers.FindMusicComponent),
+                    component: this.createCSSTransition(Loadable({ loader: () => import('./containers/findMusic').then(x => x.FindMusicComponent), loading: () => null })),
+                    // component: HomeTest,
                     routes: [
 
                         {//歌单
                             path: "/find/ss",
-                            component: this.createCSSTransition(containers.SongSheetComponent, false),
+                            component: this.createCSSTransition(Loadable({ loader: () => import('./containers/songSheet').then(x => x.SongSheetComponent), loading: Loading }), false),
                         },
                         {//个性推荐
                             // path: "/find/",
-                            component: this.createCSSTransition(containers.PersonalityComponent, false),
+                            component: this.createCSSTransition(Loadable({ loader: () => import('./containers/songSheet').then(x => x.PersonalityComponent), loading: Loading }), false),
                         },
                     ]
                 },
                 {
                     //歌单详情
                     path: "/ssd/:id",
-                    component: this.createCSSTransition(containers.songSheetDetailsComponent),
+                    component: this.createCSSTransition(Loadable({ loader: () => import('./containers/songSheet').then(x => x.songSheetDetailsComponent), loading: Loading })),
                 },
                 {
                     // MV
                     path: "/mv",
                     exact: true,
-                    component: this.createCSSTransition(containers.MVComponent),
+                    component: this.createCSSTransition(Loadable({ loader: () => import('./containers/mv').then(x => x.MVComponent), loading: Loading })),
                 },
                 {
                     //MV详情
                     path: "/mv/:id",
-                    component: this.createCSSTransition(containers.MVDetailsComponent),
+                    component: this.createCSSTransition(Loadable({ loader: () => import('./containers/mv').then(x => x.MVDetailsComponent), loading: Loading })),
                 },
                 // {
                 //     path: "/music/:id",
