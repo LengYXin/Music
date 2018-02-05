@@ -5,8 +5,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
-const commonCss = new ExtractTextPlugin('common.css');
-const styleCss = new ExtractTextPlugin('styles.css');
+const commonCss = new ExtractTextPlugin({
+    filename: (getPath) => {
+        return getPath('css/common.css').replace('css/js', 'css');
+    },
+    allChunks: true
+});
+const styleCss = new ExtractTextPlugin({
+    filename: (getPath) => {
+        return getPath('css/style.css').replace('css/js', 'css');
+    },
+    allChunks: true
+});
 module.exports = (evn = {}) => {
     evn.Generative = evn.Generative == "true"
     console.log(`------------------- ${evn.Generative?'生产':'开发'}环境 -------------------`);
@@ -23,11 +33,10 @@ module.exports = (evn = {}) => {
             minChunks: function (module) {
                 // This prevents stylesheet resources with the .css or .scss extension
                 // from being moved from their original chunk to the vendor chunk
-                // console.log("module.context----------------------",module.context);
                 if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
                     return false;
                 }
-                return module.context && module.context.indexOf("node_modules") !== -1;
+                return module.context && module.context.includes("node_modules");
             }
         }),
         // 把生成的文件插入到 启动页中
@@ -57,8 +66,8 @@ module.exports = (evn = {}) => {
             path: path.resolve(__dirname, "build"),
             // publicPath: evn.Generative ? '' : '/',
             publicPath: '/',
-            filename: '[name].js',
-            chunkFilename: '[id].chunk.js'
+            filename: 'js/[name].js',
+            chunkFilename: 'js/[id].chunk.js'
         },
         // 启动 dev-server 的服务配置
         devServer: {
