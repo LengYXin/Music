@@ -58,48 +58,73 @@ export default class RootRoutes extends React.Component<any, any> {
                 );
             },
         });
-    }
+    };
+    // 组件加载动画
+    Loading = () => (
+        <div className="music-loading ">
+            <div className="music-loading-icon">
+                <i className="musicicon musicicon-8"></i>
+            </div>
+            加载中...
+       </div>
+    );
+    /**
+     * 组件加载
+     * @param Component 组件 
+     * @param Animate 路由动画 
+     * @param Loading 加载动画
+     */
+    Loadable(Component, Animate = true, Loading = this.Loading, cssTranParams = { content: true, classNames: "fade" }) {
+        if (!Loading) {
+            Loading = () => null;
+        }
+        const loadable = Loadable({ loader: () => Component, loading: Loading });
+        if (Animate) {
+            return this.createCSSTransition(loadable, cssTranParams.content, cssTranParams.classNames);
+        }
+        return loadable;
+    };
     routes: RouteConfig[] = [
         {
-            component: Loadable({ loader: () => import('./containers/root').then(x => x.RootApp), loading: Loading }),
+            component: this.Loadable(import('./containers/root').then(x => x.RootApp), false),
             routes: [
                 {
                     path: "/",
                     exact: true,
-                    component: Loadable({ loader: () => import('./containers/home').then(x => x.HomeComponent), loading: Loading }),
+                    component: this.Loadable(import('./containers/home').then(x => x.HomeComponent), false),
                 },
                 {
                     //发现音乐
                     path: "/find",
-                    component: this.createCSSTransition(Loadable({ loader: () => import('./containers/findMusic').then(x => x.FindMusicComponent), loading: () => null })),
+                    component: this.Loadable(import('./containers/findMusic').then(x => x.FindMusicComponent), true, null),
                     // component: HomeTest,
                     routes: [
 
                         {//歌单
                             path: "/find/ss",
-                            component: this.createCSSTransition(Loadable({ loader: () => import('./containers/songSheet').then(x => x.SongSheetComponent), loading: Loading }), false),
+                            component: this.Loadable(import('./containers/songSheet').then(x => x.SongSheetComponent), false),
                         },
                         {//个性推荐
                             // path: "/find/",
-                            component: this.createCSSTransition(Loadable({ loader: () => import('./containers/songSheet').then(x => x.PersonalityComponent), loading: Loading }), false),
+                            component: this.Loadable(import('./containers/songSheet').then(x => x.PersonalityComponent), false),
                         },
                     ]
                 },
                 {
                     //歌单详情
                     path: "/ssd/:id",
-                    component: this.createCSSTransition(Loadable({ loader: () => import('./containers/songSheet').then(x => x.songSheetDetailsComponent), loading: Loading })),
+                    component: this.Loadable(import('./containers/songSheet').then(x => x.songSheetDetailsComponent)),
                 },
                 {
                     // MV
                     path: "/mv",
                     exact: true,
-                    component: this.createCSSTransition(Loadable({ loader: () => import('./containers/mv').then(x => x.MVComponent), loading: Loading })),
+                    component: this.Loadable(import('./containers/mv').then(x => x.MVComponent)),
                 },
                 {
                     //MV详情
                     path: "/mv/:id",
-                    component: this.createCSSTransition(Loadable({ loader: () => import('./containers/mv').then(x => x.MVDetailsComponent), loading: Loading })),
+                    component: this.Loadable(import('./containers/mv').then(x => x.MVDetailsComponent)),
                 },
                 // {
                 //     path: "/music/:id",

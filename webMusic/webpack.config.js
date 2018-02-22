@@ -24,7 +24,7 @@ module.exports = (evn = {}) => {
         //全局变量
         // new webpack.ProvidePlugin({
         // }),
-        new CleanWebpackPlugin(['build']),
+        // new CleanWebpackPlugin(['build']),
         commonCss,
         styleCss,
         //第三方依赖
@@ -49,15 +49,23 @@ module.exports = (evn = {}) => {
         }]),
     ];
     // 生产环境添加压缩插件
-    evn.Generative ? plugins.push(new UglifyJSPlugin({
-        // warning: false,
-        // mangle: true,
-        // compress: {
-        //     warnings: false,
-        //     drop_debugger: true,
-        //     drop_console: true
-        // }
-    })) : undefined;
+    if (evn.Generative) {
+        plugins = [
+            // 清理目录
+            new CleanWebpackPlugin(['build']),
+            // 压缩
+            new UglifyJSPlugin({
+                // warning: false,
+                // mangle: true,
+                // compress: {
+                //     warnings: false,
+                //     drop_debugger: true,
+                //     drop_console: true
+                // }
+            }),
+            ...plugins
+        ]
+    }
     return {
         entry: {
             'app': './src/index.tsx' //应用程序
@@ -116,7 +124,6 @@ module.exports = (evn = {}) => {
                     test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                     loader: 'url-loader?limit=50000&name=[path][name].[ext]'
                 },
-
                 {
                     test: /\.html$/,
                     loader: 'html-loader',
