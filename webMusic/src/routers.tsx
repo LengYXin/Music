@@ -51,7 +51,7 @@ export default class RootRoutes extends React.Component<any, any> {
         if (!Loading) {
             Loading = () => null;
         }
-        console.log("Loading",Loading);
+        // console.log("Loading",Loading);
         const loadable = Loadable({ loader: Component, loading: Loading });
         if (Animate) {
             return this.createCSSTransition(loadable, cssTranParams.content, cssTranParams.classNames);
