@@ -13,7 +13,7 @@
 
 ```
 ## 没有什么审美设计能力~~~~~~~
-<img src="https://github.com/LengYXin/Music/blob/master/doc/img/5.git" width="600px" />
+<img src="https://github.com/LengYXin/Music/blob/master/doc/img/5.gif" width="600px" />
 <img src="https://github.com/LengYXin/Music/blob/master/doc/img/1.png" width="600px" />
 <img src="https://github.com/LengYXin/Music/blob/master/doc/img/2.png" width="600px" />
 <img src="https://github.com/LengYXin/Music/blob/master/doc/img/3.png" width="600px" />
