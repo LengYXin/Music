@@ -8,7 +8,7 @@
         npm start                    启动 全部服务
         npm run build                打包成桌面程序
 ```
-## 没有美化的样子。
+## 没有什么审美设计能力~~~~~~~
 <img src="https://github.com/LengYXin/Music/blob/master/doc/img/1.png" width="600px" />
 <img src="https://github.com/LengYXin/Music/blob/master/doc/img/2.png" width="600px" />
 <img src="https://github.com/LengYXin/Music/blob/master/doc/img/3.png" width="600px" />
