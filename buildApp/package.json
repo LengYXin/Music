@@ -4,10 +4,11 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "build": "npm run compile && electron-packager . index --win --out build",
+    "build": "npm run compile && npm run packager",
+    "packager":"electron-packager . --win --out build",
     "compile": "webpack  --progress",
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron src/start.js",
+    "test": "electron ."
   },
   "author": "",
   "license": "ISC",

@@ -21,7 +21,7 @@ export class HeaderUserComponent extends React.Component<any, any>{
     }
     avatar(icon?) {
         const { UserContext = {} } = this.props.UserContextStore;
-        const { profile = {} } = UserContext;
+        const profile: any = (UserContext as any).profile || {};
         return [
             <Avatar size="large" src={profile.avatarUrl} key="1" />,
             <span className="header-user-nickname" key="2">{profile.nickname}  <Icon type={icon} /></span>
@@ -47,7 +47,7 @@ export class HeaderUserComponent extends React.Component<any, any>{
     }
     content() {
         const { UserContext = {} } = this.props.UserContextStore;
-        const { profile = {} } = UserContext;
+        const profile: any = (UserContext as any).profile || {};
 
         return <div className="header-user-context">
             <Row style={{ height: 40 }} {...{ onClick: this.onclick.bind(this) }}>
@@ -114,14 +114,14 @@ class NormalLoginForm extends React.Component<any, any> {
                         // rules: [{ required: false, message: 'Please input your username!' }],
                     })(
                         <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Phone" />
-                        )}
+                    )}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('Password', {
                         // rules: [{ required: false, message: 'Please input your Password!' }],
                     })(
                         <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="Password" placeholder="Password" />
-                        )}
+                    )}
                 </FormItem>
                 <FormItem>
                     <Button htmlType="submit" className="login-form-button">

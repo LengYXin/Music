@@ -15,7 +15,7 @@ export class HeaderUserComponent extends React.Component<any, any>{
 
     render() {
         const { UserContext = {}, login } = this.props.UserContextStore;
-        const { profile = {} } = UserContext;
+        const profile: any = (UserContext as any).profile || {};
         console.log("profile", profile);
         return login ? (
             <Popover content={this.content()} placement="bottom" trigger="click"><div className="header-user-body">
@@ -61,7 +61,7 @@ class LoginModal extends React.Component<any, any>{
             <Avatar size="large" icon="user" />
             <span className="header-user-nickname">未登录  <Icon type="down" /></span>
             <Modal {...modal} >
-                <Button type="primary"  onClick={this.onLogin.bind(this)}>
+                <Button type="primary" onClick={this.onLogin.bind(this)}>
                     登录
         </Button>
             </Modal>

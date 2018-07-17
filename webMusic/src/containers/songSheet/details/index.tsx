@@ -52,7 +52,10 @@ export class songSheetDetailsComponent extends React.Component<any, any> {
 @observer
 class SongSheetDetails extends React.Component<any, any> {
     render() {
-        const { details = {}, tracks } = this.props.songSheetStore.details;
+        const { details = {
+            coverImgUrl:"",
+            commentCount:""
+        }, tracks } = this.props.songSheetStore.details;
         return <div style={{ padding: "15px 0" }}>
             <Row type="flex">
                 <Col span={6} >

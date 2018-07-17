@@ -27,7 +27,9 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-
+.s-s-item .ant-card-body{
+  padding: 0;
+}
 .s-s-item .ant-col-5 {
   width: 20%;
 }
