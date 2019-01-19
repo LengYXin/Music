@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "npm run compile && npm run packager",
-    "packager":"electron-packager . --win --out build",
+    "packager": "electron-packager . --win --out build",
     "compile": "webpack  --progress",
     "start": "electron src/start.js",
     "test": "electron ."
@@ -13,20 +13,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apicache": "^0.9.1",
-    "big-integer": "^1.6.25",
-    "connect-history-api-fallback": "^1.5.0",
-    "express": "^4.16.2",
-    "request": "^2.83.0"
+    "apicache": "0.9.1",
+    "big-integer": "1.6.25",
+    "connect-history-api-fallback": "1.5.0",
+    "express": "4.16.2",
+    "request": "2.83.0"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.2.3",
-    "clean-webpack-plugin": "^0.1.17",
-    "copy-webpack-plugin": "^4.1.1",
-    "electron": "^1.7.9",
-    "electron-packager": "^9.1.0",
-    "typescript": "^2.5.3",
-    "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
-    "webpack": "^3.6.0"
+    "awesome-typescript-loader": "3.2.3",
+    "clean-webpack-plugin": "0.1.17",
+    "copy-webpack-plugin": "4.1.1",
+    "electron": "1.7.9",
+    "electron-packager": "9.1.0",
+    "typescript": "2.5.3",
+    "uglifyjs-webpack-plugin": "1.0.0-beta.3",
+    "webpack": "3.6.0"
   }
 }

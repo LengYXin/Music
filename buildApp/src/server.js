@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("express"), require("crypto"), require("request"), require("path"), require("apicache"), require("connect-history-api-fallback"), require("big-integer"), require("querystring"), require("http"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["express", "crypto", "request", "path", "apicache", "connect-history-api-fallback", "big-integer", "querystring", "http"], factory);
 	else {
-		var a = factory();
+		var a = typeof exports === 'object' ? factory(require("express"), require("crypto"), require("request"), require("path"), require("apicache"), require("connect-history-api-fallback"), require("big-integer"), require("querystring"), require("http")) : factory(root["express"], root["crypto"], root["request"], root["path"], root["apicache"], root["connect-history-api-fallback"], root["big-integer"], root["querystring"], root["http"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(typeof self !== 'undefined' ? self : this, function() {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_55__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
